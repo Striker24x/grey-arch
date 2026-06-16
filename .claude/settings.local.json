@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(higgsfield-generate)",
+      "PowerShell(Get-Process *)",
+      "Bash(node -e ' *)",
+      "Bash(npm install *)",
+      "Bash(node qa-final.mjs)",
+      "Bash(rm -rf .next/dev/cache)",
+      "Bash(npm run *)",
+      "Bash(curl *)",
+      "Bash(node qa-fresh.mjs)"
+    ]
+  }
+}

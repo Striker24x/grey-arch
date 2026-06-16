@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  /* Backgrounds */
+  --color-paper-50: #fdfcfa;
+  --color-paper-100: #f6f3ee;
+  --color-paper-200: #efe9e0;
+  --color-paper-300: #e4dccf;
+
+  /* Borders */
+  --color-line-200: #e6e0d6;
+  --color-line-300: #d8d0c2;
+  --color-line-400: #c2b8a6;
+
+  /* Stone (secondary) */
+  --color-stone-300: #c2bbae;
+  --color-stone-400: #a59c8c;
+  --color-stone-500: #8a8071;
+  --color-stone-600: #6f6657;
+
+  /* Graphite (primary) */
+  --color-graphite-600: #54504a;
+  --color-graphite-700: #423e38;
+  --color-graphite-800: #2e2b26;
+  --color-graphite-900: #211e1a;
+
+  /* Ink (text) */
+  --color-ink: #1a1815;
+
+  /* Bronze / sandstone (accent) */
+  --color-bronze-300: #d9bd96;
+  --color-bronze-400: #c49d6e;
+  --color-bronze-500: #ab7c49;
+  --color-bronze-600: #8a6238;
+  --color-sandstone-300: #e3d2b3;
+  --color-sandstone-400: #d2b787;
+
+  --background: var(--color-paper-100);
+  --foreground: var(--color-ink);
+}
+
+@theme inline {
+  --color-paper-50: var(--color-paper-50);
+  --color-paper-100: var(--color-paper-100);
+  --color-paper-200: var(--color-paper-200);
+  --color-paper-300: var(--color-paper-300);
+
+  --color-line-200: var(--color-line-200);
+  --color-line-300: var(--color-line-300);
+  --color-line-400: var(--color-line-400);
+
+  --color-stone-300: var(--color-stone-300);
+  --color-stone-400: var(--color-stone-400);
+  --color-stone-500: var(--color-stone-500);
+  --color-stone-600: var(--color-stone-600);
+
+  --color-graphite-600: var(--color-graphite-600);
+  --color-graphite-700: var(--color-graphite-700);
+  --color-graphite-800: var(--color-graphite-800);
+  --color-graphite-900: var(--color-graphite-900);
+
+  --color-ink: var(--color-ink);
+
+  --color-bronze-300: var(--color-bronze-300);
+  --color-bronze-400: var(--color-bronze-400);
+  --color-bronze-500: var(--color-bronze-500);
+  --color-bronze-600: var(--color-bronze-600);
+  --color-sandstone-300: var(--color-sandstone-300);
+  --color-sandstone-400: var(--color-sandstone-400);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-heading: var(--font-fraunces), var(--font-naskh), serif;
+  --font-sans: var(--font-inter), var(--font-noto-sans-ar), sans-serif;
+
+  --shadow-soft: 0 30px 60px -25px rgba(26, 24, 21, 0.22);
+  --shadow-card: 0 18px 40px -22px rgba(26, 24, 21, 0.16);
+
+  --radius-arch: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-noto-sans-ar), var(--font-sans);
+}
+
+[dir="rtl"] .font-heading {
+  font-family: var(--font-naskh), var(--font-heading);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Hairline architectural rule used between sections */
+.rule-line {
+  height: 1px;
+  background: var(--color-line-300);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
