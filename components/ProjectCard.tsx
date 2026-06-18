@@ -15,7 +15,7 @@ export default function ProjectCard({
   priority?: boolean;
 }) {
   return (
-    <Link href={`/${lang}/portfolio/${project.slug}`} className="group block cursor-pointer">
+    <Link href={`/${lang}/portfolio/${project.slug}`} className="group block cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-1">
       <ImageReveal className="aspect-[4/5]">
         <Image
           src={project.image}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArchMark from "./ArchMark";
 import LanguageSwitcher from "./LanguageSwitcher";
+import AnimatedReveal from "./AnimatedReveal";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionary-types";
 
@@ -28,6 +29,7 @@ export default function Footer({
   return (
     <footer className="border-t border-line-200 bg-paper-200">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+        <AnimatedReveal>
         <div className="grid gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2 text-graphite-900">
@@ -84,13 +86,17 @@ export default function Footer({
             </div>
           </div>
         </div>
+        </AnimatedReveal>
 
+        <AnimatedReveal delay={80}>
         <div className="mt-14 rounded-sm border border-line-300 bg-paper-100 p-4">
           <p className="text-xs leading-relaxed text-stone-500">
             <span className="font-medium text-stone-600">{dict.footer.noteTitle}: </span>
             {dict.footer.note}
           </p>
         </div>
+
+        </AnimatedReveal>
 
         <div className="mt-8 flex flex-col gap-2 border-t border-line-200 pt-8 text-xs text-stone-500 sm:flex-row sm:items-center sm:justify-between">
           <p>

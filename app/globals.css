@@ -80,6 +80,33 @@
   --radius-arch: 2px;
 }
 
+/* Dark mode — class applied to <html> by ThemeProvider */
+.dark {
+  --color-paper-50: #131109;
+  --color-paper-100: #1b1916;
+  --color-paper-200: #252119;
+  --color-paper-300: #302b21;
+
+  --color-line-200: #363028;
+  --color-line-300: #44403a;
+  --color-line-400: #54504a;
+
+  --color-stone-300: #857d72;
+  --color-stone-400: #9a9285;
+  --color-stone-500: #b0a89a;
+  --color-stone-600: #c8c0b0;
+
+  --color-graphite-600: #bfb9b0;
+  --color-graphite-700: #cfc9c0;
+  --color-graphite-800: #dfd9d0;
+  --color-graphite-900: #eeebe6;
+
+  --color-ink: #ede8e0;
+
+  --background: #1b1916;
+  --foreground: #ede8e0;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -88,6 +115,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+/* Smooth theme color transitions */
+body,
+header,
+main,
+footer {
+  transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
 }
 
 [dir="rtl"] body {
@@ -108,6 +143,11 @@ body {
   background: var(--color-line-300);
 }
 
+/* Nav link hover underline — forces after: pseudo-element to baseline */
+nav a {
+  padding-bottom: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -116,5 +156,10 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Disable parallax under reduced motion */
+  .will-change-transform {
+    transform: none !important;
   }
 }

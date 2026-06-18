@@ -96,12 +96,13 @@ export default async function RootLayout({
       lang={lang}
       dir={dir}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-paper-100 text-ink">
-        <Header lang={lang} dict={dict} />
-        <main className="flex-1">{children}</main>
-        <Footer lang={lang} dict={dict} />
+          <Header lang={lang} dict={dict} />
+          <main className="flex-1">{children}</main>
+          <Footer lang={lang} dict={dict} />
       </body>
     </html>
   );

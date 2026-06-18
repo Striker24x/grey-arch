@@ -20,7 +20,7 @@ export default function CTASection({
         ) : null}
         <Link
           href={href}
-          className="mt-8 inline-block cursor-pointer border border-paper-100 px-7 py-3 text-sm text-paper-100 transition-colors duration-200 hover:bg-paper-100 hover:text-graphite-900"
+          className="mt-8 inline-block cursor-pointer border border-paper-100 px-7 py-3 text-sm text-paper-100 transition-[color,background-color,transform] duration-200 hover:bg-paper-100 hover:text-graphite-900 active:scale-[0.97]"
         >
           {cta}
         </Link>
