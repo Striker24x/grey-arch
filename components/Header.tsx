@@ -37,7 +37,7 @@ export default function Header({
           className="flex items-center gap-2 text-graphite-900 cursor-pointer"
           onClick={() => setOpen(false)}
         >
-          <ArchMark className="h-7 w-7" />
+          <ArchMark className="h-8 w-9" />
           <span className="font-heading text-xl tracking-wide">{dict.meta.siteName}</span>
         </Link>
 

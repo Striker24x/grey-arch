@@ -7,19 +7,6 @@ import ProjectGrid from "./ProjectGrid";
 import type { Project } from "@/lib/dictionary-types";
 import type { Dictionary } from "@/lib/dictionary-types";
 
-const FILTER_ORDER = [
-  "all",
-  "projects",
-  "heritage",
-  "conservation",
-  "residential",
-  "interior",
-  "landscape",
-  "planning",
-  "modeling",
-  "digitalArch",
-] as const;
-
 export default function PortfolioExplorer({
   projects,
   filters,
@@ -33,7 +20,11 @@ export default function PortfolioExplorer({
 }) {
   const [active, setActive] = useState<string>("all");
 
-  const options = FILTER_ORDER.map((key) => ({ key, label: filters[key] }));
+  // Build option list: "all" first, then any filter keys except "gallery"
+  const options = Object.entries(filters as Record<string, string>)
+    .filter(([key]) => key !== "gallery")
+    .map(([key, label]) => ({ key, label }));
+
   const visible =
     active === "all" ? projects : projects.filter((p) => p.categories.includes(active));
 
@@ -45,7 +36,7 @@ export default function PortfolioExplorer({
           href={`/${lang}/gallery`}
           className="cursor-pointer whitespace-nowrap border border-line-300 px-4 py-2 text-sm text-stone-600 transition-colors duration-200 hover:border-graphite-800 hover:text-ink"
         >
-          {filters.gallery}
+          {(filters as Record<string, string>).gallery}
         </Link>
       </div>
       <div className="mt-12">

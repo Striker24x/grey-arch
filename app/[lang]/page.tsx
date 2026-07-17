@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { hasLocale, type Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
+import { getImageUrl } from "@/lib/image-url";
 import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import ProjectGrid from "@/components/ProjectGrid";
@@ -138,7 +139,7 @@ export default async function HomePage({
           </AnimatedReveal>
           <ImageReveal className="aspect-[4/3] order-first lg:order-last">
             <Image
-              src="/images/grey-arch/services/service-heritage.jpg"
+              src={getImageUrl("/images/grey-arch/services/service-heritage.jpg")}
               alt={home.heritage.title}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -152,7 +153,7 @@ export default async function HomePage({
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <ImageReveal className="aspect-[4/3]">
             <Image
-              src="/images/grey-arch/services/service-digital-arch.jpg"
+              src={getImageUrl("/images/grey-arch/services/service-digital-arch.jpg")}
               alt={home.digitalArch.title}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

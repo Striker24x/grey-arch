@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { hasLocale, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
+import { getImageUrl } from "@/lib/image-url";
 import SectionHeading from "@/components/SectionHeading";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import ImageReveal from "@/components/ImageReveal";
@@ -50,7 +51,7 @@ export default async function StudioPage({
           </AnimatedReveal>
           <ImageReveal className="aspect-[4/3]">
             <Image
-              src="/images/grey-arch/services/studio-workspace.jpg"
+              src={getImageUrl("/images/grey-arch/services/studio-workspace.jpg")}
               alt={studio.title}
               fill
               priority

@@ -1,0 +1,278 @@
+[
+  {
+    "id": "l-a-0",
+    "initials": "L A",
+    "translations": {
+      "en": {
+        "name": "Name Placeholder",
+        "role": "Lead Architect",
+        "bio": "Leads design direction and overall project responsibility, from first concept through to construction oversight.",
+        "tags": [
+          "Concept Design",
+          "Project Direction",
+          "Heritage Context"
+        ]
+      },
+      "de": {
+        "name": "Namensplatzhalter",
+        "role": "Leitende Architektin / Leitender Architekt",
+        "bio": "Verantwortet die Entwurfsrichtung und die Gesamtprojektverantwortung, von der ersten Konzeption bis zur Bauüberwachung.",
+        "tags": [
+          "Konzeptentwurf",
+          "Projektleitung",
+          "Denkmalkontext"
+        ]
+      },
+      "ar": {
+        "name": "اسم مؤقت",
+        "role": "المهندس المعماري الرئيسي",
+        "bio": "يقود توجه التصميم والمسؤولية الكاملة عن المشروع، من المفهوم الأول وحتى الإشراف على التنفيذ.",
+        "tags": [
+          "التصميم المفاهيمي",
+          "إدارة المشروع",
+          "السياق التراثي"
+        ]
+      }
+    }
+  },
+  {
+    "id": "a-p-1",
+    "initials": "A P",
+    "translations": {
+      "en": {
+        "name": "Name Placeholder",
+        "role": "Architectural Planner",
+        "bio": "Develops permit-ready planning sets and coordinates technical documentation across existing and new construction.",
+        "tags": [
+          "Building Permits",
+          "Construction Drawings",
+          "Existing Buildings"
+        ]
+      },
+      "de": {
+        "name": "Namensplatzhalter",
+        "role": "Architektonische Planung",
+        "bio": "Entwickelt genehmigungsfähige Planungssätze und koordiniert technische Unterlagen für Bestand und Neubau.",
+        "tags": [
+          "Baugenehmigungen",
+          "Bauzeichnungen",
+          "Bestandsgebäude"
+        ]
+      },
+      "ar": {
+        "name": "اسم مؤقت",
+        "role": "مخطط معماري",
+        "bio": "يطوّر مجموعات تخطيط جاهزة للترخيص ويُنسّق الوثائق التقنية للمباني القائمة والجديدة.",
+        "tags": [
+          "رخص البناء",
+          "مخططات التنفيذ",
+          "المباني القائمة"
+        ]
+      }
+    }
+  },
+  {
+    "id": "s-p-2",
+    "initials": "S P",
+    "translations": {
+      "en": {
+        "name": "Name Placeholder",
+        "role": "Structural Planning Partner",
+        "bio": "Partners on structural grids, construction details and load-bearing strategy for heritage and new structures alike.",
+        "tags": [
+          "Structural Grids",
+          "Concrete Detailing",
+          "Heritage Structures"
+        ]
+      },
+      "de": {
+        "name": "Namensplatzhalter",
+        "role": "Statische Planungspartnerin / Statischer Planungspartner",
+        "bio": "Begleitet statische Konzepte, Konstruktionsdetails und Tragwerksstrategien für Denkmal und Neubau.",
+        "tags": [
+          "Tragwerksraster",
+          "Betondetails",
+          "Denkmalstrukturen"
+        ]
+      },
+      "ar": {
+        "name": "اسم مؤقت",
+        "role": "شريك التخطيط الإنشائي",
+        "bio": "يشارك في تطوير الشبكات الإنشائية وتفاصيل التنفيذ واستراتيجية الحمل للمباني التراثية والجديدة على حد سواء.",
+        "tags": [
+          "الشبكات الإنشائية",
+          "تفاصيل الخرسانة",
+          "البنى التراثية"
+        ]
+      }
+    }
+  },
+  {
+    "id": "i-d-3",
+    "initials": "I D",
+    "translations": {
+      "en": {
+        "name": "Name Placeholder",
+        "role": "Interior Designer",
+        "bio": "Translates spatial concepts into material, light and detail decisions for calm, livable interiors.",
+        "tags": [
+          "Material Selection",
+          "Cost Calculation",
+          "Spatial Concepts"
+        ]
+      },
+      "de": {
+        "name": "Namensplatzhalter",
+        "role": "Innenarchitektin / Innenarchitekt",
+        "bio": "Übersetzt räumliche Konzepte in Material-, Licht- und Detailentscheidungen für ruhige, wohnliche Innenräume.",
+        "tags": [
+          "Materialauswahl",
+          "Kostenberechnung",
+          "Raumkonzepte"
+        ]
+      },
+      "ar": {
+        "name": "اسم مؤقت",
+        "role": "مصمم داخلي",
+        "bio": "يحوّل المفاهيم المكانية إلى قرارات في المواد والإضاءة والتفاصيل لمساحات داخلية هادئة وقابلة للسكن.",
+        "tags": [
+          "اختيار المواد",
+          "حساب التكاليف",
+          "المفاهيم المكانية"
+        ]
+      }
+    }
+  },
+  {
+    "id": "l-d-4",
+    "initials": "L D",
+    "translations": {
+      "en": {
+        "name": "Name Placeholder",
+        "role": "Landscape Designer",
+        "bio": "Shapes courtyards, gardens and outdoor transitions that extend architecture into the landscape.",
+        "tags": [
+          "Courtyard Design",
+          "Planting Concepts",
+          "Outdoor Materiality"
+        ]
+      },
+      "de": {
+        "name": "Namensplatzhalter",
+        "role": "Landschaftsarchitektin / Landschaftsarchitekt",
+        "bio": "Gestaltet Innenhöfe, Gärten und Außenübergänge, die Architektur in die Landschaft erweitern.",
+        "tags": [
+          "Innenhofgestaltung",
+          "Pflanzkonzepte",
+          "Außenmaterialität"
+        ]
+      },
+      "ar": {
+        "name": "اسم مؤقت",
+        "role": "مصمم مساحات خارجية",
+        "bio": "يشكّل الأفنية والحدائق والانتقالات الخارجية التي تمدّ العمارة إلى المحيط الطبيعي.",
+        "tags": [
+          "تصميم الأفنية",
+          "مفاهيم الزراعة",
+          "مادية المساحات الخارجية"
+        ]
+      }
+    }
+  },
+  {
+    "id": "p-m-5",
+    "initials": "P M",
+    "translations": {
+      "en": {
+        "name": "Name Placeholder",
+        "role": "Project Manager",
+        "bio": "Coordinates timelines, budgets and trades to keep planning and construction on schedule.",
+        "tags": [
+          "Scheduling",
+          "Budget Control",
+          "Site Coordination"
+        ]
+      },
+      "de": {
+        "name": "Namensplatzhalter",
+        "role": "Projektleitung",
+        "bio": "Koordiniert Zeitpläne, Budgets und Gewerke, um Planung und Bauausführung im Zeitplan zu halten.",
+        "tags": [
+          "Terminplanung",
+          "Budgetkontrolle",
+          "Baustellenkoordination"
+        ]
+      },
+      "ar": {
+        "name": "اسم مؤقت",
+        "role": "مدير المشروع",
+        "bio": "يُنسّق الجداول الزمنية والميزانيات والمقاولين للحفاظ على التخطيط والتنفيذ ضمن الجدول الزمني.",
+        "tags": [
+          "جدولة المواعيد",
+          "ضبط الميزانية",
+          "تنسيق الموقع"
+        ]
+      }
+    }
+  },
+  {
+    "id": "d-a-6",
+    "initials": "D A",
+    "translations": {
+      "en": {
+        "name": "Name Placeholder",
+        "role": "Digital Arch Specialist",
+        "bio": "Builds 3D models, digitizes existing plans and prepares BIM-ready documentation and visualization.",
+        "tags": [
+          "3D Modeling",
+          "BIM Preparation",
+          "Plan Digitization"
+        ]
+      },
+      "de": {
+        "name": "Namensplatzhalter",
+        "role": "Digital Arch Spezialist/in",
+        "bio": "Erstellt 3D-Modelle, digitalisiert Bestandspläne und bereitet BIM-fähige Unterlagen und Visualisierungen vor.",
+        "tags": [
+          "3D-Modellierung",
+          "BIM-Vorbereitung",
+          "Plandigitalisierung"
+        ]
+      },
+      "ar": {
+        "name": "اسم مؤقت",
+        "role": "مختص Digital Arch",
+        "bio": "يبني نماذج ثلاثية الأبعاد، يُرقمن المخططات القائمة، ويُعدّ وثائق وتصورات جاهزة لـ BIM.",
+        "tags": [
+          "النمذجة ثلاثية الأبعاد",
+          "إعداد BIM",
+          "رقمنة المخططات"
+        ]
+      }
+    }
+  },
+  {
+    "id": "member-1784302208685",
+    "initials": "",
+    "translations": {
+      "en": {
+        "name": "",
+        "role": "",
+        "bio": "",
+        "tags": []
+      },
+      "de": {
+        "name": "Mohammad Dibo",
+        "role": "Architect",
+        "bio": "",
+        "tags": []
+      },
+      "ar": {
+        "name": "",
+        "role": "",
+        "bio": "",
+        "tags": []
+      }
+    }
+  }
+]

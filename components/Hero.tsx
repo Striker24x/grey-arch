@@ -1,15 +1,17 @@
 import Link from "next/link";
 import AnimatedReveal from "./AnimatedReveal";
 import HeroParallaxImage from "./HeroParallaxImage";
+import { getImageUrl } from "@/lib/image-url";
 import type { Dictionary } from "@/lib/dictionary-types";
 import type { Locale } from "@/lib/i18n";
 
 export default function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const { hero } = dict.home;
+  const heroSrc = getImageUrl("/images/grey-arch/hero/hero-home.jpg");
 
   return (
     <section className="relative flex min-h-[88vh] items-end overflow-hidden bg-graphite-900">
-      <HeroParallaxImage src="/images/grey-arch/hero/hero-home.jpg" />
+      <HeroParallaxImage src={heroSrc} />
       <div className="absolute inset-0 bg-gradient-to-t from-graphite-900 via-graphite-900/55 to-graphite-900/15" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-44 lg:px-10">

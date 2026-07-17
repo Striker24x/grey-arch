@@ -2,10 +2,10 @@ import type { Dictionary } from "../dictionary-types";
 
 const en: Dictionary = {
   meta: {
-    siteName: "Grey Arch",
+    siteName: "GrayArc",
     tagline: "Architecture, Heritage Planning & Spatial Design.",
     description:
-      "Grey Arch is an architecture office for architectural planning, building permits, heritage conservation, construction drawings, interior and landscape design, and digital architecture.",
+      "GrayArc is an architecture office for architectural planning, building permits, heritage conservation, construction drawings, interior and landscape design, and digital architecture.",
   },
   nav: {
     studio: "Studio",
@@ -16,14 +16,14 @@ const en: Dictionary = {
   },
   footer: {
     description:
-      "Grey Arch is an architectural practice working across planning, heritage, construction documentation and digital architecture.",
+      "GrayArc is an architectural practice working across planning, heritage, construction documentation and digital architecture.",
     navTitle: "Navigation",
     legalTitle: "Legal",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
     agb: "AGB",
     languageLabel: "Language",
-    rights: "Grey Arch. All rights reserved.",
+    rights: "GrayArc. All rights reserved.",
     noteTitle: "Editorial note",
     note: "Placeholder content. Legal pages and professional-title wording (including use of “Architekt/in” in Germany) must be confirmed before publication.",
   },
@@ -45,10 +45,10 @@ const en: Dictionary = {
   },
   home: {
     hero: {
-      eyebrow: "Grey Arch — Architecture Office",
+      eyebrow: "GrayArc — Architecture Office",
       headline: "Architecture, Heritage Planning & Spatial Design.",
       subheadline:
-        "Grey Arch develops clear, buildable and meaningful architectural solutions for existing buildings, new construction, heritage contexts and spatial design.",
+        "GrayArc develops clear, buildable and meaningful architectural solutions for existing buildings, new construction, heritage contexts and spatial design.",
       ctaExplore: "Explore Services",
       ctaPortfolio: "View Portfolio",
       ctaStart: "Start a Project",
@@ -100,7 +100,7 @@ const en: Dictionary = {
       eyebrow: "Studio Philosophy",
       title: "Clarity, context, precision and responsibility.",
       body:
-        "We treat every site as a document to be read before it is changed. Grey Arch plans buildings that respect their context, communicate clearly through drawings, and remain accountable to the people who will build and inhabit them.",
+        "We treat every site as a document to be read before it is changed. GrayArc plans buildings that respect their context, communicate clearly through drawings, and remain accountable to the people who will build and inhabit them.",
       points: [
         {
           title: "Clarity",
@@ -137,7 +137,7 @@ const en: Dictionary = {
       eyebrow: "Heritage & Existing Buildings",
       title: "Conservation, heritage and building transformation.",
       body:
-        "Grey Arch works closely with existing structures, historic facades and protected monuments. We plan conservation and transformation projects that respect original materiality while meeting today's building and safety requirements.",
+        "GrayArc works closely with existing structures, historic facades and protected monuments. We plan conservation and transformation projects that respect original materiality while meeting today's building and safety requirements.",
       points: [
         "Heritage and monument conservation planning",
         "Existing building documentation and structural assessment",
@@ -160,7 +160,7 @@ const en: Dictionary = {
       cta: "Explore Digital Arch",
     },
     contactCta: {
-      title: "Start your architectural project with Grey Arch.",
+      title: "Start your architectural project with GrayArc.",
       body: "Tell us about your site, building or idea — we will outline a clear path from first survey to completed project.",
       cta: "Start a Project",
     },
@@ -168,10 +168,10 @@ const en: Dictionary = {
   studio: {
     title: "Studio",
     intro:
-      "Grey Arch is an architecture office working at the intersection of precision planning, heritage context and digital workflows.",
+      "GrayArc is an architecture office working at the intersection of precision planning, heritage context and digital workflows.",
     history: {
       title: "History",
-      body: "Grey Arch was created to connect architectural precision with cultural context, existing buildings, modern planning methods and digital workflows.",
+      body: "GrayArc was created to connect architectural precision with cultural context, existing buildings, modern planning methods and digital workflows.",
     },
     mission: {
       title: "Mission",
@@ -206,7 +206,7 @@ const en: Dictionary = {
   servicesPage: {
     title: "Services",
     intro:
-      "Grey Arch organizes its work into five areas of planning and documentation. Each service lists what is delivered and who it is suited for, so private and business clients can quickly find the right starting point.",
+      "GrayArc organizes its work into five areas of planning and documentation. Each service lists what is delivered and who it is suited for, so private and business clients can quickly find the right starting point.",
     groups: [
       {
         id: "planning",
@@ -596,7 +596,7 @@ const en: Dictionary = {
       related: "Related Projects",
     },
     ctaTitle: "Discuss a similar project",
-    ctaBody: "Share your site or building with Grey Arch and we will outline a clear planning path.",
+    ctaBody: "Share your site or building with GrayArc and we will outline a clear planning path.",
   },
   galleryPage: {
     title: "Art Gallery",
@@ -627,7 +627,7 @@ const en: Dictionary = {
   },
   connect: {
     title: "Connect",
-    intro: "Tell us about your site, building or idea. Grey Arch responds personally to every inquiry.",
+    intro: "Tell us about your site, building or idea. GrayArc responds personally to every inquiry.",
     ctas: {
       startProject: "Start a Project",
       requestConsultation: "Request Consultation",
@@ -658,7 +658,7 @@ const en: Dictionary = {
       projectSize: "Approximate Project Size",
       budgetRange: "Budget Range",
       message: "Message",
-      consent: "I agree that Grey Arch may contact me regarding my inquiry.",
+      consent: "I agree that GrayArc may contact me regarding my inquiry.",
       submit: "Send Inquiry",
     },
   },
@@ -677,7 +677,7 @@ const en: Dictionary = {
       title: "Datenschutz",
       updated: "Placeholder content — to be confirmed before publication.",
       sections: [
-        { heading: "Overview", body: "This placeholder privacy policy outlines how Grey Arch would handle personal data submitted through this website. Final wording must be reviewed by qualified legal counsel." },
+        { heading: "Overview", body: "This placeholder privacy policy outlines how GrayArc would handle personal data submitted through this website. Final wording must be reviewed by qualified legal counsel." },
         { heading: "Data collected", body: "Contact form submissions may include name, email, phone, project details and any files you choose to send." },
         { heading: "Purpose of processing", body: "Data submitted is used solely to respond to your inquiry and discuss a potential project." },
         { heading: "Your rights", body: "[Insert applicable data subject rights under GDPR or local law, including access, correction and deletion]." },
@@ -687,7 +687,7 @@ const en: Dictionary = {
       title: "AGB",
       updated: "Placeholder content — to be confirmed before publication.",
       sections: [
-        { heading: "Scope", body: "These placeholder terms and conditions apply to architectural services offered by Grey Arch. Final terms must be drafted by qualified legal counsel." },
+        { heading: "Scope", body: "These placeholder terms and conditions apply to architectural services offered by GrayArc. Final terms must be drafted by qualified legal counsel." },
         { heading: "Services", body: "The scope of services for each project is defined individually in a separate written agreement." },
         { heading: "Fees", body: "[Insert fee structure, payment terms and applicable scale of fees, e.g. HOAI where relevant]." },
         { heading: "Liability", body: "[Insert liability and professional indemnity insurance clauses]." },
@@ -697,3 +697,4 @@ const en: Dictionary = {
 };
 
 export default en;
+

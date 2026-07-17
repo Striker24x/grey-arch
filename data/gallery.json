@@ -1,0 +1,146 @@
+[
+  {
+    "id": "gallery-architectural-sketch",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307285/grey-arch/gallery/gallery-architectural-sketch.jpg",
+    "translations": {
+      "en": {
+        "title": "Architectural Sketch",
+        "category": "Sketch"
+      },
+      "de": {
+        "title": "Architekturskizze",
+        "category": "Skizze"
+      },
+      "ar": {
+        "title": "رسم معماري",
+        "category": "رسم"
+      }
+    }
+  },
+  {
+    "id": "gallery-floor-plan",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307286/grey-arch/gallery/gallery-floor-plan.jpg",
+    "translations": {
+      "en": {
+        "title": "Floor Plan",
+        "category": "Plan"
+      },
+      "de": {
+        "title": "Grundriss",
+        "category": "Plan"
+      },
+      "ar": {
+        "title": "مخطط أفقي",
+        "category": "مخطط"
+      }
+    }
+  },
+  {
+    "id": "gallery-section-drawing",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307289/grey-arch/gallery/gallery-section-drawing.jpg",
+    "translations": {
+      "en": {
+        "title": "Section Drawing",
+        "category": "Section"
+      },
+      "de": {
+        "title": "Schnittzeichnung",
+        "category": "Schnitt"
+      },
+      "ar": {
+        "title": "مخطط قطاع",
+        "category": "قطاع"
+      }
+    }
+  },
+  {
+    "id": "gallery-material-study",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307289/grey-arch/gallery/gallery-material-study.jpg",
+    "translations": {
+      "en": {
+        "title": "Material Study",
+        "category": "Material Study"
+      },
+      "de": {
+        "title": "Materialstudie",
+        "category": "Materialstudie"
+      },
+      "ar": {
+        "title": "دراسة مواد",
+        "category": "دراسة مواد"
+      }
+    }
+  },
+  {
+    "id": "gallery-facade-study",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307285/grey-arch/gallery/gallery-facade-study.jpg",
+    "translations": {
+      "en": {
+        "title": "Facade Study",
+        "category": "Facade Study"
+      },
+      "de": {
+        "title": "Fassadenstudie",
+        "category": "Fassadenstudie"
+      },
+      "ar": {
+        "title": "دراسة واجهة",
+        "category": "دراسة واجهة"
+      }
+    }
+  },
+  {
+    "id": "gallery-3d-massing-model",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307283/grey-arch/gallery/gallery-3d-massing-model.jpg",
+    "translations": {
+      "en": {
+        "title": "3D Massing Model",
+        "category": "3D Model"
+      },
+      "de": {
+        "title": "3D-Massenmodell",
+        "category": "3D-Modell"
+      },
+      "ar": {
+        "title": "نموذج كتلي ثلاثي الأبعاد",
+        "category": "نموذج ثلاثي الأبعاد"
+      }
+    }
+  },
+  {
+    "id": "gallery-interior-concept",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307288/grey-arch/gallery/gallery-interior-concept.jpg",
+    "translations": {
+      "en": {
+        "title": "Interior Concept",
+        "category": "Interior Concept"
+      },
+      "de": {
+        "title": "Interieurkonzept",
+        "category": "Interieurkonzept"
+      },
+      "ar": {
+        "title": "مفهوم داخلي",
+        "category": "مفهوم داخلي"
+      }
+    }
+  },
+  {
+    "id": "gallery-heritage-detail-study",
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307287/grey-arch/gallery/gallery-heritage-detail-study.jpg",
+    "translations": {
+      "en": {
+        "title": "Heritage Detail Study",
+        "category": "Heritage Detail"
+      },
+      "de": {
+        "title": "Denkmal-Detailstudie",
+        "category": "Denkmaldetail"
+      },
+      "ar": {
+        "title": "دراسة تفاصيل تراثية",
+        "category": "تفصيل تراثي"
+      }
+    }
+  }
+]

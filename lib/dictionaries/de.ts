@@ -2,10 +2,10 @@ import type { Dictionary } from "../dictionary-types";
 
 const de: Dictionary = {
   meta: {
-    siteName: "Grey Arch",
+    siteName: "GrayArc",
     tagline: "Architektur, Denkmalplanung & Raumgestaltung.",
     description:
-      "Grey Arch ist ein Architekturbüro für architektonische Planung, Baugenehmigungen, Denkmalpflege, Bauzeichnungen, Innen- und Landschaftsgestaltung sowie digitale Architektur.",
+      "GrayArc ist ein Architekturbüro für architektonische Planung, Baugenehmigungen, Denkmalpflege, Bauzeichnungen, Innen- und Landschaftsgestaltung sowie digitale Architektur.",
   },
   nav: {
     studio: "Studio",
@@ -16,14 +16,14 @@ const de: Dictionary = {
   },
   footer: {
     description:
-      "Grey Arch ist ein Architekturbüro mit Schwerpunkten in Planung, Denkmalpflege, Baudokumentation und digitaler Architektur.",
+      "GrayArc ist ein Architekturbüro mit Schwerpunkten in Planung, Denkmalpflege, Baudokumentation und digitaler Architektur.",
     navTitle: "Navigation",
     legalTitle: "Rechtliches",
     impressum: "Impressum",
     datenschutz: "Datenschutz",
     agb: "AGB",
     languageLabel: "Sprache",
-    rights: "Grey Arch. Alle Rechte vorbehalten.",
+    rights: "GrayArc. Alle Rechte vorbehalten.",
     noteTitle: "Hinweis",
     note: "Platzhalterinhalt. Rechtstexte und die Verwendung der Berufsbezeichnung „Architekt/in“ in Deutschland müssen vor Veröffentlichung geprüft werden.",
   },
@@ -45,10 +45,10 @@ const de: Dictionary = {
   },
   home: {
     hero: {
-      eyebrow: "Grey Arch — Architekturbüro",
+      eyebrow: "GrayArc — Architekturbüro",
       headline: "Architektur, Denkmalplanung & Raumgestaltung.",
       subheadline:
-        "Grey Arch entwickelt klare, baubare und sinnvolle architektonische Lösungen für Bestandsgebäude, Neubauten, denkmalgeschützte Kontexte und Raumgestaltung.",
+        "GrayArc entwickelt klare, baubare und sinnvolle architektonische Lösungen für Bestandsgebäude, Neubauten, denkmalgeschützte Kontexte und Raumgestaltung.",
       ctaExplore: "Leistungen ansehen",
       ctaPortfolio: "Portfolio entdecken",
       ctaStart: "Projekt starten",
@@ -100,7 +100,7 @@ const de: Dictionary = {
       eyebrow: "Studiophilosophie",
       title: "Klarheit, Kontext, Präzision und Verantwortung.",
       body:
-        "Wir behandeln jeden Ort wie ein Dokument, das gelesen werden muss, bevor es verändert wird. Grey Arch plant Gebäude, die ihren Kontext respektieren, sich durch Pläne klar verständigen und gegenüber den Menschen verantwortlich bleiben, die sie bauen und bewohnen werden.",
+        "Wir behandeln jeden Ort wie ein Dokument, das gelesen werden muss, bevor es verändert wird. GrayArc plant Gebäude, die ihren Kontext respektieren, sich durch Pläne klar verständigen und gegenüber den Menschen verantwortlich bleiben, die sie bauen und bewohnen werden.",
       points: [
         { title: "Klarheit", description: "Pläne, die leicht zu lesen, zu entscheiden und zu bauen sind." },
         { title: "Kontext", description: "Jeder Entwurf reagiert auf Ort, Geschichte und Umgebung." },
@@ -125,7 +125,7 @@ const de: Dictionary = {
       eyebrow: "Denkmal & Bestand",
       title: "Denkmalpflege, Bestand und Gebäudetransformation.",
       body:
-        "Grey Arch arbeitet eng mit Bestandsgebäuden, historischen Fassaden und geschützten Denkmälern. Wir planen Erhaltungs- und Transformationsprojekte, die die ursprüngliche Materialität respektieren und zugleich heutige Bau- und Sicherheitsanforderungen erfüllen.",
+        "GrayArc arbeitet eng mit Bestandsgebäuden, historischen Fassaden und geschützten Denkmälern. Wir planen Erhaltungs- und Transformationsprojekte, die die ursprüngliche Materialität respektieren und zugleich heutige Bau- und Sicherheitsanforderungen erfüllen.",
       points: [
         "Planung von Denkmal- und Monumentschutz",
         "Bestandsdokumentation und statische Bewertung",
@@ -148,7 +148,7 @@ const de: Dictionary = {
       cta: "Digital Arch entdecken",
     },
     contactCta: {
-      title: "Starten Sie Ihr Architekturprojekt mit Grey Arch.",
+      title: "Starten Sie Ihr Architekturprojekt mit GrayArc.",
       body: "Erzählen Sie uns von Ihrem Grundstück, Gebäude oder Ihrer Idee — wir skizzieren einen klaren Weg von der ersten Bestandsaufnahme bis zum fertigen Projekt.",
       cta: "Projekt starten",
     },
@@ -156,10 +156,10 @@ const de: Dictionary = {
   studio: {
     title: "Studio",
     intro:
-      "Grey Arch ist ein Architekturbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
+      "GrayArc ist ein Architekturbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
     history: {
       title: "Geschichte",
-      body: "Grey Arch wurde gegründet, um architektonische Präzision mit kulturellem Kontext, Bestandsgebäuden, modernen Planungsmethoden und digitalen Arbeitsabläufen zu verbinden.",
+      body: "GrayArc wurde gegründet, um architektonische Präzision mit kulturellem Kontext, Bestandsgebäuden, modernen Planungsmethoden und digitalen Arbeitsabläufen zu verbinden.",
     },
     mission: {
       title: "Mission",
@@ -194,7 +194,7 @@ const de: Dictionary = {
   servicesPage: {
     title: "Leistungen",
     intro:
-      "Grey Arch gliedert seine Arbeit in fünf Planungs- und Dokumentationsbereiche. Jede Leistung nennt die Ergebnisse und die Zielgruppe, damit private und gewerbliche Auftraggeber schnell den richtigen Einstieg finden.",
+      "GrayArc gliedert seine Arbeit in fünf Planungs- und Dokumentationsbereiche. Jede Leistung nennt die Ergebnisse und die Zielgruppe, damit private und gewerbliche Auftraggeber schnell den richtigen Einstieg finden.",
     groups: [
       {
         id: "planning",
@@ -584,7 +584,7 @@ const de: Dictionary = {
       related: "Verwandte Projekte",
     },
     ctaTitle: "Ähnliches Projekt besprechen",
-    ctaBody: "Teilen Sie Ihr Grundstück oder Gebäude mit Grey Arch — wir skizzieren einen klaren Planungsweg.",
+    ctaBody: "Teilen Sie Ihr Grundstück oder Gebäude mit GrayArc — wir skizzieren einen klaren Planungsweg.",
   },
   galleryPage: {
     title: "Art Gallery",
@@ -615,7 +615,7 @@ const de: Dictionary = {
   },
   connect: {
     title: "Kontakt",
-    intro: "Erzählen Sie uns von Ihrem Grundstück, Gebäude oder Ihrer Idee. Grey Arch antwortet persönlich auf jede Anfrage.",
+    intro: "Erzählen Sie uns von Ihrem Grundstück, Gebäude oder Ihrer Idee. GrayArc antwortet persönlich auf jede Anfrage.",
     ctas: {
       startProject: "Projekt starten",
       requestConsultation: "Beratung anfragen",
@@ -646,7 +646,7 @@ const de: Dictionary = {
       projectSize: "Ungefähre Projektgröße",
       budgetRange: "Budgetrahmen",
       message: "Nachricht",
-      consent: "Ich bin damit einverstanden, dass Grey Arch mich bezüglich meiner Anfrage kontaktiert.",
+      consent: "Ich bin damit einverstanden, dass GrayArc mich bezüglich meiner Anfrage kontaktiert.",
       submit: "Anfrage senden",
     },
   },
@@ -665,7 +665,7 @@ const de: Dictionary = {
       title: "Datenschutz",
       updated: "Platzhalterinhalt — vor Veröffentlichung zu prüfen.",
       sections: [
-        { heading: "Überblick", body: "Diese Platzhalter-Datenschutzerklärung skizziert, wie Grey Arch über diese Website übermittelte personenbezogene Daten behandeln würde. Der endgültige Wortlaut muss von qualifizierter rechtlicher Beratung geprüft werden." },
+        { heading: "Überblick", body: "Diese Platzhalter-Datenschutzerklärung skizziert, wie GrayArc über diese Website übermittelte personenbezogene Daten behandeln würde. Der endgültige Wortlaut muss von qualifizierter rechtlicher Beratung geprüft werden." },
         { heading: "Erhobene Daten", body: "Eingaben über das Kontaktformular können Name, E-Mail, Telefon, Projektdetails und von Ihnen übermittelte Dateien umfassen." },
         { heading: "Zweck der Verarbeitung", body: "Übermittelte Daten werden ausschließlich zur Beantwortung Ihrer Anfrage und zur Besprechung eines möglichen Projekts verwendet." },
         { heading: "Ihre Rechte", body: "[Geltende Betroffenenrechte nach DSGVO oder lokalem Recht einfügen, einschließlich Auskunft, Berichtigung und Löschung]." },
@@ -675,7 +675,7 @@ const de: Dictionary = {
       title: "AGB",
       updated: "Platzhalterinhalt — vor Veröffentlichung zu prüfen.",
       sections: [
-        { heading: "Geltungsbereich", body: "Diese Platzhalter-AGB gelten für die von Grey Arch angebotenen Architekturleistungen. Die endgültigen Bedingungen müssen von qualifizierter rechtlicher Beratung erstellt werden." },
+        { heading: "Geltungsbereich", body: "Diese Platzhalter-AGB gelten für die von GrayArc angebotenen Architekturleistungen. Die endgültigen Bedingungen müssen von qualifizierter rechtlicher Beratung erstellt werden." },
         { heading: "Leistungen", body: "Der Leistungsumfang für jedes Projekt wird individuell in einer separaten schriftlichen Vereinbarung festgelegt." },
         { heading: "Honorare", body: "[Honorarstruktur, Zahlungsbedingungen und ggf. anwendbare Honorarordnung, z. B. HOAI, einfügen]." },
         { heading: "Haftung", body: "[Haftungs- und Berufshaftpflichtversicherungsklauseln einfügen]." },
@@ -685,3 +685,4 @@ const de: Dictionary = {
 };
 
 export default de;
+

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { locales, defaultLocale } from "./lib/i18n";
+import { SESSION_COOKIE, verifySessionToken } from "./lib/admin-auth";
 
 function getPreferredLocale(request: NextRequest): string {
   const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
@@ -18,8 +19,19 @@ function getPreferredLocale(request: NextRequest): string {
   return defaultLocale;
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // ── Admin auth guard ──────────────────────────────────────
+  if (pathname.startsWith("/admin")) {
+    if (pathname.startsWith("/admin/login")) return NextResponse.next();
+    const token = request.cookies.get(SESSION_COOKIE)?.value;
+    if (!token || !(await verifySessionToken(token))) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+    return NextResponse.next();
+  }
+  // ─────────────────────────────────────────────────────────
 
   const pathnameHasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
@@ -36,3 +48,4 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: ["/((?!_next|api|images|favicon.ico).*)"],
 };
+

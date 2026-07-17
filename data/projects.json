@@ -1,0 +1,565 @@
+[
+  {
+    "slug": "stone-house-restoration",
+    "year": "2023",
+    "categories": [
+      "heritage",
+      "conservation",
+      "residential",
+      "interior"
+    ],
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307294/grey-arch/portfolio/portfolio-stone-house-restoration.jpg",
+    "galleryImages": [
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307287/grey-arch/gallery/gallery-heritage-detail-study.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307289/grey-arch/gallery/gallery-material-study.jpg"
+    ],
+    "translations": {
+      "en": {
+        "name": "Stone House Restoration",
+        "location": "Rhine Valley, Germany",
+        "status": "Completed",
+        "servicesProvided": [
+          "Heritage Conservation",
+          "Existing Building Documentation",
+          "Interior Design"
+        ],
+        "description": "Careful restoration of a historic stone house, balancing conservation with a calm, livable interior.",
+        "client": "Private client",
+        "buildingType": "Historic single-family house",
+        "area": "210 m²",
+        "scope": "Conservation, structural assessment, interior design",
+        "summary": "A historic stone house, partially altered over decades, was restored to honor its original materiality while introducing a calm, contemporary interior.",
+        "challenge": "The building's stone facade and timber structure had been compromised by previous unsympathetic interventions, while the interior needed to meet current living standards without erasing the house's character.",
+        "approach": "We surveyed the existing fabric in detail, identified original materials worth preserving, and developed a restoration strategy that separated conservation work from new interior insertions.",
+        "process": "Survey and condition assessment were followed by a conservation concept agreed with the heritage authority, then implementation planning and on-site supervision through completion.",
+        "drawings": "As-built survey drawings, conservation detail drawings and full construction documentation were prepared for the restoration works.",
+        "materials": "Original limestone, lime render and reclaimed timber were retained and repaired; new interior elements use warm oak and matte plaster in a neutral palette.",
+        "visualization": "Early-stage 3D studies helped the client and heritage authority evaluate the proposed interior changes before construction."
+      },
+      "de": {
+        "name": "Steinhaus-Restaurierung",
+        "location": "Rheintal, Deutschland",
+        "status": "Abgeschlossen",
+        "servicesProvided": [
+          "Denkmalpflege",
+          "Bestandsdokumentation",
+          "Innenarchitektur"
+        ],
+        "description": "Behutsame Restaurierung eines historischen Steinhauses, die Denkmalpflege mit einem ruhigen, wohnlichen Interieur verbindet.",
+        "client": "Privater Auftraggeber",
+        "buildingType": "Historisches Einfamilienhaus",
+        "area": "210 m²",
+        "scope": "Denkmalpflege, statische Bewertung, Innenarchitektur",
+        "summary": "Ein historisches, über Jahrzehnte teilweise verändertes Steinhaus wurde restauriert, um seine ursprüngliche Materialität zu würdigen und zugleich ein ruhiges, zeitgemäßes Interieur einzuführen.",
+        "challenge": "Die Steinfassade und die Holzstruktur des Gebäudes waren durch frühere unsensible Eingriffe beeinträchtigt, während das Interieur heutigen Wohnstandards entsprechen musste, ohne den Charakter des Hauses zu verwischen.",
+        "approach": "Wir nahmen den Bestand detailliert auf, identifizierten erhaltenswerte Originalmaterialien und entwickelten eine Restaurierungsstrategie, die Denkmalpflege von neuen Interieureinfügungen trennt.",
+        "process": "Auf Bestandsaufnahme und Zustandsbewertung folgte ein mit der Denkmalbehörde abgestimmtes Erhaltungskonzept, danach Ausführungsplanung und Bauüberwachung bis zur Fertigstellung.",
+        "drawings": "Für die Restaurierungsarbeiten wurden Bestandsaufmaße, denkmalpflegerische Detailzeichnungen und vollständige Bauunterlagen erstellt.",
+        "materials": "Originaler Kalkstein, Kalkputz und wiederverwendetes Holz wurden erhalten und instandgesetzt; neue Interieurelemente nutzen warmes Eichenholz und matten Putz in neutraler Palette.",
+        "visualization": "Frühe 3D-Studien halfen Auftraggeber und Denkmalbehörde, die vorgeschlagenen Interieurveränderungen vor Baubeginn zu bewerten."
+      },
+      "ar": {
+        "name": "ترميم منزل حجري",
+        "location": "وادي الراين، ألمانيا",
+        "status": "مكتمل",
+        "servicesProvided": [
+          "الحفاظ على التراث",
+          "توثيق المباني القائمة",
+          "التصميم الداخلي"
+        ],
+        "description": "ترميم دقيق لمنزل حجري تاريخي، يوازن بين الحفاظ على التراث وتصميم داخلي هادئ وقابل للسكن.",
+        "client": "عميل خاص",
+        "buildingType": "منزل تاريخي لعائلة واحدة",
+        "area": "210 م²",
+        "scope": "الحفاظ على التراث، التقييم الإنشائي، التصميم الداخلي",
+        "summary": "تم ترميم منزل حجري تاريخي، تعرّض لتعديلات جزئية عبر عقود، لتكريم مادته الأصلية مع إدخال تصميم داخلي هادئ ومعاصر.",
+        "challenge": "تأثرت واجهة المنزل الحجرية وبنيته الخشبية بتدخلات سابقة غير ملائمة، بينما كان على التصميم الداخلي تلبية معايير السكن الحالية دون طمس طابع المنزل.",
+        "approach": "قمنا بمسح البنية القائمة بالتفصيل، وحددنا المواد الأصلية التي تستحق الحفاظ عليها، وطوّرنا استراتيجية ترميم تفصل أعمال الحفاظ عن الإضافات الداخلية الجديدة.",
+        "process": "تلا المسح وتقييم الحالة مفهومُ حفاظ مُتفق عليه مع جهة حماية التراث، ثم تخطيط التنفيذ والإشراف الميداني حتى الإنجاز.",
+        "drawings": "أُعدّت مخططات الحالة الراهنة، ومخططات تفاصيل الحفاظ، ووثائق التنفيذ الكاملة لأعمال الترميم.",
+        "materials": "تم الحفاظ على الحجر الجيري الأصلي وطلاء الجير والخشب المعاد استخدامه وترميمها؛ بينما تستخدم العناصر الداخلية الجديدة خشب البلوط الدافئ والجبس المطفي بدرجات حيادية.",
+        "visualization": "ساعدت دراسات ثلاثية الأبعاد في مرحلة مبكرة العميل وجهة حماية التراث على تقييم التغييرات الداخلية المقترحة قبل التنفيذ."
+      }
+    }
+  },
+  {
+    "slug": "urban-residential-extension",
+    "year": "2024",
+    "categories": [
+      "projects",
+      "residential",
+      "planning"
+    ],
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307294/grey-arch/portfolio/portfolio-urban-residential-extension.jpg",
+    "galleryImages": [
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307286/grey-arch/gallery/gallery-floor-plan.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307285/grey-arch/gallery/gallery-facade-study.jpg"
+    ],
+    "translations": {
+      "en": {
+        "name": "Urban Residential Extension",
+        "location": "Berlin, Germany",
+        "status": "Completed",
+        "servicesProvided": [
+          "Building Permit",
+          "Implementation Planning",
+          "Architectural Planning"
+        ],
+        "description": "A contemporary extension to an existing urban residence, planned through full permit and implementation stages.",
+        "client": "Private client",
+        "buildingType": "Urban residential extension",
+        "area": "85 m² extension",
+        "scope": "Architectural planning, building permit, implementation planning",
+        "summary": "An additional living volume was added to a constrained urban plot, planned to meet permit requirements while improving daylight and spatial flow.",
+        "challenge": "A tight urban plot and strict setback regulations limited the available building envelope, requiring a precise planning approach from the earliest concept stage.",
+        "approach": "We developed a compact volumetric concept that maximized usable space within the regulatory envelope, prioritizing daylight and a clear connection to the existing house.",
+        "process": "Concept design was followed by full building permit submission, then implementation planning and construction documentation through to handover.",
+        "drawings": "Permit drawing set, structural coordination drawings and execution drawings were prepared for the extension.",
+        "materials": "Grey stone cladding and steel-framed glazing were chosen to read as a quiet, contemporary counterpoint to the existing brick facade.",
+        "visualization": "3D massing studies clarified the relationship between the new volume and the existing building for both the client and the planning authority."
+      },
+      "de": {
+        "name": "Urbane Wohnhauserweiterung",
+        "location": "Berlin, Deutschland",
+        "status": "Abgeschlossen",
+        "servicesProvided": [
+          "Baugenehmigung",
+          "Ausführungsplanung",
+          "Architektonische Planung"
+        ],
+        "description": "Eine zeitgemäße Erweiterung eines bestehenden Stadthauses, vollständig durch Genehmigungs- und Ausführungsphasen geplant.",
+        "client": "Privater Auftraggeber",
+        "buildingType": "Urbane Wohnhauserweiterung",
+        "area": "85 m² Erweiterung",
+        "scope": "Architektonische Planung, Baugenehmigung, Ausführungsplanung",
+        "summary": "Auf einem begrenzten Stadtgrundstück wurde ein zusätzliches Wohnvolumen ergänzt, geplant, um Genehmigungsanforderungen zu erfüllen und Tageslicht sowie räumlichen Fluss zu verbessern.",
+        "challenge": "Ein enges Stadtgrundstück und strenge Abstandsvorschriften begrenzten den verfügbaren Baukörper, was bereits in der frühesten Konzeptphase eine präzise Planung erforderte.",
+        "approach": "Wir entwickelten ein kompaktes Volumenkonzept, das den nutzbaren Raum innerhalb der rechtlichen Vorgaben maximierte und Tageslicht sowie eine klare Verbindung zum Bestandshaus priorisierte.",
+        "process": "Auf den Konzeptentwurf folgte die vollständige Einreichung der Baugenehmigung, danach Ausführungsplanung und Baudokumentation bis zur Übergabe.",
+        "drawings": "Für die Erweiterung wurden ein Genehmigungsplansatz, statische Koordinationspläne und Ausführungszeichnungen erstellt.",
+        "materials": "Graue Steinverkleidung und stahlgerahmte Verglasung wurden als ruhiger, zeitgemäßer Gegenpol zur bestehenden Ziegelfassade gewählt.",
+        "visualization": "3D-Volumenstudien verdeutlichten Auftraggeber und Genehmigungsbehörde die Beziehung zwischen neuem Volumen und Bestandsgebäude."
+      },
+      "ar": {
+        "name": "توسعة سكنية حضرية",
+        "location": "برلين، ألمانيا",
+        "status": "مكتمل",
+        "servicesProvided": [
+          "رخصة البناء",
+          "تخطيط التنفيذ",
+          "التخطيط المعماري"
+        ],
+        "description": "توسعة معاصرة لمسكن حضري قائم، مخططة بالكامل عبر مراحل الترخيص والتنفيذ.",
+        "client": "عميل خاص",
+        "buildingType": "توسعة سكنية حضرية",
+        "area": "توسعة بمساحة 85 م²",
+        "scope": "التخطيط المعماري، رخصة البناء، تخطيط التنفيذ",
+        "summary": "أُضيف حجم سكني جديد إلى قطعة أرض حضرية محدودة، وخُطط لتلبية متطلبات الترخيص مع تحسين الإضاءة الطبيعية والتدفق المكاني.",
+        "challenge": "حدّت قطعة أرض حضرية ضيقة وأنظمة تراجع صارمة من الحيز المتاح للبناء، مما تطلّب نهج تخطيط دقيق منذ أولى مراحل المفهوم.",
+        "approach": "طوّرنا مفهوماً حجمياً مكثفاً يعظّم المساحة القابلة للاستخدام ضمن الحيز التنظيمي، مع إعطاء الأولوية للإضاءة الطبيعية واتصال واضح بالمنزل القائم.",
+        "process": "تلا التصميم المفاهيمي التقديمُ الكامل لطلب رخصة البناء، ثم تخطيط التنفيذ وتوثيق البناء وصولاً إلى التسليم.",
+        "drawings": "أُعدّت مجموعة مخططات الترخيص، ومخططات التنسيق الإنشائي، ومخططات التنفيذ للتوسعة.",
+        "materials": "اختير تكسية حجرية رمادية وزجاج بإطارات فولاذية لتقدّم نظيراً معاصراً وهادئاً للواجهة الطوبية القائمة.",
+        "visualization": "وضّحت دراسات الكتلة ثلاثية الأبعاد العلاقة بين الحجم الجديد والمبنى القائم لكل من العميل وجهة الترخيص."
+      }
+    }
+  },
+  {
+    "slug": "monument-conservation-study",
+    "year": "2024",
+    "categories": [
+      "heritage",
+      "conservation",
+      "planning"
+    ],
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307293/grey-arch/portfolio/portfolio-monument-conservation-study.jpg",
+    "galleryImages": [
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307287/grey-arch/gallery/gallery-heritage-detail-study.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307289/grey-arch/gallery/gallery-section-drawing.jpg"
+    ],
+    "translations": {
+      "en": {
+        "name": "Monument Conservation Study",
+        "location": "Mainz, Germany",
+        "status": "Research Phase",
+        "servicesProvided": [
+          "Heritage Conservation",
+          "Architectural Documentation",
+          "Monument Study"
+        ],
+        "description": "A documentation and conservation study for a protected monument, prepared in coordination with the heritage authority.",
+        "client": "Municipal heritage authority",
+        "buildingType": "Protected monument",
+        "area": "Site study, 1,400 m²",
+        "scope": "Survey, condition assessment, conservation study",
+        "summary": "A protected monument required a full conservation study before any future intervention could be considered, combining survey, research and documentation.",
+        "challenge": "Limited historical documentation and decades of weathering made it difficult to establish a reliable baseline for conservation decisions.",
+        "approach": "We combined physical survey, material analysis and archival research to build an accurate record of the monument's current condition and history.",
+        "process": "Survey and documentation were followed by a structured conservation study report, presented to the heritage authority for review.",
+        "drawings": "Detailed as-built drawings and condition-mapping diagrams were produced to support the conservation study.",
+        "materials": "Material analysis focused on the original stone masonry and historic mortar composition.",
+        "visualization": "Annotated photographic and drawing documentation illustrated areas requiring conservation attention."
+      },
+      "de": {
+        "name": "Denkmalpflegerische Studie",
+        "location": "Mainz, Deutschland",
+        "status": "Forschungsphase",
+        "servicesProvided": [
+          "Denkmalpflege",
+          "Bauzeichnung",
+          "Denkmalstudie"
+        ],
+        "description": "Eine Dokumentations- und Erhaltungsstudie für ein geschütztes Denkmal, erstellt in Abstimmung mit der Denkmalbehörde.",
+        "client": "Städtische Denkmalbehörde",
+        "buildingType": "Geschütztes Denkmal",
+        "area": "Standortstudie, 1.400 m²",
+        "scope": "Bestandsaufnahme, Zustandsbewertung, Erhaltungsstudie",
+        "summary": "Ein geschütztes Denkmal erforderte vor jeder künftigen Maßnahme eine vollständige Erhaltungsstudie, die Bestandsaufnahme, Forschung und Dokumentation verbindet.",
+        "challenge": "Begrenzte historische Unterlagen und jahrzehntelange Verwitterung erschwerten es, eine verlässliche Grundlage für Erhaltungsentscheidungen zu schaffen.",
+        "approach": "Wir verbanden physische Bestandsaufnahme, Materialanalyse und Archivrecherche, um eine genaue Dokumentation des aktuellen Zustands und der Geschichte des Denkmals zu erstellen.",
+        "process": "Auf Bestandsaufnahme und Dokumentation folgte ein strukturierter Erhaltungsstudienbericht, der der Denkmalbehörde zur Prüfung vorgelegt wurde.",
+        "drawings": "Für die Erhaltungsstudie wurden detaillierte Bestandspläne und Zustandskartierungen erstellt.",
+        "materials": "Die Materialanalyse konzentrierte sich auf das originale Steinmauerwerk und die historische Mörtelzusammensetzung.",
+        "visualization": "Kommentierte Foto- und Plandokumentation veranschaulichte Bereiche mit Erhaltungsbedarf."
+      },
+      "ar": {
+        "name": "دراسة الحفاظ على معلم تراثي",
+        "location": "ماينتس، ألمانيا",
+        "status": "مرحلة البحث",
+        "servicesProvided": [
+          "الحفاظ على التراث",
+          "التوثيق المعماري",
+          "دراسة المعلم"
+        ],
+        "description": "دراسة توثيق وحفاظ لمعلم تراثي محمي، أُعدّت بالتنسيق مع جهة حماية التراث.",
+        "client": "جهة حماية التراث البلدية",
+        "buildingType": "معلم تراثي محمي",
+        "area": "دراسة موقع، 1400 م²",
+        "scope": "المسح، تقييم الحالة، دراسة الحفاظ",
+        "summary": "تطلّب معلم تراثي محمي دراسة حفاظ كاملة قبل النظر في أي تدخل مستقبلي، جمعت بين المسح والبحث والتوثيق.",
+        "challenge": "جعلت محدودية التوثيق التاريخي وتقادم عقود من التعرية من الصعب وضع أساس موثوق لقرارات الحفاظ.",
+        "approach": "جمعنا بين المسح الفعلي وتحليل المواد والبحث الأرشيفي لبناء سجل دقيق للحالة الراهنة للمعلم وتاريخه.",
+        "process": "تلا المسح والتوثيق تقرير دراسة حفاظ منظم، عُرض على جهة حماية التراث للمراجعة.",
+        "drawings": "أُنتجت مخططات حالة راهنة تفصيلية ورسومات تخطيطية لرسم خرائط الحالة لدعم دراسة الحفاظ.",
+        "materials": "ركّز تحليل المواد على البناء الحجري الأصلي وتركيبة المونة التاريخية.",
+        "visualization": "أوضح التوثيق التصويري والرسومي المُعلّق عليه المناطق التي تحتاج إلى عناية في الحفاظ."
+      }
+    }
+  },
+  {
+    "slug": "courtyard-landscape-concept",
+    "year": "2025",
+    "categories": [
+      "projects",
+      "landscape"
+    ],
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307291/grey-arch/portfolio/portfolio-courtyard-landscape-concept.jpg",
+    "galleryImages": [
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307289/grey-arch/gallery/gallery-material-study.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307288/grey-arch/gallery/gallery-interior-concept.jpg"
+    ],
+    "translations": {
+      "en": {
+        "name": "Courtyard Landscape Concept",
+        "location": "Amman, Jordan",
+        "status": "Concept",
+        "servicesProvided": [
+          "Landscape Design",
+          "Space Design"
+        ],
+        "description": "A calm courtyard landscape concept connecting a residence to its outdoor surroundings.",
+        "client": "Private client",
+        "buildingType": "Residential courtyard",
+        "area": "320 m²",
+        "scope": "Landscape concept, material and planting plan",
+        "summary": "A residential courtyard was reimagined as a calm outdoor room, connecting interior living spaces to a shaded, planted landscape.",
+        "challenge": "The existing courtyard felt disconnected from the house and offered little usable shade or planting structure.",
+        "approach": "We proposed a clear circulation of stone paths, framed planting beds and a shaded gathering area aligned with the house's main openings.",
+        "process": "An initial landscape concept was developed and refined with the client before progressing to a detailed material and planting plan.",
+        "drawings": "Landscape concept plans and outdoor material detail drawings were prepared for client review.",
+        "materials": "Honed sandstone paving, low stone seating walls and drought-tolerant planting were selected for a calm, durable result.",
+        "visualization": "Concept renders helped the client visualize seasonal planting growth and evening lighting conditions."
+      },
+      "de": {
+        "name": "Innenhof-Landschaftskonzept",
+        "location": "Amman, Jordanien",
+        "status": "Konzept",
+        "servicesProvided": [
+          "Landschaftsgestaltung",
+          "Raumgestaltung"
+        ],
+        "description": "Ein ruhiges Innenhof-Landschaftskonzept, das ein Wohnhaus mit seiner Außenumgebung verbindet.",
+        "client": "Privater Auftraggeber",
+        "buildingType": "Wohnhof",
+        "area": "320 m²",
+        "scope": "Landschaftskonzept, Material- und Pflanzplan",
+        "summary": "Ein Wohnhof wurde als ruhiger Außenraum neu gedacht, der Innenwohnbereiche mit einer schattigen, bepflanzten Landschaft verbindet.",
+        "challenge": "Der bestehende Innenhof wirkte vom Haus getrennt und bot wenig nutzbaren Schatten oder Pflanzstruktur.",
+        "approach": "Wir schlugen eine klare Wegeführung aus Steinpfaden, gerahmten Pflanzbeeten und einem schattigen Aufenthaltsbereich entlang der Hauptöffnungen des Hauses vor.",
+        "process": "Ein erstes Landschaftskonzept wurde entwickelt und mit dem Auftraggeber verfeinert, bevor ein detaillierter Material- und Pflanzplan folgte.",
+        "drawings": "Für die Auftraggeberprüfung wurden Landschaftskonzeptpläne und Detailzeichnungen für Außenmaterialien erstellt.",
+        "materials": "Geschliffener Sandstein, niedrige Steinsitzmauern und trockenheitsresistente Bepflanzung wurden für ein ruhiges, dauerhaftes Ergebnis gewählt.",
+        "visualization": "Konzeptrenderings halfen dem Auftraggeber, das saisonale Pflanzenwachstum und die abendliche Beleuchtung zu visualisieren."
+      },
+      "ar": {
+        "name": "مفهوم مساحات فناء داخلي",
+        "location": "عمّان، الأردن",
+        "status": "مفهوم",
+        "servicesProvided": [
+          "تصميم المساحات الخارجية",
+          "تصميم المساحات"
+        ],
+        "description": "مفهوم هادئ لمساحات فناء داخلي يربط مسكناً بمحيطه الخارجي.",
+        "client": "عميل خاص",
+        "buildingType": "فناء سكني",
+        "area": "320 م²",
+        "scope": "مفهوم تصميم المساحات الخارجية، مخطط المواد والزراعة",
+        "summary": "أُعيد تصوّر فناء سكني كغرفة خارجية هادئة، تربط مساحات المعيشة الداخلية بمحيط طبيعي مظلل ومزروع.",
+        "challenge": "بدا الفناء القائم منفصلاً عن المنزل ولم يقدّم سوى ظل محدود أو بنية زراعية قابلة للاستخدام.",
+        "approach": "اقترحنا حركة واضحة من الممرات الحجرية، أحواض زراعة مؤطرة، ومنطقة تجمّع مظللة تتماشى مع الفتحات الرئيسية للمنزل.",
+        "process": "طُوّر مفهوم أولي للمساحات الخارجية ونُقّح مع العميل قبل الانتقال إلى مخطط تفصيلي للمواد والزراعة.",
+        "drawings": "أُعدّت مخططات مفهوم المساحات الخارجية ومخططات تفصيلية للمواد الخارجية لمراجعة العميل.",
+        "materials": "اختير حجر رملي مصقول، جدران جلوس حجرية منخفضة، وزراعة متحملة للجفاف لنتيجة هادئة ودائمة.",
+        "visualization": "ساعدت تصورات المفهوم العميل على تخيّل نمو الزراعة الموسمي وحالة الإضاءة المسائية."
+      }
+    }
+  },
+  {
+    "slug": "apartment-interior-planning",
+    "year": "2025",
+    "categories": [
+      "projects",
+      "residential",
+      "interior",
+      "modeling"
+    ],
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307291/grey-arch/portfolio/portfolio-apartment-interior-planning.jpg",
+    "galleryImages": [
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307288/grey-arch/gallery/gallery-interior-concept.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307283/grey-arch/gallery/gallery-3d-massing-model.jpg"
+    ],
+    "translations": {
+      "en": {
+        "name": "Apartment Interior Planning",
+        "location": "Dubai, UAE",
+        "status": "In Planning",
+        "servicesProvided": [
+          "Interior Design",
+          "Cost Calculation",
+          "3D Modeling"
+        ],
+        "description": "A calm, premium interior plan for an apartment, supported by 3D modeling and detailed cost calculation.",
+        "client": "Private client",
+        "buildingType": "Residential apartment",
+        "area": "165 m²",
+        "scope": "Interior concept, material plan, cost calculation, 3D modeling",
+        "summary": "An apartment interior was planned around a calm material palette and clear spatial logic, supported by 3D models for early decision-making.",
+        "challenge": "The client needed to evaluate material and layout decisions against a defined budget before committing to construction.",
+        "approach": "We developed the interior concept alongside a parallel cost calculation, allowing material choices to be tested against budget in real time.",
+        "process": "Concept design, 3D modeling and cost calculation were developed iteratively before finalizing the interior documentation.",
+        "drawings": "Interior layout drawings, material schedules and lighting plans were prepared for implementation.",
+        "materials": "A palette of warm oak, honed stone and matte plaster was selected to stay within budget while maintaining a premium feel.",
+        "visualization": "3D model walkthroughs allowed the client to evaluate spatial flow and material decisions before construction."
+      },
+      "de": {
+        "name": "Wohnungs-Innenraumplanung",
+        "location": "Dubai, VAE",
+        "status": "In Planung",
+        "servicesProvided": [
+          "Innenarchitektur",
+          "Kostenberechnung",
+          "3D-Modellierung"
+        ],
+        "description": "Eine ruhige, hochwertige Innenraumplanung für eine Wohnung, unterstützt durch 3D-Modellierung und detaillierte Kostenberechnung.",
+        "client": "Privater Auftraggeber",
+        "buildingType": "Wohnung",
+        "area": "165 m²",
+        "scope": "Innenraumkonzept, Materialplan, Kostenberechnung, 3D-Modellierung",
+        "summary": "Eine Wohnungsinnenraumplanung wurde um eine ruhige Materialpalette und klare räumliche Logik entwickelt, unterstützt durch 3D-Modelle für frühe Entscheidungen.",
+        "challenge": "Der Auftraggeber musste Material- und Layoutentscheidungen vor der Bauausführung gegen ein festgelegtes Budget bewerten.",
+        "approach": "Wir entwickelten das Innenraumkonzept parallel zu einer Kostenberechnung, sodass Materialentscheidungen in Echtzeit gegen das Budget geprüft werden konnten.",
+        "process": "Konzeptentwurf, 3D-Modellierung und Kostenberechnung wurden iterativ entwickelt, bevor die Innenraumunterlagen finalisiert wurden.",
+        "drawings": "Für die Umsetzung wurden Innenraumlayoutpläne, Materiallisten und Lichtpläne erstellt.",
+        "materials": "Eine Palette aus warmem Eichenholz, geschliffenem Stein und mattem Putz wurde gewählt, um im Budget zu bleiben und dennoch hochwertig zu wirken.",
+        "visualization": "3D-Modell-Walkthroughs ermöglichten es dem Auftraggeber, räumlichen Fluss und Materialentscheidungen vor der Bauausführung zu bewerten."
+      },
+      "ar": {
+        "name": "تخطيط داخلي لشقة سكنية",
+        "location": "دبي، الإمارات العربية المتحدة",
+        "status": "قيد التخطيط",
+        "servicesProvided": [
+          "التصميم الداخلي",
+          "حساب التكاليف",
+          "النمذجة ثلاثية الأبعاد"
+        ],
+        "description": "تخطيط داخلي هادئ وراقٍ لشقة سكنية، مدعوم بنمذجة ثلاثية الأبعاد وحساب تكاليف تفصيلي.",
+        "client": "عميل خاص",
+        "buildingType": "شقة سكنية",
+        "area": "165 م²",
+        "scope": "مفهوم التصميم الداخلي، مخطط المواد، حساب التكاليف، النمذجة ثلاثية الأبعاد",
+        "summary": "خُطط التصميم الداخلي لشقة حول لوحة مواد هادئة ومنطق مكاني واضح، بدعم من نماذج ثلاثية الأبعاد لاتخاذ قرارات مبكرة.",
+        "challenge": "احتاج العميل إلى تقييم قرارات المواد والتوزيع في حدود ميزانية محددة قبل الالتزام بالتنفيذ.",
+        "approach": "طوّرنا مفهوم التصميم الداخلي بالتوازي مع حساب تكاليف موازٍ، مما سمح باختبار خيارات المواد مقابل الميزانية في الوقت الحقيقي.",
+        "process": "طُوّر التصميم المفاهيمي والنمذجة ثلاثية الأبعاد وحساب التكاليف بشكل تكراري قبل إنهاء وثائق التصميم الداخلي.",
+        "drawings": "أُعدّت مخططات توزيع داخلي، وجداول مواد، ومخططات إضاءة للتنفيذ.",
+        "materials": "اختيرت لوحة من خشب البلوط الدافئ والحجر المصقول والجبس المطفي للبقاء ضمن الميزانية مع الحفاظ على طابع راقٍ.",
+        "visualization": "سمحت جولات النموذج ثلاثي الأبعاد للعميل بتقييم التدفق المكاني وقرارات المواد قبل التنفيذ."
+      }
+    }
+  },
+  {
+    "slug": "digital-arch-reconstruction",
+    "year": "2024",
+    "categories": [
+      "projects",
+      "modeling",
+      "digitalArch"
+    ],
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307292/grey-arch/portfolio/portfolio-digital-arch-reconstruction.jpg",
+    "galleryImages": [
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307283/grey-arch/gallery/gallery-3d-massing-model.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784307289/grey-arch/gallery/gallery-section-drawing.jpg"
+    ],
+    "translations": {
+      "en": {
+        "name": "Digital Arch Reconstruction",
+        "location": "Beirut, Lebanon",
+        "status": "Completed",
+        "servicesProvided": [
+          "Digital Arch",
+          "3D Modeling",
+          "Existing Plan Reconstruction"
+        ],
+        "description": "Digital reconstruction of an existing building's architectural plans, prepared as an accurate 3D model.",
+        "client": "Private client",
+        "buildingType": "Existing residential building",
+        "area": "640 m²",
+        "scope": "Plan reconstruction, 3D modeling, digital documentation",
+        "summary": "Incomplete and outdated plans of an existing building were reconstructed into an accurate, fully digital architectural record.",
+        "challenge": "Only fragmentary paper plans existed for the building, with no reliable digital record of its current condition.",
+        "approach": "We combined on-site verification with digital reconstruction to rebuild a complete and accurate plan set from the ground up.",
+        "process": "Site verification was followed by digital plan reconstruction, 3D modeling and structured digital archiving.",
+        "drawings": "A full reconstructed drawing set, including plans, sections and elevations, was produced from the verified survey data.",
+        "materials": "Material call-outs were reconstructed from on-site verification where original specifications were missing.",
+        "visualization": "A 3D model with wireframe overlay was produced to clearly communicate the reconstructed geometry."
+      },
+      "de": {
+        "name": "Digitale Architekturrekonstruktion",
+        "location": "Beirut, Libanon",
+        "status": "Abgeschlossen",
+        "servicesProvided": [
+          "Digital Arch",
+          "3D-Modellierung",
+          "Rekonstruktion bestehender Pläne"
+        ],
+        "description": "Digitale Rekonstruktion der Baupläne eines Bestandsgebäudes, aufbereitet als präzises 3D-Modell.",
+        "client": "Privater Auftraggeber",
+        "buildingType": "Bestehendes Wohngebäude",
+        "area": "640 m²",
+        "scope": "Planrekonstruktion, 3D-Modellierung, digitale Dokumentation",
+        "summary": "Unvollständige und veraltete Pläne eines Bestandsgebäudes wurden zu einer präzisen, vollständig digitalen Bauakte rekonstruiert.",
+        "challenge": "Für das Gebäude existierten nur fragmentarische Papierpläne, ohne verlässliche digitale Dokumentation seines aktuellen Zustands.",
+        "approach": "Wir verbanden eine Vor-Ort-Verifizierung mit digitaler Rekonstruktion, um einen vollständigen und präzisen Plansatz von Grund auf neu aufzubauen.",
+        "process": "Auf die Vor-Ort-Verifizierung folgten digitale Planrekonstruktion, 3D-Modellierung und strukturierte digitale Archivierung.",
+        "drawings": "Aus den verifizierten Bestandsdaten wurde ein vollständig rekonstruierter Plansatz mit Grundrissen, Schnitten und Ansichten erstellt.",
+        "materials": "Materialangaben wurden dort, wo ursprüngliche Spezifikationen fehlten, durch Vor-Ort-Verifizierung rekonstruiert.",
+        "visualization": "Ein 3D-Modell mit Drahtgitter-Überlagerung wurde erstellt, um die rekonstruierte Geometrie klar zu vermitteln."
+      },
+      "ar": {
+        "name": "إعادة بناء معماري رقمي",
+        "location": "بيروت، لبنان",
+        "status": "مكتمل",
+        "servicesProvided": [
+          "Digital Arch",
+          "النمذجة ثلاثية الأبعاد",
+          "إعادة بناء المخططات القائمة"
+        ],
+        "description": "إعادة بناء رقمي لمخططات معمارية لمبنى قائم، أُعدّت كنموذج ثلاثي الأبعاد دقيق.",
+        "client": "عميل خاص",
+        "buildingType": "مبنى سكني قائم",
+        "area": "640 م²",
+        "scope": "إعادة بناء المخططات، النمذجة ثلاثية الأبعاد، التوثيق الرقمي",
+        "summary": "أُعيد بناء مخططات غير مكتملة وقديمة لمبنى قائم في سجل معماري رقمي دقيق وكامل.",
+        "challenge": "لم يتوفر للمبنى سوى مخططات ورقية مجزأة، دون سجل رقمي موثوق لحالته الراهنة.",
+        "approach": "جمعنا بين التحقق الميداني وإعادة البناء الرقمي لإعادة تشكيل مجموعة مخططات كاملة ودقيقة من الصفر.",
+        "process": "تلا التحقق الميداني إعادة بناء رقمي للمخططات، ونمذجة ثلاثية الأبعاد، وأرشفة رقمية منظمة.",
+        "drawings": "أُنتجت مجموعة مخططات معاد بناؤها بالكامل، تشمل المخططات الأفقية والقطاعات والواجهات، من بيانات المسح المُتحقق منها.",
+        "materials": "أُعيد بناء تحديد المواد من خلال التحقق الميداني في الحالات التي غابت فيها المواصفات الأصلية.",
+        "visualization": "أُنتج نموذج ثلاثي الأبعاد مع تراكب شبكي لإيضاح الهندسة المعاد بناؤها بوضوح."
+      }
+    }
+  },
+  {
+    "slug": "ay-shi",
+    "year": "2026",
+    "categories": [
+      "residential"
+    ],
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784313201/grey-arch/portfolio/n6qwhndz4gjwazjzxusg.png",
+    "galleryImages": [
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784313209/grey-arch/gallery/lu0jz8hunhwce4puskbt.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784313215/grey-arch/gallery/jjyfojeokywknyunqabd.jpg",
+      "https://res.cloudinary.com/ptlxw33l/image/upload/v1784313220/grey-arch/gallery/l9ngqdbdqgrxqc7wdxvr.jpg"
+    ],
+    "translations": {
+      "en": {
+        "name": "Englisch",
+        "location": "Englisch",
+        "status": "Englisch",
+        "servicesProvided": [
+          "Englisch"
+        ],
+        "description": "Englisch",
+        "client": "Englisch",
+        "buildingType": "Englisch",
+        "area": "Englisch",
+        "scope": "Englisch",
+        "summary": "Englisch",
+        "challenge": "Englisch",
+        "approach": "Englisch",
+        "process": "Englisch",
+        "drawings": "Englisch",
+        "materials": "Englisch",
+        "visualization": "Englisch"
+      },
+      "de": {
+        "name": "Deutsch",
+        "location": "Deutsch",
+        "status": "Deutsch",
+        "servicesProvided": [],
+        "description": "Deutsch",
+        "client": "Deutsch",
+        "buildingType": "Deutsch",
+        "area": "Deutsch",
+        "scope": "Deutsch",
+        "summary": "Deutsch",
+        "challenge": "Deutsch",
+        "approach": "Deutsch",
+        "process": "Deutsch",
+        "drawings": "",
+        "materials": "",
+        "visualization": ""
+      },
+      "ar": {
+        "name": "عربي",
+        "location": "عربي",
+        "status": "عربي",
+        "servicesProvided": [
+          "عربي"
+        ],
+        "description": "عربي",
+        "client": "عربي",
+        "buildingType": "عربي",
+        "area": "عربي",
+        "scope": "عربي",
+        "summary": "عربي",
+        "challenge": "عربي",
+        "approach": "عربي",
+        "process": "عربي",
+        "drawings": "عربي",
+        "materials": "عربي",
+        "visualization": "عربي"
+      }
+    }
+  }
+]

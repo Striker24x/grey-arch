@@ -1,0 +1,114 @@
+{
+  "groups": [
+    {
+      "id": "type",
+      "translations": {
+        "en": "Project Type",
+        "de": "Projekttyp",
+        "ar": "نوع المشروع"
+      },
+      "categories": [
+        {
+          "id": "projects",
+          "translations": {
+            "en": "Projects",
+            "de": "Projekte",
+            "ar": "مشاريع"
+          }
+        },
+        {
+          "id": "heritage",
+          "translations": {
+            "en": "Heritage",
+            "de": "Denkmal",
+            "ar": "تراث"
+          }
+        },
+        {
+          "id": "conservation",
+          "translations": {
+            "en": "Conservation",
+            "de": "Denkmalpflege",
+            "ar": "حفاظ"
+          }
+        }
+      ]
+    },
+    {
+      "id": "space",
+      "translations": {
+        "en": "Space",
+        "de": "Raum",
+        "ar": "المساحة"
+      },
+      "categories": [
+        {
+          "id": "residential",
+          "translations": {
+            "en": "Residential",
+            "de": "Wohnen",
+            "ar": "سكني"
+          }
+        },
+        {
+          "id": "interior",
+          "translations": {
+            "en": "Interior",
+            "de": "Interieur",
+            "ar": "داخلي"
+          }
+        },
+        {
+          "id": "landscape",
+          "translations": {
+            "en": "Landscape",
+            "de": "Landschaft",
+            "ar": "مساحات خارجية"
+          }
+        },
+        {
+          "id": "test",
+          "translations": {
+            "en": "test",
+            "de": "durchauf",
+            "ar": "تيست"
+          }
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "translations": {
+        "en": "Scope",
+        "de": "Leistungsumfang",
+        "ar": "النطاق"
+      },
+      "categories": [
+        {
+          "id": "planning",
+          "translations": {
+            "en": "Planning",
+            "de": "Planung",
+            "ar": "تخطيط"
+          }
+        },
+        {
+          "id": "modeling",
+          "translations": {
+            "en": "3D Modeling",
+            "de": "3D-Modellierung",
+            "ar": "نمذجة ثلاثية الأبعاد"
+          }
+        },
+        {
+          "id": "digitalArch",
+          "translations": {
+            "en": "Digital Arch",
+            "de": "Digital Arch",
+            "ar": "Digital Arch"
+          }
+        }
+      ]
+    }
+  ]
+}
