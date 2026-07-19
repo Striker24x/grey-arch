@@ -185,7 +185,7 @@ export default function AppearancePage() {
                   className="text-xl font-semibold leading-tight text-graphite-900"
                   style={{ fontFamily: `"${font.name}", sans-serif` }}
                 >
-                  Grey Arch
+                  Grey Arc
                 </span>
                 {isSelected && (
                   <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-500 text-[10px] text-white">
