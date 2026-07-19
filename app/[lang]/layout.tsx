@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Noto_Naskh_Arabic, Noto_Sans_Arabic } from "next/font/google";
+import { Inter, Noto_Naskh_Arabic, Noto_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FontProvider from "@/components/FontProvider";
 import { locales, hasLocale, localeDir, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -97,9 +92,17 @@ export default async function RootLayout({
       dir={dir}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable} antialiased`}
+      className={`${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable} antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var s=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',s?s==='dark':true);var f=localStorage.getItem('site-font');if(f){var l=document.createElement('link');l.id='site-font-link';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+f.replace(/ /g,'+').replace(/'/g,'')+':ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap';document.head.appendChild(l);document.documentElement.style.setProperty('--font-body','"'+f+'"');}})()`,
+          }}
+        />
+      </head>
       <body className="flex min-h-screen flex-col bg-paper-100 text-ink">
+          <FontProvider />
           <Header lang={lang} dict={dict} />
           <main className="flex-1">{children}</main>
           <Footer lang={lang} dict={dict} />

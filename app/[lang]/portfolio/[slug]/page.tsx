@@ -152,12 +152,6 @@ export default async function ProjectDetailPage({
         ) : null}
       </section>
 
-      <CTASection
-        title={projectDetail.ctaTitle}
-        body={projectDetail.ctaBody}
-        cta={dict.common.discussProject}
-        href={`/${lang}/connect?service=${project.slug}`}
-      />
     </>
   );
 }

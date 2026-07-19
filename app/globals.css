@@ -74,8 +74,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-heading: var(--font-fraunces), var(--font-naskh), serif;
-  --font-sans: var(--font-inter), var(--font-noto-sans-ar), sans-serif;
+  --font-heading: var(--font-body, var(--font-inter)), sans-serif;
+  --font-sans: var(--font-body, var(--font-inter)), sans-serif;
 
   --shadow-soft: 0 30px 60px -25px rgba(26, 24, 21, 0.22);
   --shadow-card: 0 18px 40px -22px rgba(26, 24, 21, 0.16);
@@ -112,12 +112,13 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: var(--font-body, var(--font-inter)), sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-body, var(--font-inter)), sans-serif;
 }
 
 /* Smooth theme color transitions */

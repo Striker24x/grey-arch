@@ -188,12 +188,6 @@ export default async function HomePage({
         </div>
       </Section>
 
-      <CTASection
-        title={home.contactCta.title}
-        body={home.contactCta.body}
-        cta={home.contactCta.cta}
-        href={`/${lang}/connect`}
-      />
     </>
   );
 }
@@ -207,7 +201,7 @@ function Section({
 }) {
   return (
     <section className={tone === "alt" ? "bg-paper-200" : undefined}>
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">{children}</div>
+      <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-28">{children}</div>
     </section>
   );
 }

@@ -33,13 +33,10 @@ export default async function TeamPage({
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
+      <section className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
         <AnimatedReveal className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-bronze-600">
+          <h1 className="font-heading text-4xl leading-tight text-bronze-600 sm:text-5xl">
             {dict.nav.team}
-          </p>
-          <h1 className="font-heading mt-3 text-4xl leading-tight text-ink sm:text-5xl">
-            {team.title}
           </h1>
           <p className="mt-5 text-base leading-relaxed text-stone-600">{team.intro}</p>
         </AnimatedReveal>
@@ -53,12 +50,6 @@ export default async function TeamPage({
         </div>
       </section>
 
-      <CTASection
-        title={dict.home.contactCta.title}
-        body={dict.home.contactCta.body}
-        cta={dict.home.contactCta.cta}
-        href={`/${lang}/connect`}
-      />
     </>
   );
 }

@@ -33,13 +33,10 @@ export default async function ServicesPage({
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+      <section className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-28">
         <AnimatedReveal className="max-w-2xl">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-bronze-600">
+          <h1 className="font-heading text-4xl leading-tight text-bronze-600 sm:text-5xl">
             {dict.nav.services}
-          </p>
-          <h1 className="font-heading mt-3 text-4xl leading-tight text-ink sm:text-5xl">
-            {servicesPage.title}
           </h1>
           <p className="mt-5 text-base leading-relaxed text-stone-600">{servicesPage.intro}</p>
         </AnimatedReveal>
@@ -47,7 +44,7 @@ export default async function ServicesPage({
 
       {servicesPage.groups.map((group, index) => (
         <section key={group.id} className={index % 2 === 1 ? "bg-paper-200" : undefined}>
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
             <ServiceGroup
               group={group}
               lang={lang}
@@ -58,12 +55,6 @@ export default async function ServicesPage({
         </section>
       ))}
 
-      <CTASection
-        title={dict.home.contactCta.title}
-        body={dict.home.contactCta.body}
-        cta={dict.home.contactCta.cta}
-        href={`/${lang}/connect`}
-      />
     </>
   );
 }

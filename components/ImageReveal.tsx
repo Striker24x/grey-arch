@@ -10,16 +10,28 @@ export default function ImageReveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  // Start visible — no flash of clipped content before JS runs
+  const [visible, setVisible] = useState(true);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const rect = el.getBoundingClientRect();
+    // Only run the clip animation for images starting below the fold
+    if (rect.top >= window.innerHeight) {
+      setVisible(false);
+      setShouldAnimate(true);
     }
+  }, []);
+
+  useEffect(() => {
+    if (!shouldAnimate) return;
+    const el = ref.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -28,11 +40,11 @@ export default function ImageReveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0 }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [shouldAnimate]);
 
   return (
     <div ref={ref} className={`relative overflow-hidden bg-paper-200 ${className}`}>

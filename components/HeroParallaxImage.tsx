@@ -22,7 +22,7 @@ export default function HeroParallaxImage({ src }: { src: string }) {
   return (
     <div
       ref={ref}
-      className="absolute will-change-transform"
+      className="absolute will-change-transform pointer-events-none"
       style={{ inset: "-10% 0", height: "120%" }}
     >
       <Image src={src} alt="" fill priority sizes="100vw" className="object-cover" />

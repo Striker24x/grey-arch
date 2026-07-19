@@ -30,7 +30,7 @@ export default function Footer({
     <footer className="border-t border-line-200 bg-paper-200">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <AnimatedReveal>
-        <div className="grid gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12">
           <div>
             <div className="flex items-center gap-2 text-graphite-900">
               <ArchMark className="h-8 w-9" />

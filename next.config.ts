@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  allowedDevOrigins: ["192.168.178.101"],
   images: {
     loader: "custom",
     loaderFile: "./lib/cloudinary-loader.ts",

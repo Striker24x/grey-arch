@@ -11,6 +11,7 @@ const NAV = [
   { href: "/admin/categories", label: "Categories", icon: "⊟" },
   { href: "/admin/gallery", label: "Gallery", icon: "▦" },
   { href: "/admin/team", label: "Team", icon: "◑" },
+  { href: "/admin/appearance", label: "Typography", icon: "Aa" },
 ];
 
 export default function AdminShell({ children }: { children: ReactNode }) {
