@@ -9,24 +9,26 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import DarkModeToggle from "./DarkModeToggle";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionary-types";
+import type { NavItem } from "@/lib/data-manager";
 
 export default function Header({
   lang,
   dict,
+  navConfig,
 }: {
   lang: Locale;
   dict: Dictionary;
+  navConfig: NavItem[];
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const navItems = [
-    { href: `/${lang}/studio`, label: dict.nav.studio },
-    { href: `/${lang}/services`, label: dict.nav.services },
-    { href: `/${lang}/portfolio`, label: dict.nav.portfolio },
-    { href: `/${lang}/team`, label: dict.nav.team },
-    { href: `/${lang}/connect`, label: dict.nav.connect },
-  ];
+  const navItems = navConfig
+    .filter((item) => item.visible)
+    .map((item) => ({
+      href: `/${lang}${item.href}`,
+      label: item.labels[lang as keyof typeof item.labels] ?? item.labels.en,
+    }));
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
@@ -61,16 +63,21 @@ export default function Header({
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             style={{ touchAction: "manipulation" }}
-            className="relative z-[60] flex cursor-pointer flex-col items-center justify-center gap-1.5 p-3"
+            className="relative z-[60] flex cursor-pointer flex-col items-center justify-center gap-[5px] p-3"
           >
             <span
-              className={`block h-px w-6 bg-ink transition-all duration-150 ease-in-out ${
-                open ? "translate-y-[4px] rotate-45" : ""
+              className={`block h-0.5 w-7 bg-ink transition-all duration-200 ease-in-out ${
+                open ? "translate-y-[7px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-px bg-ink transition-all duration-150 ease-in-out ${
-                open ? "w-6 -translate-y-[4px] -rotate-45" : "w-4"
+              className={`block h-0.5 w-7 bg-ink transition-all duration-200 ease-in-out ${
+                open ? "scale-x-0 opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-7 bg-ink transition-all duration-200 ease-in-out ${
+                open ? "-translate-y-[7px] -rotate-45" : ""
               }`}
             />
           </button>

@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "id": "studio",
+      "href": "/studio",
+      "labels": { "en": "Studio", "de": "Studio", "ar": "ستوديو" },
+      "visible": true,
+      "custom": false
+    },
+    {
+      "id": "services",
+      "href": "/services",
+      "labels": { "en": "Services", "de": "Leistungen", "ar": "الخدمات" },
+      "visible": true,
+      "custom": false
+    },
+    {
+      "id": "portfolio",
+      "href": "/portfolio",
+      "labels": { "en": "Portfolio", "de": "Portfolio", "ar": "أعمالنا" },
+      "visible": true,
+      "custom": false
+    },
+    {
+      "id": "team",
+      "href": "/team",
+      "labels": { "en": "Our Team", "de": "Unser Team", "ar": "فريقنا" },
+      "visible": true,
+      "custom": false
+    },
+    {
+      "id": "connect",
+      "href": "/connect",
+      "labels": { "en": "Connect", "de": "Kontakt", "ar": "تواصل" },
+      "visible": true,
+      "custom": false
+    },
+    {
+      "id": "gallery",
+      "href": "/gallery",
+      "labels": { "en": "Gallery", "de": "Galerie", "ar": "معرض" },
+      "visible": true,
+      "custom": true
+    },
+    {
+      "id": "overview",
+      "href": "/overview",
+      "labels": { "en": "About Us", "de": "Über uns", "ar": "من نحن" },
+      "visible": true,
+      "custom": true
+    }
+  ]
+}

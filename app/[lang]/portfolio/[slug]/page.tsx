@@ -9,6 +9,7 @@ import AnimatedReveal from "@/components/AnimatedReveal";
 import ImageReveal from "@/components/ImageReveal";
 import ProjectGrid from "@/components/ProjectGrid";
 import CTASection from "@/components/CTASection";
+import ProjectFontProvider from "@/components/ProjectFontProvider";
 
 export function generateStaticParams() {
   return locales.flatMap((lang) =>
@@ -104,53 +105,55 @@ export default async function ProjectDetailPage({
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-[320px_1fr]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <ProjectFacts facts={facts} />
-          </div>
+      <ProjectFontProvider font={project.font}>
+        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-[320px_1fr]">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <ProjectFacts facts={facts} />
+            </div>
 
-          <div className="flex flex-col gap-12">
-            {narrative.map((section) => (
-              <AnimatedReveal key={section.heading} className="border-t border-line-200 pt-8 first:border-t-0 first:pt-0">
-                <h2 className="font-heading text-2xl text-ink">{section.heading}</h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-600">
-                  {section.body}
-                </p>
-              </AnimatedReveal>
-            ))}
+            <div className="flex flex-col gap-12">
+              {narrative.map((section) => (
+                <AnimatedReveal key={section.heading} className="border-t border-line-200 pt-8 first:border-t-0 first:pt-0">
+                  <h2 className="font-heading text-2xl text-ink">{section.heading}</h2>
+                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-stone-600">
+                    {section.body}
+                  </p>
+                </AnimatedReveal>
+              ))}
 
-            {project.galleryImages.length > 0 ? (
-              <div className="border-t border-line-200 pt-8">
-                <h2 className="font-heading text-2xl text-ink">{projectDetail.sections.gallery}</h2>
-                <div className="mt-6 grid gap-6 sm:grid-cols-2">
-                  {project.galleryImages.map((image) => (
-                    <ImageReveal key={image} className="aspect-[4/3]">
-                      <Image
-                        src={image}
-                        alt={project.name}
-                        fill
-                        loading="lazy"
-                        sizes="(min-width: 1024px) 33vw, 50vw"
-                        className="object-cover"
-                      />
-                    </ImageReveal>
-                  ))}
+              {project.galleryImages.length > 0 ? (
+                <div className="border-t border-line-200 pt-8">
+                  <h2 className="font-heading text-2xl text-ink">{projectDetail.sections.gallery}</h2>
+                  <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                    {project.galleryImages.map((image) => (
+                      <ImageReveal key={image} className="aspect-[4/3]">
+                        <Image
+                          src={image}
+                          alt={project.name}
+                          fill
+                          loading="lazy"
+                          sizes="(min-width: 1024px) 33vw, 50vw"
+                          className="object-cover"
+                        />
+                      </ImageReveal>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ) : null}
-          </div>
-        </div>
-
-        {related.length > 0 ? (
-          <div className="mt-24 border-t border-line-200 pt-16">
-            <h2 className="font-heading text-2xl text-ink">{projectDetail.sections.related}</h2>
-            <div className="mt-10">
-              <ProjectGrid projects={related} lang={lang} viewLabel={dict.common.viewProject} />
+              ) : null}
             </div>
           </div>
-        ) : null}
-      </section>
+
+          {related.length > 0 ? (
+            <div className="mt-24 border-t border-line-200 pt-16">
+              <h2 className="font-heading text-2xl text-ink">{projectDetail.sections.related}</h2>
+              <div className="mt-10">
+                <ProjectGrid projects={related} lang={lang} viewLabel={dict.common.viewProject} />
+              </div>
+            </div>
+          ) : null}
+        </section>
+      </ProjectFontProvider>
 
     </>
   );

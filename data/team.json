@@ -1,10 +1,10 @@
 [
   {
     "id": "l-a-0",
-    "initials": "L A",
+    "initials": "ahmad",
     "translations": {
       "en": {
-        "name": "Name Placeholder",
+        "name": "ahmad ali",
         "role": "Lead Architect",
         "bio": "Leads design direction and overall project responsibility, from first concept through to construction oversight.",
         "tags": [
@@ -14,7 +14,7 @@
         ]
       },
       "de": {
-        "name": "Namensplatzhalter",
+        "name": "ahmad ali",
         "role": "Leitende Architektin / Leitender Architekt",
         "bio": "Verantwortet die Entwurfsrichtung und die Gesamtprojektverantwortung, von der ersten Konzeption bis zur Bauüberwachung.",
         "tags": [
@@ -24,7 +24,7 @@
         ]
       },
       "ar": {
-        "name": "اسم مؤقت",
+        "name": "احمد علي",
         "role": "المهندس المعماري الرئيسي",
         "bio": "يقود توجه التصميم والمسؤولية الكاملة عن المشروع، من المفهوم الأول وحتى الإشراف على التنفيذ.",
         "tags": [
@@ -33,7 +33,8 @@
           "السياق التراثي"
         ]
       }
-    }
+    },
+    "image": "https://res.cloudinary.com/ptlxw33l/image/upload/v1784537369/grey-arch/team/bflmkgud8bqfdaerpc4j.jpg"
   },
   {
     "id": "a-p-1",
@@ -148,7 +149,7 @@
     "initials": "L D",
     "translations": {
       "en": {
-        "name": "Name Placeholder",
+        "name": "Name Placeholde",
         "role": "Landscape Designer",
         "bio": "Shapes courtyards, gardens and outdoor transitions that extend architecture into the landscape.",
         "tags": [
@@ -248,30 +249,6 @@
           "إعداد BIM",
           "رقمنة المخططات"
         ]
-      }
-    }
-  },
-  {
-    "id": "member-1784302208685",
-    "initials": "",
-    "translations": {
-      "en": {
-        "name": "",
-        "role": "",
-        "bio": "",
-        "tags": []
-      },
-      "de": {
-        "name": "Mohammad Dibo",
-        "role": "Architect",
-        "bio": "",
-        "tags": []
-      },
-      "ar": {
-        "name": "",
-        "role": "",
-        "bio": "",
-        "tags": []
       }
     }
   }

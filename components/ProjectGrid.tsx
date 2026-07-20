@@ -8,15 +8,17 @@ export default function ProjectGrid({
   projects,
   lang,
   viewLabel,
+  singleColumn = false,
 }: {
   projects: Project[];
   lang: string;
   viewLabel: string;
+  singleColumn?: boolean;
 }) {
   if (projects.length === 0) return null;
 
   return (
-    <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+    <div className={singleColumn ? "grid gap-y-12" : "grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"}>
       <AnimatePresence mode="popLayout">
         {projects.map((project, index) => (
           <motion.div

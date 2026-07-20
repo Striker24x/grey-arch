@@ -1,11 +1,24 @@
+import Image from "next/image";
 import type { TeamMember } from "@/lib/dictionary-types";
 
 export default function TeamCard({ member }: { member: TeamMember }) {
   return (
-    <div className="border border-line-300 bg-paper-50 p-7">
-      <div className="flex h-16 w-16 items-center justify-center border border-line-400 bg-paper-200 font-heading text-lg text-graphite-800">
-        {member.initials}
-      </div>
+    <div className="border border-line-300 bg-paper-50 p-10">
+      {member.image ? (
+        <div className="relative h-20 w-20 overflow-hidden border border-line-400">
+          <Image
+            src={member.image}
+            alt={member.name}
+            fill
+            sizes="80px"
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <div className="flex h-16 w-16 items-center justify-center border border-line-400 bg-paper-200 font-heading text-lg text-graphite-800">
+          {member.initials}
+        </div>
+      )}
       <h3 className="mt-5 font-heading text-lg text-ink">{member.name}</h3>
       <p className="mt-1 text-sm text-bronze-600">{member.role}</p>
       <p className="mt-3 text-sm leading-relaxed text-stone-600">{member.bio}</p>

@@ -2,45 +2,62 @@ import { revalidatePath } from "next/cache";
 import { getProjects, saveProjects } from "@/lib/data-manager";
 import type { ProjectRecord } from "@/lib/data-manager";
 
+function tryRevalidate(...paths: Parameters<typeof revalidatePath>[]) {
+  try { revalidatePath(...paths); } catch { /* non-critical in dev */ }
+}
+
 export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const projects = await getProjects();
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) return Response.json({ error: "Not found" }, { status: 404 });
-  return Response.json(project);
+  try {
+    const { slug } = await params;
+    const projects = await getProjects();
+    const project = projects.find((p) => p.slug === slug);
+    if (!project) return Response.json({ error: "Not found" }, { status: 404 });
+    return Response.json(project);
+  } catch (err) {
+    return Response.json({ error: err instanceof Error ? err.message : "Internal error" }, { status: 500 });
+  }
 }
 
 export async function PUT(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = await params;
-  const body = (await request.json()) as ProjectRecord;
-  const projects = await getProjects();
-  const index = projects.findIndex((p) => p.slug === slug);
-  if (index === -1) return Response.json({ error: "Not found" }, { status: 404 });
+  try {
+    const { slug } = await params;
+    const body = (await request.json()) as ProjectRecord;
+    const projects = await getProjects();
+    const index = projects.findIndex((p) => p.slug === slug);
+    if (index === -1) return Response.json({ error: "Not found" }, { status: 404 });
 
-  projects[index] = { ...body, slug };
-  saveProjects(projects);
-  revalidatePath("/[lang]/portfolio", "page");
-  revalidatePath(`/[lang]/portfolio/${slug}`, "page");
-  revalidatePath("/[lang]", "page");
+    projects[index] = { ...body, slug };
+    saveProjects(projects);
 
-  return Response.json(projects[index]);
+    tryRevalidate("/[lang]/portfolio", "page");
+    tryRevalidate(`/[lang]/portfolio/${slug}`, "page");
+    tryRevalidate("/[lang]", "page");
+
+    return Response.json(projects[index]);
+  } catch (err) {
+    return Response.json({ error: err instanceof Error ? err.message : "Internal error" }, { status: 500 });
+  }
 }
 
 export async function DELETE(
   _req: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = await params;
-  const projects = await getProjects();
-  const filtered = projects.filter((p) => p.slug !== slug);
-  if (filtered.length === projects.length) {
-    return Response.json({ error: "Not found" }, { status: 404 });
+  try {
+    const { slug } = await params;
+    const projects = await getProjects();
+    const filtered = projects.filter((p) => p.slug !== slug);
+    if (filtered.length === projects.length) {
+      return Response.json({ error: "Not found" }, { status: 404 });
+    }
+    saveProjects(filtered);
+    tryRevalidate("/[lang]/portfolio", "page");
+    tryRevalidate("/[lang]", "page");
+    return Response.json({ ok: true });
+  } catch (err) {
+    return Response.json({ error: err instanceof Error ? err.message : "Internal error" }, { status: 500 });
   }
-  saveProjects(filtered);
-  revalidatePath("/[lang]/portfolio", "page");
-  revalidatePath("/[lang]", "page");
-  return Response.json({ ok: true });
 }

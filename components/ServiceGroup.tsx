@@ -17,7 +17,7 @@ export default function ServiceGroup({
   return (
     <div>
       <SectionHeading title={group.title} intro={group.intro} />
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-8">
         {group.services.map((service, index) => (
           <AnimatedServiceCard key={service.id} delay={index * 60}>
             <ServiceCard

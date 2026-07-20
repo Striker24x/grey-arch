@@ -43,6 +43,7 @@ export interface ProjectRecord {
   categories: string[];
   image: string;
   galleryImages: string[];
+  font?: string;
   translations: Record<AdminLocale, ProjectTranslation>;
 }
 
@@ -55,6 +56,7 @@ export interface GalleryRecord {
 export interface TeamRecord {
   id: string;
   initials: string;
+  image?: string;
   translations: Record<AdminLocale, { name: string; role: string; bio: string; tags: string[] }>;
 }
 
@@ -190,4 +192,86 @@ export function getCategories(): CategoriesData {
 
 export function saveCategories(data: CategoriesData): void {
   writeJsonSync("categories.json", data);
+}
+
+export interface NavLabels {
+  en: string;
+  de: string;
+  ar: string;
+}
+
+export interface NavItem {
+  id: string;
+  href: string;
+  labels: NavLabels;
+  visible: boolean;
+  custom: boolean;
+}
+
+export interface NavigationData {
+  items: NavItem[];
+}
+
+const DEFAULT_NAV: NavigationData = {
+  items: [
+    { id: "studio", href: "/studio", labels: { en: "Studio", de: "Studio", ar: "ستوديو" }, visible: true, custom: false },
+    { id: "services", href: "/services", labels: { en: "Services", de: "Leistungen", ar: "الخدمات" }, visible: true, custom: false },
+    { id: "portfolio", href: "/portfolio", labels: { en: "Portfolio", de: "Portfolio", ar: "أعمالنا" }, visible: true, custom: false },
+    { id: "team", href: "/team", labels: { en: "Our Team", de: "Unser Team", ar: "فريقنا" }, visible: true, custom: false },
+    { id: "connect", href: "/connect", labels: { en: "Connect", de: "Kontakt", ar: "تواصل" }, visible: true, custom: false },
+  ],
+};
+
+function migrateNavItem(raw: Record<string, unknown>): NavItem {
+  if (raw.labels && typeof raw.labels === "object") return raw as unknown as NavItem;
+  const label = (raw.label as string) ?? "";
+  return {
+    id: raw.id as string,
+    href: raw.href as string,
+    labels: { en: label, de: label, ar: label },
+    visible: raw.visible as boolean ?? true,
+    custom: raw.custom as boolean ?? true,
+  };
+}
+
+export function getNavigation(): NavigationData {
+  const stored = readJsonSync<{ items: Record<string, unknown>[] }>("navigation.json");
+  if (!stored) return DEFAULT_NAV;
+  return { items: stored.items.map(migrateNavItem) };
+}
+
+export function saveNavigation(data: NavigationData): void {
+  writeJsonSync("navigation.json", data);
+}
+
+export interface LandingVideo {
+  id: string;
+  url: string;
+  title: string;
+}
+
+export interface LandingData {
+  headline: string;
+  subline: string;
+  loop: boolean;
+  videos: LandingVideo[];
+}
+
+const DEFAULT_LANDING: LandingData = {
+  headline: "GrayArc",
+  subline: "Architecture. Heritage. Vision.",
+  loop: true,
+  videos: [
+    { id: "1", url: "", title: "Video 1" },
+    { id: "2", url: "", title: "Video 2" },
+    { id: "3", url: "", title: "Video 3" },
+  ],
+};
+
+export function getLanding(): LandingData {
+  return readJsonSync<LandingData>("landing.json") ?? DEFAULT_LANDING;
+}
+
+export function saveLanding(data: LandingData): void {
+  writeJsonSync("landing.json", data);
 }

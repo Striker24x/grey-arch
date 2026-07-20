@@ -51,6 +51,7 @@ export type Project = {
   materials: string;
   visualization: string;
   galleryImages: string[];
+  font?: string;
 };
 
 export type GalleryItem = {
@@ -61,6 +62,7 @@ export type GalleryItem = {
 
 export type TeamMember = {
   initials: string;
+  image?: string;
   name: string;
   role: string;
   bio: string;

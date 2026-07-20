@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import type { TeamRecord, AdminLocale } from "@/lib/data-manager";
 
@@ -28,7 +28,9 @@ export default function TeamPage() {
   const [isNew, setIsNew] = useState(false);
   const [lang, setLang] = useState<AdminLocale>("en");
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
+  const imageInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetch("/api/admin/team")
@@ -53,6 +55,26 @@ export default function TeamPage() {
 
   function setField(field: keyof Omit<TeamRecord, "translations">, value: string) {
     setEditing((e) => e && { ...e, [field]: value });
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file || !editing) return;
+    setUploading(true);
+    setError("");
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("folder", "images/grey-arch/team");
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      if (!res.ok) throw new Error("Upload failed");
+      const { url } = await res.json() as { url: string };
+      setEditing((e) => e && { ...e, image: url });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Upload failed");
+    }
+    setUploading(false);
+    e.target.value = "";
   }
 
   function setTransField(field: "name" | "role" | "bio", value: string) {
@@ -172,7 +194,46 @@ export default function TeamPage() {
 
             <div className="mb-4 space-y-3">
               <div>
-                <label className="label">Initials</label>
+                <label className="label">Photo</label>
+                <div className="flex items-center gap-3">
+                  {editing.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={editing.image} alt="" className="h-16 w-16 rounded-sm object-cover border border-stone-200" />
+                  ) : (
+                    <div className="flex h-16 w-16 items-center justify-center rounded-sm border-2 border-dashed border-stone-300 text-xs text-stone-400">
+                      No photo
+                    </div>
+                  )}
+                  <div className="flex flex-col gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => imageInputRef.current?.click()}
+                      disabled={uploading}
+                      className="btn-secondary text-xs"
+                    >
+                      {uploading ? "Uploading…" : editing.image ? "Change photo" : "Upload photo"}
+                    </button>
+                    {editing.image && (
+                      <button
+                        type="button"
+                        onClick={() => setEditing((e) => e && { ...e, image: undefined })}
+                        className="text-xs text-red-500 hover:underline text-left"
+                      >
+                        Remove photo
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <input
+                  ref={imageInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                />
+              </div>
+              <div>
+                <label className="label">Initials (shown when no photo)</label>
                 <input
                   value={editing.initials}
                   onChange={(e) => setField("initials", e.target.value)}

@@ -201,7 +201,6 @@ footer {
 
 .input::placeholder { color: #b5b0a8; }
 
-/* Admin dark-mode input override removed */
 /* ─────────────────────────────────────────────────────── */
 
 .label {
@@ -211,6 +210,8 @@ footer {
   font-weight: 500;
   color: #57534e;
 }
+
+.dark .label { color: #b0a89a; }
 
 .btn-primary {
   border: 1px solid #211e1a;
@@ -224,6 +225,13 @@ footer {
 .btn-primary:hover { opacity: 0.85; }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
+/* Dark mode btn-primary: invert to light bg / dark text */
+.dark .btn-primary {
+  border-color: #eeebe6;
+  background: #eeebe6;
+  color: #211e1a;
+}
+
 .btn-secondary {
   border: 1px solid #d6d3d1;
   background: #fff;
@@ -231,9 +239,71 @@ footer {
   font-size: 0.875rem;
   color: #57534e;
   cursor: pointer;
-  transition: border-color 150ms;
+  transition: border-color 150ms, color 150ms;
 }
 .btn-secondary:hover { border-color: #211e1a; color: #211e1a; }
+
+.dark .btn-secondary {
+  border-color: #44403a;
+  background: #252119;
+  color: #c8c0b0;
+}
+.dark .btn-secondary:hover { border-color: #eeebe6; color: #eeebe6; }
+
+/* Admin input — dark mode override */
+.dark .input {
+  color: #eeebe6;
+  background:
+    linear-gradient(#252119, #252119) padding-box,
+    conic-gradient(
+      from var(--ia),
+      #44403a 0deg,
+      #c49d6e 80deg,
+      #44403a 160deg,
+      #8a6238 240deg,
+      #44403a 320deg,
+      #c49d6e 360deg
+    ) border-box;
+}
+.dark .input:focus {
+  background:
+    linear-gradient(#302b21, #302b21) padding-box,
+    conic-gradient(
+      from var(--ia),
+      #eeebe6 0deg,
+      #f5c882 60deg,
+      #c49d6e 120deg,
+      #eeebe6 180deg,
+      #c49d6e 240deg,
+      #f5c882 300deg,
+      #eeebe6 360deg
+    ) border-box;
+}
+.dark .input::placeholder { color: #54504a; }
+
+/* ── Admin dark-mode structural overrides ──────────────────────────────── */
+/* bg-white / bg-stone-* / border-stone-* are standard Tailwind values that
+   don't use our CSS custom-property theme and don't automatically invert.
+   Using html.dark for higher specificity (no !important needed).           */
+html.dark .bg-white          { background-color: #252119; }
+html.dark .bg-stone-50       { background-color: #181511; }
+html.dark .bg-stone-100      { background-color: #1f1d19; }
+html.dark .border-stone-50   { border-color: #252119; }
+html.dark .border-stone-100  { border-color: #2e2a23; }
+html.dark .border-stone-200  { border-color: #3a3530; }
+html.dark .border-stone-300  { border-color: #4a4540; }
+html.dark .text-stone-600    { color: #c8c0b0; }
+html.dark .hover\:bg-stone-50:hover  { background-color: #1f1d19; }
+html.dark .hover\:bg-stone-100:hover { background-color: #252119; }
+
+/* Select element (doesn't inherit .input bg) */
+html.dark select.input  { background-color: #252119; color: #eeebe6; }
+
+/* Red states in dark mode */
+html.dark .bg-red-50    { background-color: #2d1215; }
+html.dark .text-red-600 { color: #fca5a5; }
+html.dark .text-red-500 { color: #f87171; }
+html.dark .text-red-400 { color: #f87171; }
 /* ─────────────────────────────────────────────────────── */
 
 /* Nav link hover underline — forces after: pseudo-element to baseline */

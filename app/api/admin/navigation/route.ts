@@ -1,10 +1,10 @@
 import { revalidatePath } from "next/cache";
-import { getCategories, saveCategories } from "@/lib/data-manager";
-import type { CategoriesData } from "@/lib/data-manager";
+import { getNavigation, saveNavigation } from "@/lib/data-manager";
+import type { NavigationData } from "@/lib/data-manager";
 
 export async function GET() {
   try {
-    return Response.json(getCategories());
+    return Response.json(getNavigation());
   } catch (err) {
     return Response.json({ error: err instanceof Error ? err.message : "Internal error" }, { status: 500 });
   }
@@ -12,9 +12,9 @@ export async function GET() {
 
 export async function PUT(request: Request) {
   try {
-    const body = (await request.json()) as CategoriesData;
-    saveCategories(body);
-    revalidatePath("/[lang]/portfolio", "page");
+    const body = (await request.json()) as NavigationData;
+    saveNavigation(body);
+    revalidatePath("/[lang]", "layout");
     return Response.json(body);
   } catch (err) {
     return Response.json({ error: err instanceof Error ? err.message : "Internal error" }, { status: 500 });

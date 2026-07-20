@@ -1,0 +1,22 @@
+{
+  "headline": "GrayArc",
+  "subline": "Architecture. Heritage. Vision.",
+  "loop": true,
+  "videos": [
+    {
+      "id": "1",
+      "url": "https://res.cloudinary.com/ptlxw33l/video/upload/v1784541206/grey-arch/landing-videos/augqpq3vhauxn234vir6.mp4",
+      "title": "Video 1"
+    },
+    {
+      "id": "2",
+      "url": "https://res.cloudinary.com/ptlxw33l/video/upload/v1784541231/grey-arch/landing-videos/dkh4utuduerbbhg80xxq.mp4",
+      "title": "Video 2"
+    },
+    {
+      "id": "3",
+      "url": "https://res.cloudinary.com/ptlxw33l/video/upload/v1784541211/grey-arch/landing-videos/jokoerxqbvylrar5xpel.mp4",
+      "title": "Video 3"
+    }
+  ]
+}

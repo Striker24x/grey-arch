@@ -41,7 +41,7 @@ export default async function TeamPage({
           <p className="mt-5 text-base leading-relaxed text-stone-600">{team.intro}</p>
         </AnimatedReveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-8">
           {team.members.map((member, index) => (
             <AnimatedReveal key={member.role} variant="card" delay={index * 60} className="h-full">
               <TeamCard member={member} />

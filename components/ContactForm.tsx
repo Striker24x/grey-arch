@@ -2,8 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { useSearchParams } from "next/navigation";
-import { locales, localeNames, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionary-types";
 
 export default function ContactForm({
@@ -14,8 +13,6 @@ export default function ContactForm({
   dict: Dictionary;
 }) {
   const { form } = dict.connect;
-  const searchParams = useSearchParams();
-  const prefilledService = searchParams.get("service") ?? "";
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -73,92 +70,13 @@ export default function ContactForm({
             </Field>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Field label={form.phone} htmlFor="phone">
-              <input id="phone" name="phone" type="tel" className={inputClass} />
-            </Field>
-            <Field label={form.preferredLanguage} htmlFor="preferredLanguage">
-              <select id="preferredLanguage" name="preferredLanguage" defaultValue={lang} className={inputClass}>
-                {locales.map((locale) => (
-                  <option key={locale} value={locale}>
-                    {localeNames[locale]}
-                  </option>
-                ))}
-              </select>
-            </Field>
-          </div>
-
-          <Field label={form.projectType} htmlFor="projectType">
-            <select id="projectType" name="projectType" defaultValue="" className={inputClass}>
-              <option value="" disabled>
-                —
-              </option>
-              {form.projectTypeOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+          <Field label={form.phone} htmlFor="phone">
+            <input id="phone" name="phone" type="tel" className={inputClass} />
           </Field>
-
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Field label={form.projectLocation} htmlFor="projectLocation">
-              <input id="projectLocation" name="projectLocation" type="text" className={inputClass} />
-            </Field>
-            <Field label={form.requiredService} htmlFor="requiredService">
-              <input
-                id="requiredService"
-                name="requiredService"
-                type="text"
-                defaultValue={prefilledService}
-                className={inputClass}
-              />
-            </Field>
-          </div>
-
-          <fieldset>
-            <legend className="text-sm text-stone-600">{form.buildingStatus}</legend>
-            <div className="mt-3 flex flex-wrap gap-6">
-              {form.buildingStatusOptions.map((option, index) => (
-                <label
-                  key={option}
-                  className="flex cursor-pointer items-center gap-2 text-sm text-ink"
-                >
-                  <input
-                    type="radio"
-                    name="buildingStatus"
-                    value={option}
-                    defaultChecked={index === 0}
-                    className="h-4 w-4 cursor-pointer accent-graphite-900"
-                  />
-                  {option}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Field label={form.projectSize} htmlFor="projectSize">
-              <input id="projectSize" name="projectSize" type="text" className={inputClass} />
-            </Field>
-            <Field label={form.budgetRange} htmlFor="budgetRange">
-              <input id="budgetRange" name="budgetRange" type="text" className={inputClass} />
-            </Field>
-          </div>
 
           <Field label={form.message} htmlFor="message">
             <textarea id="message" name="message" rows={5} className={inputClass} />
           </Field>
-
-          <label className="flex cursor-pointer items-start gap-3 text-sm text-stone-600">
-            <input
-              type="checkbox"
-              name="consent"
-              required
-              className="mt-0.5 h-4 w-4 cursor-pointer accent-graphite-900"
-            />
-            {form.consent}
-          </label>
 
           <button
             type="submit"

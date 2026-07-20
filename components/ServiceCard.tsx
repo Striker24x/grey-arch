@@ -10,7 +10,7 @@ export default function ServiceCard({
   suitableForLabel: string;
 }) {
   return (
-    <div className="flex h-full flex-col border border-line-300 bg-paper-50 p-7 transition-shadow duration-300 hover:shadow-card">
+    <div className="flex h-full flex-col border border-line-300 bg-paper-50 p-10 transition-shadow duration-300 hover:shadow-card">
       <h3 className="font-heading text-xl text-ink">{service.title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-stone-600">{service.description}</p>
       {service.includes ? (

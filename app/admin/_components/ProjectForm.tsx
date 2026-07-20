@@ -41,6 +41,24 @@ const emptyTranslation = (): ProjectTranslation => ({
   drawings: "", materials: "", visualization: "",
 });
 
+const FONT_OPTIONS = [
+  { value: "", label: "— Website-Schriftart (Standard) —" },
+  { value: "Playfair Display",     label: "Playfair Display" },
+  { value: "Cormorant Garamond",   label: "Cormorant Garamond" },
+  { value: "EB Garamond",          label: "EB Garamond" },
+  { value: "Crimson Pro",          label: "Crimson Pro" },
+  { value: "Libre Baskerville",    label: "Libre Baskerville" },
+  { value: "Source Serif 4",       label: "Source Serif 4" },
+  { value: "Josefin Sans",         label: "Josefin Sans" },
+  { value: "Raleway",              label: "Raleway" },
+  { value: "Montserrat",           label: "Montserrat" },
+  { value: "Lato",                 label: "Lato" },
+  { value: "Cinzel",               label: "Cinzel" },
+  { value: "Italiana",             label: "Italiana" },
+  { value: "Bodoni Moda",          label: "Bodoni Moda" },
+  { value: "Quattrocento",         label: "Quattrocento" },
+];
+
 function emptyProject(): ProjectRecord {
   return {
     slug: "", year: String(new Date().getFullYear()),
@@ -63,9 +81,25 @@ export default function ProjectForm({
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [fontLoaded, setFontLoaded] = useState(false);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const galleryInputRef = useRef<HTMLInputElement>(null);
   const [categories, setCategories] = useState<{ id: string; label: string }[]>([]);
+
+  useEffect(() => {
+    const font = data.font;
+    if (!font) { setFontLoaded(false); return; }
+    setFontLoaded(false);
+    const id = "admin-project-font-preview";
+    document.getElementById(id)?.remove();
+    const link = document.createElement("link");
+    link.id = id;
+    link.rel = "stylesheet";
+    link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g, "+")}:wght@400;700&display=swap`;
+    link.onload = () => setFontLoaded(true);
+    document.head.appendChild(link);
+    return () => { document.getElementById(id)?.remove(); };
+  }, [data.font]);
 
   useEffect(() => {
     fetch("/api/admin/categories")
@@ -170,8 +204,9 @@ export default function ProjectForm({
         body: JSON.stringify(data),
       });
       if (!res.ok) {
-        const body = await res.json();
-        throw new Error(body.error ?? "Save failed");
+        let msg = "Save failed";
+        try { const b = await res.json(); msg = (b as { error?: string }).error ?? msg; } catch { /* non-JSON error body */ }
+        throw new Error(msg);
       }
       router.push("/admin/projects");
       router.refresh();
@@ -217,6 +252,44 @@ export default function ProjectForm({
               className="input"
               placeholder="2024"
             />
+          </Field>
+        </div>
+
+        {/* Project-specific font */}
+        <div className="mt-4">
+          <Field label="Projekt-Schriftart (überschreibt Website-Schriftart nur für dieses Projekt)">
+            <div className="flex items-center gap-3">
+              <select
+                value={data.font ?? ""}
+                onChange={(e) => setShared("font", e.target.value || undefined)}
+                className="input flex-1"
+              >
+                {FONT_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>{o.label}</option>
+                ))}
+              </select>
+              {data.font && (
+                <button
+                  type="button"
+                  onClick={() => setShared("font", undefined)}
+                  title="Schriftart entfernen"
+                  className="shrink-0 text-xs text-red-400 hover:text-red-600"
+                >
+                  ✕ Entfernen
+                </button>
+              )}
+            </div>
+            {data.font && fontLoaded && (
+              <p
+                className="mt-2 rounded bg-stone-50 px-4 py-3 text-base text-graphite-900"
+                style={{ fontFamily: `"${data.font}", serif` }}
+              >
+                Vorschau: The quick brown fox — 0123456789
+              </p>
+            )}
+            {data.font && !fontLoaded && (
+              <p className="mt-1 text-xs text-stone-400">Schriftart wird geladen…</p>
+            )}
           </Field>
         </div>
 

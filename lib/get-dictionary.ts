@@ -52,6 +52,7 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
       categories: p.categories,
       image: p.image,
       galleryImages: p.galleryImages,
+      ...(p.font ? { font: p.font } : {}),
       ...(p.translations[locale] ?? p.translations.en),
     }));
   }
@@ -68,6 +69,7 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   if (team) {
     dict.team.members = team.map((t) => ({
       initials: t.initials,
+      ...(t.image ? { image: t.image } : {}),
       ...(t.translations[locale] ?? t.translations.en),
     }));
   }
