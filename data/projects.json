@@ -1,7 +1,7 @@
 [
   {
     "slug": "stone-house-restoration",
-    "year": "2027",
+    "year": "2029",
     "categories": [
       "heritage",
       "conservation",
@@ -25,7 +25,7 @@
         ],
         "description": "Careful restoration of a historic stone house, balancing conservation with a calm, livable interior.",
         "client": "Private client",
-        "buildingType": "Historic single-family house",
+        "buildingType": "",
         "area": "210 m²",
         "scope": "Conservation, structural assessment, interior design",
         "summary": "A historic stone house, partially altered over decades, was restored to honor its original materiality while introducing a calm, contemporary interior.",
