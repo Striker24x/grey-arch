@@ -211,5 +211,5 @@ const t = {
 
 export type AdminT = typeof t.de;
 export function getAdminT(lang: AdminLang): AdminT {
-  return t[lang];
+  return t[lang] as AdminT;
 }
