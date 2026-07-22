@@ -2,8 +2,8 @@ import { revalidatePath } from "next/cache";
 import { getProjects, saveProjects } from "@/lib/data-manager";
 import type { ProjectRecord } from "@/lib/data-manager";
 
-function tryRevalidate(...paths: Parameters<typeof revalidatePath>[]) {
-  try { revalidatePath(...paths); } catch { /* non-critical in dev */ }
+function tryRevalidate(path: string, type?: "layout" | "page") {
+  try { revalidatePath(path, type); } catch { /* non-critical in dev */ }
 }
 
 export async function GET() {
