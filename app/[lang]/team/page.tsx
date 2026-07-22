@@ -33,7 +33,7 @@ export default async function TeamPage({
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
+      <section className="px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
         <AnimatedReveal className="max-w-2xl">
           <h1 className="font-heading text-4xl leading-tight text-bronze-600 sm:text-5xl">
             {dict.nav.team}
@@ -41,11 +41,11 @@ export default async function TeamPage({
           <p className="mt-5 text-base leading-relaxed text-stone-600">{team.intro}</p>
         </AnimatedReveal>
 
-        <div className="mt-14 grid gap-8">
+        <div className="mt-14 columns-1 sm:columns-2 lg:columns-4 gap-x-6 lg:gap-x-8">
           {team.members.map((member, index) => (
-            <AnimatedReveal key={member.role} variant="card" delay={index * 60} className="h-full">
-              <TeamCard member={member} />
-            </AnimatedReveal>
+            <div key={member.role} className="break-inside-avoid mb-6 lg:mb-8">
+              <TeamCard member={member} aspectIndex={index} />
+            </div>
           ))}
         </div>
       </section>

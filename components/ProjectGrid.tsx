@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import ProjectCard from "./ProjectCard";
 import type { Project } from "@/lib/dictionary-types";
 
@@ -8,40 +7,27 @@ export default function ProjectGrid({
   projects,
   lang,
   viewLabel,
-  singleColumn = false,
 }: {
   projects: Project[];
   lang: string;
   viewLabel: string;
-  singleColumn?: boolean;
+  singleColumn?: boolean; // kept for compat, unused
 }) {
   if (projects.length === 0) return null;
 
   return (
-    <div className={singleColumn ? "grid gap-y-12" : "grid gap-x-8 gap-y-16 sm:grid-cols-2"}>
-      <AnimatePresence mode="popLayout">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.slug}
-            layout
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{
-              duration: 0.25,
-              delay: (index % 3) * 0.05,
-              ease: [0.23, 1, 0.32, 1],
-            }}
-          >
-            <ProjectCard
-              project={project}
-              lang={lang}
-              viewLabel={viewLabel}
-              priority={index < 3}
-            />
-          </motion.div>
-        ))}
-      </AnimatePresence>
+    <div className="columns-1 sm:columns-2 lg:columns-4 gap-x-6 lg:gap-x-8">
+      {projects.map((project, index) => (
+        <div key={project.slug} className="break-inside-avoid mb-6 lg:mb-8">
+          <ProjectCard
+            project={project}
+            lang={lang}
+            viewLabel={viewLabel}
+            priority={index < 4}
+            aspectIndex={index}
+          />
+        </div>
+      ))}
     </div>
   );
 }
