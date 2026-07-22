@@ -16,8 +16,8 @@ export const localeNames: Record<Locale, string> = {
 };
 
 export const localeFlagLabel: Record<Locale, string> = {
-  en: "EN",
-  de: "DE",
+  en: "en",
+  de: "de",
   ar: "ع",
 };
 

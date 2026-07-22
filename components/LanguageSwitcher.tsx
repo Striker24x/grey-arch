@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { locales, localeNames, type Locale } from "@/lib/i18n";
+import { locales, localeFlagLabel, type Locale } from "@/lib/i18n";
 
 function swapLocaleInPath(pathname: string, nextLocale: Locale): string {
   const segments = pathname.split("/");
@@ -45,7 +45,7 @@ export default function LanguageSwitcher({
                 : "text-stone-500 hover:text-ink"
             }`}
           >
-            {localeNames[locale]}
+            {localeFlagLabel[locale]}
           </button>
           {variant === "inline" && index < locales.length - 1 ? (
             <span className="text-line-400" aria-hidden="true">
