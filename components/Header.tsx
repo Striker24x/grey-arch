@@ -142,41 +142,6 @@ export default function Header({
               onClick={() => setOpen(false)}
             />
 
-            {/* Pizza Wheel — desktop only, Y-aligned with the hovered nav item */}
-            <AnimatePresence mode="wait">
-              {hoveredNavId && pizzaSections.length > 0 && (
-                <motion.div
-                  key={hoveredNavId}
-                  className="fixed z-[48] hidden lg:flex items-center justify-center pointer-events-none"
-                  style={{
-                    // Right edge of wheel sits 16px left of the panel's left edge (panel = max-w-sm = 24rem)
-                    right: "calc(min(100vw, 24rem) + 16px)",
-                    top: `${wheelY}px`,
-                    transform: "translateY(-50%)",
-                    width: "260px",
-                    height: "260px",
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.12 }}
-                >
-                  <div
-                    className="pointer-events-auto"
-                    onMouseEnter={cancelHideWheel}
-                    onMouseLeave={scheduleHideWheel}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <PizzaWheel
-                      sections={pizzaSections}
-                      onNavigate={() => { setOpen(false); setHoveredNavId(null); }}
-                      centerLabel={hoveredLabel}
-                    />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
             {/* Slide-in panel */}
             <motion.div
               key="menu-panel"
@@ -186,6 +151,39 @@ export default function Header({
               transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col bg-paper-100 shadow-soft"
             >
+              {/* Pizza Wheel — desktop only, inside panel, right-aligned, Y-centered on hovered item */}
+              <AnimatePresence mode="wait">
+                {hoveredNavId && pizzaSections.length > 0 && (
+                  <motion.div
+                    key={hoveredNavId}
+                    className="absolute hidden lg:block pointer-events-none"
+                    style={{
+                      right: 0,
+                      top: `${wheelY - 130}px`,
+                      width: "260px",
+                      height: "260px",
+                      zIndex: 60,
+                    }}
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.85 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <div
+                      className="pointer-events-auto"
+                      onMouseEnter={cancelHideWheel}
+                      onMouseLeave={scheduleHideWheel}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <PizzaWheel
+                        sections={pizzaSections}
+                        onNavigate={() => { setOpen(false); setHoveredNavId(null); }}
+                        centerLabel={hoveredLabel}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               {/* Panel header */}
               <div className="flex items-center justify-between border-b border-line-200 px-8 py-5">
                 <span className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500">
