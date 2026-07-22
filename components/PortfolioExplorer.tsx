@@ -40,7 +40,7 @@ export default function PortfolioExplorer({
         </Link>
       </div>
       <div className="mt-12">
-        <ProjectGrid projects={visible} lang={lang} viewLabel={viewLabel} singleColumn />
+        <ProjectGrid projects={visible} lang={lang} viewLabel={viewLabel} />
       </div>
     </div>
   );

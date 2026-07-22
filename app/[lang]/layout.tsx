@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ConditionalFooter from "@/components/ConditionalFooter";
 import FontProvider from "@/components/FontProvider";
 import { locales, hasLocale, localeDir, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
@@ -100,7 +101,9 @@ export default async function RootLayout({
           <FontProvider />
           <Header lang={lang} dict={dict} navConfig={navConfig} />
           <main className="flex-1">{children}</main>
-          <Footer lang={lang} dict={dict} />
+          <ConditionalFooter lang={lang}>
+            <Footer lang={lang} dict={dict} />
+          </ConditionalFooter>
       </body>
     </html>
   );

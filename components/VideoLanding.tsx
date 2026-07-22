@@ -51,7 +51,7 @@ export default function VideoLanding({
 
   return (
     <div
-      className="relative flex min-h-[calc(100vh-56px)] cursor-grab select-none flex-col items-center justify-center overflow-hidden bg-graphite-900 active:cursor-grabbing"
+      className="relative flex h-screen w-screen cursor-grab select-none flex-col items-center justify-center overflow-hidden bg-graphite-900 active:cursor-grabbing"
       onMouseDown={(e) => handleDragStart(e.clientX)}
       onMouseUp={(e) => handleDragEnd(e.clientX)}
       onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}

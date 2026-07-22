@@ -59,7 +59,7 @@ export default async function StudioPage({
         </div>
       </section>
 
-      <Section tone="alt">
+      <Section tone="alt" id="about">
         <div className="grid gap-12 lg:grid-cols-3">
           <TextBlock title={studio.history.title} body={studio.history.body} />
           <TextBlock title={studio.mission.title} body={studio.mission.body} />
@@ -67,7 +67,7 @@ export default async function StudioPage({
         </div>
       </Section>
 
-      <Section>
+      <Section id="approach">
         <SectionHeading title={studio.approach.title} intro={studio.approach.body} />
         <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {studio.approach.steps.map((step, index) => (
@@ -82,7 +82,7 @@ export default async function StudioPage({
         </div>
       </Section>
 
-      <Section tone="alt">
+      <Section tone="alt" id="values">
         <SectionHeading title={studio.values.title} />
         <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {studio.values.items.map((value, index) => (
@@ -110,12 +110,14 @@ function TextBlock({ title, body }: { title: string; body: string }) {
 function Section({
   children,
   tone = "default",
+  id,
 }: {
   children: React.ReactNode;
   tone?: "default" | "alt";
+  id?: string;
 }) {
   return (
-    <section className={tone === "alt" ? "bg-paper-200" : undefined}>
+    <section id={id} className={tone === "alt" ? "bg-paper-200" : undefined}>
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">{children}</div>
     </section>
   );

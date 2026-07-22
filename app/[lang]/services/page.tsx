@@ -43,7 +43,7 @@ export default async function ServicesPage({
       </section>
 
       {servicesPage.groups.map((group, index) => (
-        <section key={group.id} className={index % 2 === 1 ? "bg-paper-200" : undefined}>
+        <section key={group.id} id={group.id} className={index % 2 === 1 ? "bg-paper-200" : undefined}>
           <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
             <ServiceGroup
               group={group}

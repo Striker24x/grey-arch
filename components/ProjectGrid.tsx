@@ -18,7 +18,7 @@ export default function ProjectGrid({
   if (projects.length === 0) return null;
 
   return (
-    <div className={singleColumn ? "grid gap-y-12" : "grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3"}>
+    <div className={singleColumn ? "grid gap-y-12" : "grid gap-x-8 gap-y-16 sm:grid-cols-2"}>
       <AnimatePresence mode="popLayout">
         {projects.map((project, index) => (
           <motion.div

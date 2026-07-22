@@ -28,7 +28,7 @@ export default async function HomePage({
     <>
       <Hero lang={lang} dict={dict} />
 
-      <Section>
+      <Section id="projects">
         <SectionHeading
           eyebrow={home.selectedProjects.eyebrow}
           title={home.selectedProjects.title}
@@ -51,7 +51,7 @@ export default async function HomePage({
         </div>
       </Section>
 
-      <Section tone="alt">
+      <Section tone="alt" id="services">
         <SectionHeading
           eyebrow={home.services.eyebrow}
           title={home.services.title}
@@ -82,7 +82,7 @@ export default async function HomePage({
         </div>
       </Section>
 
-      <Section>
+      <Section id="philosophy">
         <SectionHeading
           eyebrow={home.philosophy.eyebrow}
           title={home.philosophy.title}
@@ -101,7 +101,7 @@ export default async function HomePage({
         </div>
       </Section>
 
-      <Section tone="alt">
+      <Section tone="alt" id="process">
         <SectionHeading
           eyebrow={home.process.eyebrow}
           title={home.process.title}
@@ -195,12 +195,14 @@ export default async function HomePage({
 function Section({
   children,
   tone = "default",
+  id,
 }: {
   children: React.ReactNode;
+  id?: string;
   tone?: "default" | "alt";
 }) {
   return (
-    <section className={tone === "alt" ? "bg-paper-200" : undefined}>
+    <section id={id} className={tone === "alt" ? "bg-paper-200" : undefined}>
       <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-28">{children}</div>
     </section>
   );
