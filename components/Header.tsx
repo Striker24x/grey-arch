@@ -78,7 +78,7 @@ export default function Header({
   }, []);
 
   const scheduleHideWheel = useCallback(() => {
-    hideTimerRef.current = setTimeout(() => setHoveredNavId(null), 280);
+    hideTimerRef.current = setTimeout(() => setHoveredNavId(null), 80);
   }, []);
 
   const cancelHideWheel = useCallback(() => {
@@ -152,7 +152,7 @@ export default function Header({
               className="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col bg-paper-100 shadow-soft"
             >
               {/* Pizza Wheel — desktop only, inside panel, right-aligned, Y-centered on hovered item */}
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 {hoveredNavId && pizzaSections.length > 0 && (
                   <motion.div
                     key={hoveredNavId}
@@ -164,10 +164,10 @@ export default function Header({
                       height: "260px",
                       zIndex: 60,
                     }}
-                    initial={{ opacity: 0, scale: 0.85 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.85 }}
-                    transition={{ duration: 0.15 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.08 }}
                   >
                     <div
                       className="pointer-events-auto"
@@ -220,10 +220,13 @@ export default function Header({
                           else navItemRefs.current.delete(item.id);
                         }}
                         onMouseEnter={() => {
-                          const el = navItemRefs.current.get(item.id) ?? null;
-                          hasSections
-                            ? showWheel(item.id, item.label, el)
-                            : scheduleHideWheel();
+                          if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+                          if (hasSections) {
+                            const el = navItemRefs.current.get(item.id) ?? null;
+                            showWheel(item.id, item.label, el);
+                          } else {
+                            setHoveredNavId(null);
+                          }
                         }}
                         onMouseLeave={scheduleHideWheel}
                         className={`group flex items-center justify-between border-b border-line-200 py-4 font-heading text-2xl transition-colors duration-200 ${
