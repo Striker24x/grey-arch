@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     if (!body.id) body.id = `member-${Date.now()}`;
     team.push(body);
-    saveTeam(team);
+    await saveTeam(team);
     revalidatePath("/[lang]/team", "page");
 
     return Response.json(body, { status: 201 });

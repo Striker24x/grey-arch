@@ -18,7 +18,7 @@ export async function PUT(
     if (index === -1) return Response.json({ error: "Not found" }, { status: 404 });
 
     gallery[index] = { ...body, id };
-    saveGallery(gallery);
+    await saveGallery(gallery);
     tryRevalidate("/[lang]/gallery", "page");
     return Response.json(gallery[index]);
   } catch (err) {
@@ -37,7 +37,7 @@ export async function DELETE(
     if (filtered.length === gallery.length) {
       return Response.json({ error: "Not found" }, { status: 404 });
     }
-    saveGallery(filtered);
+    await saveGallery(filtered);
     tryRevalidate("/[lang]/gallery", "page");
     return Response.json({ ok: true });
   } catch (err) {

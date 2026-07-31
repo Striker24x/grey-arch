@@ -18,7 +18,7 @@ export async function PUT(
     if (index === -1) return Response.json({ error: "Not found" }, { status: 404 });
 
     team[index] = { ...body, id };
-    saveTeam(team);
+    await saveTeam(team);
     tryRevalidate("/[lang]/team", "page");
     return Response.json(team[index]);
   } catch (err) {
@@ -37,7 +37,7 @@ export async function DELETE(
     if (filtered.length === team.length) {
       return Response.json({ error: "Not found" }, { status: 404 });
     }
-    saveTeam(filtered);
+    await saveTeam(filtered);
     tryRevalidate("/[lang]/team", "page");
     return Response.json({ ok: true });
   } catch (err) {

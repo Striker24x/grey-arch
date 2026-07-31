@@ -89,7 +89,7 @@ export default function Footer({
         </AnimatedReveal>
 
         <AnimatedReveal delay={80}>
-        <div className="mt-14 rounded-sm border border-line-300 bg-paper-100 p-4">
+        <div className="mt-14">
           <p className="text-xs leading-relaxed text-stone-500">
             <span className="font-medium text-stone-600">{dict.footer.noteTitle}: </span>
             {dict.footer.note}

@@ -5,9 +5,9 @@ import { getImageUrl } from "@/lib/image-url";
 import type { Dictionary } from "@/lib/dictionary-types";
 import type { Locale } from "@/lib/i18n";
 
-export default function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+export default async function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const { hero } = dict.home;
-  const heroSrc = getImageUrl("/images/grey-arch/hero/hero-home.jpg");
+  const heroSrc = await getImageUrl("/images/grey-arch/hero/hero-home.jpg");
 
   return (
     <section className="relative flex min-h-[88vh] items-end overflow-hidden bg-graphite-900">
@@ -49,7 +49,7 @@ export default function Hero({ lang, dict }: { lang: Locale; dict: Dictionary })
         </AnimatedReveal>
 
         <AnimatedReveal delay={320}>
-          <div className="mt-12 grid max-w-md grid-cols-1 gap-4 border border-paper-100/20 bg-graphite-900/40 p-6 backdrop-blur-sm sm:grid-cols-3 sm:gap-6">
+          <div className="mt-12 grid max-w-md grid-cols-1 gap-4 bg-graphite-900/40 p-6 backdrop-blur-sm sm:grid-cols-3 sm:gap-6">
             <div className="rounded-sm p-2 -m-2 transition-colors duration-200 hover:bg-paper-100/10">
               <p className="text-xs uppercase tracking-wide text-paper-100/55">
                 {hero.factServiceLabel}

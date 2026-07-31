@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     if (!body.id) body.id = `gallery-${Date.now()}`;
     gallery.push(body);
-    saveGallery(gallery);
+    await saveGallery(gallery);
     revalidatePath("/[lang]/gallery", "page");
 
     return Response.json(body, { status: 201 });

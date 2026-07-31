@@ -40,7 +40,7 @@ export default async function ConnectPage({
         <p className="mt-5 text-base leading-relaxed text-stone-600">{connect.intro}</p>
       </AnimatedReveal>
 
-      <div id="contact-form" className="mt-10 max-w-3xl border border-line-300 bg-paper-50 p-5 sm:mt-14 sm:p-8 lg:p-10">
+      <div id="contact-form" className="mt-10 max-w-3xl">
         <Suspense>
           <ContactForm lang={lang} dict={dict} />
         </Suspense>

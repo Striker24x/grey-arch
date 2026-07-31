@@ -4,6 +4,7 @@ import Image from "next/image";
 import { hasLocale, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getImageUrl } from "@/lib/image-url";
+import { getStudio } from "@/lib/data-manager";
 import SectionHeading from "@/components/SectionHeading";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import ImageReveal from "@/components/ImageReveal";
@@ -33,6 +34,9 @@ export default async function StudioPage({
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
   const { studio } = dict;
+  const studioData = await getStudio();
+  const workspaceImageSrc = studioData.workspaceImage
+    ?? await getImageUrl("/images/grey-arch/services/studio-workspace.jpg");
 
   return (
     <>
@@ -48,7 +52,7 @@ export default async function StudioPage({
           </AnimatedReveal>
           <ImageReveal className="aspect-[4/3]">
             <Image
-              src={getImageUrl("/images/grey-arch/services/studio-workspace.jpg")}
+              src={workspaceImageSrc}
               alt={studio.title}
               fill
               priority

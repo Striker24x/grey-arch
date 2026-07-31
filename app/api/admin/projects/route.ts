@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     }
 
     projects.push(body);
-    saveProjects(projects);
+    await saveProjects(projects);
     tryRevalidate("/[lang]/portfolio", "page");
     tryRevalidate("/[lang]", "page");
 

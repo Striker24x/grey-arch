@@ -11,7 +11,7 @@ export default async function HomePage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
 
-  const landing = getLanding();
+  const landing = await getLanding();
 
   return <VideoLanding landing={landing} lang={lang as Locale} />;
 }

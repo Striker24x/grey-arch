@@ -14,6 +14,10 @@ const NAV_KEYS = [
   { href: "/admin/gallery",    icon: "▦", key: "gallery"    },
   { href: "/admin/team",       icon: "◑", key: "team"       },
   { href: "/admin/landing",    icon: "▶", key: "landing"    },
+  { href: "/admin/studio",     icon: "◈", key: "studio"     },
+  { href: "/admin/services",   icon: "◧", key: "services"   },
+  { href: "/admin/connect",    icon: "◎", key: "connect"    },
+  { href: "/admin/overview",   icon: "◉", key: "overview"   },
   { href: "/admin/navigation", icon: "☰", key: "navigation" },
   { href: "/admin/appearance", icon: "Aa", key: "typography"},
 ] as const;

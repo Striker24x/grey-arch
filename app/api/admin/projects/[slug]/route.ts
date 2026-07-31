@@ -30,7 +30,7 @@ export async function PUT(
     if (index === -1) return Response.json({ error: "Not found" }, { status: 404 });
 
     projects[index] = { ...body, slug };
-    saveProjects(projects);
+    await saveProjects(projects);
 
     tryRevalidate("/[lang]/portfolio", "page");
     tryRevalidate(`/[lang]/portfolio/${slug}`, "page");
@@ -53,7 +53,7 @@ export async function DELETE(
     if (filtered.length === projects.length) {
       return Response.json({ error: "Not found" }, { status: 404 });
     }
-    saveProjects(filtered);
+    await saveProjects(filtered);
     tryRevalidate("/[lang]/portfolio", "page");
     tryRevalidate("/[lang]", "page");
     return Response.json({ ok: true });

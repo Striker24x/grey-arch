@@ -6,7 +6,7 @@ export default function ProjectFacts({
   facts: { label: string; value: string }[];
 }) {
   return (
-    <div className="border border-line-300 bg-paper-50 p-6">
+    <div className="py-4">
       {title ? (
         <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-stone-500">
           {title}

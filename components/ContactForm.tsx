@@ -36,7 +36,7 @@ export default function ContactForm({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-          className="border border-line-300 bg-paper-50 p-10 text-center"
+          className="py-10 text-center"
         >
           <p className="font-heading text-2xl text-ink">
             {lang === "de"

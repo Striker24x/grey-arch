@@ -87,7 +87,7 @@ export default async function RootLayout({
 
   const dict = await getDictionary(lang);
   const dir = localeDir(lang);
-  const navConfig = getNavigation().items;
+  const navConfig = (await getNavigation()).items;
 
   return (
     <html

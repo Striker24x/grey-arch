@@ -50,6 +50,7 @@ export default function Header({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [hoveredNavId, setHoveredNavId] = useState<string | null>(null);
   const [hoveredLabel, setHoveredLabel] = useState("");
   const [wheelY, setWheelY] = useState(0);
@@ -97,11 +98,25 @@ export default function Header({
     setHoveredNavId(null);
   }, [pathname]);
 
+  // Only show header when scrolled to the very top
+  useEffect(() => {
+    const onScroll = () => {
+      setHidden(window.scrollY > 10);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const pizzaSections = hoveredNavId ? getNavSections(hoveredNavId, lang, dict) : [];
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 w-full">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-transform duration-300 ease-in-out ${
+          hidden && !open ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
           <Link
             href={`/${lang}`}

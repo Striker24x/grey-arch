@@ -4,7 +4,7 @@ import type { NavigationData } from "@/lib/data-manager";
 
 export async function GET() {
   try {
-    return Response.json(getNavigation());
+    return Response.json(await getNavigation());
   } catch (err) {
     return Response.json({ error: err instanceof Error ? err.message : "Internal error" }, { status: 500 });
   }
@@ -13,7 +13,7 @@ export async function GET() {
 export async function PUT(request: Request) {
   try {
     const body = (await request.json()) as NavigationData;
-    saveNavigation(body);
+    await saveNavigation(body);
     revalidatePath("/[lang]", "layout");
     return Response.json(body);
   } catch (err) {

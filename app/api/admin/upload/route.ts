@@ -37,9 +37,9 @@ export async function POST(request: Request) {
   const url = await uploadBuffer(buffer, folder);
 
   // Add to image-map so getDictionary can resolve it
-  const imageMap: Record<string, string> = readJsonSync("image-map.json") ?? {};
+  const imageMap: Record<string, string> = (await readJsonSync("image-map.json")) ?? {};
   imageMap[url] = url; // identity entry so Cloudinary URLs pass through unchanged
-  writeJsonSync("image-map.json", imageMap);
+  await writeJsonSync("image-map.json", imageMap);
 
   return Response.json({ url }, { status: 201 });
 }

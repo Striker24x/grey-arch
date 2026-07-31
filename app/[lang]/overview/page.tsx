@@ -23,6 +23,8 @@ export default async function HomePage({
   const dict = await getDictionary(lang);
   const { home } = dict;
   const featuredProjects = dict.portfolio.projects.slice(0, 4);
+  const heritageImageSrc = await getImageUrl("/images/grey-arch/services/service-heritage.jpg");
+  const digitalArchImageSrc = await getImageUrl("/images/grey-arch/services/service-digital-arch.jpg");
 
   return (
     <>
@@ -60,7 +62,7 @@ export default async function HomePage({
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {home.services.items.map((item, index) => (
             <AnimatedServiceCard key={item.title} delay={index * 70}>
-              <div className="flex h-full flex-col border border-line-300 bg-paper-50 p-7 transition-shadow duration-300 hover:shadow-card">
+              <div className="flex h-full flex-col py-4">
                 <span className="font-heading text-sm text-bronze-600">
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -139,7 +141,7 @@ export default async function HomePage({
           </AnimatedReveal>
           <ImageReveal className="aspect-[4/3] order-first lg:order-last">
             <Image
-              src={getImageUrl("/images/grey-arch/services/service-heritage.jpg")}
+              src={heritageImageSrc}
               alt={home.heritage.title}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -153,7 +155,7 @@ export default async function HomePage({
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <ImageReveal className="aspect-[4/3]">
             <Image
-              src={getImageUrl("/images/grey-arch/services/service-digital-arch.jpg")}
+              src={digitalArchImageSrc}
               alt={home.digitalArch.title}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

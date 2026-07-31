@@ -15,7 +15,7 @@ export const maxDuration = 60; // allow up to 60 s for the migration
 
 export async function POST() {
   const publicDir = join(process.cwd(), "public");
-  const imageMap: Record<string, string> = readJsonSync("image-map.json") ?? {};
+  const imageMap: Record<string, string> = (await readJsonSync("image-map.json")) ?? {};
 
   // Collect every local image under public/images/grey-arch
   const { readdirSync, statSync } = await import("fs");
@@ -70,7 +70,7 @@ export async function POST() {
   }
 
   // Persist the map
-  writeJsonSync("image-map.json", imageMap);
+  await writeJsonSync("image-map.json", imageMap);
 
   // Patch projects.json URLs
   const projects = await getProjects();
@@ -79,7 +79,7 @@ export async function POST() {
     image: imageMap[p.image] ?? p.image,
     galleryImages: p.galleryImages.map((img) => imageMap[img] ?? img),
   }));
-  saveProjects(patchedProjects);
+  await saveProjects(patchedProjects);
 
   // Patch gallery.json URLs
   const gallery = await getGallery();
@@ -87,7 +87,7 @@ export async function POST() {
     ...g,
     image: imageMap[g.image] ?? g.image,
   }));
-  saveGallery(patchedGallery);
+  await saveGallery(patchedGallery);
 
   // Bust all caches
   revalidatePath("/[lang]", "layout");
@@ -98,7 +98,7 @@ export async function POST() {
 
 /** Return current migration status */
 export async function GET() {
-  const imageMap: Record<string, string> = readJsonSync("image-map.json") ?? {};
+  const imageMap: Record<string, string> = (await readJsonSync("image-map.json")) ?? {};
   return Response.json({
     total: Object.keys(imageMap).length,
     map: imageMap,
