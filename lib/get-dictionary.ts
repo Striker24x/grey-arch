@@ -1,21 +1,11 @@
 import "server-only";
-import { existsSync, readFileSync } from "fs";
-import { join } from "path";
+import { readJsonSync } from "./data-manager";
 import type { Locale } from "./i18n";
 import type { Dictionary } from "./dictionary-types";
 import type { ProjectRecord, GalleryRecord, TeamRecord, CategoriesData, StudioData, ServicesData, ConnectData, OverviewData } from "./data-manager";
 
-const DATA_DIR = join(process.cwd(), "data");
-
-function readData<T>(filename: string): T | null {
-  const fp = join(DATA_DIR, filename);
-  if (!existsSync(fp)) return null;
-  try {
-    return JSON.parse(readFileSync(fp, "utf-8")) as T;
-  } catch {
-    return null;
-  }
-}
+// Reads admin-edited content from the database (same store the admin panel writes to)
+const readData = readJsonSync;
 
 /** Recursively replace every string value that's a known local path with its Cloudinary URL. */
 function applyImageMap<T>(obj: T, map: Record<string, string>): T {
@@ -42,9 +32,21 @@ const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
 };
 
 export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
-  let dict = await dictionaries[locale]();
+  const [dictResult, projects, gallery, team, categories, studioDb, servicesDb, connectDb, overviewDb, imageMap] =
+    await Promise.all([
+      dictionaries[locale](),
+      readData<ProjectRecord[]>("projects.json"),
+      readData<GalleryRecord[]>("gallery.json"),
+      readData<TeamRecord[]>("team.json"),
+      readData<CategoriesData>("categories.json"),
+      readData<StudioData>("studio.json"),
+      readData<ServicesData>("services.json"),
+      readData<ConnectData>("connect.json"),
+      readData<OverviewData>("overview.json"),
+      readData<Record<string, string>>("image-map.json"),
+    ]);
+  let dict = dictResult;
 
-  const projects = readData<ProjectRecord[]>("projects.json");
   if (projects) {
     dict.portfolio.projects = projects.map((p) => ({
       slug: p.slug,
@@ -57,7 +59,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     }));
   }
 
-  const gallery = readData<GalleryRecord[]>("gallery.json");
   if (gallery) {
     dict.galleryPage.items = gallery.map((g) => ({
       image: g.image,
@@ -65,7 +66,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     }));
   }
 
-  const team = readData<TeamRecord[]>("team.json");
   if (team) {
     dict.team.members = team.map((t) => ({
       initials: t.initials,
@@ -75,7 +75,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   }
 
   // Build portfolio filters from categories data (multilingual)
-  const categories = readData<CategoriesData>("categories.json");
   if (categories) {
     const allLabel = dict.portfolio.filters.all;
     const galleryLabel = dict.portfolio.filters.gallery;
@@ -90,7 +89,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   }
 
   // Inject studio data from DB if available
-  const studioDb = readData<StudioData>("studio.json");
   if (studioDb) {
     const t = studioDb.translations[locale] ?? studioDb.translations.en;
     dict.studio = {
@@ -109,7 +107,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   }
 
   // Inject services data from DB if available
-  const servicesDb = readData<ServicesData>("services.json");
   if (servicesDb) {
     const t = servicesDb.translations[locale] ?? servicesDb.translations.en;
     dict.servicesPage = {
@@ -120,7 +117,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   }
 
   // Inject connect data from DB if available
-  const connectDb = readData<ConnectData>("connect.json");
   if (connectDb) {
     const t = connectDb.translations[locale] ?? connectDb.translations.en;
     dict.connect = {
@@ -152,7 +148,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   }
 
   // Inject overview (home) data from DB if available
-  const overviewDb = readData<OverviewData>("overview.json");
   if (overviewDb) {
     const t = overviewDb.translations[locale] ?? overviewDb.translations.en;
     dict.home.hero = {
@@ -202,7 +197,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
   }
 
   // Apply Cloudinary URL replacements for any remaining local paths
-  const imageMap = readData<Record<string, string>>("image-map.json");
   if (imageMap) {
     dict = applyImageMap(dict, imageMap);
   }

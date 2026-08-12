@@ -5,10 +5,10 @@
 
 :root {
   /* Backgrounds */
-  --color-paper-50: #fdfcfa;
-  --color-paper-100: #f6f3ee;
-  --color-paper-200: #efe9e0;
-  --color-paper-300: #e4dccf;
+  --color-paper-50: #ffffff;
+  --color-paper-100: #ffffff;
+  --color-paper-200: #ffffff;
+  --color-paper-300: #ffffff;
 
   /* Borders */
   --color-line-200: #e6e0d6;

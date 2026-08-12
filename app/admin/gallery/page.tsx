@@ -13,17 +13,47 @@ const LOCALES: { key: AdminLocale; label: string }[] = [
 export default function GalleryPage() {
   const router = useRouter();
   const [items, setItems] = useState<GalleryRecord[]>([]);
+  const [savedItems, setSavedItems] = useState<Record<string, GalleryRecord>>({});
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [savingId, setSavingId] = useState<string | null>(null);
   const [error, setError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetch("/api/admin/gallery")
       .then((r) => r.json())
-      .then((d) => setItems(d as GalleryRecord[]))
+      .then((d) => {
+        const list = d as GalleryRecord[];
+        setItems(list);
+        setSavedItems(Object.fromEntries(list.map((i) => [i.id, i])));
+      })
       .finally(() => setLoading(false));
   }, []);
+
+  function isDirty(item: GalleryRecord) {
+    return JSON.stringify(item) !== JSON.stringify(savedItems[item.id]);
+  }
+
+  async function handleSaveItem(item: GalleryRecord) {
+    setSavingId(item.id);
+    setError("");
+    try {
+      const res = await fetch(`/api/admin/gallery/${item.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+      });
+      if (!res.ok) throw new Error("Save failed");
+      const saved = (await res.json()) as GalleryRecord;
+      setItems((prev) => prev.map((i) => (i.id === saved.id ? saved : i)));
+      setSavedItems((prev) => ({ ...prev, [saved.id]: saved }));
+      router.refresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed");
+    }
+    setSavingId(null);
+  }
 
   async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files ?? []);
@@ -53,8 +83,9 @@ export default function GalleryPage() {
           body: JSON.stringify(newItem),
         });
         if (!saveRes.ok) throw new Error("Save failed");
-        const saved = await saveRes.json();
-        setItems((prev) => [...prev, saved as GalleryRecord]);
+        const saved = (await saveRes.json()) as GalleryRecord;
+        setItems((prev) => [...prev, saved]);
+        setSavedItems((prev) => ({ ...prev, [saved.id]: saved }));
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed");
@@ -67,10 +98,15 @@ export default function GalleryPage() {
     if (!confirm("Delete this gallery item?")) return;
     await fetch(`/api/admin/gallery/${id}`, { method: "DELETE" });
     setItems((prev) => prev.filter((i) => i.id !== id));
+    setSavedItems((prev) => {
+      const next = { ...prev };
+      delete next[id];
+      return next;
+    });
     router.refresh();
   }
 
-  async function handleEdit(item: GalleryRecord, lang: AdminLocale, field: "title" | "category", value: string) {
+  function handleEdit(item: GalleryRecord, lang: AdminLocale, field: "title" | "category", value: string) {
     const updated: GalleryRecord = {
       ...item,
       translations: {
@@ -79,12 +115,6 @@ export default function GalleryPage() {
       },
     };
     setItems((prev) => prev.map((i) => (i.id === item.id ? updated : i)));
-    await fetch(`/api/admin/gallery/${item.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updated),
-    });
-    router.refresh();
   }
 
   return (
@@ -143,12 +173,21 @@ export default function GalleryPage() {
                     />
                   </div>
                 ))}
-                <button
-                  onClick={() => handleDelete(item.id)}
-                  className="w-full border border-red-200 py-1 text-xs text-red-500 hover:bg-red-50"
-                >
-                  Delete
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleSaveItem(item)}
+                    disabled={!isDirty(item) || savingId === item.id}
+                    className="btn-primary flex-1 text-xs disabled:opacity-40"
+                  >
+                    {savingId === item.id ? "Saving…" : isDirty(item) ? "Save" : "Saved"}
+                  </button>
+                  <button
+                    onClick={() => handleDelete(item.id)}
+                    className="border border-red-200 px-3 py-1 text-xs text-red-500 hover:bg-red-50"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           ))}

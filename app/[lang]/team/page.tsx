@@ -41,11 +41,9 @@ export default async function TeamPage({
           <p className="mt-5 text-base leading-relaxed text-stone-600">{team.intro}</p>
         </AnimatedReveal>
 
-        <div className="mt-14 columns-1 sm:columns-2 lg:columns-4 gap-x-6 lg:gap-x-8">
-          {team.members.map((member, index) => (
-            <div key={member.role} className="break-inside-avoid mb-6 lg:mb-8">
-              <TeamCard member={member} aspectIndex={index} />
-            </div>
+        <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-10">
+          {team.members.map((member) => (
+            <TeamCard key={member.role} member={member} />
           ))}
         </div>
       </section>

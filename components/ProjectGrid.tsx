@@ -16,17 +16,15 @@ export default function ProjectGrid({
   if (projects.length === 0) return null;
 
   return (
-    <div className="columns-1 sm:columns-2 lg:columns-4 gap-x-6 lg:gap-x-8">
+    <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-10">
       {projects.map((project, index) => (
-        <div key={project.slug} className="break-inside-avoid mb-6 lg:mb-8">
-          <ProjectCard
-            project={project}
-            lang={lang}
-            viewLabel={viewLabel}
-            priority={index < 4}
-            aspectIndex={index}
-          />
-        </div>
+        <ProjectCard
+          key={project.slug}
+          project={project}
+          lang={lang}
+          viewLabel={viewLabel}
+          priority={index < 4}
+        />
       ))}
     </div>
   );

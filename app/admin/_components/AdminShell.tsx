@@ -118,7 +118,7 @@ function Shell({ children }: { children: ReactNode }) {
               title={isDark ? "Hellmodus" : "Dunkelmodus"}
               className="flex h-7 w-7 items-center justify-center rounded text-stone-500 transition-colors hover:bg-stone-100 hover:text-graphite-900 dark:text-stone-500 dark:hover:bg-paper-300 dark:hover:text-graphite-900"
             >
-              {isDark ? <SunIcon /> : <MoonIcon />}
+              {isDark ? <MoonIcon /> : <SunIcon />}
             </button>
 
             {/* Language buttons */}

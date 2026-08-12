@@ -95,8 +95,17 @@ export default async function RootLayout({
       dir={dir}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`dark ${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable} antialiased`}
+      className={`${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable} antialiased`}
     >
+      <head>
+        {/* Applies the saved theme before first paint to avoid a flash of the wrong mode */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':true;if(d)document.documentElement.classList.add('dark');}catch(e){}})();",
+          }}
+        />
+      </head>
       <body className="flex min-h-screen flex-col bg-paper-100 text-ink">
           <FontProvider />
           <Header lang={lang} dict={dict} navConfig={navConfig} />

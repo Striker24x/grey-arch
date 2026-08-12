@@ -7,13 +7,17 @@ import { motion, AnimatePresence } from "motion/react";
 import ArchMark from "./ArchMark";
 import LanguageSwitcher from "./LanguageSwitcher";
 import DarkModeToggle from "./DarkModeToggle";
-import PizzaWheel, { type PizzaSection } from "./PizzaWheel";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionary-types";
 import type { NavItem } from "@/lib/data-manager";
 
-// Returns pizza slices for a given nav item id — empty = no wheel
-function getNavSections(navId: string, lang: string, dict: Dictionary): PizzaSection[] {
+interface SubmenuSection {
+  label: string;
+  href: string;
+}
+
+// Returns submenu links for a given nav item id — empty = no submenu
+function getNavSections(navId: string, lang: string, dict: Dictionary): SubmenuSection[] {
   const base = `/${lang}`;
   switch (navId) {
     case "studio":
@@ -52,8 +56,7 @@ export default function Header({
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [hoveredNavId, setHoveredNavId] = useState<string | null>(null);
-  const [hoveredLabel, setHoveredLabel] = useState("");
-  const [wheelY, setWheelY] = useState(0);
+  const [submenuY, setSubmenuY] = useState(0);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navItemRefs = useRef<Map<string, HTMLElement>>(new Map());
 
@@ -68,21 +71,20 @@ export default function Header({
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
 
-  const showWheel = useCallback((id: string, label: string, el: HTMLElement | null) => {
+  const showSubmenu = useCallback((id: string, el: HTMLElement | null) => {
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
     if (el) {
       const rect = el.getBoundingClientRect();
-      setWheelY(rect.top + rect.height / 2);
+      setSubmenuY(rect.top);
     }
     setHoveredNavId(id);
-    setHoveredLabel(label);
   }, []);
 
-  const scheduleHideWheel = useCallback(() => {
+  const scheduleHideSubmenu = useCallback(() => {
     hideTimerRef.current = setTimeout(() => setHoveredNavId(null), 80);
   }, []);
 
-  const cancelHideWheel = useCallback(() => {
+  const cancelHideSubmenu = useCallback(() => {
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
   }, []);
 
@@ -108,14 +110,18 @@ export default function Header({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const pizzaSections = hoveredNavId ? getNavSections(hoveredNavId, lang, dict) : [];
+  const submenuSections = hoveredNavId ? getNavSections(hoveredNavId, lang, dict) : [];
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-transform duration-300 ease-in-out ${
-          hidden && !open ? "-translate-y-full" : "translate-y-0"
-        }`}
+      <motion.header
+        initial={false}
+        animate={{
+          y: hidden && !open ? "-100%" : "0%",
+          opacity: hidden && !open ? 0 : 1,
+        }}
+        transition={{ type: "tween", duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="fixed top-0 left-0 right-0 z-50 w-full"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
           <Link
@@ -140,7 +146,7 @@ export default function Header({
             <span className={`block h-0.5 w-7 bg-ink transition-all duration-200 ease-in-out ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
           </button>
         </div>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {open && (
@@ -166,35 +172,35 @@ export default function Header({
               transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col bg-paper-100 shadow-soft"
             >
-              {/* Pizza Wheel — desktop only, inside panel, right-aligned, Y-centered on hovered item */}
+              {/* Submenu — desktop only, flyout to the left of the panel, aligned to hovered item */}
               <AnimatePresence>
-                {hoveredNavId && pizzaSections.length > 0 && (
+                {hoveredNavId && submenuSections.length > 0 && (
                   <motion.div
                     key={hoveredNavId}
-                    className="absolute hidden lg:block pointer-events-none"
+                    className="absolute hidden lg:block"
                     style={{
-                      right: 0,
-                      top: `${wheelY - 130}px`,
-                      width: "260px",
-                      height: "260px",
+                      right: "100%",
+                      top: `${submenuY}px`,
                       zIndex: 60,
                     }}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.08 }}
+                    initial={{ opacity: 0, x: 8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 8 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    onMouseEnter={cancelHideSubmenu}
+                    onMouseLeave={scheduleHideSubmenu}
                   >
-                    <div
-                      className="pointer-events-auto"
-                      onMouseEnter={cancelHideWheel}
-                      onMouseLeave={scheduleHideWheel}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <PizzaWheel
-                        sections={pizzaSections}
-                        onNavigate={() => { setOpen(false); setHoveredNavId(null); }}
-                        centerLabel={hoveredLabel}
-                      />
+                    <div className="min-w-[220px] border border-line-200 bg-paper-100 py-2 shadow-soft">
+                      {submenuSections.map((sec) => (
+                        <Link
+                          key={sec.href}
+                          href={sec.href}
+                          onClick={() => { setOpen(false); setHoveredNavId(null); }}
+                          className="block px-5 py-2.5 text-sm text-stone-500 transition-colors duration-150 hover:bg-paper-200 hover:text-ink"
+                        >
+                          {sec.label}
+                        </Link>
+                      ))}
                     </div>
                   </motion.div>
                 )}
@@ -238,12 +244,12 @@ export default function Header({
                           if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
                           if (hasSections) {
                             const el = navItemRefs.current.get(item.id) ?? null;
-                            showWheel(item.id, item.label, el);
+                            showSubmenu(item.id, el);
                           } else {
                             setHoveredNavId(null);
                           }
                         }}
-                        onMouseLeave={scheduleHideWheel}
+                        onMouseLeave={scheduleHideSubmenu}
                         className={`group flex items-center justify-between border-b border-line-200 py-4 font-heading text-2xl transition-colors duration-200 ${
                           isActive(item.href) ? "text-ink" : "text-stone-400 hover:text-ink"
                         }`}

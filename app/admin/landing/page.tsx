@@ -10,7 +10,7 @@ export default function LandingAdminPage() {
   const T   = getAdminT(lang).landing;
   const dir = lang === "ar" ? "rtl" : "ltr";
 
-  const [data, setData] = useState<LandingData>({
+  const initial: LandingData = {
     headline: "GrayArc",
     subline: "Architecture. Heritage. Vision.",
     loop: true,
@@ -19,7 +19,9 @@ export default function LandingAdminPage() {
       { id: "2", url: "", title: "Video 2" },
       { id: "3", url: "", title: "Video 3" },
     ],
-  });
+  };
+  const [data, setData]           = useState<LandingData>(initial);
+  const [savedData, setSavedData] = useState<LandingData>(initial);
   const [loading, setLoading]     = useState(true);
   const [saving, setSaving]       = useState(false);
   const [uploading, setUploading] = useState<string | null>(null);
@@ -28,8 +30,10 @@ export default function LandingAdminPage() {
   useEffect(() => {
     fetch("/api/admin/landing")
       .then((r) => r.json())
-      .then((d) => { setData(d as LandingData); setLoading(false); });
+      .then((d) => { setData(d as LandingData); setSavedData(d as LandingData); setLoading(false); });
   }, []);
+
+  const textsDirty = data.headline !== savedData.headline || data.subline !== savedData.subline;
 
   async function save(updated: LandingData) {
     setSaving(true);
@@ -39,6 +43,7 @@ export default function LandingAdminPage() {
       body: JSON.stringify(updated),
     });
     setData(updated);
+    setSavedData(updated);
     setSaving(false);
   }
 
@@ -82,7 +87,6 @@ export default function LandingAdminPage() {
             <input
               value={data.headline}
               onChange={(e) => setData({ ...data, headline: e.target.value })}
-              onBlur={() => save(data)}
               dir="ltr"
               className="input"
             />
@@ -92,11 +96,17 @@ export default function LandingAdminPage() {
             <input
               value={data.subline}
               onChange={(e) => setData({ ...data, subline: e.target.value })}
-              onBlur={() => save(data)}
               dir="ltr"
               className="input"
             />
           </div>
+          <button
+            onClick={() => save(data)}
+            disabled={!textsDirty || saving}
+            className="btn-primary disabled:opacity-40"
+          >
+            {saving ? "Saving…" : textsDirty ? "Save" : "Saved"}
+          </button>
         </div>
       </div>
 

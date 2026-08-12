@@ -2,15 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/dictionary-types";
 
-// Repeating aspect ratio pattern creates the staggered masonry look
-const ASPECTS = ["aspect-[4/5]", "aspect-[3/4]", "aspect-[5/4]", "aspect-[3/4]"];
-
 export default function ProjectCard({
   project,
   lang,
   viewLabel,
   priority = false,
-  aspectIndex = 0,
 }: {
   project: Project;
   lang: string;
@@ -18,11 +14,9 @@ export default function ProjectCard({
   priority?: boolean;
   aspectIndex?: number;
 }) {
-  const aspect = ASPECTS[aspectIndex % ASPECTS.length];
-
   return (
-    <Link href={`/${lang}/portfolio/${project.slug}`} className="group block cursor-pointer">
-      <div className={`relative overflow-hidden ${aspect}`}>
+    <Link href={`/${lang}/portfolio/${project.slug}`} className="group flex h-full cursor-pointer flex-col">
+      <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={project.image}
           alt={project.name}

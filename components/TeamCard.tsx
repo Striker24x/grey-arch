@@ -1,20 +1,14 @@
 import Image from "next/image";
 import type { TeamMember } from "@/lib/dictionary-types";
 
-const ASPECTS = ["aspect-[3/4]", "aspect-[4/5]", "aspect-[3/4]", "aspect-[5/4]"];
-
 export default function TeamCard({
   member,
-  aspectIndex = 0,
 }: {
   member: TeamMember;
-  aspectIndex?: number;
 }) {
-  const aspect = ASPECTS[aspectIndex % ASPECTS.length];
-
   return (
-    <div className="group block cursor-default">
-      <div className={`relative overflow-hidden ${aspect} bg-paper-200`}>
+    <div className="group flex h-full flex-col cursor-default">
+      <div className="relative aspect-[4/5] overflow-hidden bg-paper-200">
         {member.image ? (
           <Image
             src={member.image}
