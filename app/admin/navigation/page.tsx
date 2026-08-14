@@ -29,6 +29,7 @@ export default function NavigationPage() {
   const [editHref, setEditHref]   = useState("");
   const [newLabels, setNewLabels] = useState<NavLabels>(emptyLabels());
   const [newHref, setNewHref]     = useState("");
+  const [error, setError]         = useState("");
 
   useEffect(() => {
     fetch("/api/admin/navigation")
@@ -38,12 +39,18 @@ export default function NavigationPage() {
 
   async function save(updated: NavigationData) {
     setSaving(true);
-    await fetch("/api/admin/navigation", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updated),
-    });
-    setData(updated);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/navigation", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      });
+      if (!res.ok) throw new Error("Save failed");
+      setData(updated);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Save failed");
+    }
     setSaving(false);
   }
 
@@ -91,6 +98,8 @@ export default function NavigationPage() {
         <h1 className="text-2xl font-semibold text-graphite-900">{P.title}</h1>
         <p className="mt-1 text-sm text-stone-500">{P.desc}</p>
       </div>
+
+      {error && <div className="mb-4 rounded-sm bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
 
       {/* Items list */}
       <div className="mb-8 space-y-2">

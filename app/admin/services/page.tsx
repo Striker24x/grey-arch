@@ -23,6 +23,7 @@ export default function ServicesAdminPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState("");
   const [lang, setLang] = useState<AdminLocale>("en");
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
   const [expandedService, setExpandedService] = useState<string | null>(null);
@@ -83,14 +84,20 @@ export default function ServicesAdminPage() {
   async function handleSave() {
     if (!data) return;
     setSaving(true);
-    await fetch("/api/admin/services", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    setError("");
+    try {
+      const res = await fetch("/api/admin/services", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Save failed");
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Save failed");
+    }
     setSaving(false);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
   }
 
   if (loading || !data || !t) return <div className="p-8 text-sm text-stone-500">Loading…</div>;
@@ -106,6 +113,8 @@ export default function ServicesAdminPage() {
           {saving ? "Saving…" : saved ? "Saved!" : "Save"}
         </button>
       </div>
+
+      {error && <div className="mb-4 rounded-sm bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
 
       {/* Language tabs */}
       <div className="mb-6 flex border-b border-stone-200 dark:border-line-200">

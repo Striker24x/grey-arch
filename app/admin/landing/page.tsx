@@ -25,6 +25,7 @@ export default function LandingAdminPage() {
   const [loading, setLoading]     = useState(true);
   const [saving, setSaving]       = useState(false);
   const [uploading, setUploading] = useState<string | null>(null);
+  const [error, setError]         = useState("");
   const fileRefs = useRef<Record<string, HTMLInputElement | null>>({});
 
   useEffect(() => {
@@ -37,13 +38,19 @@ export default function LandingAdminPage() {
 
   async function save(updated: LandingData) {
     setSaving(true);
-    await fetch("/api/admin/landing", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updated),
-    });
-    setData(updated);
-    setSavedData(updated);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/landing", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      });
+      if (!res.ok) throw new Error("Save failed");
+      setData(updated);
+      setSavedData(updated);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Save failed");
+    }
     setSaving(false);
   }
 
@@ -77,6 +84,8 @@ export default function LandingAdminPage() {
         <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>
         <p className="mt-1 text-sm text-stone-500">{T.desc}</p>
       </div>
+
+      {error && <div className="mb-4 rounded-sm bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
 
       {/* Texts */}
       <div className="mb-8 rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">

@@ -34,6 +34,7 @@ export default function CategoriesPage() {
 
   // feedback
   const [savedMsg, setSavedMsg] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetch("/api/admin/categories")
@@ -43,16 +44,22 @@ export default function CategoriesPage() {
 
   async function save(updated: CategoriesData) {
     setSaving(true);
-    await fetch("/api/admin/categories", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updated),
-    });
-    setData(updated);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/categories", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      });
+      if (!res.ok) throw new Error("Speichern fehlgeschlagen");
+      setData(updated);
+      router.refresh();
+      setSavedMsg("Gespeichert ✓");
+      setTimeout(() => setSavedMsg(""), 2000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Speichern fehlgeschlagen");
+    }
     setSaving(false);
-    router.refresh();
-    setSavedMsg("Gespeichert ✓");
-    setTimeout(() => setSavedMsg(""), 2000);
   }
 
   // ── Category CRUD ──────────────────────────────────────────
@@ -160,6 +167,8 @@ export default function CategoriesPage() {
           </button>
         </div>
       </div>
+
+      {error && <div className="mb-4 rounded-sm bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
 
       {/* Group tabs */}
       <div className="mb-6 flex items-end gap-0 border-b border-stone-200">

@@ -219,9 +219,16 @@ export default function ProjectForm({
   async function handleDelete() {
     if (!confirm("Delete this project? This cannot be undone.")) return;
     setDeleting(true);
-    await fetch(`/api/admin/projects/${initial?.slug}`, { method: "DELETE" });
-    router.push("/admin/projects");
-    router.refresh();
+    setError("");
+    try {
+      const res = await fetch(`/api/admin/projects/${initial?.slug}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Delete failed");
+      router.push("/admin/projects");
+      router.refresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Delete failed");
+      setDeleting(false);
+    }
   }
 
   const t = data.translations[lang];

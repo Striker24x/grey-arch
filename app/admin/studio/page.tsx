@@ -86,6 +86,7 @@ export default function StudioAdminPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState("");
   const [lang, setLang] = useState<AdminLocale>("en");
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -123,33 +124,45 @@ export default function StudioAdminPage() {
 
   async function handleSave() {
     setSaving(true);
-    await fetch("/api/admin/studio", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    setError("");
+    try {
+      const res = await fetch("/api/admin/studio", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Save failed");
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Save failed");
+    }
     setSaving(false);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
   }
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    const form = new FormData();
-    form.append("file", file);
-    form.append("folder", "grey-arch/studio");
-    const res = await fetch("/api/admin/upload", { method: "POST", body: form });
-    const json = await res.json() as { url?: string };
-    if (json.url) {
+    setError("");
+    try {
+      const form = new FormData();
+      form.append("file", file);
+      form.append("folder", "grey-arch/studio");
+      const res = await fetch("/api/admin/upload", { method: "POST", body: form });
+      if (!res.ok) throw new Error("Upload failed");
+      const json = await res.json() as { url?: string };
+      if (!json.url) throw new Error("Upload failed");
       const updated = { ...data, workspaceImage: json.url };
       setData(updated);
-      await fetch("/api/admin/studio", {
+      const saveRes = await fetch("/api/admin/studio", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updated),
       });
+      if (!saveRes.ok) throw new Error("Save failed");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Upload failed");
     }
     setUploading(false);
     if (fileInputRef.current) fileInputRef.current.value = "";
@@ -168,6 +181,8 @@ export default function StudioAdminPage() {
           {saving ? "Saving…" : saved ? "Saved!" : "Save"}
         </button>
       </div>
+
+      {error && <div className="mb-4 rounded-sm bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
 
       {/* Workspace image */}
       <div className="mb-6 rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
@@ -195,11 +210,17 @@ export default function StudioAdminPage() {
                 onClick={async () => {
                   const updated = { ...data, workspaceImage: undefined };
                   setData(updated);
-                  await fetch("/api/admin/studio", {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(updated),
-                  });
+                  setError("");
+                  try {
+                    const res = await fetch("/api/admin/studio", {
+                      method: "PUT",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(updated),
+                    });
+                    if (!res.ok) throw new Error("Save failed");
+                  } catch (err) {
+                    setError(err instanceof Error ? err.message : "Save failed");
+                  }
                 }}
                 className="ml-2 text-sm text-stone-400 hover:text-red-500"
               >

@@ -36,7 +36,7 @@ export default function DarkModeToggle() {
         strokeLinejoin="round"
         aria-hidden="true"
         className={`absolute h-5 w-5 transition-[transform,opacity] duration-200 ease-out ${
-          isDark ? "scale-75 rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"
+          isDark ? "scale-100 rotate-0 opacity-100" : "scale-75 rotate-90 opacity-0"
         }`}
       >
         <circle cx="12" cy="12" r="4" />
@@ -61,7 +61,7 @@ export default function DarkModeToggle() {
         strokeLinejoin="round"
         aria-hidden="true"
         className={`absolute h-5 w-5 transition-[transform,opacity] duration-200 ease-out ${
-          isDark ? "scale-100 rotate-0 opacity-100" : "scale-75 -rotate-90 opacity-0"
+          isDark ? "scale-75 -rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"
         }`}
       >
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
