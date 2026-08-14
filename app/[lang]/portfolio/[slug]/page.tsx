@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { hasLocale, locales, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
-import en from "@/lib/dictionaries/en";
+import { getProjects } from "@/lib/data-manager";
 import ProjectFacts from "@/components/ProjectFacts";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import ImageReveal from "@/components/ImageReveal";
@@ -11,9 +11,10 @@ import ProjectGrid from "@/components/ProjectGrid";
 import CTASection from "@/components/CTASection";
 import ProjectFontProvider from "@/components/ProjectFontProvider";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return locales.flatMap((lang) =>
-    en.portfolio.projects.map((project) => ({ lang, slug: project.slug }))
+    projects.map((project) => ({ lang, slug: project.slug }))
   );
 }
 

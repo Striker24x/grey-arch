@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { getProjects } from "@/lib/data-manager";
 import ProjectForm from "../../_components/ProjectForm";
 
+export const dynamic = "force-dynamic";
+
 export default async function EditProjectPage({
   params,
 }: {

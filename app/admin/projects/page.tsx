@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getProjects } from "@/lib/data-manager";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProjectsPage() {
   const projects = await getProjects();
 
