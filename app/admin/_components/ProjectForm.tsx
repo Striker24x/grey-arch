@@ -166,9 +166,21 @@ export default function ProjectForm({
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
+    setError("");
     try {
       const url = await uploadFile(file, "images/grey-arch/portfolio");
-      setShared("image", url);
+      const updated = { ...data, image: url };
+      setData(updated);
+      // Persist immediately for existing projects so the cover image can't be
+      // lost by navigating away before clicking "Save project".
+      if (!isNew) {
+        const res = await fetch(`/api/admin/projects/${initial?.slug}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updated),
+        });
+        if (!res.ok) throw new Error("Save failed");
+      }
     } catch {
       setError("Image upload failed");
     }
