@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { hasLocale, locales, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getProjects } from "@/lib/data-manager";
-import ProjectFacts from "@/components/ProjectFacts";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import ImageReveal from "@/components/ImageReveal";
 import ProjectGrid from "@/components/ProjectGrid";
@@ -61,17 +60,6 @@ export default async function ProjectDetailPage({
     })
     .slice(0, 3);
 
-  const facts = [
-    { label: projectDetail.factsLabels.client, value: project.client },
-    { label: projectDetail.factsLabels.location, value: project.location },
-    { label: projectDetail.factsLabels.year, value: project.year },
-    { label: projectDetail.factsLabels.status, value: project.status },
-    { label: projectDetail.factsLabels.services, value: project.servicesProvided.join(", ") },
-    { label: projectDetail.factsLabels.buildingType, value: project.buildingType },
-    { label: projectDetail.factsLabels.area, value: project.area },
-    { label: projectDetail.factsLabels.scope, value: project.scope },
-  ];
-
   const narrative = [
     { heading: projectDetail.sections.summary, body: project.summary },
     { heading: projectDetail.sections.challenge, body: project.challenge },
@@ -108,11 +96,7 @@ export default async function ProjectDetailPage({
 
       <ProjectFontProvider font={project.font}>
         <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="grid gap-12 lg:grid-cols-[320px_1fr]">
-            <div className="lg:sticky lg:top-28 lg:self-start">
-              <ProjectFacts facts={facts} />
-            </div>
-
+          <div className="mx-auto max-w-3xl">
             <div className="flex flex-col gap-12">
               {narrative.map((section) => (
                 <AnimatedReveal key={section.heading} className="border-t border-line-200 pt-8 first:border-t-0 first:pt-0">

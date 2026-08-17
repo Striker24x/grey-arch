@@ -19,12 +19,7 @@ const FALLBACK_CATEGORIES = [
 const TEXT_FIELDS: { key: keyof ProjectTranslation; label: string; multiline?: boolean }[] = [
   { key: "name", label: "Name" },
   { key: "location", label: "Location" },
-  { key: "status", label: "Status" },
   { key: "description", label: "Description", multiline: true },
-  { key: "client", label: "Client" },
-  { key: "buildingType", label: "Building Type" },
-  { key: "area", label: "Area" },
-  { key: "scope", label: "Scope" },
   { key: "summary", label: "Summary", multiline: true },
   { key: "challenge", label: "Challenge", multiline: true },
   { key: "approach", label: "Approach", multiline: true },
@@ -126,19 +121,6 @@ export default function ProjectForm({
       translations: {
         ...d.translations,
         [lang]: { ...d.translations[lang], [key]: value },
-      },
-    }));
-  }
-
-  function setServices(value: string) {
-    setData((d) => ({
-      ...d,
-      translations: {
-        ...d.translations,
-        [lang]: {
-          ...d.translations[lang],
-          servicesProvided: value.split("\n").map((s) => s.trim()).filter(Boolean),
-        },
       },
     }));
   }
@@ -443,16 +425,6 @@ export default function ProjectForm({
                 )}
               </Field>
             ))}
-
-            <Field label="Services provided (one per line)">
-              <textarea
-                value={t.servicesProvided.join("\n")}
-                onChange={(e) => setServices(e.target.value)}
-                rows={3}
-                className="input resize-y"
-                dir={lang === "ar" ? "rtl" : "ltr"}
-              />
-            </Field>
           </div>
         </div>
       </div>

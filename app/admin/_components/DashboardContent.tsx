@@ -7,7 +7,7 @@ import { getAdminT } from "./adminI18n";
 interface Project {
   slug: string;
   year: string;
-  translations: { en: { name: string; status: string } };
+  translations: { en: { name: string } };
 }
 
 interface Props {
@@ -59,7 +59,6 @@ export default function DashboardContent({ projects, galleryCount, teamCount }: 
             <tr className="border-b border-stone-100 dark:border-line-200">
               <th className="pb-2 text-start text-xs font-medium text-stone-500">{T.colName}</th>
               <th className="pb-2 text-start text-xs font-medium text-stone-500">{T.colYear}</th>
-              <th className="pb-2 text-start text-xs font-medium text-stone-500">{T.colStatus}</th>
               <th className="pb-2 text-end text-xs font-medium text-stone-500"></th>
             </tr>
           </thead>
@@ -68,7 +67,6 @@ export default function DashboardContent({ projects, galleryCount, teamCount }: 
               <tr key={p.slug} className="border-b border-stone-50 dark:border-line-200">
                 <td className="py-2.5 text-graphite-900">{p.translations.en.name}</td>
                 <td className="py-2.5 text-stone-500">{p.year}</td>
-                <td className="py-2.5 text-stone-500">{p.translations.en.status}</td>
                 <td className="py-2.5 text-end">
                   <Link href={`/admin/projects/${p.slug}`} className="text-xs text-graphite-900 hover:underline">
                     {T.edit}
