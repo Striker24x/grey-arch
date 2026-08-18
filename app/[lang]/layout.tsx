@@ -29,6 +29,13 @@ const notoSansArabic = Noto_Sans_Arabic({
   display: "swap",
 });
 
+// All page content is admin-editable and stored in the database (read directly
+// via MongoDB, not fetch). Without this, Next.js treats these pages as static
+// and caches them at build time, so admin edits (texts and cover images) never
+// appear on the deployed site. Forcing dynamic rendering makes every page
+// reflect the current DB state on each request.
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
