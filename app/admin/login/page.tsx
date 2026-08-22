@@ -34,7 +34,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-stone-50">
       <div className="w-full max-w-sm">
         <div className="mb-8 flex items-center gap-3">
-          <ArchMark className="h-8 w-9 text-graphite-900" />
+          <ArchMark className="h-11 w-12 text-graphite-900" />
           <div>
             <p className="text-lg font-semibold text-graphite-900">GrayArc</p>
             <p className="text-xs text-stone-500">Admin Panel</p>

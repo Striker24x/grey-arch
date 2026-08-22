@@ -28,7 +28,6 @@ export default async function ProjectsPage() {
               <th className="px-4 py-3 text-left text-xs font-medium text-stone-500">Name</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-stone-500">Slug</th>
               <th className="px-4 py-3 text-left text-xs font-medium text-stone-500">Year</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-stone-500">Categories</th>
               <th className="px-4 py-3 text-right text-xs font-medium text-stone-500">Actions</th>
             </tr>
           </thead>
@@ -38,15 +37,6 @@ export default async function ProjectsPage() {
                 <td className="px-4 py-3 font-medium text-graphite-900">{p.translations.en.name}</td>
                 <td className="px-4 py-3 font-mono text-xs text-stone-500">{p.slug}</td>
                 <td className="px-4 py-3 text-stone-500">{p.year}</td>
-                <td className="px-4 py-3">
-                  <div className="flex flex-wrap gap-1">
-                    {p.categories.slice(0, 3).map((c) => (
-                      <span key={c} className="rounded-sm bg-stone-100 px-1.5 py-0.5 text-xs text-stone-600">
-                        {c}
-                      </span>
-                    ))}
-                  </div>
-                </td>
                 <td className="px-4 py-3 text-right">
                   <Link
                     href={`/admin/projects/${p.slug}`}

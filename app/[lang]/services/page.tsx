@@ -33,7 +33,7 @@ export default async function ServicesPage({
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-28">
+      <section className="mx-auto max-w-7xl px-6 pt-14 pb-0 sm:pt-20 sm:pb-1 lg:px-10 lg:pt-28 lg:pb-2">
         <AnimatedReveal className="max-w-2xl">
           <h1 className="font-heading text-4xl leading-tight text-bronze-600 sm:text-5xl">
             {dict.nav.services}
@@ -44,7 +44,11 @@ export default async function ServicesPage({
 
       {servicesPage.groups.map((group, index) => (
         <section key={group.id} id={group.id} className={index % 2 === 1 ? "bg-paper-200" : undefined}>
-          <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
+          <div
+            className={`mx-auto max-w-7xl px-6 pb-14 sm:pb-20 lg:px-10 lg:pb-24 ${
+              index === 0 ? "pt-2 sm:pt-3 lg:pt-4" : "pt-14 sm:pt-20 lg:pt-24"
+            }`}
+          >
             <ServiceGroup
               group={group}
               lang={lang}

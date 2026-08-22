@@ -79,7 +79,7 @@ function Shell({ children }: { children: ReactNode }) {
       >
         {/* Header */}
         <div className="flex h-14 items-center gap-2 border-b border-stone-200 px-4 dark:border-line-200">
-          <ArchMark className="h-6 w-7 text-graphite-900" />
+          <ArchMark className="h-8 w-9 text-graphite-900" />
           <span className="text-sm font-semibold tracking-wide text-graphite-900">Admin</span>
         </div>
 

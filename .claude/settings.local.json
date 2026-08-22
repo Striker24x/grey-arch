@@ -13,7 +13,8 @@
       "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('next:', p.dependencies.next, 'tailwind:', p.dependencies.tailwindcss||p.devDependencies.tailwindcss\\)\")",
       "PowerShell(head *)",
       "PowerShell(Stop-Process *)",
-      "Bash(npx skills *)"
+      "Bash(npx skills *)",
+      "PowerShell(vercel deploy *)"
     ]
   }
 }

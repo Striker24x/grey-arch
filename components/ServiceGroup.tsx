@@ -1,6 +1,5 @@
-import SectionHeading from "./SectionHeading";
-import ServiceCard from "./ServiceCard";
-import AnimatedServiceCard from "./AnimatedServiceCard";
+import { resolveServiceLayout } from "@/lib/service-layouts";
+import { SERVICE_LAYOUT_COMPONENTS } from "./service-layouts/registry";
 import type { ServiceGroup as ServiceGroupType } from "@/lib/dictionary-types";
 
 export default function ServiceGroup({
@@ -14,21 +13,6 @@ export default function ServiceGroup({
   ctaLabel: string;
   suitableForLabel: string;
 }) {
-  return (
-    <div>
-      <SectionHeading title={group.title} intro={group.intro} />
-      <div className="mt-8 grid divide-y divide-line-200">
-        {group.services.map((service, index) => (
-          <AnimatedServiceCard key={service.id} delay={index * 60}>
-            <ServiceCard
-              service={service}
-              lang={lang}
-              ctaLabel={ctaLabel}
-              suitableForLabel={suitableForLabel}
-            />
-          </AnimatedServiceCard>
-        ))}
-      </div>
-    </div>
-  );
+  const Layout = SERVICE_LAYOUT_COMPONENTS[resolveServiceLayout(group.layout)];
+  return <Layout group={group} lang={lang} ctaLabel={ctaLabel} suitableForLabel={suitableForLabel} />;
 }

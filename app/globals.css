@@ -326,3 +326,52 @@ nav a {
     transform: none !important;
   }
 }
+
+/* Rich text content — project narrative sections edited via the admin WYSIWYG editor */
+.rich-content p { margin-top: 1em; }
+.rich-content p:first-child { margin-top: 0; }
+.rich-content strong { font-weight: 600; color: var(--color-ink); }
+.rich-content em { font-style: italic; }
+.rich-content h3 {
+  margin-top: 1.5em;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-ink);
+}
+.rich-content ul, .rich-content ol { margin-top: 1em; padding-inline-start: 1.25em; display: flex; flex-direction: column; gap: 0.5em; }
+.rich-content ul { list-style: disc; }
+.rich-content ol { list-style: decimal; }
+.rich-content blockquote {
+  margin-top: 1em;
+  padding-inline-start: 1em;
+  border-inline-start: 2px solid var(--color-line-300);
+  font-style: italic;
+  color: var(--color-stone-500);
+}
+
+/* Tiptap editor — mirror the same content styles inside the admin editor */
+.prose-editor { outline: none; }
+.prose-editor p { margin-top: 0.75em; }
+.prose-editor p:first-child { margin-top: 0; }
+.prose-editor ul, .prose-editor ol { margin-top: 0.75em; padding-inline-start: 1.25em; }
+.prose-editor ul { list-style: disc; }
+.prose-editor ol { list-style: decimal; }
+.prose-editor h3 { margin-top: 1em; font-weight: 600; }
+.prose-editor blockquote { padding-inline-start: 1em; border-inline-start: 2px solid var(--color-line-300); font-style: italic; }
+
+/* Page variant — borderless, reads like a page in a document rather than a form field */
+.prose-editor-page {
+  min-height: 60vh;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-graphite-700, #423e38);
+}
+.prose-editor-page:focus {
+  box-shadow: none;
+}
+.prose-editor img, .prose-editor-page img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1em;
+}

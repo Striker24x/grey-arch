@@ -129,7 +129,7 @@ export default function Header({
             className="flex items-center gap-2 cursor-pointer text-graphite-900"
             onClick={() => setOpen(false)}
           >
-            <ArchMark className="h-8 w-9" />
+            <ArchMark className="h-11 w-12" />
             <span className="font-heading text-xl tracking-wide">{dict.meta.siteName}</span>
           </Link>
 
@@ -139,11 +139,10 @@ export default function Header({
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             style={{ touchAction: "manipulation" }}
-            className="relative z-[60] flex cursor-pointer flex-col items-center justify-center gap-[5px] p-3"
+            className="relative z-[60] flex cursor-pointer flex-col items-start justify-center gap-[6px] p-3"
           >
-            <span className={`block h-0.5 w-7 bg-ink transition-all duration-200 ease-in-out ${open ? "translate-y-[7px] rotate-45" : ""}`} />
-            <span className={`block h-0.5 w-7 bg-ink transition-all duration-200 ease-in-out ${open ? "scale-x-0 opacity-0" : ""}`} />
-            <span className={`block h-0.5 w-7 bg-ink transition-all duration-200 ease-in-out ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
+            <span className={`block h-[3px] w-7 rounded-full bg-ink transition-all duration-200 ease-in-out ${open ? "translate-y-[4.5px] rotate-45 !w-7" : ""}`} />
+            <span className={`block h-[3px] w-5 rounded-full bg-ink transition-all duration-200 ease-in-out ${open ? "-translate-y-[4.5px] -rotate-45 !w-7" : ""}`} />
           </button>
         </div>
       </motion.header>
@@ -206,10 +205,7 @@ export default function Header({
                 )}
               </AnimatePresence>
               {/* Panel header */}
-              <div className="flex items-center justify-between border-b border-line-200 px-8 py-5">
-                <span className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500">
-                  Navigation
-                </span>
+              <div className="flex items-center justify-end px-8 py-5">
                 <button
                   onClick={() => setOpen(false)}
                   style={{ touchAction: "manipulation" }}
@@ -250,23 +246,11 @@ export default function Header({
                           }
                         }}
                         onMouseLeave={scheduleHideSubmenu}
-                        className={`group flex items-center justify-between border-b border-line-200 py-4 font-heading text-2xl transition-colors duration-200 ${
+                        className={`group flex items-center justify-between py-4 font-heading text-2xl transition-colors duration-200 ${
                           isActive(item.href) ? "text-ink" : "text-stone-400 hover:text-ink"
                         }`}
                       >
                         <span>{item.label}</span>
-                        <span className="flex items-center gap-2">
-                          {hasSections && (
-                            <span
-                              className={`hidden lg:block h-1 w-1 rounded-full transition-all duration-200 ${
-                                hoveredNavId === item.id ? "bg-bronze-500 scale-150" : "bg-stone-300"
-                              }`}
-                            />
-                          )}
-                          {isActive(item.href) && (
-                            <span className="h-2.5 w-2.5 rounded-full bg-bronze-500" />
-                          )}
-                        </span>
                       </Link>
                     </motion.div>
                   );
@@ -278,7 +262,7 @@ export default function Header({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.18, duration: 0.15 }}
-                className="flex items-center justify-between border-t border-line-200 px-8 py-6"
+                className="flex items-center justify-between px-8 py-6"
               >
                 <LanguageSwitcher lang={lang} />
                 <DarkModeToggle />

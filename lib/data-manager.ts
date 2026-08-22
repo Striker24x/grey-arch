@@ -1,4 +1,5 @@
 import { getDb } from "./mongodb";
+import { resolveServiceLayout, type ServiceLayoutId } from "./service-layouts";
 
 // ---------------------------------------------------------------------------
 // Internal storage helpers
@@ -80,6 +81,8 @@ export interface ProjectTranslation {
   drawings: string;
   materials: string;
   visualization: string;
+  /** Free-form rich text document — the main narrative shown on the project page. */
+  body?: string;
 }
 
 export interface ProjectRecord {
@@ -89,6 +92,8 @@ export interface ProjectRecord {
   image: string;
   galleryImages: string[];
   font?: string;
+  /** Layout style for the project narrative — shared across languages, same registry as service layouts. */
+  layout?: ServiceLayoutId;
   translations: Record<AdminLocale, ProjectTranslation>;
 }
 
@@ -244,7 +249,7 @@ const DEFAULT_NAV: NavigationData = {
   items: [
     { id: "studio",    href: "/studio",    labels: { en: "Studio",    de: "Studio",      ar: "ستوديو"   }, visible: true, custom: false },
     { id: "services",  href: "/services",  labels: { en: "Services",  de: "Leistungen",  ar: "الخدمات"  }, visible: true, custom: false },
-    { id: "portfolio", href: "/portfolio", labels: { en: "Portfolio", de: "Portfolio",   ar: "أعمالنا"  }, visible: true, custom: false },
+    { id: "portfolio", href: "/portfolio", labels: { en: "Projects",  de: "Projekte",   ar: "المشاريع" }, visible: true, custom: false },
     { id: "team",      href: "/team",      labels: { en: "Our Team",  de: "Unser Team",  ar: "فريقنا"   }, visible: true, custom: false },
     { id: "connect",   href: "/connect",   labels: { en: "Connect",   de: "Kontakt",     ar: "تواصل"    }, visible: true, custom: false },
   ],
@@ -399,6 +404,7 @@ export interface ServiceItemData {
   includes?: string;
   deliverables: string[];
   suitableFor: string;
+  image?: string;
 }
 
 export interface ServiceGroupData {
@@ -416,6 +422,13 @@ export interface ServicesTranslation {
 
 export interface ServicesData {
   translations: Record<AdminLocale, ServicesTranslation>;
+  // Layout choice per category id — shared across all languages, not duplicated per translation.
+  layouts?: Partial<Record<string, ServiceLayoutId>>;
+}
+
+/** Layout for a category id, always resolved to a known, valid layout. */
+export function getServiceGroupLayout(data: ServicesData | null | undefined, groupId: string): ServiceLayoutId {
+  return resolveServiceLayout(data?.layouts?.[groupId]);
 }
 
 async function initServices(): Promise<ServicesData> {
@@ -440,6 +453,7 @@ async function initServices(): Promise<ServicesData> {
           includes: s.includes,
           deliverables: [...s.deliverables],
           suitableFor: s.suitableFor,
+          image: s.image,
         })),
       })),
     };

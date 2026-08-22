@@ -10,7 +10,7 @@ const en: Dictionary = {
   nav: {
     studio: "Studio",
     services: "Services",
-    portfolio: "Portfolio",
+    portfolio: "Projects",
     team: "Our Team",
     connect: "Connect",
   },
@@ -171,11 +171,11 @@ const en: Dictionary = {
       "GrayArc is an architecture office working at the intersection of precision planning, heritage context and digital workflows.",
     history: {
       title: "History",
-      body: "Founded in 2026, GrayArc represents the next chapter in a journey that began in 1985 with the establishment of Bassam Alkhouri Engineering Office in Qatana, Syria. Over more than four decades, this legacy has been shaped by a wide range of successful projects and strengthened through long-standing collaborations with architects, structural engineers, and mechanical engineers across Syria, Lebanon, Germany, and beyond. In 2026, GrayArc in Berlin was established by the structural engineer Michel Alkhouri and the architect Heba Abboud, continuing and expanding upon this established foundation. The name GrayArc is inspired by Tell Al-Ramad — meaning “Hill of (Gray) Ashes” — an archaeological site in Qatana, Syria, where some of the earliest known traces of human settlement and civilization date back to around 6800 BCE. This heritage reflects the continuity of human creativity, knowledge, and collective progress across millennia. At GrayArc, it is this sense of being part of a greater continuum of human achievement, and the responsibility that comes with it, that informs our identity and approach.",
+      body: "Founded in 2026, GrayArc represents the next chapter in a journey that began in 1985 with the establishment of Bassam Alkhouri Engineering Office in Qatana, Syria. Over more than four decades, this legacy has been shaped by a wide range of successful projects and strengthened through long-standing collaborations with architects, structural engineers, and mechanical engineers across Syria, Lebanon, Germany, and beyond. In 2026, GrayArc in Berlin was established by the structural engineer Michel Alkhouri and the architect Heba Abboud, continuing and expanding upon this established foundation.\n\nThe name GrayArc is inspired by Tell Al-Ramad — meaning “Hill of (Gray) Ashes” — an archaeological site in Qatana, Syria, where some of the earliest known traces of human settlement and civilization date back to around 6800 BCE. This heritage reflects the continuity of human creativity, knowledge, and collective progress across millennia. At GrayArc, it is this sense of being part of a greater continuum of human achievement and the responsibility that comes with it that informs our identity and approach.",
     },
     mission: {
       title: "Mission",
-      body: "We strive to be an active contributor to a sustainable built environment that enhances the way people live, work, and connect with one another and their surroundings. Alongside form and function, we understand every project to be part of a broader human continuum and an environmental and social context. We see our mission as composing harmony between the artistic, the technical, and the social, guided by the realization that enduring architecture emerges where creativity and engineering are thoughtfully grounded in their own context.",
+      body: "We strive to be an active contributor to a sustainable built environment that enhances the way people live, work, and connect with one another and their surroundings. Alongside form and function, we understand every project to be a part of a broader human continuum, and an environmental, and social context. We see our mission is to compose harmony between the artistic, the technical, and the social, guided by the realization that enduring architecture emerges where creativity and engineering are thoughtfully grounded in their own context.",
     },
     vision: {
       title: "Vision",
@@ -186,7 +186,7 @@ const en: Dictionary = {
       body: "Our approach is client-oriented and grounded in the understanding that every project carries its own distinct requirements, ambitions, and constraints. We carefully listen to and translate our clients’ needs into coherent architectural and engineering solutions.",
       steps: [
         { title: "Integrated Design & Engineering", description: "We approach each project as a unified design and engineering process, where concept development and technical realization progress in parallel rather than in sequence. This integrated methodology enables us to transform ideas into buildable, efficient, and enduring environments without compromising architectural quality." },
-        { title: "Digital Workflows & BIM", description: "Using advanced BIM methodologies and digital tools, we combine creative design with coordinated project management. This strengthens coordination among the various disciplines and professionals involved, ensuring transparency, reducing risk, and minimizing unforeseen challenges during execution." },
+        { title: "Digital Workflows & BIM", description: "Using advanced BIM methodologies and digital tools, we combine creative design with coordinated project management. This strengthens coordination among the various disciplines and professionals involved in the project, ensuring transparency, reducing risk, and minimizing unforeseen challenges during execution." },
         { title: "Collaboration", description: "Collaboration is central to our process. We view teamwork as a key driver of design quality, where ideas are continuously refined through dialogue between clients, consultants, and stakeholders. This close coordination aligns vision, expertise, and execution from the earliest stages through to completion." },
         { title: "Sustainability & Feasibility", description: "We are committed to delivering well-resolved and efficient outcomes with a strong focus on minimizing environmental impact and promoting responsible use of resources. Through careful feasibility studies and economic evaluation, we balance quality, cost efficiency, and sustainability." },
       ],

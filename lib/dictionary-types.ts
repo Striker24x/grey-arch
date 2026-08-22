@@ -1,3 +1,5 @@
+import type { ServiceLayoutId } from "./service-layouts";
+
 export type TitleBody = {
   title: string;
   body: string;
@@ -20,6 +22,7 @@ export type ServiceItem = {
   includes?: string;
   deliverables: string[];
   suitableFor: string;
+  image?: string;
 };
 
 export type ServiceGroup = {
@@ -27,6 +30,7 @@ export type ServiceGroup = {
   title: string;
   intro: string;
   services: ServiceItem[];
+  layout?: ServiceLayoutId;
 };
 
 export type Project = {
@@ -52,6 +56,10 @@ export type Project = {
   visualization: string;
   galleryImages: string[];
   font?: string;
+  /** Free-form rich text document — the main narrative shown on the project page. */
+  body?: string;
+  /** Layout style for arranging the parsed text/image blocks of `body`. */
+  layout?: ServiceLayoutId;
 };
 
 export type GalleryItem = {

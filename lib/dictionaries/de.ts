@@ -10,7 +10,7 @@ const de: Dictionary = {
   nav: {
     studio: "Studio",
     services: "Leistungen",
-    portfolio: "Portfolio",
+    portfolio: "Projekte",
     team: "Unser Team",
     connect: "Kontakt",
   },

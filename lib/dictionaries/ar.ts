@@ -10,7 +10,7 @@ const ar: Dictionary = {
   nav: {
     studio: "الاستوديو",
     services: "الخدمات",
-    portfolio: "الأعمال",
+    portfolio: "المشاريع",
     team: "فريقنا",
     connect: "تواصل معنا",
   },

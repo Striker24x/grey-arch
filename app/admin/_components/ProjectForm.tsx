@@ -3,6 +3,9 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import type { ProjectRecord, ProjectTranslation, AdminLocale, CategoriesData } from "@/lib/data-manager";
+import { SERVICE_LAYOUT_LIST, resolveServiceLayout, type ServiceLayoutId } from "@/lib/service-layouts";
+import LayoutWireframe from "@/components/service-layouts/Wireframe";
+import RichTextEditor from "./RichTextEditor";
 
 const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
@@ -18,22 +21,13 @@ const FALLBACK_CATEGORIES = [
 
 const TEXT_FIELDS: { key: keyof ProjectTranslation; label: string; multiline?: boolean }[] = [
   { key: "name", label: "Name" },
-  { key: "location", label: "Location" },
-  { key: "description", label: "Description", multiline: true },
-  { key: "summary", label: "Summary", multiline: true },
-  { key: "challenge", label: "Challenge", multiline: true },
-  { key: "approach", label: "Approach", multiline: true },
-  { key: "process", label: "Process", multiline: true },
-  { key: "drawings", label: "Drawings", multiline: true },
-  { key: "materials", label: "Materials", multiline: true },
-  { key: "visualization", label: "Visualization", multiline: true },
 ];
 
 const emptyTranslation = (): ProjectTranslation => ({
   name: "", location: "", status: "Concept", servicesProvided: [],
   description: "", client: "", buildingType: "", area: "", scope: "",
   summary: "", challenge: "", approach: "", process: "",
-  drawings: "", materials: "", visualization: "",
+  drawings: "", materials: "", visualization: "", body: "",
 });
 
 const FONT_OPTIONS = [
@@ -78,7 +72,6 @@ export default function ProjectForm({
   const [uploading, setUploading] = useState(false);
   const [fontLoaded, setFontLoaded] = useState(false);
   const imageInputRef = useRef<HTMLInputElement>(null);
-  const galleryInputRef = useRef<HTMLInputElement>(null);
   const [categories, setCategories] = useState<{ id: string; label: string }[]>([]);
 
   useEffect(() => {
@@ -144,6 +137,10 @@ export default function ProjectForm({
     return url as string;
   }
 
+  async function uploadBodyImage(file: File): Promise<string> {
+    return uploadFile(file, "images/grey-arch/portfolio-body");
+  }
+
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -167,23 +164,6 @@ export default function ProjectForm({
       setError("Image upload failed");
     }
     setUploading(false);
-  }
-
-  async function handleGalleryUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    const files = Array.from(e.target.files ?? []);
-    if (!files.length) return;
-    setUploading(true);
-    try {
-      const urls = await Promise.all(files.map((f) => uploadFile(f, "images/grey-arch/gallery")));
-      setData((d) => ({ ...d, galleryImages: [...d.galleryImages, ...urls] }));
-    } catch {
-      setError("Gallery upload failed");
-    }
-    setUploading(false);
-  }
-
-  function removeGalleryImage(url: string) {
-    setData((d) => ({ ...d, galleryImages: d.galleryImages.filter((i) => i !== url) }));
   }
 
   async function handleSave() {
@@ -315,6 +295,43 @@ export default function ProjectForm({
           </Field>
         </div>
 
+        <div className="mt-4">
+          <Field label="Layout Style">
+            <p className="mb-3 -mt-1 text-xs text-stone-400">
+              Controls how the images and text in the project page below are arranged.
+            </p>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              {SERVICE_LAYOUT_LIST.map((option) => {
+                const selected = option.id === resolveServiceLayout(data.layout);
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setShared("layout", option.id as ServiceLayoutId)}
+                    aria-pressed={selected}
+                    className={`group relative rounded-sm border p-2 text-left transition-colors ${
+                      selected
+                        ? "border-graphite-900 bg-paper-100 dark:border-paper-100"
+                        : "border-stone-200 hover:border-stone-400 dark:border-line-300"
+                    }`}
+                  >
+                    <LayoutWireframe id={option.id} className="w-full rounded-xs" />
+                    <div className="mt-2 flex items-center gap-1.5">
+                      <span
+                        className={`h-3 w-3 shrink-0 rounded-full border ${
+                          selected ? "border-graphite-900 bg-graphite-900 dark:border-paper-100 dark:bg-paper-100" : "border-stone-300"
+                        }`}
+                      />
+                      <span className="text-xs font-medium text-graphite-900">{option.label}</span>
+                    </div>
+                    <p className="mt-1 text-[11px] leading-snug text-stone-400">{option.description}</p>
+                  </button>
+                );
+              })}
+            </div>
+          </Field>
+        </div>
+
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <Field label="Cover image">
             <div className="flex items-center gap-3">
@@ -344,42 +361,6 @@ export default function ProjectForm({
               // eslint-disable-next-line @next/next/no-img-element
               <img src={data.image} alt="" className="mt-2 h-24 w-full rounded-sm object-cover" />
             )}
-          </Field>
-        </div>
-
-        <div className="mt-4">
-          <Field label="Gallery images">
-            <div className="flex flex-wrap gap-2">
-              {data.galleryImages.map((url) => (
-                <div key={url} className="relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={url} alt="" className="h-20 w-20 rounded-sm object-cover" />
-                  <button
-                    type="button"
-                    onClick={() => removeGalleryImage(url)}
-                    className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white"
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-              <button
-                type="button"
-                onClick={() => galleryInputRef.current?.click()}
-                disabled={uploading}
-                className="flex h-20 w-20 items-center justify-center rounded-sm border-2 border-dashed border-stone-300 text-2xl text-stone-400 hover:border-graphite-900 hover:text-graphite-900"
-              >
-                +
-              </button>
-              <input
-                ref={galleryInputRef}
-                type="file"
-                accept="image/*"
-                multiple
-                className="hidden"
-                onChange={handleGalleryUpload}
-              />
-            </div>
           </Field>
         </div>
       </div>
@@ -425,6 +406,22 @@ export default function ProjectForm({
                 )}
               </Field>
             ))}
+          </div>
+        </div>
+
+        {/* Free-form narrative — one blank page, no prescribed structure */}
+        <div className="border-t border-stone-200 bg-stone-100 p-6 dark:bg-paper-300 sm:p-10">
+          <div
+            className="mx-auto max-w-[760px] bg-white px-10 py-14 shadow-soft dark:bg-paper-200 sm:px-16"
+            dir={lang === "ar" ? "rtl" : "ltr"}
+          >
+            <RichTextEditor
+              value={t.body ?? ""}
+              onChange={(html) => setTranslation("body", html)}
+              dir={lang === "ar" ? "rtl" : "ltr"}
+              variant="page"
+              onUploadImage={uploadBodyImage}
+            />
           </div>
         </div>
       </div>

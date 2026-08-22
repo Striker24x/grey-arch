@@ -64,7 +64,7 @@ export default async function StudioPage({
       </section>
 
       <Section tone="alt" id="about">
-        <div className="grid gap-12 lg:grid-cols-3">
+        <div className="flex max-w-2xl flex-col gap-12 text-left">
           <TextBlock title={studio.history.title} body={studio.history.body} />
           <TextBlock title={studio.mission.title} body={studio.mission.body} />
           <TextBlock title={studio.vision.title} body={studio.vision.body} />
@@ -73,14 +73,10 @@ export default async function StudioPage({
 
       <Section id="approach">
         <SectionHeading title={studio.approach.title} intro={studio.approach.body} />
-        <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 max-w-2xl space-y-4 text-left">
           {studio.approach.steps.map((step, index) => (
-            <AnimatedReveal key={step.title} delay={index * 70} className="border-t border-line-300 pt-5">
-              <span className="font-heading text-sm text-bronze-600">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-2 font-heading text-lg text-ink">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-stone-600">{step.description}</p>
+            <AnimatedReveal key={step.title} delay={index * 70}>
+              <p className="text-sm leading-relaxed text-stone-600">{step.description}</p>
             </AnimatedReveal>
           ))}
         </div>
@@ -103,10 +99,17 @@ export default async function StudioPage({
 }
 
 function TextBlock({ title, body }: { title: string; body: string }) {
+  const paragraphs = body.split("\n\n");
   return (
     <AnimatedReveal>
       <h2 className="font-heading text-xl text-ink">{title}</h2>
-      <p className="mt-3 text-sm leading-relaxed text-stone-600">{body}</p>
+      <div className="mt-3 space-y-3">
+        {paragraphs.map((paragraph, index) => (
+          <p key={index} className="text-sm leading-relaxed text-stone-600">
+            {paragraph}
+          </p>
+        ))}
+      </div>
     </AnimatedReveal>
   );
 }

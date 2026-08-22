@@ -3,6 +3,7 @@ import { readJsonSync } from "./data-manager";
 import type { Locale } from "./i18n";
 import type { Dictionary } from "./dictionary-types";
 import type { ProjectRecord, GalleryRecord, TeamRecord, CategoriesData, StudioData, ServicesData, ConnectData, OverviewData } from "./data-manager";
+import { resolveServiceLayout } from "./service-layouts";
 
 // Reads admin-edited content from the database (same store the admin panel writes to)
 const readData = readJsonSync;
@@ -55,6 +56,7 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
       image: p.image,
       galleryImages: p.galleryImages,
       ...(p.font ? { font: p.font } : {}),
+      layout: resolveServiceLayout(p.layout),
       ...(p.translations[locale] ?? p.translations.en),
     }));
   }
@@ -112,7 +114,20 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     dict.servicesPage = {
       title: t.title,
       intro: t.intro,
-      groups: t.groups,
+      groups: t.groups.map((g) => ({
+        ...g,
+        layout: resolveServiceLayout(servicesDb.layouts?.[g.id]),
+      })),
+    };
+  } else {
+    // No DB record yet (fresh install) — fall back to the static dictionary's
+    // groups but still resolve a valid layout so the page always renders.
+    dict.servicesPage = {
+      ...dict.servicesPage,
+      groups: dict.servicesPage.groups.map((g) => ({
+        ...g,
+        layout: resolveServiceLayout(g.layout),
+      })),
     };
   }
 
