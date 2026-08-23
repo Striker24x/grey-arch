@@ -1,6 +1,6 @@
-import type { Dictionary } from "../dictionary-types";
+import type { SourceDictionary } from "../dictionary-types";
 
-const de: Dictionary = {
+const de: SourceDictionary = {
   meta: {
     siteName: "GrayArc",
     tagline: "Architektur, Denkmalplanung & Raumgestaltung.",
@@ -12,6 +12,7 @@ const de: Dictionary = {
     services: "Leistungen",
     portfolio: "Projekte",
     team: "Unser Team",
+    careers: "Karriere",
     connect: "Kontakt",
   },
   footer: {
@@ -517,6 +518,31 @@ const de: Dictionary = {
       { initials: "D A", name: "Namensplatzhalter", role: "Digital Arch Spezialist/in", bio: "Erstellt 3D-Modelle, digitalisiert Bestandspläne und bereitet BIM-fähige Unterlagen und Visualisierungen vor.", tags: ["3D-Modellierung", "BIM-Vorbereitung", "Plandigitalisierung"] },
     ],
   },
+  careers: {
+    title: "Karriere",
+    intro: "Werde Teil eines mehrsprachigen Studios für Planung, Denkmalpflege, Statik, Innenarchitektur und digitale Architektur.",
+    jobs: [],
+    emptyState: "Aktuell sind keine Stellen ausgeschrieben — schau bald wieder vorbei.",
+    backToJobs: "Zurück zu allen Stellen",
+    detail: {
+      applyTitle: "Auf diese Stelle bewerben",
+      applyIntro: "Erzähl uns kurz von dir und füge einen Anhang bei — wir melden uns persönlich bei dir.",
+    },
+    form: {
+      name: "Name",
+      email: "E-Mail",
+      phone: "Telefon",
+      message: "Nachricht",
+      messagePlaceholder: "Erzähl uns, warum du gut zu uns passt…",
+      resume: "Anhang",
+      resumeHint: "PDF, DOC oder DOCX, bis zu 10 MB",
+      submit: "Bewerbung senden",
+      submitting: "Wird gesendet…",
+      successTitle: "Vielen Dank für deine Bewerbung.",
+      successBody: "Wir haben sie erhalten und melden uns so schnell wie möglich persönlich bei dir.",
+      errorBody: "Beim Senden deiner Bewerbung ist etwas schiefgelaufen. Bitte versuche es erneut.",
+    },
+  },
   connect: {
     title: "Kontakt",
     intro: "Erzählen Sie uns von Ihrem Grundstück, Gebäude oder Ihrer Idee. GrayArc antwortet persönlich auf jede Anfrage.",
@@ -550,6 +576,8 @@ const de: Dictionary = {
       projectSize: "Ungefähre Projektgröße",
       budgetRange: "Budgetrahmen",
       message: "Nachricht",
+      attachment: "Anhang",
+      attachmentHint: "Lagepläne, Fotos oder Dokumente — PDF, DOC, DOCX, JPG oder PNG, bis zu 10 MB",
       consent: "Ich bin damit einverstanden, dass GrayArc mich bezüglich meiner Anfrage kontaktiert.",
       submit: "Anfrage senden",
     },

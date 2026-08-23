@@ -1,9 +1,15 @@
 import "server-only";
-import { readJsonSync } from "./data-manager";
+import DOMPurify from "isomorphic-dompurify";
+import { readJsonSync, getStudio, getServices } from "./data-manager";
 import type { Locale } from "./i18n";
-import type { Dictionary } from "./dictionary-types";
-import type { ProjectRecord, GalleryRecord, TeamRecord, CategoriesData, StudioData, ServicesData, ConnectData, OverviewData } from "./data-manager";
+import type { Dictionary, SourceDictionary } from "./dictionary-types";
+import type { ProjectRecord, GalleryRecord, TeamRecord, CategoriesData, ConnectData, JobRecord } from "./data-manager";
 import { resolveServiceLayout } from "./service-layouts";
+import { injectHeadingIds, extractHeadingSections } from "./parse-content-blocks";
+
+function sanitizeBody(html: string): string {
+  return DOMPurify.sanitize(html, { ADD_TAGS: ["img"], ADD_ATTR: ["src", "alt"] });
+}
 
 // Reads admin-edited content from the database (same store the admin panel writes to)
 const readData = readJsonSync;
@@ -26,27 +32,42 @@ function applyImageMap<T>(obj: T, map: Record<string, string>): T {
   return obj;
 }
 
-const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
+const dictionaries: Record<Locale, () => Promise<SourceDictionary>> = {
   en: () => import("./dictionaries/en").then((m) => m.default),
   de: () => import("./dictionaries/de").then((m) => m.default),
   ar: () => import("./dictionaries/ar").then((m) => m.default),
 };
 
 export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
-  const [dictResult, projects, gallery, team, categories, studioDb, servicesDb, connectDb, overviewDb, imageMap] =
+  const [dictResult, projects, gallery, team, categories, studioData, servicesData, connectDb, jobs, imageMap] =
     await Promise.all([
       dictionaries[locale](),
       readData<ProjectRecord[]>("projects.json"),
       readData<GalleryRecord[]>("gallery.json"),
       readData<TeamRecord[]>("team.json"),
       readData<CategoriesData>("categories.json"),
-      readData<StudioData>("studio.json"),
-      readData<ServicesData>("services.json"),
+      getStudio(),
+      getServices(),
       readData<ConnectData>("connect.json"),
-      readData<OverviewData>("overview.json"),
+      readData<JobRecord[]>("jobs.json"),
       readData<Record<string, string>>("image-map.json"),
     ]);
-  let dict = dictResult;
+  // studio/servicesPage are overwritten unconditionally right below, from getStudio()/
+  // getServices() (which always return the current rich-text shape — migrating or seeding
+  // on first read) — the cast is safe because nothing reads dict.studio/servicesPage before that.
+  let dict = dictResult as unknown as Dictionary;
+
+  {
+    const t = studioData.translations[locale] ?? studioData.translations.en;
+    const body = injectHeadingIds(sanitizeBody(t.body ?? ""));
+    dict.studio = { title: t.title, intro: t.intro, body, sections: extractHeadingSections(body) };
+  }
+
+  {
+    const t = servicesData.translations[locale] ?? servicesData.translations.en;
+    const body = injectHeadingIds(sanitizeBody(t.body ?? ""));
+    dict.servicesPage = { title: t.title, intro: t.intro, body, sections: extractHeadingSections(body) };
+  }
 
   if (projects) {
     dict.portfolio.projects = projects.map((p) => ({
@@ -76,6 +97,17 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     }));
   }
 
+  if (jobs) {
+    dict.careers.jobs = jobs
+      .filter((j) => j.visible)
+      .map((j) => ({
+        id: j.id,
+        slug: j.slug,
+        ...(j.image ? { image: j.image } : {}),
+        ...(j.translations[locale] ?? j.translations.en),
+      }));
+  }
+
   // Build portfolio filters from categories data (multilingual)
   if (categories) {
     const allLabel = dict.portfolio.filters.all;
@@ -88,47 +120,6 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     }
     filters.gallery = galleryLabel;
     dict.portfolio.filters = filters as Dictionary["portfolio"]["filters"];
-  }
-
-  // Inject studio data from DB if available
-  if (studioDb) {
-    const t = studioDb.translations[locale] ?? studioDb.translations.en;
-    dict.studio = {
-      title: t.title,
-      intro: t.intro,
-      history: { title: t.historyTitle, body: t.historyBody },
-      mission: { title: t.missionTitle, body: t.missionBody },
-      vision: { title: t.visionTitle, body: t.visionBody },
-      approach: {
-        title: t.approachTitle,
-        body: t.approachBody,
-        steps: t.approachSteps,
-      },
-      values: { title: t.valuesTitle, items: t.valuesItems },
-    };
-  }
-
-  // Inject services data from DB if available
-  if (servicesDb) {
-    const t = servicesDb.translations[locale] ?? servicesDb.translations.en;
-    dict.servicesPage = {
-      title: t.title,
-      intro: t.intro,
-      groups: t.groups.map((g) => ({
-        ...g,
-        layout: resolveServiceLayout(servicesDb.layouts?.[g.id]),
-      })),
-    };
-  } else {
-    // No DB record yet (fresh install) — fall back to the static dictionary's
-    // groups but still resolve a valid layout so the page always renders.
-    dict.servicesPage = {
-      ...dict.servicesPage,
-      groups: dict.servicesPage.groups.map((g) => ({
-        ...g,
-        layout: resolveServiceLayout(g.layout),
-      })),
-    };
   }
 
   // Inject connect data from DB if available
@@ -156,58 +147,11 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
         projectSize: t.formProjectSize,
         budgetRange: t.formBudgetRange,
         message: t.formMessage,
+        attachment: t.formAttachment ?? dict.connect.form.attachment,
+        attachmentHint: t.formAttachmentHint ?? dict.connect.form.attachmentHint,
         consent: t.formConsent,
         submit: t.formSubmit,
       },
-    };
-  }
-
-  // Inject overview (home) data from DB if available
-  if (overviewDb) {
-    const t = overviewDb.translations[locale] ?? overviewDb.translations.en;
-    dict.home.hero = {
-      ...dict.home.hero,
-      eyebrow: t.heroEyebrow,
-      headline: t.heroHeadline,
-      subheadline: t.heroSubheadline,
-      ctaExplore: t.heroCtaExplore,
-      ctaPortfolio: t.heroCtaPortfolio,
-      ctaStart: t.heroCtaStart,
-    };
-    dict.home.philosophy = {
-      ...dict.home.philosophy,
-      eyebrow: t.philosophyEyebrow,
-      title: t.philosophyTitle,
-      body: t.philosophyBody,
-      points: t.philosophyPoints,
-    };
-    dict.home.process = {
-      ...dict.home.process,
-      eyebrow: t.processEyebrow,
-      title: t.processTitle,
-      intro: t.processIntro,
-      steps: t.processSteps,
-    };
-    dict.home.heritage = {
-      ...dict.home.heritage,
-      eyebrow: t.heritageEyebrow,
-      title: t.heritageTitle,
-      body: t.heritageBody,
-      points: t.heritagePoints,
-      cta: t.heritageCta,
-    };
-    dict.home.digitalArch = {
-      ...dict.home.digitalArch,
-      eyebrow: t.digitalArchEyebrow,
-      title: t.digitalArchTitle,
-      body: t.digitalArchBody,
-      points: t.digitalArchPoints,
-      cta: t.digitalArchCta,
-    };
-    dict.home.contactCta = {
-      title: t.contactCtaTitle,
-      body: t.contactCtaBody,
-      cta: t.contactCtaCta,
     };
   }
 

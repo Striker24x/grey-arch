@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import type { ProjectRecord, ProjectTranslation, AdminLocale, CategoriesData } from "@/lib/data-manager";
+import type { ProjectRecord, ProjectTranslation, AdminLocale } from "@/lib/data-manager";
 import { SERVICE_LAYOUT_LIST, resolveServiceLayout, type ServiceLayoutId } from "@/lib/service-layouts";
 import LayoutWireframe from "@/components/service-layouts/Wireframe";
 import RichTextEditor from "./RichTextEditor";
@@ -11,12 +11,6 @@ const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
   { key: "de", label: "Deutsch" },
   { key: "ar", label: "العربية" },
-];
-
-// Fallback static list used until API responds
-const FALLBACK_CATEGORIES = [
-  "projects", "heritage", "conservation", "residential",
-  "interior", "landscape", "planning", "modeling", "digitalArch",
 ];
 
 const TEXT_FIELDS: { key: keyof ProjectTranslation; label: string; multiline?: boolean }[] = [
@@ -72,7 +66,6 @@ export default function ProjectForm({
   const [uploading, setUploading] = useState(false);
   const [fontLoaded, setFontLoaded] = useState(false);
   const imageInputRef = useRef<HTMLInputElement>(null);
-  const [categories, setCategories] = useState<{ id: string; label: string }[]>([]);
 
   useEffect(() => {
     const font = data.font;
@@ -89,21 +82,6 @@ export default function ProjectForm({
     return () => { document.getElementById(id)?.remove(); };
   }, [data.font]);
 
-  useEffect(() => {
-    fetch("/api/admin/categories")
-      .then((r) => r.json())
-      .then((d) => {
-        const cat = d as CategoriesData;
-        const flat = cat.groups.flatMap((g) =>
-          g.categories.map((c) => ({ id: c.id, label: c.translations.en || c.id }))
-        );
-        setCategories(flat.length ? flat : FALLBACK_CATEGORIES.map((id) => ({ id, label: id })));
-      })
-      .catch(() => {
-        setCategories(FALLBACK_CATEGORIES.map((id) => ({ id, label: id })));
-      });
-  }, []);
-
   function setShared(key: keyof Omit<ProjectRecord, "translations">, value: unknown) {
     setData((d) => ({ ...d, [key]: value }));
   }
@@ -115,15 +93,6 @@ export default function ProjectForm({
         ...d.translations,
         [lang]: { ...d.translations[lang], [key]: value },
       },
-    }));
-  }
-
-  function toggleCategory(cat: string) {
-    setData((d) => ({
-      ...d,
-      categories: d.categories.includes(cat)
-        ? d.categories.filter((c) => c !== cat)
-        : [...d.categories, cat],
     }));
   }
 
@@ -271,27 +240,6 @@ export default function ProjectForm({
             {data.font && !fontLoaded && (
               <p className="mt-1 text-xs text-stone-400">Schriftart wird geladen…</p>
             )}
-          </Field>
-        </div>
-
-        <div className="mt-4">
-          <Field label="Categories">
-            <div className="flex flex-wrap gap-2">
-              {categories.map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => toggleCategory(c.id)}
-                  className={`rounded-sm border px-2.5 py-1 text-xs transition-colors ${
-                    data.categories.includes(c.id)
-                      ? "border-graphite-900 bg-graphite-900 text-white"
-                      : "border-stone-300 text-stone-600 hover:border-graphite-900"
-                  }`}
-                >
-                  {c.label}
-                </button>
-              ))}
-            </div>
           </Field>
         </div>
 

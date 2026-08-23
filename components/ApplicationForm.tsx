@@ -2,32 +2,31 @@
 
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionary-types";
 
-export default function ContactForm({
-  lang,
-  dict,
+export default function ApplicationForm({
+  jobId,
+  form,
 }: {
-  lang: Locale;
-  dict: Dictionary;
+  jobId: string;
+  form: Dictionary["careers"]["form"];
 }) {
-  const { form } = dict.connect;
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
-    setError(false);
+    setError("");
     try {
       const fd = new FormData(event.currentTarget);
-      const res = await fetch("/api/contact", { method: "POST", body: fd });
+      fd.set("jobId", jobId);
+      const res = await fetch("/api/apply", { method: "POST", body: fd });
       if (!res.ok) throw new Error("Failed");
       setSubmitted(true);
     } catch {
-      setError(true);
+      setError(form.errorBody);
     }
     setLoading(false);
   };
@@ -42,20 +41,8 @@ export default function ContactForm({
           transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
           className="py-10 text-center"
         >
-          <p className="font-heading text-2xl text-ink">
-            {lang === "de"
-              ? "Vielen Dank für Ihre Anfrage."
-              : lang === "ar"
-                ? "شكراً لك على تواصلك معنا."
-                : "Thank you for your inquiry."}
-          </p>
-          <p className="mt-3 text-sm text-stone-600">
-            {lang === "de"
-              ? "Wir melden uns in Kürze persönlich bei Ihnen."
-              : lang === "ar"
-                ? "سنتواصل معك شخصياً في أقرب وقت ممكن."
-                : "We will respond to you personally as soon as possible."}
-          </p>
+          <p className="font-heading text-2xl text-ink">{form.successTitle}</p>
+          <p className="mt-3 text-sm text-stone-600">{form.successBody}</p>
         </motion.div>
       ) : (
         <motion.form
@@ -65,15 +52,7 @@ export default function ContactForm({
           transition={{ duration: 0.2 }}
           className="flex flex-col gap-6"
         >
-          {error && (
-            <p className="text-sm text-red-500">
-              {lang === "de"
-                ? "Beim Senden ist etwas schiefgelaufen. Bitte versuche es erneut."
-                : lang === "ar"
-                  ? "حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى."
-                  : "Something went wrong while sending. Please try again."}
-            </p>
-          )}
+          {error && <p className="text-sm text-red-500">{error}</p>}
 
           <div className="grid gap-6 sm:grid-cols-2">
             <Field label={form.name} htmlFor="name">
@@ -89,18 +68,18 @@ export default function ContactForm({
           </Field>
 
           <Field label={form.message} htmlFor="message">
-            <textarea id="message" name="message" rows={5} className={inputClass} />
+            <textarea id="message" name="message" rows={5} placeholder={form.messagePlaceholder} className={inputClass} />
           </Field>
 
-          <Field label={form.attachment} htmlFor="attachment">
+          <Field label={form.resume} htmlFor="resume">
             <input
-              id="attachment"
-              name="attachment"
+              id="resume"
+              name="resume"
               type="file"
-              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+              accept=".pdf,.doc,.docx"
               className="w-full border border-line-300 bg-paper-50 px-4 py-2.5 text-sm text-ink outline-none file:mr-4 file:border-0 file:bg-graphite-900 file:px-3 file:py-1.5 file:text-xs file:text-paper-100"
             />
-            <p className="text-xs text-stone-500">{form.attachmentHint}</p>
+            <p className="text-xs text-stone-500">{form.resumeHint}</p>
           </Field>
 
           <button
@@ -109,17 +88,12 @@ export default function ContactForm({
             className="mt-2 flex w-fit cursor-pointer items-center gap-2 bg-graphite-900 px-7 py-3 text-sm text-paper-100 transition-[background-color,transform,opacity] duration-200 hover:bg-bronze-600 active:scale-[0.97] disabled:opacity-70"
           >
             {loading && (
-              <svg
-                className="h-4 w-4 animate-spin"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
+              <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z" />
               </svg>
             )}
-            {form.submit}
+            {loading ? form.submitting : form.submit}
           </button>
         </motion.form>
       )}

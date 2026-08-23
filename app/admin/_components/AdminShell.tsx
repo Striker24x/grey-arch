@@ -1,23 +1,86 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import ArchMark from "@/components/ArchMark";
 import { AdminLangProvider, useAdminLang, type AdminLang } from "./AdminLangContext";
 import { getAdminT } from "./adminI18n";
+const POLL_MS = 20000;
+
+/** Short two-tone chime via Web Audio — no audio asset needed. */
+function playNotificationSound() {
+  try {
+    const AudioCtx = window.AudioContext ?? (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const ctx = new AudioCtx();
+    const now = ctx.currentTime;
+    [880, 1108.73].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      const start = now + i * 0.14;
+      gain.gain.setValueAtTime(0, start);
+      gain.gain.linearRampToValueAtTime(0.18, start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, start + 0.35);
+      osc.start(start);
+      osc.stop(start + 0.35);
+    });
+  } catch {
+    // Audio isn't critical — ignore if the browser blocks/unsupports it.
+  }
+}
+
+/** Polls an admin list endpoint (job applications, contact inquiries, ...) and returns
+ * the current "new" count, chiming on increase. Each caller gets its own independent poll. */
+function useNewItemCount(endpoint: string): number {
+  const [newCount, setNewCount] = useState(0);
+  const lastCountRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function poll() {
+      try {
+        const res = await fetch(endpoint);
+        if (!res.ok) return;
+        const items = (await res.json()) as { status: "new" | "reviewed" }[];
+        const count = items.filter((item) => item.status === "new").length;
+        if (cancelled) return;
+        if (lastCountRef.current !== null && count > lastCountRef.current) {
+          playNotificationSound();
+        }
+        lastCountRef.current = count;
+        setNewCount(count);
+      } catch {
+        // Network hiccup — try again on the next poll.
+      }
+    }
+
+    poll();
+    const interval = setInterval(poll, POLL_MS);
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, [endpoint]);
+
+  return newCount;
+}
 
 const NAV_KEYS = [
   { href: "/admin",            icon: "⊞", key: "dashboard"  },
-  { href: "/admin/projects",   icon: "◫", key: "projects"   },
-  { href: "/admin/categories", icon: "⊟", key: "categories" },
-  { href: "/admin/gallery",    icon: "▦", key: "gallery"    },
-  { href: "/admin/team",       icon: "◑", key: "team"       },
-  { href: "/admin/landing",    icon: "▶", key: "landing"    },
   { href: "/admin/studio",     icon: "◈", key: "studio"     },
   { href: "/admin/services",   icon: "◧", key: "services"   },
+  { href: "/admin/projects",   icon: "◫", key: "projects"   },
+  { href: "/admin/team",       icon: "◑", key: "team"       },
+  { href: "/admin/jobs",       icon: "◪", key: "jobs"       },
+  { href: "/admin/applications", icon: "✉", key: "applications" },
+  { href: "/admin/inquiries",  icon: "✎", key: "inquiries"   },
   { href: "/admin/connect",    icon: "◎", key: "connect"    },
-  { href: "/admin/overview",   icon: "◉", key: "overview"   },
+  { href: "/admin/landing",    icon: "▶", key: "landing"    },
   { href: "/admin/navigation", icon: "☰", key: "navigation" },
   { href: "/admin/appearance", icon: "Aa", key: "typography"},
 ] as const;
@@ -60,6 +123,8 @@ function Shell({ children }: { children: ReactNode }) {
   const T   = getAdminT(lang);
   const dir = lang === "ar" ? "rtl" : "ltr";
   const isDark = theme === "dark";
+  const newApplicationsCount = useNewItemCount("/api/admin/applications");
+  const newInquiriesCount = useNewItemCount("/api/admin/inquiries");
 
   if (pathname === "/admin/login") return <>{children}</>;
 
@@ -91,6 +156,9 @@ function Shell({ children }: { children: ReactNode }) {
                 ? pathname === "/admin"
                 : pathname.startsWith(item.href);
             const label = T.nav[item.key as keyof typeof T.nav];
+            const badgeCount =
+              item.key === "applications" ? newApplicationsCount :
+              item.key === "inquiries" ? newInquiriesCount : 0;
             return (
               <Link
                 key={item.href}
@@ -102,7 +170,12 @@ function Shell({ children }: { children: ReactNode }) {
                 }`}
               >
                 <span className="w-4 text-center text-base leading-none">{item.icon}</span>
-                {label}
+                <span className="flex-1">{label}</span>
+                {badgeCount > 0 && (
+                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-semibold text-white">
+                    {badgeCount > 9 ? "9+" : badgeCount}
+                  </span>
+                )}
               </Link>
             );
           })}

@@ -1,6 +1,6 @@
-import type { Dictionary } from "../dictionary-types";
+import type { SourceDictionary } from "../dictionary-types";
 
-const ar: Dictionary = {
+const ar: SourceDictionary = {
   meta: {
     siteName: "GrayArc",
     tagline: "العمارة، تخطيط التراث وتصميم المساحات.",
@@ -12,6 +12,7 @@ const ar: Dictionary = {
     services: "الخدمات",
     portfolio: "المشاريع",
     team: "فريقنا",
+    careers: "وظائف",
     connect: "تواصل معنا",
   },
   footer: {
@@ -498,6 +499,31 @@ const ar: Dictionary = {
       { initials: "خ ر", name: "اسم مؤقت", role: "مختص Digital Arch", bio: "يبني نماذج ثلاثية الأبعاد، يُرقمن المخططات القائمة، ويُعدّ وثائق وتصورات جاهزة لـ BIM.", tags: ["النمذجة ثلاثية الأبعاد", "إعداد BIM", "رقمنة المخططات"] },
     ],
   },
+  careers: {
+    title: "وظائف",
+    intro: "انضم إلى استوديو متعدد اللغات يعمل في التخطيط والحفاظ على التراث والإنشاء والتصميم الداخلي والعمارة الرقمية.",
+    jobs: [],
+    emptyState: "لا توجد وظائف شاغرة حالياً — تفقّد الصفحة مرة أخرى قريباً.",
+    backToJobs: "العودة إلى جميع الوظائف",
+    detail: {
+      applyTitle: "التقديم لهذه الوظيفة",
+      applyIntro: "أخبرنا قليلاً عن نفسك وأرفق ملفاً — سنتواصل معك شخصياً.",
+    },
+    form: {
+      name: "الاسم",
+      email: "البريد الإلكتروني",
+      phone: "الهاتف",
+      message: "الرسالة",
+      messagePlaceholder: "أخبرنا لماذا ستكون مناسباً لهذه الوظيفة…",
+      resume: "المرفق",
+      resumeHint: "PDF أو DOC أو DOCX، حتى 10 ميجابايت",
+      submit: "إرسال الطلب",
+      submitting: "جارٍ الإرسال…",
+      successTitle: "شكراً لك على تقديم طلبك.",
+      successBody: "لقد استلمنا طلبك وسنتواصل معك شخصياً في أقرب وقت ممكن.",
+      errorBody: "حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى.",
+    },
+  },
   connect: {
     title: "تواصل معنا",
     intro: "أطلعنا على موقعك أو مبناك أو فكرتك. يردّ GrayArc شخصياً على كل استفسار.",
@@ -531,6 +557,8 @@ const ar: Dictionary = {
       projectSize: "المساحة التقريبية للمشروع",
       budgetRange: "النطاق التقريبي للميزانية",
       message: "الرسالة",
+      attachment: "المرفق",
+      attachmentHint: "مخططات الموقع أو صور أو مستندات — PDF أو DOC أو DOCX أو JPG أو PNG، حتى 10 ميجابايت",
       consent: "أوافق على أن يتواصل معي GrayArc بخصوص استفساري.",
       submit: "إرسال الطلب",
     },

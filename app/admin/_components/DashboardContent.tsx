@@ -12,18 +12,16 @@ interface Project {
 
 interface Props {
   projects: Project[];
-  galleryCount: number;
   teamCount: number;
 }
 
-export default function DashboardContent({ projects, galleryCount, teamCount }: Props) {
+export default function DashboardContent({ projects, teamCount }: Props) {
   const { lang } = useAdminLang();
   const T   = getAdminT(lang).dashboard;
   const dir = lang === "ar" ? "rtl" : "ltr";
 
   const stats = [
     { label: T.projects, count: projects.length, href: "/admin/projects",   action: "/admin/projects/new", actionLabel: T.addProject   },
-    { label: T.gallery,  count: galleryCount,    href: "/admin/gallery",    action: "/admin/gallery",      actionLabel: T.manageGallery},
     { label: T.team,     count: teamCount,       href: "/admin/team",       action: "/admin/team",         actionLabel: T.manageTeam   },
   ];
 
@@ -34,7 +32,7 @@ export default function DashboardContent({ projects, galleryCount, teamCount }: 
         <p className="mt-1 text-sm text-stone-500">{T.subtitle}</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {stats.map((s) => (
           <div key={s.label} className="rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
             <p className="text-xs font-medium uppercase tracking-wide text-stone-500">{s.label}</p>

@@ -1,4 +1,5 @@
 import type { ServiceLayoutId } from "./service-layouts";
+import type { HeadingSection } from "./parse-content-blocks";
 
 export type TitleBody = {
   title: string;
@@ -82,6 +83,17 @@ export type LegalSection = {
   body: string;
 };
 
+export type JobPosting = {
+  id: string;
+  slug: string;
+  image?: string;
+  title: string;
+  location: string;
+  employmentType: string;
+  intro: string;
+  description: string;
+};
+
 export interface Dictionary {
   meta: {
     siteName: string;
@@ -93,6 +105,7 @@ export interface Dictionary {
     services: string;
     portfolio: string;
     team: string;
+    careers: string;
     connect: string;
   };
   footer: {
@@ -187,19 +200,14 @@ export interface Dictionary {
   studio: {
     title: string;
     intro: string;
-    history: TitleBody;
-    mission: TitleBody;
-    vision: TitleBody;
-    approach: TitleBody & { steps: ProcessStep[] };
-    values: {
-      title: string;
-      items: TitleDescription[];
-    };
+    body: string;
+    sections: HeadingSection[];
   };
   servicesPage: {
     title: string;
     intro: string;
-    groups: ServiceGroup[];
+    body: string;
+    sections: HeadingSection[];
   };
   portfolio: {
     title: string;
@@ -254,6 +262,31 @@ export interface Dictionary {
     intro: string;
     members: TeamMember[];
   };
+  careers: {
+    title: string;
+    intro: string;
+    jobs: JobPosting[];
+    emptyState: string;
+    backToJobs: string;
+    detail: {
+      applyTitle: string;
+      applyIntro: string;
+    };
+    form: {
+      name: string;
+      email: string;
+      phone: string;
+      message: string;
+      messagePlaceholder: string;
+      resume: string;
+      resumeHint: string;
+      submit: string;
+      submitting: string;
+      successTitle: string;
+      successBody: string;
+      errorBody: string;
+    };
+  };
   connect: {
     title: string;
     intro: string;
@@ -276,6 +309,8 @@ export interface Dictionary {
       projectSize: string;
       budgetRange: string;
       message: string;
+      attachment: string;
+      attachmentHint: string;
       consent: string;
       submit: string;
     };
@@ -286,3 +321,29 @@ export interface Dictionary {
     agb: { title: string; updated: string; sections: LegalSection[] };
   };
 }
+
+/**
+ * Shape of the static `lib/dictionaries/{en,de,ar}.ts` seed files. Studio/Services keep
+ * their original structured fields here — `getDictionary()` converts them into the rich-text
+ * `body` + `sections` shape of `Dictionary` (via data-manager.ts's Studio/Services migration),
+ * so the seed files never need to be rewritten as HTML by hand.
+ */
+export type SourceDictionary = Omit<Dictionary, "studio" | "servicesPage"> & {
+  studio: {
+    title: string;
+    intro: string;
+    history: TitleBody;
+    mission: TitleBody;
+    vision: TitleBody;
+    approach: TitleBody & { steps: ProcessStep[] };
+    values: {
+      title: string;
+      items: TitleDescription[];
+    };
+  };
+  servicesPage: {
+    title: string;
+    intro: string;
+    groups: ServiceGroup[];
+  };
+};

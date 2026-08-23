@@ -1,6 +1,531 @@
 {
   "nodes": [
     {
+      "id": "file::page",
+      "label": "page.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx:1"
+    },
+    {
+      "id": "page::handleselect",
+      "label": "handleSelect",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\appearance\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\appearance\\page.tsx:131"
+    },
+    {
+      "id": "page::markreviewed",
+      "label": "markReviewed",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\applications\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\applications\\page.tsx:25"
+    },
+    {
+      "id": "page::handledelete",
+      "label": "handleDelete",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:130"
+    },
+    {
+      "id": "page::setfield",
+      "label": "setField",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:56"
+    },
+    {
+      "id": "page::setoptions",
+      "label": "setOptions",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx:40"
+    },
+    {
+      "id": "page::handlesave",
+      "label": "handleSave",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:105"
+    },
+    {
+      "id": "page::empty",
+      "label": "empty",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:13"
+    },
+    {
+      "id": "page::opennew",
+      "label": "openNew",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:42"
+    },
+    {
+      "id": "page::openedit",
+      "label": "openEdit",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:49"
+    },
+    {
+      "id": "page::setslug",
+      "label": "setSlug",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:58"
+    },
+    {
+      "id": "page::setvisible",
+      "label": "setVisible",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:62"
+    },
+    {
+      "id": "page::handleimageupload",
+      "label": "handleImageUpload",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:60"
+    },
+    {
+      "id": "page::settransfield",
+      "label": "setTransField",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:80"
+    },
+    {
+      "id": "page::save",
+      "label": "save",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:40"
+    },
+    {
+      "id": "page::uploadvideo",
+      "label": "uploadVideo",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx:57"
+    },
+    {
+      "id": "page::removevideo",
+      "label": "removeVideo",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx:75"
+    },
+    {
+      "id": "file::layout",
+      "label": "layout.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:1"
+    },
+    {
+      "id": "page::handlesubmit",
+      "label": "handleSubmit",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\login\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\login\\page.tsx:13"
+    },
+    {
+      "id": "page::emptylabels",
+      "label": "emptyLabels",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:14"
+    },
+    {
+      "id": "page::startedit",
+      "label": "startEdit",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:57"
+    },
+    {
+      "id": "page::canceledit",
+      "label": "cancelEdit",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:63"
+    },
+    {
+      "id": "page::saveedit",
+      "label": "saveEdit",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:65"
+    },
+    {
+      "id": "page::togglevisibility",
+      "label": "toggleVisibility",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:73"
+    },
+    {
+      "id": "page::deleteitem",
+      "label": "deleteItem",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:77"
+    },
+    {
+      "id": "page::additem",
+      "label": "addItem",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:82"
+    },
+    {
+      "id": "page::admindashboard",
+      "label": "AdminDashboard",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\page.tsx:4"
+    },
+    {
+      "id": "page::newprojectpage",
+      "label": "NewProjectPage",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\new\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\new\\page.tsx:3"
+    },
+    {
+      "id": "page::editprojectpage",
+      "label": "EditProjectPage",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\[slug]\\page.tsx:7"
+    },
+    {
+      "id": "page::settoplevel",
+      "label": "setTopLevel",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:45"
+    },
+    {
+      "id": "page::setgroup",
+      "label": "setGroup",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:56"
+    },
+    {
+      "id": "page::setgrouplayout",
+      "label": "setGroupLayout",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:70"
+    },
+    {
+      "id": "page::setservice",
+      "label": "setService",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:78"
+    },
+    {
+      "id": "page::setdeliverables",
+      "label": "setDeliverables",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:93"
+    },
+    {
+      "id": "page::handleserviceimageupload",
+      "label": "handleServiceImageUpload",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:98"
+    },
+    {
+      "id": "page::setstep",
+      "label": "setStep",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx:113"
+    },
+    {
+      "id": "page::setvalueitem",
+      "label": "setValueItem",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx:119"
+    },
+    {
+      "id": "page::async",
+      "label": "async",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx:210"
+    },
+    {
+      "id": "page::settags",
+      "label": "setTags",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:92"
+    },
+    {
+      "id": "file::admini18n",
+      "label": "adminI18n.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\adminI18n.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\adminI18n.ts:1"
+    },
+    {
+      "id": "admini18n::getadmint",
+      "label": "getAdminT",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\adminI18n.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\adminI18n.ts:282"
+    },
+    {
+      "id": "file::adminlangcontext",
+      "label": "AdminLangContext.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx:1"
+    },
+    {
+      "id": "adminlangcontext::adminlangprovider",
+      "label": "AdminLangProvider",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx:20"
+    },
+    {
+      "id": "AdminLangContext::useadminlang",
+      "label": "useAdminLang",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx:49"
+    },
+    {
+      "id": "file::adminshell",
+      "label": "AdminShell.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:1"
+    },
+    {
+      "id": "adminshell::playnotificationsound",
+      "label": "playNotificationSound",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:14"
+    },
+    {
+      "id": "adminshell::usenewapplicationscount",
+      "label": "useNewApplicationsCount",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:39"
+    },
+    {
+      "id": "adminshell::sunicon",
+      "label": "SunIcon",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:94"
+    },
+    {
+      "id": "adminshell::moonicon",
+      "label": "MoonIcon",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:110"
+    },
+    {
+      "id": "file::dashboardcontent",
+      "label": "DashboardContent.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\DashboardContent.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\DashboardContent.tsx:1"
+    },
+    {
+      "id": "file::migratebutton",
+      "label": "MigrateButton.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\MigrateButton.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\MigrateButton.tsx:1"
+    },
+    {
+      "id": "migratebutton::handlemigrate",
+      "label": "handleMigrate",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\MigrateButton.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\MigrateButton.tsx:18"
+    },
+    {
+      "id": "file::projectform",
+      "label": "ProjectForm.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:1"
+    },
+    {
+      "id": "ProjectForm::emptytranslation",
+      "label": "emptyTranslation",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:26"
+    },
+    {
+      "id": "projectform::emptyproject",
+      "label": "emptyProject",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:51"
+    },
+    {
+      "id": "projectform::setshared",
+      "label": "setShared",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:107"
+    },
+    {
+      "id": "projectform::settranslation",
+      "label": "setTranslation",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:111"
+    },
+    {
+      "id": "projectform::togglecategory",
+      "label": "toggleCategory",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:121"
+    },
+    {
+      "id": "projectform::uploadfile",
+      "label": "uploadFile",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:130"
+    },
+    {
+      "id": "projectform::uploadbodyimage",
+      "label": "uploadBodyImage",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:140"
+    },
+    {
+      "id": "projectform::handleimageupload",
+      "label": "handleImageUpload",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:144"
+    },
+    {
+      "id": "projectform::handlesave",
+      "label": "handleSave",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:169"
+    },
+    {
+      "id": "projectform::handledelete",
+      "label": "handleDelete",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:193"
+    },
+    {
+      "id": "file::richtexteditor",
+      "label": "RichTextEditor.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\RichTextEditor.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\RichTextEditor.tsx:1"
+    },
+    {
+      "id": "richtexteditor::handleimagefile",
+      "label": "handleImageFile",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\RichTextEditor.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\RichTextEditor.tsx:65"
+    },
+    {
+      "id": "file::route",
+      "label": "route.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\apply\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\apply\\route.ts:1"
+    },
+    {
+      "id": "route::get",
+      "label": "GET",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\route.ts:5"
+    },
+    {
+      "id": "route::parsecloudinaryurl",
+      "label": "parseCloudinaryUrl",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\resume\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\resume\\route.ts:5"
+    },
+    {
+      "id": "route::patch",
+      "label": "PATCH",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\route.ts:4"
+    },
+    {
+      "id": "route::delete",
+      "label": "DELETE",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\[id]\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\[id]\\route.ts:29"
+    },
+    {
+      "id": "route::post",
+      "label": "POST",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\apply\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\apply\\route.ts:13"
+    },
+    {
+      "id": "route::put",
+      "label": "PUT",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\[id]\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\[id]\\route.ts:9"
+    },
+    {
+      "id": "route::tryrevalidate",
+      "label": "tryRevalidate",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\[id]\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\team\\[id]\\route.ts:5"
+    },
+    {
+      "id": "route::extof",
+      "label": "extOf",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\apply\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\apply\\route.ts:9"
+    },
+    {
+      "id": "route::tocloudinaryfolder",
+      "label": "toCloudinaryFolder",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\upload\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\upload\\route.ts:12"
+    },
+    {
       "id": "file::robots",
       "label": "robots.ts",
       "fileType": "code",
@@ -27,13 +552,6 @@
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\sitemap.ts",
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\sitemap.ts:21"
-    },
-    {
-      "id": "file::page",
-      "label": "page.tsx",
-      "fileType": "code",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx:1"
     },
     {
       "id": "page::generatemetadata",
@@ -78,32 +596,39 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\impressum\\page.tsx:29"
     },
     {
-      "id": "file::layout",
-      "label": "layout.tsx",
+      "id": "page::generatestaticparams",
+      "label": "generateStaticParams",
       "fileType": "code",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:1"
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:15"
+    },
+    {
+      "id": "page::getjob",
+      "label": "getJob",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\karriere\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\karriere\\[slug]\\page.tsx:20"
     },
     {
       "id": "layout::generatestaticparams",
       "label": "generateStaticParams",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:35"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:39"
     },
     {
       "id": "layout::generatemetadata",
       "label": "generateMetadata",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:39"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:43"
     },
     {
-      "id": "layout::rootlayout",
-      "label": "RootLayout",
+      "id": "page::homepage",
+      "label": "HomePage",
       "fileType": "code",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:81"
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\page.tsx:6"
     },
     {
       "id": "page::portfoliopage",
@@ -113,18 +638,18 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\page.tsx:24"
     },
     {
-      "id": "page::generatestaticparams",
-      "label": "generateStaticParams",
-      "fileType": "code",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:13"
-    },
-    {
       "id": "page::getproject",
       "label": "getProject",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:19"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:22"
+    },
+    {
+      "id": "page::escapehtml",
+      "label": "escapeHtml",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:71"
     },
     {
       "id": "page::servicespage",
@@ -134,11 +659,11 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\services\\page.tsx:24"
     },
     {
-      "id": "page::teampage",
-      "label": "TeamPage",
+      "id": "page::studiopage",
+      "label": "StudioPage",
       "fileType": "code",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx:24"
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\studio\\page.tsx:28"
     },
     {
       "id": "file::animatedprojectcard",
@@ -183,6 +708,20 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\AnimatedServiceCard.tsx:6"
     },
     {
+      "id": "file::applicationform",
+      "label": "ApplicationForm.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ApplicationForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ApplicationForm.tsx:1"
+    },
+    {
+      "id": "ApplicationForm::handlesubmit",
+      "label": "handleSubmit",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ApplicationForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ApplicationForm.tsx:18"
+    },
+    {
       "id": "file::archmark",
       "label": "ArchMark.tsx",
       "fileType": "code",
@@ -194,7 +733,21 @@
       "label": "ArchMark",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ArchMark.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ArchMark.tsx:1"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ArchMark.tsx:3"
+    },
+    {
+      "id": "file::conditionalfooter",
+      "label": "ConditionalFooter.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ConditionalFooter.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ConditionalFooter.tsx:1"
+    },
+    {
+      "id": "conditionalfooter::conditionalfooter",
+      "label": "ConditionalFooter",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ConditionalFooter.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ConditionalFooter.tsx:5"
     },
     {
       "id": "file::contactform",
@@ -208,7 +761,7 @@
       "label": "handleSubmit",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ContactForm.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ContactForm.tsx:23"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ContactForm.tsx:22"
     },
     {
       "id": "file::ctasection",
@@ -239,6 +792,27 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FilterTabs.tsx:1"
     },
     {
+      "id": "file::fontprovider",
+      "label": "FontProvider.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx:1"
+    },
+    {
+      "id": "fontprovider::applyfont",
+      "label": "applyFont",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx:5"
+    },
+    {
+      "id": "fontprovider::fontprovider",
+      "label": "FontProvider",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx:22"
+    },
+    {
       "id": "file::footer",
       "label": "Footer.tsx",
       "fileType": "code",
@@ -260,11 +834,25 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:1"
     },
     {
+      "id": "header::getnavsections",
+      "label": "getNavSections",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:20"
+    },
+    {
       "id": "Header::isactive",
       "label": "isActive",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:30"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:64"
+    },
+    {
+      "id": "Header::onscroll",
+      "label": "onScroll",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:98"
     },
     {
       "id": "file::hero",
@@ -278,7 +866,21 @@
       "label": "Hero",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Hero.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Hero.tsx:7"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Hero.tsx:8"
+    },
+    {
+      "id": "file::heroparallaximage",
+      "label": "HeroParallaxImage.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\HeroParallaxImage.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\HeroParallaxImage.tsx:1"
+    },
+    {
+      "id": "heroparallaximage::heroparallaximage",
+      "label": "HeroParallaxImage",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\HeroParallaxImage.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\HeroParallaxImage.tsx:6"
     },
     {
       "id": "file::imagereveal",
@@ -293,6 +895,13 @@
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ImageReveal.tsx",
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ImageReveal.tsx:5"
+    },
+    {
+      "id": "file::jobcard",
+      "label": "JobCard.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\JobCard.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\JobCard.tsx:1"
     },
     {
       "id": "file::languageswitcher",
@@ -344,18 +953,130 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\PortfolioExplorer.tsx:1"
     },
     {
-      "id": "portfolioexplorer::portfolioexplorer",
-      "label": "PortfolioExplorer",
-      "fileType": "code",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\PortfolioExplorer.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\PortfolioExplorer.tsx:23"
-    },
-    {
       "id": "file::processtimeline",
       "label": "ProcessTimeline.tsx",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProcessTimeline.tsx",
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProcessTimeline.tsx:1"
+    },
+    {
+      "id": "file::alternatingoffset",
+      "label": "AlternatingOffset.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\AlternatingOffset.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\AlternatingOffset.tsx:1"
+    },
+    {
+      "id": "alternatingoffset::alternatingoffset",
+      "label": "AlternatingOffset",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\AlternatingOffset.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\AlternatingOffset.tsx:6"
+    },
+    {
+      "id": "file::brokengrid",
+      "label": "BrokenGrid.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\BrokenGrid.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\BrokenGrid.tsx:1"
+    },
+    {
+      "id": "file::deconstructed",
+      "label": "Deconstructed.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Deconstructed.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Deconstructed.tsx:1"
+    },
+    {
+      "id": "deconstructed::deconstructed",
+      "label": "Deconstructed",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Deconstructed.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Deconstructed.tsx:11"
+    },
+    {
+      "id": "file::editorialasymmetric",
+      "label": "EditorialAsymmetric.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\EditorialAsymmetric.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\EditorialAsymmetric.tsx:1"
+    },
+    {
+      "id": "editorialasymmetric::editorialasymmetric",
+      "label": "EditorialAsymmetric",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\EditorialAsymmetric.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\EditorialAsymmetric.tsx:7"
+    },
+    {
+      "id": "file::floating",
+      "label": "Floating.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Floating.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Floating.tsx:1"
+    },
+    {
+      "id": "file::gallery",
+      "label": "Gallery.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Gallery.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Gallery.tsx:1"
+    },
+    {
+      "id": "file::masonry",
+      "label": "Masonry.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Masonry.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Masonry.tsx:1"
+    },
+    {
+      "id": "file::registry",
+      "label": "registry.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\registry.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\registry.tsx:1"
+    },
+    {
+      "id": "file::scrollytelling",
+      "label": "Scrollytelling.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Scrollytelling.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Scrollytelling.tsx:1"
+    },
+    {
+      "id": "file::shared",
+      "label": "Shared.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Shared.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Shared.tsx:1"
+    },
+    {
+      "id": "shared::projecttext",
+      "label": "ProjectText",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\Shared.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\Shared.tsx:6"
+    },
+    {
+      "id": "file::staggered",
+      "label": "Staggered.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Staggered.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Staggered.tsx:1"
+    },
+    {
+      "id": "file::swisseditorial",
+      "label": "SwissEditorial.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\SwissEditorial.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\SwissEditorial.tsx:1"
+    },
+    {
+      "id": "file::types",
+      "label": "types.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\types.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\types.ts:1"
     },
     {
       "id": "file::projectcard",
@@ -369,14 +1090,21 @@
       "label": "ProjectCard",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectCard.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectCard.tsx:6"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectCard.tsx:5"
     },
     {
-      "id": "file::projectfacts",
-      "label": "ProjectFacts.tsx",
+      "id": "file::projectfontprovider",
+      "label": "ProjectFontProvider.tsx",
       "fileType": "code",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFacts.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFacts.tsx:1"
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFontProvider.tsx:1"
+    },
+    {
+      "id": "projectfontprovider::projectfontprovider",
+      "label": "ProjectFontProvider",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFontProvider.tsx:5"
     },
     {
       "id": "file::projectgrid",
@@ -386,11 +1114,53 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectGrid.tsx:1"
     },
     {
+      "id": "projectgrid::projectgrid",
+      "label": "ProjectGrid",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectGrid.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectGrid.tsx:6"
+    },
+    {
       "id": "file::sectionheading",
       "label": "SectionHeading.tsx",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\SectionHeading.tsx",
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\SectionHeading.tsx:1"
+    },
+    {
+      "id": "floating::floating",
+      "label": "Floating",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Floating.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Floating.tsx:14"
+    },
+    {
+      "id": "masonry::masonry",
+      "label": "Masonry",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Masonry.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Masonry.tsx:11"
+    },
+    {
+      "id": "shared::servicetext",
+      "label": "ServiceText",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Shared.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Shared.tsx:7"
+    },
+    {
+      "id": "file::wireframe",
+      "label": "Wireframe.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Wireframe.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Wireframe.tsx:1"
+    },
+    {
+      "id": "wireframe::layoutwireframe",
+      "label": "LayoutWireframe",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Wireframe.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Wireframe.tsx:69"
     },
     {
       "id": "file::servicecard",
@@ -405,6 +1175,13 @@
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ServiceGroup.tsx",
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ServiceGroup.tsx:1"
+    },
+    {
+      "id": "servicegroup::servicegroup",
+      "label": "ServiceGroup",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ServiceGroup.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ServiceGroup.tsx:5"
     },
     {
       "id": "file::teamcard",
@@ -432,7 +1209,364 @@
       "label": "useTheme",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ThemeProvider.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ThemeProvider.tsx:43"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ThemeProvider.tsx:41"
+    },
+    {
+      "id": "file::videolanding",
+      "label": "VideoLanding.tsx",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx:1"
+    },
+    {
+      "id": "VideoLanding::handledragstart",
+      "label": "handleDragStart",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx:40"
+    },
+    {
+      "id": "VideoLanding::handledragend",
+      "label": "handleDragEnd",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx:41"
+    },
+    {
+      "id": "file::admin_auth",
+      "label": "admin-auth.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:1"
+    },
+    {
+      "id": "admin_auth::getsecret",
+      "label": "getSecret",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:5"
+    },
+    {
+      "id": "admin_auth::hmachex",
+      "label": "hmacHex",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:9"
+    },
+    {
+      "id": "admin_auth::b64urlencode",
+      "label": "b64urlEncode",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:24"
+    },
+    {
+      "id": "admin_auth::b64urldecode",
+      "label": "b64urlDecode",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:31"
+    },
+    {
+      "id": "admin_auth::createsessiontoken",
+      "label": "createSessionToken",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:40"
+    },
+    {
+      "id": "admin_auth::verifysessiontoken",
+      "label": "verifySessionToken",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:46"
+    },
+    {
+      "id": "admin_auth::checkadminpassword",
+      "label": "checkAdminPassword",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:63"
+    },
+    {
+      "id": "file::cloudinary_loader",
+      "label": "cloudinary-loader.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary-loader.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary-loader.ts:1"
+    },
+    {
+      "id": "cloudinary_loader::cloudinaryloader",
+      "label": "cloudinaryLoader",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary-loader.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary-loader.ts:9"
+    },
+    {
+      "id": "file::cloudinary",
+      "label": "cloudinary.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts:1"
+    },
+    {
+      "id": "cloudinary::uploadbuffer",
+      "label": "uploadBuffer",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts:16"
+    },
+    {
+      "id": "cloudinary::uploadlocalfile",
+      "label": "uploadLocalFile",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts:40"
+    },
+    {
+      "id": "cloudinary::derivecloudinaryparams",
+      "label": "deriveCloudinaryParams",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts:58"
+    },
+    {
+      "id": "file::data_manager",
+      "label": "data-manager.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:1"
+    },
+    {
+      "id": "data_manager::normalizekey",
+      "label": "normalizeKey",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:13"
+    },
+    {
+      "id": "data_manager::readjsonsync",
+      "label": "readJsonSync",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:17"
+    },
+    {
+      "id": "data_manager::writejsonsync",
+      "label": "writeJsonSync",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:23"
+    },
+    {
+      "id": "data_manager::getcategories",
+      "label": "getCategories",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:55"
+    },
+    {
+      "id": "data_manager::savecategories",
+      "label": "saveCategories",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:59"
+    },
+    {
+      "id": "data_manager::initprojects",
+      "label": "initProjects",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:100"
+    },
+    {
+      "id": "data_manager::getprojects",
+      "label": "getProjects",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:127"
+    },
+    {
+      "id": "data_manager::saveprojects",
+      "label": "saveProjects",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:135"
+    },
+    {
+      "id": "data_manager::initgallery",
+      "label": "initGallery",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:149"
+    },
+    {
+      "id": "data_manager::getgallery",
+      "label": "getGallery",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:170"
+    },
+    {
+      "id": "data_manager::savegallery",
+      "label": "saveGallery",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:178"
+    },
+    {
+      "id": "data_manager::initteam",
+      "label": "initTeam",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:193"
+    },
+    {
+      "id": "data_manager::getteam",
+      "label": "getTeam",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:214"
+    },
+    {
+      "id": "data_manager::saveteam",
+      "label": "saveTeam",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:222"
+    },
+    {
+      "id": "data_manager::getjobs",
+      "label": "getJobs",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:248"
+    },
+    {
+      "id": "data_manager::savejobs",
+      "label": "saveJobs",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:252"
+    },
+    {
+      "id": "data_manager::getapplications",
+      "label": "getApplications",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:270"
+    },
+    {
+      "id": "data_manager::saveapplications",
+      "label": "saveApplications",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:274"
+    },
+    {
+      "id": "data_manager::migratenavitem",
+      "label": "migrateNavItem",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:311"
+    },
+    {
+      "id": "data_manager::getnavigation",
+      "label": "getNavigation",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:323"
+    },
+    {
+      "id": "data_manager::savenavigation",
+      "label": "saveNavigation",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:329"
+    },
+    {
+      "id": "data_manager::getlanding",
+      "label": "getLanding",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:361"
+    },
+    {
+      "id": "data_manager::savelanding",
+      "label": "saveLanding",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:365"
+    },
+    {
+      "id": "data_manager::initstudio",
+      "label": "initStudio",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:404"
+    },
+    {
+      "id": "data_manager::getstudio",
+      "label": "getStudio",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:437"
+    },
+    {
+      "id": "data_manager::savestudio",
+      "label": "saveStudio",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:445"
+    },
+    {
+      "id": "data_manager::getservicegrouplayout",
+      "label": "getServiceGroupLayout",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:483"
+    },
+    {
+      "id": "data_manager::initservices",
+      "label": "initServices",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:487"
+    },
+    {
+      "id": "data_manager::getservices",
+      "label": "getServices",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:523"
+    },
+    {
+      "id": "data_manager::saveservices",
+      "label": "saveServices",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:531"
+    },
+    {
+      "id": "data_manager::initconnect",
+      "label": "initConnect",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:566"
+    },
+    {
+      "id": "data_manager::getconnect",
+      "label": "getConnect",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:606"
+    },
+    {
+      "id": "data_manager::saveconnect",
+      "label": "saveConnect",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:614"
     },
     {
       "id": "file::ar",
@@ -470,11 +1604,18 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts:1"
     },
     {
+      "id": "get_dictionary::applyimagemap",
+      "label": "applyImageMap",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts:12"
+    },
+    {
       "id": "get-dictionary::getdictionary",
       "label": "getDictionary",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts:11"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts:35"
     },
     {
       "id": "file::i18n",
@@ -505,6 +1646,76 @@
       "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\i18n.ts:25"
     },
     {
+      "id": "file::image_url",
+      "label": "image-url.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\image-url.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\image-url.ts:1"
+    },
+    {
+      "id": "image_url::getimageurl",
+      "label": "getImageUrl",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\image-url.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\image-url.ts:8"
+    },
+    {
+      "id": "file::mongodb",
+      "label": "mongodb.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\mongodb.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\mongodb.ts:1"
+    },
+    {
+      "id": "mongodb::getdb",
+      "label": "getDb",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\mongodb.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\mongodb.ts:26"
+    },
+    {
+      "id": "file::parse_content_blocks",
+      "label": "parse-content-blocks.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts:1"
+    },
+    {
+      "id": "parse_content_blocks::parsecontentblocks",
+      "label": "parseContentBlocks",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts:18"
+    },
+    {
+      "id": "parse_content_blocks::paircontentblocks",
+      "label": "pairContentBlocks",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts:37"
+    },
+    {
+      "id": "file::service_layouts",
+      "label": "service-layouts.ts",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts:1"
+    },
+    {
+      "id": "service_layouts::isservicelayoutid",
+      "label": "isServiceLayoutId",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts:22"
+    },
+    {
+      "id": "service_layouts::resolveservicelayout",
+      "label": "resolveServiceLayout",
+      "fileType": "code",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts:27"
+    },
+    {
       "id": "file::next_env_d",
       "label": "next-env.d.ts",
       "fileType": "code",
@@ -530,17 +1741,602 @@
       "label": "getPreferredLocale",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:5"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:6"
     },
     {
       "id": "proxy::proxy",
       "label": "proxy",
       "fileType": "code",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:21"
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:22"
     }
   ],
   "edges": [
+    {
+      "source": "file::page",
+      "target": "page::handleselect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\appearance\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\appearance\\page.tsx:131",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::markreviewed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\applications\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\applications\\page.tsx:25",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::handledelete",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\applications\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\applications\\page.tsx:36",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setfield",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx:29",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setoptions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx:40",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::handlesave",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\connect\\page.tsx:45",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::empty",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:14",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::opennew",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:44",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::openedit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:51",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setslug",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:58",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setvisible",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:62",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::handleimageupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:66",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::settransfield",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\jobs\\page.tsx:86",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::save",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx:39",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::uploadvideo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx:57",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::removevideo",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\landing\\page.tsx:75",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\login\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\login\\page.tsx:13",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::emptylabels",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:14",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::startedit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:57",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::canceledit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:63",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::saveedit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:65",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::togglevisibility",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:73",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::deleteitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:77",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::additem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\navigation\\page.tsx:82",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::admindashboard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\page.tsx:4",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::newprojectpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\new\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\new\\page.tsx:3",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::editprojectpage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\projects\\[slug]\\page.tsx:7",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::settoplevel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:45",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setgroup",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:56",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setgrouplayout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:70",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setservice",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:78",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setdeliverables",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:93",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::handleserviceimageupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\services\\page.tsx:98",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setstep",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx:113",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::setvalueitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx:119",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::async",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\studio\\page.tsx:210",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::settags",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\team\\page.tsx:92",
+      "weight": 1
+    },
+    {
+      "source": "file::admini18n",
+      "target": "admini18n::getadmint",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\adminI18n.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\adminI18n.ts:282",
+      "weight": 1
+    },
+    {
+      "source": "file::adminlangcontext",
+      "target": "adminlangcontext::adminlangprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx:20",
+      "weight": 1
+    },
+    {
+      "source": "file::adminlangcontext",
+      "target": "AdminLangContext::useadminlang",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminLangContext.tsx:49",
+      "weight": 1
+    },
+    {
+      "source": "file::adminshell",
+      "target": "adminshell::playnotificationsound",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:14",
+      "weight": 1
+    },
+    {
+      "source": "file::adminshell",
+      "target": "adminshell::usenewapplicationscount",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:39",
+      "weight": 1
+    },
+    {
+      "source": "file::adminshell",
+      "target": "adminshell::sunicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:94",
+      "weight": 1
+    },
+    {
+      "source": "file::adminshell",
+      "target": "adminshell::moonicon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\AdminShell.tsx:110",
+      "weight": 1
+    },
+    {
+      "source": "file::migratebutton",
+      "target": "migratebutton::handlemigrate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\MigrateButton.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\MigrateButton.tsx:18",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "ProjectForm::emptytranslation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:26",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::emptyproject",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:51",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::setshared",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:107",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::settranslation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:111",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::togglecategory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:121",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::uploadfile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:130",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::uploadbodyimage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:140",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::handleimageupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:144",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::handlesave",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:169",
+      "weight": 1
+    },
+    {
+      "source": "file::projectform",
+      "target": "projectform::handledelete",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\ProjectForm.tsx:193",
+      "weight": 1
+    },
+    {
+      "source": "file::richtexteditor",
+      "target": "richtexteditor::handleimagefile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\RichTextEditor.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\admin\\_components\\RichTextEditor.tsx:65",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::get",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\route.ts:3",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::parsecloudinaryurl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\resume\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\resume\\route.ts:5",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::patch",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\route.ts:4",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::delete",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\applications\\[id]\\route.ts:23",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::post",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\auth\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\auth\\route.ts:4",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::put",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\categories\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\categories\\route.ts:13",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::tryrevalidate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\jobs\\[id]\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\jobs\\[id]\\route.ts:5",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::extof",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\landing\\upload\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\landing\\upload\\route.ts:6",
+      "weight": 1
+    },
+    {
+      "source": "file::route",
+      "target": "route::tocloudinaryfolder",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\upload\\route.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\api\\admin\\upload\\route.ts:12",
+      "weight": 1
+    },
     {
       "source": "file::robots",
       "target": "robots::robots",
@@ -614,17 +2410,26 @@
       "weight": 1
     },
     {
-      "source": "file::layout",
-      "target": "layout::generatestaticparams",
+      "source": "file::page",
+      "target": "page::generatestaticparams",
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:35",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\karriere\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\karriere\\[slug]\\page.tsx:13",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::getjob",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\karriere\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\karriere\\[slug]\\page.tsx:20",
       "weight": 1
     },
     {
       "source": "file::layout",
-      "target": "layout::generatemetadata",
+      "target": "layout::generatestaticparams",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
@@ -633,11 +2438,20 @@
     },
     {
       "source": "file::layout",
-      "target": "layout::rootlayout",
+      "target": "layout::generatemetadata",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:81",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\layout.tsx:43",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::homepage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\page.tsx:6",
       "weight": 1
     },
     {
@@ -651,20 +2465,20 @@
     },
     {
       "source": "file::page",
-      "target": "page::generatestaticparams",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:13",
-      "weight": 1
-    },
-    {
-      "source": "file::page",
       "target": "page::getproject",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:19",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:22",
+      "weight": 1
+    },
+    {
+      "source": "file::page",
+      "target": "page::escapehtml",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\portfolio\\[slug]\\page.tsx:71",
       "weight": 1
     },
     {
@@ -678,11 +2492,11 @@
     },
     {
       "source": "file::page",
-      "target": "page::teampage",
+      "target": "page::studiopage",
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\team\\page.tsx:24",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\studio\\page.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\app\\[lang]\\studio\\page.tsx:28",
       "weight": 1
     },
     {
@@ -713,12 +2527,30 @@
       "weight": 1
     },
     {
+      "source": "file::applicationform",
+      "target": "ApplicationForm::handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ApplicationForm.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ApplicationForm.tsx:18",
+      "weight": 1
+    },
+    {
       "source": "file::archmark",
       "target": "archmark::archmark",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ArchMark.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ArchMark.tsx:1",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ArchMark.tsx:3",
+      "weight": 1
+    },
+    {
+      "source": "file::conditionalfooter",
+      "target": "conditionalfooter::conditionalfooter",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ConditionalFooter.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ConditionalFooter.tsx:5",
       "weight": 1
     },
     {
@@ -727,7 +2559,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ContactForm.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ContactForm.tsx:23",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ContactForm.tsx:22",
       "weight": 1
     },
     {
@@ -740,12 +2572,48 @@
       "weight": 1
     },
     {
+      "source": "file::fontprovider",
+      "target": "fontprovider::applyfont",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx:5",
+      "weight": 1
+    },
+    {
+      "source": "file::fontprovider",
+      "target": "fontprovider::fontprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\FontProvider.tsx:22",
+      "weight": 1
+    },
+    {
+      "source": "file::header",
+      "target": "header::getnavsections",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:20",
+      "weight": 1
+    },
+    {
       "source": "file::header",
       "target": "Header::isactive",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:30",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:64",
+      "weight": 1
+    },
+    {
+      "source": "file::header",
+      "target": "Header::onscroll",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Header.tsx:98",
       "weight": 1
     },
     {
@@ -754,7 +2622,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Hero.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Hero.tsx:7",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\Hero.tsx:8",
+      "weight": 1
+    },
+    {
+      "source": "file::heroparallaximage",
+      "target": "heroparallaximage::heroparallaximage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\HeroParallaxImage.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\HeroParallaxImage.tsx:6",
       "weight": 1
     },
     {
@@ -794,12 +2671,39 @@
       "weight": 1
     },
     {
-      "source": "file::portfolioexplorer",
-      "target": "portfolioexplorer::portfolioexplorer",
+      "source": "file::alternatingoffset",
+      "target": "alternatingoffset::alternatingoffset",
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\PortfolioExplorer.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\PortfolioExplorer.tsx:23",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\AlternatingOffset.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\AlternatingOffset.tsx:6",
+      "weight": 1
+    },
+    {
+      "source": "file::deconstructed",
+      "target": "deconstructed::deconstructed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\Deconstructed.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\Deconstructed.tsx:10",
+      "weight": 1
+    },
+    {
+      "source": "file::editorialasymmetric",
+      "target": "editorialasymmetric::editorialasymmetric",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\EditorialAsymmetric.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\EditorialAsymmetric.tsx:6",
+      "weight": 1
+    },
+    {
+      "source": "file::shared",
+      "target": "shared::projecttext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\Shared.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\project-layouts\\Shared.tsx:6",
       "weight": 1
     },
     {
@@ -808,7 +2712,70 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectCard.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectCard.tsx:6",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectCard.tsx:5",
+      "weight": 1
+    },
+    {
+      "source": "file::projectfontprovider",
+      "target": "projectfontprovider::projectfontprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFontProvider.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectFontProvider.tsx:5",
+      "weight": 1
+    },
+    {
+      "source": "file::projectgrid",
+      "target": "projectgrid::projectgrid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectGrid.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ProjectGrid.tsx:6",
+      "weight": 1
+    },
+    {
+      "source": "file::floating",
+      "target": "floating::floating",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Floating.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Floating.tsx:14",
+      "weight": 1
+    },
+    {
+      "source": "file::masonry",
+      "target": "masonry::masonry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Masonry.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Masonry.tsx:11",
+      "weight": 1
+    },
+    {
+      "source": "file::shared",
+      "target": "shared::servicetext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Shared.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Shared.tsx:7",
+      "weight": 1
+    },
+    {
+      "source": "file::wireframe",
+      "target": "wireframe::layoutwireframe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Wireframe.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\service-layouts\\Wireframe.tsx:69",
+      "weight": 1
+    },
+    {
+      "source": "file::servicegroup",
+      "target": "servicegroup::servicegroup",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ServiceGroup.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ServiceGroup.tsx:5",
       "weight": 1
     },
     {
@@ -826,7 +2793,430 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ThemeProvider.tsx",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ThemeProvider.tsx:43",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\ThemeProvider.tsx:41",
+      "weight": 1
+    },
+    {
+      "source": "file::videolanding",
+      "target": "VideoLanding::handledragstart",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx:40",
+      "weight": 1
+    },
+    {
+      "source": "file::videolanding",
+      "target": "VideoLanding::handledragend",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\components\\VideoLanding.tsx:41",
+      "weight": 1
+    },
+    {
+      "source": "file::admin_auth",
+      "target": "admin_auth::getsecret",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:5",
+      "weight": 1
+    },
+    {
+      "source": "file::admin_auth",
+      "target": "admin_auth::hmachex",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:9",
+      "weight": 1
+    },
+    {
+      "source": "file::admin_auth",
+      "target": "admin_auth::b64urlencode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:24",
+      "weight": 1
+    },
+    {
+      "source": "file::admin_auth",
+      "target": "admin_auth::b64urldecode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:31",
+      "weight": 1
+    },
+    {
+      "source": "file::admin_auth",
+      "target": "admin_auth::createsessiontoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:40",
+      "weight": 1
+    },
+    {
+      "source": "file::admin_auth",
+      "target": "admin_auth::verifysessiontoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:46",
+      "weight": 1
+    },
+    {
+      "source": "file::admin_auth",
+      "target": "admin_auth::checkadminpassword",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\admin-auth.ts:63",
+      "weight": 1
+    },
+    {
+      "source": "file::cloudinary_loader",
+      "target": "cloudinary_loader::cloudinaryloader",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary-loader.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary-loader.ts:9",
+      "weight": 1
+    },
+    {
+      "source": "file::cloudinary",
+      "target": "cloudinary::uploadbuffer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts:16",
+      "weight": 1
+    },
+    {
+      "source": "file::cloudinary",
+      "target": "cloudinary::uploadlocalfile",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts:40",
+      "weight": 1
+    },
+    {
+      "source": "file::cloudinary",
+      "target": "cloudinary::derivecloudinaryparams",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\cloudinary.ts:58",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::normalizekey",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:13",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::readjsonsync",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:17",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::writejsonsync",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:23",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getcategories",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:55",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::savecategories",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:59",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::initprojects",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:100",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getprojects",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:127",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::saveprojects",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:135",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::initgallery",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:149",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getgallery",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:170",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::savegallery",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:178",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::initteam",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:193",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getteam",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:214",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::saveteam",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:222",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getjobs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:248",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::savejobs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:252",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getapplications",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:270",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::saveapplications",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:274",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::migratenavitem",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:311",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getnavigation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:323",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::savenavigation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:329",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getlanding",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:361",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::savelanding",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:365",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::initstudio",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:404",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getstudio",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:437",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::savestudio",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:445",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getservicegrouplayout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:483",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::initservices",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:487",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getservices",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:523",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::saveservices",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:531",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::initconnect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:566",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::getconnect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:606",
+      "weight": 1
+    },
+    {
+      "source": "file::data_manager",
+      "target": "data_manager::saveconnect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\data-manager.ts:614",
+      "weight": 1
+    },
+    {
+      "source": "file::get_dictionary",
+      "target": "get_dictionary::applyimagemap",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts:12",
       "weight": 1
     },
     {
@@ -835,7 +3225,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts:11",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\get-dictionary.ts:35",
       "weight": 1
     },
     {
@@ -866,12 +3256,66 @@
       "weight": 1
     },
     {
+      "source": "file::image_url",
+      "target": "image_url::getimageurl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\image-url.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\image-url.ts:8",
+      "weight": 1
+    },
+    {
+      "source": "file::mongodb",
+      "target": "mongodb::getdb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\mongodb.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\mongodb.ts:26",
+      "weight": 1
+    },
+    {
+      "source": "file::parse_content_blocks",
+      "target": "parse_content_blocks::parsecontentblocks",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts:18",
+      "weight": 1
+    },
+    {
+      "source": "file::parse_content_blocks",
+      "target": "parse_content_blocks::paircontentblocks",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\parse-content-blocks.ts:37",
+      "weight": 1
+    },
+    {
+      "source": "file::service_layouts",
+      "target": "service_layouts::isservicelayoutid",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts:22",
+      "weight": 1
+    },
+    {
+      "source": "file::service_layouts",
+      "target": "service_layouts::resolveservicelayout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\lib\\service-layouts.ts:27",
+      "weight": 1
+    },
+    {
       "source": "file::proxy",
       "target": "proxy::getpreferredlocale",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:5",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:6",
       "weight": 1
     },
     {
@@ -880,14 +3324,14 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "sourceFile": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts",
-      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:21",
+      "sourceLocation": "C:\\Users\\moham\\Desktop\\Grey-Arch\\proxy.ts:22",
       "weight": 1
     }
   ],
   "metadata": {
-    "files": 80,
-    "nodes": 77,
-    "edges": 38,
-    "builtAt": "2026-06-18T14:26:02.485Z"
+    "files": 167,
+    "nodes": 250,
+    "edges": 175,
+    "builtAt": "2026-08-23T15:13:56.802Z"
   }
 }

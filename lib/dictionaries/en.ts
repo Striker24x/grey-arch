@@ -1,6 +1,6 @@
-import type { Dictionary } from "../dictionary-types";
+import type { SourceDictionary } from "../dictionary-types";
 
-const en: Dictionary = {
+const en: SourceDictionary = {
   meta: {
     siteName: "GrayArc",
     tagline: "Architecture, Heritage Planning & Spatial Design.",
@@ -12,6 +12,7 @@ const en: Dictionary = {
     services: "Services",
     portfolio: "Projects",
     team: "Our Team",
+    careers: "Careers",
     connect: "Connect",
   },
   footer: {
@@ -529,6 +530,31 @@ const en: Dictionary = {
       { initials: "D A", name: "Name Placeholder", role: "Digital Arch Specialist", bio: "Builds 3D models, digitizes existing plans and prepares BIM-ready documentation and visualization.", tags: ["3D Modeling", "BIM Preparation", "Plan Digitization"] },
     ],
   },
+  careers: {
+    title: "Careers",
+    intro: "Join a multilingual studio working across planning, heritage conservation, structural, interior and digital architecture.",
+    jobs: [],
+    emptyState: "There are no open positions right now — check back soon.",
+    backToJobs: "Back to all positions",
+    detail: {
+      applyTitle: "Apply for this position",
+      applyIntro: "Tell us a bit about yourself and attach a file — we'll get back to you personally.",
+    },
+    form: {
+      name: "Name",
+      email: "Email",
+      phone: "Phone",
+      message: "Message",
+      messagePlaceholder: "Tell us why you'd be a great fit…",
+      resume: "Attachment",
+      resumeHint: "PDF, DOC or DOCX, up to 10 MB",
+      submit: "Send application",
+      submitting: "Sending…",
+      successTitle: "Thank you for your application.",
+      successBody: "We've received it and will get back to you personally as soon as possible.",
+      errorBody: "Something went wrong while sending your application. Please try again.",
+    },
+  },
   connect: {
     title: "Connect",
     intro: "Tell us about your site, building or idea. GrayArc responds personally to every inquiry.",
@@ -562,6 +588,8 @@ const en: Dictionary = {
       projectSize: "Approximate Project Size",
       budgetRange: "Budget Range",
       message: "Message",
+      attachment: "Attachment",
+      attachmentHint: "Site plans, photos or documents — PDF, DOC, DOCX, JPG or PNG, up to 10 MB",
       consent: "I agree that GrayArc may contact me regarding my inquiry.",
       submit: "Send Inquiry",
     },

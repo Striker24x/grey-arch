@@ -21,23 +21,15 @@ function getNavSections(navId: string, lang: string, dict: Dictionary): SubmenuS
   const base = `/${lang}`;
   switch (navId) {
     case "studio":
-      return [
-        { label: dict.studio.history.title, href: `${base}/studio#about` },
-        { label: dict.studio.approach.title, href: `${base}/studio#approach` },
-        { label: dict.studio.values.title, href: `${base}/studio#values` },
-      ];
-    case "services":
-      return dict.servicesPage.groups.map((g) => ({
-        label: g.title,
-        href: `${base}/services#${g.id}`,
+      return dict.studio.sections.map((s) => ({
+        label: s.label,
+        href: `${base}/studio#${s.id}`,
       }));
-    case "overview":
-      return [
-        { label: dict.home.selectedProjects.eyebrow, href: `${base}/overview#projects` },
-        { label: dict.home.services.eyebrow, href: `${base}/overview#services` },
-        { label: dict.home.philosophy.eyebrow, href: `${base}/overview#philosophy` },
-        { label: dict.home.process.title, href: `${base}/overview#process` },
-      ];
+    case "services":
+      return dict.servicesPage.sections.map((s) => ({
+        label: s.label,
+        href: `${base}/services#${s.id}`,
+      }));
     default:
       return [];
   }

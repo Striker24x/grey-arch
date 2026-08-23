@@ -146,6 +146,8 @@ export default function ConnectAdminPage() {
                 ["formProjectSize", "Project Size"],
                 ["formBudgetRange", "Budget Range"],
                 ["formMessage", "Message"],
+                ["formAttachment", "Attachment"],
+                ["formAttachmentHint", "Attachment Hint"],
                 ["formSubmit", "Submit Button"],
               ] as [keyof ConnectTranslation, string][]
             ).map(([field, label]) => (

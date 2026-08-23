@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useLayoutEffect, type ReactNode } from "react";
 
 export type AdminLang  = "de" | "en" | "ar";
 export type AdminTheme = "light" | "dark";
@@ -29,7 +29,7 @@ export function AdminLangProvider({ children }: { children: ReactNode }) {
     if (storedTheme === "dark" || storedTheme === "light") setThemeState(storedTheme);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 

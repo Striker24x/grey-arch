@@ -5,10 +5,11 @@ import { hasLocale, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getImageUrl } from "@/lib/image-url";
 import { getStudio } from "@/lib/data-manager";
-import SectionHeading from "@/components/SectionHeading";
+import { resolveServiceLayout } from "@/lib/service-layouts";
+import { parseContentBlocks, pairContentBlocks } from "@/lib/parse-content-blocks";
+import { PROJECT_LAYOUT_COMPONENTS } from "@/components/project-layouts/registry";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import ImageReveal from "@/components/ImageReveal";
-import CTASection from "@/components/CTASection";
 
 export async function generateMetadata({
   params,
@@ -37,6 +38,8 @@ export default async function StudioPage({
   const studioData = await getStudio();
   const workspaceImageSrc = studioData.workspaceImage
     ?? await getImageUrl("/images/grey-arch/services/studio-workspace.jpg");
+  const units = pairContentBlocks(parseContentBlocks(studio.body));
+  const Layout = PROJECT_LAYOUT_COMPONENTS[resolveServiceLayout(studioData.layout)];
 
   return (
     <>
@@ -63,69 +66,13 @@ export default async function StudioPage({
         </div>
       </section>
 
-      <Section tone="alt" id="about">
-        <div className="flex max-w-2xl flex-col gap-12 text-left">
-          <TextBlock title={studio.history.title} body={studio.history.body} />
-          <TextBlock title={studio.mission.title} body={studio.mission.body} />
-          <TextBlock title={studio.vision.title} body={studio.vision.body} />
-        </div>
-      </Section>
-
-      <Section id="approach">
-        <SectionHeading title={studio.approach.title} intro={studio.approach.body} />
-        <div className="mt-6 max-w-2xl space-y-4 text-left">
-          {studio.approach.steps.map((step, index) => (
-            <AnimatedReveal key={step.title} delay={index * 70}>
-              <p className="text-sm leading-relaxed text-stone-600">{step.description}</p>
-            </AnimatedReveal>
-          ))}
-        </div>
-      </Section>
-
-      <Section tone="alt" id="values">
-        <SectionHeading title={studio.values.title} />
-        <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {studio.values.items.map((value, index) => (
-            <AnimatedReveal key={value.title} delay={index * 60}>
-              <h3 className="font-heading text-lg text-ink">{value.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-stone-600">{value.description}</p>
-            </AnimatedReveal>
-          ))}
-        </div>
-      </Section>
-
+      {units.length > 0 && (
+        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+          <div className="mx-auto max-w-4xl">
+            <Layout units={units} projectName={studio.title} />
+          </div>
+        </section>
+      )}
     </>
-  );
-}
-
-function TextBlock({ title, body }: { title: string; body: string }) {
-  const paragraphs = body.split("\n\n");
-  return (
-    <AnimatedReveal>
-      <h2 className="font-heading text-xl text-ink">{title}</h2>
-      <div className="mt-3 space-y-3">
-        {paragraphs.map((paragraph, index) => (
-          <p key={index} className="text-sm leading-relaxed text-stone-600">
-            {paragraph}
-          </p>
-        ))}
-      </div>
-    </AnimatedReveal>
-  );
-}
-
-function Section({
-  children,
-  tone = "default",
-  id,
-}: {
-  children: React.ReactNode;
-  tone?: "default" | "alt";
-  id?: string;
-}) {
-  return (
-    <section id={id} className={tone === "alt" ? "bg-paper-200" : undefined}>
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">{children}</div>
-    </section>
   );
 }

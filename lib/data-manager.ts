@@ -224,6 +224,58 @@ export async function saveTeam(team: TeamRecord[]): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Careers — job postings + applications
+// ---------------------------------------------------------------------------
+
+export interface JobTranslation {
+  title: string;
+  location: string;
+  employmentType: string;
+  /** Short teaser shown on the jobs grid card. */
+  intro: string;
+  /** Full description shown on the job detail page — rich text (HTML). */
+  description: string;
+}
+
+export interface JobRecord {
+  id: string;
+  slug: string;
+  visible: boolean;
+  image?: string;
+  translations: Record<AdminLocale, JobTranslation>;
+}
+
+export async function getJobs(): Promise<JobRecord[]> {
+  return (await readJsonSync<JobRecord[]>("jobs.json")) ?? [];
+}
+
+export async function saveJobs(jobs: JobRecord[]): Promise<void> {
+  await writeJsonSync("jobs.json", jobs);
+}
+
+export interface JobApplication {
+  id: string;
+  jobId: string;
+  /** English job title, kept as a snapshot in case the posting changes or is deleted later. */
+  jobTitle: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  resumeUrl?: string;
+  submittedAt: string;
+  status: "new" | "reviewed";
+}
+
+export async function getApplications(): Promise<JobApplication[]> {
+  return (await readJsonSync<JobApplication[]>("applications.json")) ?? [];
+}
+
+export async function saveApplications(applications: JobApplication[]): Promise<void> {
+  await writeJsonSync("applications.json", applications);
+}
+
+// ---------------------------------------------------------------------------
 // Navigation
 // ---------------------------------------------------------------------------
 
@@ -251,6 +303,7 @@ const DEFAULT_NAV: NavigationData = {
     { id: "services",  href: "/services",  labels: { en: "Services",  de: "Leistungen",  ar: "الخدمات"  }, visible: true, custom: false },
     { id: "portfolio", href: "/portfolio", labels: { en: "Projects",  de: "Projekte",   ar: "المشاريع" }, visible: true, custom: false },
     { id: "team",      href: "/team",      labels: { en: "Our Team",  de: "Unser Team",  ar: "فريقنا"   }, visible: true, custom: false },
+    { id: "careers",   href: "/karriere",  labels: { en: "Careers",   de: "Karriere",    ar: "وظائف"    }, visible: true, custom: false },
     { id: "connect",   href: "/connect",   labels: { en: "Connect",   de: "Kontakt",     ar: "تواصل"    }, visible: true, custom: false },
   ],
 };
@@ -317,17 +370,22 @@ export async function saveLanding(data: LandingData): Promise<void> {
 // Studio
 // ---------------------------------------------------------------------------
 
-export interface StudioStep {
-  title: string;
-  description: string;
-}
-
-export interface StudioValue {
-  title: string;
-  description: string;
-}
-
 export interface StudioTranslation {
+  title: string;
+  intro: string;
+  /** Free-form rich text (HTML), same pipeline as ProjectTranslation.body. H3 headings in
+   * here become anchor-linked entries in the burger-menu submenu for /studio. */
+  body?: string;
+}
+
+export interface StudioData {
+  workspaceImage?: string;
+  layout?: ServiceLayoutId;
+  translations: Record<AdminLocale, StudioTranslation>;
+}
+
+// Pre-rich-text shape, still present in Mongo documents saved before this migration.
+interface LegacyStudioTranslation {
   title: string;
   intro: string;
   historyTitle: string;
@@ -338,14 +396,68 @@ export interface StudioTranslation {
   visionBody: string;
   approachTitle: string;
   approachBody: string;
-  approachSteps: StudioStep[];
+  approachSteps: { title: string; description: string }[];
   valuesTitle: string;
-  valuesItems: StudioValue[];
+  valuesItems: { title: string; description: string }[];
 }
 
-export interface StudioData {
+interface LegacyStudioData {
   workspaceImage?: string;
-  translations: Record<AdminLocale, StudioTranslation>;
+  translations: Record<AdminLocale, LegacyStudioTranslation>;
+}
+
+function escapeHtml(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function paragraphsHtml(text: string): string {
+  return text
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p) => `<p>${escapeHtml(p)}</p>`)
+    .join("");
+}
+
+function buildStudioBodyHtml(t: LegacyStudioTranslation): string {
+  return [
+    `<h3>${escapeHtml(t.historyTitle)}</h3>`,
+    paragraphsHtml(t.historyBody),
+    `<h3>${escapeHtml(t.missionTitle)}</h3>`,
+    paragraphsHtml(t.missionBody),
+    `<h3>${escapeHtml(t.visionTitle)}</h3>`,
+    paragraphsHtml(t.visionBody),
+    `<h3>${escapeHtml(t.approachTitle)}</h3>`,
+    paragraphsHtml(t.approachBody),
+    `<ol>${t.approachSteps
+      .map((s) => `<li><strong>${escapeHtml(s.title)}</strong> — ${escapeHtml(s.description)}</li>`)
+      .join("")}</ol>`,
+    `<h3>${escapeHtml(t.valuesTitle)}</h3>`,
+    `<ul>${t.valuesItems
+      .map((v) => `<li><strong>${escapeHtml(v.title)}</strong> — ${escapeHtml(v.description)}</li>`)
+      .join("")}</ul>`,
+  ].join("");
+}
+
+function isLegacyStudio(doc: unknown): doc is LegacyStudioData {
+  const t = (doc as LegacyStudioData)?.translations?.en as LegacyStudioTranslation | undefined;
+  return typeof t?.historyTitle === "string";
+}
+
+/** Converts a pre-rich-text Studio document into the current shape, folding each old
+ * section into an H3-headed part of one free-form body per locale. Non-destructive: no
+ * text or images are dropped, just re-authored as one flowing document. */
+function migrateLegacyStudio(old: LegacyStudioData): StudioData {
+  const translations = {} as Record<AdminLocale, StudioTranslation>;
+  (Object.keys(old.translations) as AdminLocale[]).forEach((locale) => {
+    const t = old.translations[locale];
+    translations[locale] = { title: t.title, intro: t.intro, body: buildStudioBodyHtml(t) };
+  });
+  return {
+    workspaceImage: old.workspaceImage,
+    layout: resolveServiceLayout(undefined),
+    translations,
+  };
 }
 
 async function initStudio(): Promise<StudioData> {
@@ -354,7 +466,7 @@ async function initStudio(): Promise<StudioData> {
     import("./dictionaries/de").then((m) => m.default),
     import("./dictionaries/ar").then((m) => m.default),
   ]);
-  function mapLocale(dict: typeof enMod): StudioTranslation {
+  function mapLocale(dict: typeof enMod): LegacyStudioTranslation {
     const s = dict.studio;
     return {
       title: s.title,
@@ -372,18 +484,21 @@ async function initStudio(): Promise<StudioData> {
       valuesItems: s.values.items.map((v) => ({ title: v.title, description: v.description })),
     };
   }
-  return {
-    translations: {
-      en: mapLocale(enMod),
-      de: mapLocale(deMod),
-      ar: mapLocale(arMod),
-    },
-  };
+  return migrateLegacyStudio({
+    translations: { en: mapLocale(enMod), de: mapLocale(deMod), ar: mapLocale(arMod) },
+  });
 }
 
 export async function getStudio(): Promise<StudioData> {
-  const cached = await readJsonSync<StudioData>("studio.json");
-  if (cached) return cached;
+  const cached = await readJsonSync<StudioData | LegacyStudioData>("studio.json");
+  if (cached) {
+    if (isLegacyStudio(cached)) {
+      const migrated = migrateLegacyStudio(cached);
+      await writeJsonSync("studio.json", migrated); // persist once so migration doesn't re-run
+      return migrated;
+    }
+    return cached as StudioData;
+  }
   const initial = await initStudio();
   await writeJsonSync("studio.json", initial);
   return initial;
@@ -397,7 +512,21 @@ export async function saveStudio(data: StudioData): Promise<void> {
 // Services
 // ---------------------------------------------------------------------------
 
-export interface ServiceItemData {
+export interface ServicesTranslation {
+  title: string;
+  intro: string;
+  /** Free-form rich text (HTML). H3 headings become anchor-linked burger-menu entries. */
+  body?: string;
+}
+
+export interface ServicesData {
+  heroImage?: string;
+  layout?: ServiceLayoutId;
+  translations: Record<AdminLocale, ServicesTranslation>;
+}
+
+// Pre-rich-text shape: one layout per group, structured service items per group.
+interface LegacyServiceItem {
   id: string;
   title: string;
   description: string;
@@ -407,28 +536,65 @@ export interface ServiceItemData {
   image?: string;
 }
 
-export interface ServiceGroupData {
+interface LegacyServiceGroup {
   id: string;
   title: string;
   intro: string;
-  services: ServiceItemData[];
+  services: LegacyServiceItem[];
 }
 
-export interface ServicesTranslation {
+interface LegacyServicesTranslation {
   title: string;
   intro: string;
-  groups: ServiceGroupData[];
+  groups: LegacyServiceGroup[];
 }
 
-export interface ServicesData {
-  translations: Record<AdminLocale, ServicesTranslation>;
-  // Layout choice per category id — shared across all languages, not duplicated per translation.
+interface LegacyServicesData {
+  translations: Record<AdminLocale, LegacyServicesTranslation>;
   layouts?: Partial<Record<string, ServiceLayoutId>>;
 }
 
-/** Layout for a category id, always resolved to a known, valid layout. */
-export function getServiceGroupLayout(data: ServicesData | null | undefined, groupId: string): ServiceLayoutId {
-  return resolveServiceLayout(data?.layouts?.[groupId]);
+/** Only group titles become <h3> (matches today's one-submenu-entry-per-group nav);
+ * service titles inside a group become a bold lead-in instead of a heading, so migrating
+ * doesn't balloon the burger menu from ~5 entries to 15+. */
+function buildServicesBodyHtml(groups: LegacyServiceGroup[]): string {
+  return groups
+    .map((g) => {
+      const services = g.services
+        .map((s) => {
+          const parts = [`<p><strong>${escapeHtml(s.title)}.</strong> ${escapeHtml(s.description)}</p>`];
+          if (s.image) parts.push(`<img src="${s.image}" alt="${escapeHtml(s.title)}" />`);
+          if (s.includes) parts.push(`<p>${escapeHtml(s.includes)}</p>`);
+          if (s.deliverables.length) {
+            parts.push(`<ul>${s.deliverables.map((d) => `<li>${escapeHtml(d)}</li>`).join("")}</ul>`);
+          }
+          parts.push(`<p><em>${escapeHtml(s.suitableFor)}</em></p>`);
+          return parts.join("");
+        })
+        .join("");
+      return `<h3>${escapeHtml(g.title)}</h3><p>${escapeHtml(g.intro)}</p>${services}`;
+    })
+    .join("");
+}
+
+function isLegacyServices(doc: unknown): doc is LegacyServicesData {
+  return Array.isArray((doc as LegacyServicesData)?.translations?.en?.groups);
+}
+
+/** Converts a pre-rich-text Services document into the current shape. Layout is carried
+ * over best-effort from the first group (old data had one layout per group, new data has
+ * one for the whole page). */
+function migrateLegacyServices(old: LegacyServicesData): ServicesData {
+  const translations = {} as Record<AdminLocale, ServicesTranslation>;
+  (Object.keys(old.translations) as AdminLocale[]).forEach((locale) => {
+    const t = old.translations[locale];
+    translations[locale] = { title: t.title, intro: t.intro, body: buildServicesBodyHtml(t.groups) };
+  });
+  const firstGroupId = old.translations.en.groups[0]?.id;
+  return {
+    layout: resolveServiceLayout(firstGroupId ? old.layouts?.[firstGroupId] : undefined),
+    translations,
+  };
 }
 
 async function initServices(): Promise<ServicesData> {
@@ -437,7 +603,7 @@ async function initServices(): Promise<ServicesData> {
     import("./dictionaries/de").then((m) => m.default),
     import("./dictionaries/ar").then((m) => m.default),
   ]);
-  function mapLocale(dict: typeof enMod): ServicesTranslation {
+  function mapLocale(dict: typeof enMod): LegacyServicesTranslation {
     const sp = dict.servicesPage;
     return {
       title: sp.title,
@@ -458,18 +624,21 @@ async function initServices(): Promise<ServicesData> {
       })),
     };
   }
-  return {
-    translations: {
-      en: mapLocale(enMod),
-      de: mapLocale(deMod),
-      ar: mapLocale(arMod),
-    },
-  };
+  return migrateLegacyServices({
+    translations: { en: mapLocale(enMod), de: mapLocale(deMod), ar: mapLocale(arMod) },
+  });
 }
 
 export async function getServices(): Promise<ServicesData> {
-  const cached = await readJsonSync<ServicesData>("services.json");
-  if (cached) return cached;
+  const cached = await readJsonSync<ServicesData | LegacyServicesData>("services.json");
+  if (cached) {
+    if (isLegacyServices(cached)) {
+      const migrated = migrateLegacyServices(cached);
+      await writeJsonSync("services.json", migrated); // persist once so migration doesn't re-run
+      return migrated;
+    }
+    return cached as ServicesData;
+  }
   const initial = await initServices();
   await writeJsonSync("services.json", initial);
   return initial;
@@ -502,6 +671,8 @@ export interface ConnectTranslation {
   formProjectSize: string;
   formBudgetRange: string;
   formMessage: string;
+  formAttachment: string;
+  formAttachmentHint: string;
   formConsent: string;
   formSubmit: string;
 }
@@ -537,6 +708,8 @@ async function initConnect(): Promise<ConnectData> {
       formProjectSize: c.form.projectSize,
       formBudgetRange: c.form.budgetRange,
       formMessage: c.form.message,
+      formAttachment: c.form.attachment,
+      formAttachmentHint: c.form.attachmentHint,
       formConsent: c.form.consent,
       formSubmit: c.form.submit,
     };
@@ -563,103 +736,25 @@ export async function saveConnect(data: ConnectData): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// Overview (home page)
+// Contact inquiries — submissions from the public Kontakt form
 // ---------------------------------------------------------------------------
 
-export interface OverviewPoint {
-  title: string;
-  description: string;
+export interface ContactInquiry {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  attachmentUrl?: string;
+  submittedAt: string;
+  status: "new" | "reviewed";
 }
 
-export interface OverviewTranslation {
-  heroEyebrow: string;
-  heroHeadline: string;
-  heroSubheadline: string;
-  heroCtaExplore: string;
-  heroCtaPortfolio: string;
-  heroCtaStart: string;
-  philosophyEyebrow: string;
-  philosophyTitle: string;
-  philosophyBody: string;
-  philosophyPoints: OverviewPoint[];
-  processEyebrow: string;
-  processTitle: string;
-  processIntro: string;
-  processSteps: OverviewPoint[];
-  heritageEyebrow: string;
-  heritageTitle: string;
-  heritageBody: string;
-  heritagePoints: string[];
-  heritageCta: string;
-  digitalArchEyebrow: string;
-  digitalArchTitle: string;
-  digitalArchBody: string;
-  digitalArchPoints: string[];
-  digitalArchCta: string;
-  contactCtaTitle: string;
-  contactCtaBody: string;
-  contactCtaCta: string;
+export async function getInquiries(): Promise<ContactInquiry[]> {
+  return (await readJsonSync<ContactInquiry[]>("inquiries.json")) ?? [];
 }
 
-export interface OverviewData {
-  translations: Record<AdminLocale, OverviewTranslation>;
+export async function saveInquiries(inquiries: ContactInquiry[]): Promise<void> {
+  await writeJsonSync("inquiries.json", inquiries);
 }
 
-async function initOverview(): Promise<OverviewData> {
-  const [enMod, deMod, arMod] = await Promise.all([
-    import("./dictionaries/en").then((m) => m.default),
-    import("./dictionaries/de").then((m) => m.default),
-    import("./dictionaries/ar").then((m) => m.default),
-  ]);
-  function mapLocale(dict: typeof enMod): OverviewTranslation {
-    const h = dict.home;
-    return {
-      heroEyebrow: h.hero.eyebrow,
-      heroHeadline: h.hero.headline,
-      heroSubheadline: h.hero.subheadline,
-      heroCtaExplore: h.hero.ctaExplore,
-      heroCtaPortfolio: h.hero.ctaPortfolio,
-      heroCtaStart: h.hero.ctaStart,
-      philosophyEyebrow: h.philosophy.eyebrow,
-      philosophyTitle: h.philosophy.title,
-      philosophyBody: h.philosophy.body,
-      philosophyPoints: h.philosophy.points.map((p) => ({ title: p.title, description: p.description })),
-      processEyebrow: h.process.eyebrow,
-      processTitle: h.process.title,
-      processIntro: h.process.intro,
-      processSteps: h.process.steps.map((s) => ({ title: s.title, description: s.description })),
-      heritageEyebrow: h.heritage.eyebrow,
-      heritageTitle: h.heritage.title,
-      heritageBody: h.heritage.body,
-      heritagePoints: [...h.heritage.points],
-      heritageCta: h.heritage.cta,
-      digitalArchEyebrow: h.digitalArch.eyebrow,
-      digitalArchTitle: h.digitalArch.title,
-      digitalArchBody: h.digitalArch.body,
-      digitalArchPoints: [...h.digitalArch.points],
-      digitalArchCta: h.digitalArch.cta,
-      contactCtaTitle: h.contactCta.title,
-      contactCtaBody: h.contactCta.body,
-      contactCtaCta: h.contactCta.cta,
-    };
-  }
-  return {
-    translations: {
-      en: mapLocale(enMod),
-      de: mapLocale(deMod),
-      ar: mapLocale(arMod),
-    },
-  };
-}
-
-export async function getOverview(): Promise<OverviewData> {
-  const cached = await readJsonSync<OverviewData>("overview.json");
-  if (cached) return cached;
-  const initial = await initOverview();
-  await writeJsonSync("overview.json", initial);
-  return initial;
-}
-
-export async function saveOverview(data: OverviewData): Promise<void> {
-  await writeJsonSync("overview.json", data);
-}

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ConditionalFooter from "@/components/ConditionalFooter";
 import FontProvider from "@/components/FontProvider";
+import ThemeSync from "@/components/ThemeSync";
 import { locales, hasLocale, localeDir, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getNavigation } from "@/lib/data-manager";
@@ -104,16 +105,8 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable} antialiased`}
     >
-      <head>
-        {/* Applies the saved theme before first paint to avoid a flash of the wrong mode */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':true;if(d)document.documentElement.classList.add('dark');}catch(e){}})();",
-          }}
-        />
-      </head>
       <body className="flex min-h-screen flex-col bg-paper-100 text-ink">
+          <ThemeSync />
           <FontProvider />
           <Header lang={lang} dict={dict} navConfig={navConfig} />
           <main className="flex-1">{children}</main>
