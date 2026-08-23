@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import DOMPurify from "isomorphic-dompurify";
 import { hasLocale, locales, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getJobs } from "@/lib/data-manager";
+import { sanitizeBodyHtml } from "@/lib/parse-content-blocks";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import ImageReveal from "@/components/ImageReveal";
 import ApplicationForm from "@/components/ApplicationForm";
@@ -51,7 +51,7 @@ export default async function JobDetailPage({
   const { dict, job } = data;
   const { careers } = dict;
 
-  const sanitizedDescription = DOMPurify.sanitize(job.description);
+  const sanitizedDescription = sanitizeBodyHtml(job.description);
 
   return (
     <section className="mx-auto max-w-3xl px-6 py-14 sm:py-20 lg:px-10 lg:py-24">

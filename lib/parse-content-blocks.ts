@@ -3,6 +3,19 @@
 // follows it. This is what lets a single free-form document ("Word page") be arranged
 // by a layout — the layout never sees raw HTML, only "text" and "image" blocks.
 
+import sanitizeHtml from "sanitize-html";
+
+/** Sanitizes Tiptap-authored body HTML down to exactly the tags the editor can produce
+ * (see RichTextEditor.tsx's StarterKit config). Uses sanitize-html rather than
+ * isomorphic-dompurify/jsdom, which fails to load in Vercel's bundled serverless runtime
+ * (jsdom's html-encoding-sniffer -> @exodus/bytes is ESM-only and breaks under require()). */
+export function sanitizeBodyHtml(html: string): string {
+  return sanitizeHtml(html, {
+    allowedTags: ["p", "h3", "ul", "ol", "li", "strong", "em", "blockquote", "img"],
+    allowedAttributes: { img: ["src", "alt"] },
+  });
+}
+
 export type ContentBlock =
   | { type: "text"; html: string }
   | { type: "image"; src: string; alt: string };

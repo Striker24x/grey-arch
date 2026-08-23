@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import DOMPurify from "isomorphic-dompurify";
 import { hasLocale, locales, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getProjects } from "@/lib/data-manager";
 import { resolveServiceLayout } from "@/lib/service-layouts";
-import { parseContentBlocks, pairContentBlocks } from "@/lib/parse-content-blocks";
+import { parseContentBlocks, pairContentBlocks, sanitizeBodyHtml } from "@/lib/parse-content-blocks";
 import { PROJECT_LAYOUT_COMPONENTS } from "@/components/project-layouts/registry";
 import ProjectGrid from "@/components/ProjectGrid";
 import CTASection from "@/components/CTASection";
@@ -73,7 +72,7 @@ export default async function ProjectDetailPage({
   const rawBody = project.body?.trim()
     ? project.body
     : legacyFields.map((p) => `<p>${escapeHtml(p)}</p>`).join("");
-  const sanitizedBody = DOMPurify.sanitize(rawBody, { ADD_TAGS: ["img"], ADD_ATTR: ["src", "alt"] });
+  const sanitizedBody = sanitizeBodyHtml(rawBody);
   const units = pairContentBlocks(parseContentBlocks(sanitizedBody));
   const Layout = PROJECT_LAYOUT_COMPONENTS[resolveServiceLayout(project.layout)];
 

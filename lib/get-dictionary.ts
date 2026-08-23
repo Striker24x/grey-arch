@@ -1,15 +1,10 @@
 import "server-only";
-import DOMPurify from "isomorphic-dompurify";
 import { readJsonSync, getStudio, getServices } from "./data-manager";
 import type { Locale } from "./i18n";
 import type { Dictionary, SourceDictionary } from "./dictionary-types";
 import type { ProjectRecord, GalleryRecord, TeamRecord, CategoriesData, ConnectData, JobRecord } from "./data-manager";
 import { resolveServiceLayout } from "./service-layouts";
-import { injectHeadingIds, extractHeadingSections } from "./parse-content-blocks";
-
-function sanitizeBody(html: string): string {
-  return DOMPurify.sanitize(html, { ADD_TAGS: ["img"], ADD_ATTR: ["src", "alt"] });
-}
+import { injectHeadingIds, extractHeadingSections, sanitizeBodyHtml } from "./parse-content-blocks";
 
 // Reads admin-edited content from the database (same store the admin panel writes to)
 const readData = readJsonSync;
@@ -59,13 +54,13 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
 
   {
     const t = studioData.translations[locale] ?? studioData.translations.en;
-    const body = injectHeadingIds(sanitizeBody(t.body ?? ""));
+    const body = injectHeadingIds(sanitizeBodyHtml(t.body ?? ""));
     dict.studio = { title: t.title, intro: t.intro, body, sections: extractHeadingSections(body) };
   }
 
   {
     const t = servicesData.translations[locale] ?? servicesData.translations.en;
-    const body = injectHeadingIds(sanitizeBody(t.body ?? ""));
+    const body = injectHeadingIds(sanitizeBodyHtml(t.body ?? ""));
     dict.servicesPage = { title: t.title, intro: t.intro, body, sections: extractHeadingSections(body) };
   }
 
