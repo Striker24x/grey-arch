@@ -5,6 +5,24 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 
+/** Reads a File's natural pixel dimensions client-side via a throwaway <img>, so the
+ * uploaded image's real aspect ratio can be persisted alongside its src. */
+function readImageDimensions(file: File): Promise<{ width: number; height: number } | null> {
+  return new Promise((resolve) => {
+    const url = URL.createObjectURL(file);
+    const img = new window.Image();
+    img.onload = () => {
+      resolve({ width: img.naturalWidth, height: img.naturalHeight });
+      URL.revokeObjectURL(url);
+    };
+    img.onerror = () => {
+      resolve(null);
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+  });
+}
+
 export default function RichTextEditor({
   value,
   onChange,
@@ -38,7 +56,21 @@ export default function RichTextEditor({
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ heading: { levels: [3] } }),
-      Image.configure({ inline: false, HTMLAttributes: { class: "rich-image" } }),
+      Image.configure({
+        inline: false,
+        HTMLAttributes: { class: "rich-image" },
+      }).extend({
+        // Persist the uploaded image's natural pixel size as data-width/data-height so the
+        // public site can render it at its real aspect ratio (object-contain) instead of
+        // being force-cropped to whatever fixed aspect the layout would otherwise assume.
+        addAttributes() {
+          return {
+            ...this.parent?.(),
+            "data-width": { default: null, parseHTML: (el) => el.getAttribute("data-width") },
+            "data-height": { default: null, parseHTML: (el) => el.getAttribute("data-height") },
+          };
+        },
+      }),
     ],
     content: value,
     immediatelyRender: false,
@@ -68,8 +100,14 @@ export default function RichTextEditor({
     if (!file || !editor || !onUploadImage) return;
     setUploading(true);
     try {
-      const src = await onUploadImage(file);
-      editor.chain().focus().setImage({ src, alt: "" }).run();
+      const [src, dims] = await Promise.all([onUploadImage(file), readImageDimensions(file)]);
+      editor.chain().focus().setImage({
+        src,
+        alt: "",
+        // @ts-expect-error — data-width/data-height are custom attrs added via addAttributes()
+        "data-width": dims?.width ?? null,
+        "data-height": dims?.height ?? null,
+      }).run();
     } finally {
       setUploading(false);
     }

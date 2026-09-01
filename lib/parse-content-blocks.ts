@@ -12,18 +12,18 @@ import sanitizeHtml from "sanitize-html";
 export function sanitizeBodyHtml(html: string): string {
   return sanitizeHtml(html, {
     allowedTags: ["p", "h3", "ul", "ol", "li", "strong", "em", "blockquote", "img"],
-    allowedAttributes: { img: ["src", "alt"] },
+    allowedAttributes: { img: ["src", "alt", "data-width", "data-height"] },
   });
 }
 
 export type ContentBlock =
   | { type: "text"; html: string }
-  | { type: "image"; src: string; alt: string };
+  | { type: "image"; src: string; alt: string; width?: number; height?: number };
 
 export type ContentUnit = {
   id: string;
   textHtml: string;
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; width?: number; height?: number };
 };
 
 const TOP_LEVEL_RE = /<img\b[^>]*\/?>|<(p|h3|ul|ol|blockquote)\b[^>]*>[\s\S]*?<\/\1>/gi;
@@ -35,8 +35,18 @@ export function parseContentBlocks(html: string): ContentBlock[] {
     if (/^<img\b/i.test(raw)) {
       const srcMatch = raw.match(/\ssrc="([^"]*)"/i);
       const altMatch = raw.match(/\salt="([^"]*)"/i);
+      const widthMatch = raw.match(/\sdata-width="([^"]*)"/i);
+      const heightMatch = raw.match(/\sdata-height="([^"]*)"/i);
       if (srcMatch?.[1]) {
-        blocks.push({ type: "image", src: srcMatch[1], alt: altMatch?.[1] ?? "" });
+        const width = widthMatch?.[1] ? Number(widthMatch[1]) : undefined;
+        const height = heightMatch?.[1] ? Number(heightMatch[1]) : undefined;
+        blocks.push({
+          type: "image",
+          src: srcMatch[1],
+          alt: altMatch?.[1] ?? "",
+          width: width && !Number.isNaN(width) ? width : undefined,
+          height: height && !Number.isNaN(height) ? height : undefined,
+        });
       }
     } else if (raw.trim()) {
       // Strip any <img> nested inside this text block (e.g. dropped inside a <li> by the
@@ -61,7 +71,7 @@ export function pairContentBlocks(blocks: ContentBlock[]): ContentUnit[] {
   let pendingText: string[] = [];
   let index = 0;
 
-  const flush = (image?: { src: string; alt: string }) => {
+  const flush = (image?: { src: string; alt: string; width?: number; height?: number }) => {
     if (pendingText.length === 0 && !image) return;
     units.push({ id: `block-${index++}`, textHtml: pendingText.join(""), image });
     pendingText = [];
@@ -69,7 +79,7 @@ export function pairContentBlocks(blocks: ContentBlock[]): ContentUnit[] {
 
   for (const block of blocks) {
     if (block.type === "image") {
-      flush({ src: block.src, alt: block.alt });
+      flush({ src: block.src, alt: block.alt, width: block.width, height: block.height });
     } else {
       if (/^<h3\b/i.test(block.html) && pendingText.length > 0) {
         flush();

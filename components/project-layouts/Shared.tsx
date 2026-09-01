@@ -22,7 +22,11 @@ export function ProjectText({
 }
 
 /** The image paired with a text unit. Renders nothing if the unit has no image —
- * unlike Services, project documents aren't guaranteed to alternate text/image evenly. */
+ * unlike Services, project documents aren't guaranteed to alternate text/image evenly.
+ * When the uploaded image's natural size is known (unit.image.width/height), it renders at
+ * its real aspect ratio with object-contain — never cropped — so any image size/orientation
+ * can be uploaded as-is. Falls back to the fixed `aspect` + object-cover only for images
+ * uploaded before this was tracked (no width/height persisted yet). */
 export function ProjectVisual({
   unit,
   projectName,
@@ -39,6 +43,25 @@ export function ProjectVisual({
   priority?: boolean;
 }) {
   if (!unit.image) return null;
+  const { width, height } = unit.image;
+  const knownSize = width && height;
+
+  if (knownSize) {
+    return (
+      <div className={className}>
+        <Image
+          src={unit.image.src}
+          alt={unit.image.alt || projectName}
+          width={width}
+          height={height}
+          priority={priority}
+          sizes={sizes}
+          className="h-auto w-full object-contain"
+        />
+      </div>
+    );
+  }
+
   return (
     <ImageReveal className={`${aspect} ${className}`}>
       <Image
