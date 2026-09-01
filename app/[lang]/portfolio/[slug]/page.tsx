@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { hasLocale, locales, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
@@ -74,36 +73,27 @@ export default async function ProjectDetailPage({
     : legacyFields.map((p) => `<p>${escapeHtml(p)}</p>`).join("");
   const sanitizedBody = sanitizeBodyHtml(rawBody);
   const units = pairContentBlocks(parseContentBlocks(sanitizedBody));
-  const Layout = PROJECT_LAYOUT_COMPONENTS[resolveServiceLayout(project.layout)];
+  const resolvedLayout = resolveServiceLayout(project.layout);
+  const Layout = PROJECT_LAYOUT_COMPONENTS[resolvedLayout];
+  const wrapperMaxWidth = resolvedLayout === "centered-stack" ? "" : "mx-auto max-w-4xl";
 
   return (
     <>
-      <section className="relative h-[64vh] min-h-[440px] w-full overflow-hidden bg-graphite-900">
-        <Image
-          src={project.image}
-          alt={project.name}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-graphite-900/85 via-graphite-900/25 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="mx-auto max-w-7xl px-6 pb-12 lg:px-10">
-            <p className="text-xs uppercase tracking-[0.16em] text-bronze-300">
-              {project.location}{project.location && project.year ? " — " : ""}{project.year}
-            </p>
-            <h1 className="font-heading mt-3 text-4xl text-paper-100 sm:text-5xl">
-              {project.name}
-            </h1>
-          </div>
-        </div>
+      {/* Cover image intentionally not shown here — it only appears in the portfolio grid.
+       * The detail page keeps a plain text header (location/year + title) without the image. */}
+      <section className="mx-auto max-w-7xl px-6 pt-14 pb-0 sm:pt-20 lg:px-10 lg:pt-24">
+        <p className="text-xs uppercase tracking-[0.16em] text-bronze-600">
+          {project.location}{project.location && project.year ? " — " : ""}{project.year}
+        </p>
+        <h1 className="font-heading mt-3 text-4xl leading-tight text-ink sm:text-5xl">
+          {project.name}
+        </h1>
       </section>
 
       <ProjectFontProvider font={project.font}>
         <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           {units.length > 0 && (
-            <div className="mx-auto max-w-4xl">
+            <div className={wrapperMaxWidth}>
               <Layout units={units} projectName={project.name} />
             </div>
           )}

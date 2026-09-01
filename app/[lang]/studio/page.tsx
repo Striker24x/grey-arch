@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, alternateLinks, localeDir } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getImageUrl } from "@/lib/image-url";
 import { getStudio } from "@/lib/data-manager";
@@ -34,24 +34,32 @@ export default async function StudioPage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
+  const dir = localeDir(lang);
   const { studio } = dict;
   const studioData = await getStudio();
   const workspaceImageSrc = studioData.workspaceImage
     ?? await getImageUrl("/images/grey-arch/services/studio-workspace.jpg");
   const units = pairContentBlocks(parseContentBlocks(studio.body));
-  const Layout = PROJECT_LAYOUT_COMPONENTS[resolveServiceLayout(studioData.layout)];
+  const resolvedLayout = resolveServiceLayout(studioData.layout);
+  const Layout = PROJECT_LAYOUT_COMPONENTS[resolvedLayout];
+  const wrapperMaxWidth = resolvedLayout === "centered-stack" ? "" : "mx-auto max-w-4xl";
 
   return (
     <>
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        {/* dir="ltr" pins text always to the physical left / image always to the physical right,
+         * regardless of page language — CSS grid otherwise auto-mirrors column order under
+         * dir="rtl" (Arabic), which put the image on the left instead. */}
+        <div className="grid items-center gap-12 lg:grid-cols-2" dir="ltr">
           <AnimatedReveal>
-            <h1 className="font-heading text-4xl leading-tight text-bronze-600 sm:text-5xl">
-              {dict.nav.studio}
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-stone-600">
-              {studio.intro}
-            </p>
+            <div dir={dir}>
+              <h1 className="font-heading text-4xl leading-tight text-ink dark:text-bronze-600 sm:text-5xl">
+                {dict.nav.studio}
+              </h1>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-stone-600">
+                {studio.intro}
+              </p>
+            </div>
           </AnimatedReveal>
           <ImageReveal className="aspect-[4/3]">
             <Image
@@ -68,7 +76,7 @@ export default async function StudioPage({
 
       {units.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-4xl">
+          <div className={wrapperMaxWidth}>
             <Layout units={units} projectName={studio.title} />
           </div>
         </section>

@@ -11,8 +11,9 @@ import Floating from "./Floating";
 import Masonry from "./Masonry";
 import Deconstructed from "./Deconstructed";
 import Scrollytelling from "./Scrollytelling";
+import CenteredStack from "./CenteredStack";
 
-/** Same 10 layout ids as the services layout registry, applied to a project's parsed content units. */
+/** Same layout ids as the services layout registry, applied to a project's parsed content units. */
 export const PROJECT_LAYOUT_COMPONENTS: Record<ServiceLayoutId, ComponentType<ProjectLayoutProps>> = {
   "editorial-asymmetric": EditorialAsymmetric,
   "broken-grid": BrokenGrid,
@@ -24,4 +25,5 @@ export const PROJECT_LAYOUT_COMPONENTS: Record<ServiceLayoutId, ComponentType<Pr
   masonry: Masonry,
   deconstructed: Deconstructed,
   scrollytelling: Scrollytelling,
+  "centered-stack": CenteredStack,
 };

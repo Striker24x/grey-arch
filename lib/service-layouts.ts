@@ -13,6 +13,7 @@ export const SERVICE_LAYOUT_IDS = [
   "masonry",
   "deconstructed",
   "scrollytelling",
+  "centered-stack",
 ] as const;
 
 export type ServiceLayoutId = (typeof SERVICE_LAYOUT_IDS)[number];
@@ -84,6 +85,11 @@ export const SERVICE_LAYOUT_META: Record<ServiceLayoutId, ServiceLayoutMeta> = {
     id: "scrollytelling",
     label: "Scrollytelling",
     description: "Hero image opens the story, each block gets its own composition as you scroll.",
+  },
+  "centered-stack": {
+    id: "centered-stack",
+    label: "Text/Image Split",
+    description: "Text left-aligned and stacked in one column, imagery grouped beside it in the other — both columns scroll together.",
   },
 };
 

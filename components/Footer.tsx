@@ -27,7 +27,7 @@ export default function Footer({
   ];
 
   return (
-    <footer className="border-t border-line-200 bg-paper-200">
+    <footer className="border-t border-line-200 bg-paper-100">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <AnimatedReveal>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12">

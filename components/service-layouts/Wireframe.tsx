@@ -64,6 +64,13 @@ const WIREFRAMES: Record<ServiceLayoutId, Block[]> = {
     { x: 60, y: 38, w: 28, h: 20, kind: "image" },
     { x: 6, y: 64, w: 108, h: 10, kind: "image" },
   ],
+  "centered-stack": [
+    { x: 30, y: 6, w: 24, h: 6, kind: "text" },
+    { x: 22, y: 16, w: 40, h: 6, kind: "text" },
+    { x: 26, y: 26, w: 32, h: 6, kind: "text" },
+    { x: 68, y: 4, w: 44, h: 30, kind: "image" },
+    { x: 68, y: 40, w: 44, h: 30, kind: "image" },
+  ],
 };
 
 export default function LayoutWireframe({ id, className = "" }: { id: ServiceLayoutId; className?: string }) {

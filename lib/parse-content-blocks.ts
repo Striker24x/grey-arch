@@ -39,7 +39,12 @@ export function parseContentBlocks(html: string): ContentBlock[] {
         blocks.push({ type: "image", src: srcMatch[1], alt: altMatch?.[1] ?? "" });
       }
     } else if (raw.trim()) {
-      blocks.push({ type: "text", html: raw });
+      // Strip any <img> nested inside this text block (e.g. dropped inside a <li> by the
+      // rich-text editor). Only top-level <img> tags become their own paired image unit —
+      // a nested one has nowhere valid to go and would otherwise render inline mid-paragraph,
+      // breaking the text/image column split that layouts like Text/Image Split rely on.
+      const cleaned = raw.replace(/<img\b[^>]*\/?>/gi, "");
+      if (cleaned.trim()) blocks.push({ type: "text", html: cleaned });
     }
   }
   return blocks;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, alternateLinks, localeDir } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getServices } from "@/lib/data-manager";
 import { resolveServiceLayout } from "@/lib/service-layouts";
@@ -33,21 +33,32 @@ export default async function ServicesPage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
+  const dir = localeDir(lang);
   const { servicesPage } = dict;
   const servicesData = await getServices();
   const units = pairContentBlocks(parseContentBlocks(servicesPage.body));
-  const Layout = PROJECT_LAYOUT_COMPONENTS[resolveServiceLayout(servicesData.layout)];
+  const resolvedLayout = resolveServiceLayout(servicesData.layout);
+  const Layout = PROJECT_LAYOUT_COMPONENTS[resolvedLayout];
+  // "centered-stack" is a two-column text/image split designed to use the full section
+  // width — the narrow max-w-4xl reading column (built for single-column layouts) would
+  // squeeze it down and make it look centered/narrow instead of a left text + right image split.
+  const wrapperMaxWidth = resolvedLayout === "centered-stack" ? "" : "mx-auto max-w-4xl";
 
   return (
     <>
       <section className="mx-auto max-w-7xl px-6 pt-14 pb-0 sm:pt-20 sm:pb-1 lg:px-10 lg:pt-28 lg:pb-2">
         {servicesData.heroImage ? (
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          // dir="ltr" on the grid pins text always to the physical left / image always to the
+          // physical right column, regardless of page language — CSS grid otherwise auto-mirrors
+          // column order under dir="rtl" (Arabic), which put the image on the left instead.
+          <div className="grid items-center gap-12 lg:grid-cols-2" dir="ltr">
             <AnimatedReveal>
-              <h1 className="font-heading text-4xl leading-tight text-bronze-600 sm:text-5xl">
-                {dict.nav.services}
-              </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-stone-600">{servicesPage.intro}</p>
+              <div dir={dir}>
+                <h1 className="font-heading text-4xl leading-tight text-ink dark:text-bronze-600 sm:text-5xl">
+                  {dict.nav.services}
+                </h1>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-stone-600">{servicesPage.intro}</p>
+              </div>
             </AnimatedReveal>
             <ImageReveal className="aspect-[4/3]">
               <Image
@@ -62,7 +73,7 @@ export default async function ServicesPage({
           </div>
         ) : (
           <AnimatedReveal className="max-w-2xl">
-            <h1 className="font-heading text-4xl leading-tight text-bronze-600 sm:text-5xl">
+            <h1 className="font-heading text-4xl leading-tight text-ink dark:text-bronze-600 sm:text-5xl">
               {dict.nav.services}
             </h1>
             <p className="mt-5 text-base leading-relaxed text-stone-600">{servicesPage.intro}</p>
@@ -72,7 +83,7 @@ export default async function ServicesPage({
 
       {units.length > 0 && (
         <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="mx-auto max-w-4xl">
+          <div className={wrapperMaxWidth}>
             <Layout units={units} projectName={servicesPage.title} />
           </div>
         </section>
