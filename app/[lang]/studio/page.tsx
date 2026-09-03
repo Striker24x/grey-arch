@@ -53,7 +53,7 @@ export default async function StudioPage({
         <div className="grid items-center gap-12 lg:grid-cols-2" dir="ltr">
           <AnimatedReveal>
             <div dir={dir}>
-              <h1 className="font-heading text-4xl leading-tight text-ink dark:text-bronze-600 sm:text-5xl">
+              <h1 className="font-heading text-4xl leading-tight text-ink sm:text-5xl">
                 {dict.nav.studio}
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-stone-600">

@@ -35,7 +35,7 @@ export default async function TeamPage({
     <>
       <section className="px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
         <AnimatedReveal className="max-w-2xl">
-          <h1 className="font-heading text-4xl leading-tight text-ink dark:text-bronze-600 sm:text-5xl">
+          <h1 className="font-heading text-4xl leading-tight text-ink sm:text-5xl">
             {dict.nav.team}
           </h1>
           <p className="mt-5 text-base leading-relaxed text-stone-600">{team.intro}</p>
