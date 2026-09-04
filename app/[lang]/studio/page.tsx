@@ -46,7 +46,7 @@ export default async function StudioPage({
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+      <section className="mx-auto max-w-7xl px-6 pt-36 pb-28 lg:px-10 lg:pt-44 lg:pb-36">
         {/* dir="ltr" pins text always to the physical left / image always to the physical right,
          * regardless of page language — CSS grid otherwise auto-mirrors column order under
          * dir="rtl" (Arabic), which put the image on the left instead. */}

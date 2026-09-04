@@ -1,0 +1,175 @@
+{
+  "translations": {
+    "en": {
+      "title": "Studio",
+      "intro": "GrayArc is an architecture office working at the intersection of precision planning, heritage context and digital workflows.",
+      "historyTitle": "History",
+      "historyBody": "GrayArc was created to connect architectural precision with cultural context, existing buildings, modern planning methods and digital workflows.",
+      "missionTitle": "Mission",
+      "missionBody": "To plan, document and design spaces that are clear, buildable, responsible and meaningful.",
+      "visionTitle": "Vision",
+      "visionBody": "To become a trusted multilingual architecture office for existing buildings, new construction, conservation, heritage, monuments and digital architectural workflows.",
+      "approachTitle": "Approach",
+      "approachBody": "Every project moves through the same disciplined sequence — discovery, survey, concept, permit, detail planning and delivery — adapted to the scale and context of the building.",
+      "approachSteps": [
+        {
+          "title": "Listen",
+          "description": "Understand the client's brief, constraints and ambitions before drawing a single line."
+        },
+        {
+          "title": "Read the Site",
+          "description": "Survey existing structure, context and history with care."
+        },
+        {
+          "title": "Plan Precisely",
+          "description": "Develop drawings and documentation built for real construction."
+        },
+        {
+          "title": "Stay Accountable",
+          "description": "Remain present through permitting, detail planning and site delivery."
+        }
+      ],
+      "valuesTitle": "Values",
+      "valuesItems": [
+        {
+          "title": "Clarity",
+          "description": "Communication and drawings that leave no room for ambiguity."
+        },
+        {
+          "title": "Context",
+          "description": "Designs grounded in site, history and surrounding fabric."
+        },
+        {
+          "title": "Precision",
+          "description": "Technical accuracy across planning, permits and documentation."
+        },
+        {
+          "title": "Responsibility",
+          "description": "Accountability toward clients, builders and the public realm."
+        },
+        {
+          "title": "Material Awareness",
+          "description": "Honest use of stone, concrete and natural light."
+        },
+        {
+          "title": "Buildability",
+          "description": "Plans that translate cleanly into real construction."
+        }
+      ]
+    },
+    "de": {
+      "title": "Studio",
+      "intro": "GrayArc ist ein Architekturbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
+      "historyTitle": "Geschichte",
+      "historyBody": "GrayArc wurde gegründet, um architektonische Präzision mit kulturellem Kontext, Bestandsgebäuden, modernen Planungsmethoden und digitalen Arbeitsabläufen zu verbinden.",
+      "missionTitle": "Mission",
+      "missionBody": "Räume zu planen, zu dokumentieren und zu gestalten, die klar, baubar, verantwortungsvoll und sinnstiftend sind.",
+      "visionTitle": "Vision",
+      "visionBody": "Ein vertrauenswürdiges, mehrsprachiges Architekturbüro für Bestand, Neubau, Denkmalpflege, Monumente und digitale architektonische Arbeitsabläufe zu werden.",
+      "approachTitle": "Vorgehen",
+      "approachBody": "Jedes Projekt durchläuft dieselbe disziplinierte Abfolge — Entdecken, Bestandsaufnahme, Konzept, Genehmigung, Ausführungsplanung und Übergabe — angepasst an Maßstab und Kontext des Gebäudes.",
+      "approachSteps": [
+        {
+          "title": "Zuhören",
+          "description": "Die Aufgabe, Rahmenbedingungen und Ambitionen der Bauherrschaft verstehen, bevor eine Linie gezeichnet wird."
+        },
+        {
+          "title": "Den Ort lesen",
+          "description": "Bestand, Kontext und Geschichte sorgfältig aufnehmen."
+        },
+        {
+          "title": "Präzise planen",
+          "description": "Pläne und Unterlagen entwickeln, die für reale Bauausführung gemacht sind."
+        },
+        {
+          "title": "Verantwortlich bleiben",
+          "description": "Während Genehmigung, Ausführungsplanung und Bauausführung präsent bleiben."
+        }
+      ],
+      "valuesTitle": "Werte",
+      "valuesItems": [
+        {
+          "title": "Klarheit",
+          "description": "Kommunikation und Pläne, die keinen Raum für Unklarheiten lassen."
+        },
+        {
+          "title": "Kontext",
+          "description": "Entwürfe, die in Ort, Geschichte und Umgebung verwurzelt sind."
+        },
+        {
+          "title": "Präzision",
+          "description": "Technische Genauigkeit in Planung, Genehmigung und Dokumentation."
+        },
+        {
+          "title": "Verantwortung",
+          "description": "Verantwortlichkeit gegenüber Bauherrschaft, Bauausführenden und Öffentlichkeit."
+        },
+        {
+          "title": "Materialbewusstsein",
+          "description": "Ehrlicher Umgang mit Stein, Beton und natürlichem Licht."
+        },
+        {
+          "title": "Baubarkeit",
+          "description": "Pläne, die sich klar in reale Bauausführung übersetzen lassen."
+        }
+      ]
+    },
+    "ar": {
+      "title": "الاستوديو",
+      "intro": "GrayArc مكتب هندسة معمارية يعمل في تقاطع التخطيط الدقيق وسياق التراث وأساليب العمل الرقمية.",
+      "historyTitle": "النشأة",
+      "historyBody": "تأسس GrayArc لربط الدقة المعمارية بالسياق الثقافي والمباني القائمة وأساليب التخطيط الحديثة وأساليب العمل الرقمية.",
+      "missionTitle": "الرسالة",
+      "missionBody": "تخطيط وتوثيق وتصميم مساحات واضحة وقابلة للتنفيذ ومسؤولة وذات معنى.",
+      "visionTitle": "الرؤية",
+      "visionBody": "أن نكون مكتب هندسة معمارية متعدد اللغات وموثوقاً للمباني القائمة والمشاريع الجديدة والحفاظ على التراث والآثار وأساليب العمل المعماري الرقمي.",
+      "approachTitle": "منهجية العمل",
+      "approachBody": "يمر كل مشروع بنفس التسلسل المنضبط — الاستكشاف، المسح، المفهوم، الترخيص، التخطيط التفصيلي والتسليم — بما يتناسب مع حجم المبنى وسياقه.",
+      "approachSteps": [
+        {
+          "title": "الاستماع",
+          "description": "فهم متطلبات العميل ومحدداته وتطلعاته قبل رسم أي خط."
+        },
+        {
+          "title": "قراءة الموقع",
+          "description": "مسح الوضع القائم والسياق والتاريخ بعناية."
+        },
+        {
+          "title": "التخطيط بدقة",
+          "description": "تطوير مخططات ووثائق مُعدّة للتنفيذ الفعلي."
+        },
+        {
+          "title": "الالتزام بالمسؤولية",
+          "description": "الحضور المستمر خلال الترخيص والتخطيط التفصيلي وتسليم الموقع."
+        }
+      ],
+      "valuesTitle": "القيم",
+      "valuesItems": [
+        {
+          "title": "وضوح",
+          "description": "تواصل ومخططات لا تترك مجالاً للالتباس."
+        },
+        {
+          "title": "سياق",
+          "description": "تصاميم متجذرة في الموقع والتاريخ والنسيج المحيط."
+        },
+        {
+          "title": "دقة",
+          "description": "دقة تقنية في التخطيط والترخيص والتوثيق."
+        },
+        {
+          "title": "مسؤولية",
+          "description": "مساءلة تجاه العملاء والمنفذين والمجال العام."
+        },
+        {
+          "title": "وعي بالمواد",
+          "description": "استخدام صادق للحجر والخرسانة والضوء الطبيعي."
+        },
+        {
+          "title": "قابلية البناء",
+          "description": "مخططات تُترجم بوضوح إلى تنفيذ فعلي."
+        }
+      ]
+    }
+  }
+}

@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import ArchMark from "@/components/ArchMark";
 import { AdminLangProvider, useAdminLang, type AdminLang } from "./AdminLangContext";
 import { getAdminT } from "./adminI18n";
 const POLL_MS = 20000;
@@ -144,7 +143,6 @@ function Shell({ children }: { children: ReactNode }) {
       >
         {/* Header */}
         <div className="flex h-14 items-center gap-2 border-b border-stone-200 px-4 dark:border-line-200">
-          <ArchMark className="h-8 w-9 text-graphite-900" />
           <span className="text-sm font-semibold tracking-wide text-graphite-900">Admin</span>
         </div>
 

@@ -195,14 +195,6 @@ export default function ProjectForm({
               placeholder="my-project-name"
             />
           </Field>
-          <Field label="Year">
-            <input
-              value={data.year}
-              onChange={(e) => setShared("year", e.target.value)}
-              className="input"
-              placeholder="2024"
-            />
-          </Field>
         </div>
 
         {/* Project-specific font */}

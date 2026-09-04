@@ -29,7 +29,7 @@ export default function JobCard({
         </ImageReveal>
       )}
       <div className="flex flex-1 flex-col p-6">
-        <p className="text-xs uppercase tracking-[0.16em] text-bronze-600">
+        <p className="text-xs uppercase tracking-[0.16em] text-ink">
           {job.location}{job.location && job.employmentType ? " · " : ""}{job.employmentType}
         </p>
         <h3 className="font-heading mt-3 text-xl text-ink">{job.title}</h3>

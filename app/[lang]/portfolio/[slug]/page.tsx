@@ -80,12 +80,9 @@ export default async function ProjectDetailPage({
   return (
     <>
       {/* Cover image intentionally not shown here — it only appears in the portfolio grid.
-       * The detail page keeps a plain text header (location/year + title) without the image. */}
-      <section className="mx-auto max-w-7xl px-6 pt-14 pb-0 sm:pt-20 lg:px-10 lg:pt-24">
-        <p className="text-xs uppercase tracking-[0.16em] text-bronze-600">
-          {project.location}{project.location && project.year ? " — " : ""}{project.year}
-        </p>
-        <h1 className="font-heading mt-3 text-4xl leading-tight text-ink sm:text-5xl">
+       * The detail page keeps a plain text header (title only) without the image. */}
+      <section className="mx-auto max-w-7xl px-6 pt-32 pb-0 sm:pt-40 lg:px-10 lg:pt-44">
+        <h1 className="font-heading text-4xl leading-tight text-ink sm:text-5xl">
           {project.name}
         </h1>
       </section>

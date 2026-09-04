@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ArchMark from "./ArchMark";
 import LanguageSwitcher from "./LanguageSwitcher";
 import AnimatedReveal from "./AnimatedReveal";
 import type { Locale } from "@/lib/i18n";
@@ -33,7 +32,6 @@ export default function Footer({
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12">
           <div>
             <div className="flex items-center gap-2 text-graphite-900">
-              <ArchMark className="h-11 w-12" />
               <span className="font-heading text-xl tracking-wide">{dict.meta.siteName}</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-stone-600">

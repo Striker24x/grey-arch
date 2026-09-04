@@ -16,7 +16,7 @@ export default async function Hero({ lang, dict }: { lang: Locale; dict: Diction
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-12 pt-24 sm:pb-16 sm:pt-32 lg:px-10 lg:pt-44">
         <AnimatedReveal>
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-bronze-300">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-paper-100">
             {hero.eyebrow}
           </p>
         </AnimatedReveal>

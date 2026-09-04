@@ -46,7 +46,7 @@ export default async function ServicesPage({
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 pt-14 pb-0 sm:pt-20 sm:pb-1 lg:px-10 lg:pt-28 lg:pb-2">
+      <section className="mx-auto max-w-7xl px-6 pt-32 pb-0 sm:pt-40 sm:pb-1 lg:px-10 lg:pt-44 lg:pb-2">
         {servicesData.heroImage ? (
           // dir="ltr" on the grid pins text always to the physical left / image always to the
           // physical right column, regardless of page language — CSS grid otherwise auto-mirrors

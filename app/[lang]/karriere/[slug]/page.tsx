@@ -63,7 +63,7 @@ export default async function JobDetailPage({
           ← {careers.backToJobs}
         </Link>
 
-        <p className="mt-6 text-xs uppercase tracking-[0.16em] text-bronze-600">
+        <p className="mt-6 text-xs uppercase tracking-[0.16em] text-ink">
           {job.location}{job.location && job.employmentType ? " · " : ""}{job.employmentType}
         </p>
         <h1 className="font-heading mt-3 text-4xl leading-tight text-ink sm:text-5xl">

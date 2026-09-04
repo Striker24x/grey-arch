@@ -25,7 +25,7 @@ export default function TeamCard({
       </div>
       <div className="mt-3">
         <h3 className="font-heading text-sm text-ink">{member.name}</h3>
-        <p className="mt-0.5 text-xs text-bronze-600">{member.role}</p>
+        <p className="mt-0.5 text-xs text-ink">{member.role}</p>
         {member.bio && (
           <p className="mt-2 text-xs leading-relaxed text-stone-500 line-clamp-3">{member.bio}</p>
         )}

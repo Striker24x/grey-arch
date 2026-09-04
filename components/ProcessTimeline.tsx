@@ -10,7 +10,7 @@ export default function ProcessTimeline({
       {steps.map((step, index) => (
         <li key={step.title}>
           <AnimatedReveal delay={index * 70} className="border-t border-line-300 pt-5">
-            <span className="font-heading text-sm text-bronze-600">
+            <span className="font-heading text-sm text-ink">
               {String(index + 1).padStart(2, "0")}
             </span>
             <h3 className="mt-2 font-heading text-lg text-ink">{step.title}</h3>

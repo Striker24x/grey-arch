@@ -32,7 +32,7 @@ export default async function ConnectPage({
   const { connect } = dict;
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-14 sm:py-20 lg:px-10 lg:py-24">
+    <section className="mx-auto max-w-5xl px-6 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:px-10 lg:pt-44 lg:pb-32">
       <AnimatedReveal className="max-w-2xl">
         <h1 className="font-heading text-4xl leading-tight text-ink sm:text-5xl">
           {dict.nav.connect}

@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import ArchMark from "./ArchMark";
 import LanguageSwitcher from "./LanguageSwitcher";
 import DarkModeToggle from "./DarkModeToggle";
 import type { Locale } from "@/lib/i18n";
@@ -115,14 +115,30 @@ export default function Header({
         transition={{ type: "tween", duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="fixed top-0 left-0 right-0 z-50 w-full"
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10 lg:py-8">
           <Link
             href={`/${lang}`}
             className="flex items-center gap-2 cursor-pointer text-graphite-900"
             onClick={() => setOpen(false)}
           >
-            <ArchMark className="h-11 w-12" />
-            <span className="font-heading text-xl tracking-wide">{dict.meta.siteName}</span>
+            <Image
+              src="/images/logo-header.png"
+              alt={dict.meta.siteName}
+              width={526}
+              height={141}
+              priority
+              unoptimized
+              className="h-16 w-auto lg:h-20 dark:hidden"
+            />
+            <Image
+              src="/images/logo-header-white.png"
+              alt={dict.meta.siteName}
+              width={526}
+              height={141}
+              priority
+              unoptimized
+              className="hidden h-16 w-auto lg:h-20 dark:block"
+            />
           </Link>
 
           <button
