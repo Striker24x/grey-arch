@@ -118,26 +118,44 @@ export default function Header({
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10 lg:py-8">
           <Link
             href={`/${lang}`}
-            className="flex items-center gap-2 cursor-pointer text-graphite-900"
+            className="flex items-center gap-3 cursor-pointer text-graphite-900"
             onClick={() => setOpen(false)}
           >
             <Image
-              src="/images/logo-header.png"
-              alt={dict.meta.siteName}
-              width={526}
-              height={141}
+              src="/images/logo-icon.png"
+              alt=""
+              width={727}
+              height={604}
               priority
               unoptimized
-              className="h-16 w-auto lg:h-20 dark:hidden"
+              className="h-12 w-auto lg:h-16 dark:hidden"
             />
             <Image
-              src="/images/logo-header-white.png"
-              alt={dict.meta.siteName}
-              width={526}
-              height={141}
+              src="/images/logo-icon-white.png"
+              alt=""
+              width={727}
+              height={604}
               priority
               unoptimized
-              className="hidden h-16 w-auto lg:h-20 dark:block"
+              className="hidden h-12 w-auto lg:h-16 dark:block"
+            />
+            <Image
+              src="/images/logo-text.png"
+              alt={dict.meta.siteName}
+              width={1438}
+              height={265}
+              priority
+              unoptimized
+              className="h-10 w-auto lg:h-14 dark:hidden"
+            />
+            <Image
+              src="/images/logo-text-white.png"
+              alt={dict.meta.siteName}
+              width={1438}
+              height={265}
+              priority
+              unoptimized
+              className="hidden h-10 w-auto lg:h-14 dark:block"
             />
           </Link>
 
@@ -203,7 +221,7 @@ export default function Header({
                           key={sec.href}
                           href={sec.href}
                           onClick={() => { setOpen(false); setHoveredNavId(null); }}
-                          className="block px-5 py-2.5 text-sm text-stone-500 transition-colors duration-150 hover:bg-paper-200 hover:text-ink"
+                          className="block px-5 py-2.5 text-sm text-ink transition-colors duration-150 hover:bg-paper-200 hover:text-ink"
                         >
                           {sec.label}
                         </Link>
@@ -254,8 +272,8 @@ export default function Header({
                           }
                         }}
                         onMouseLeave={scheduleHideSubmenu}
-                        className={`group flex items-center justify-between py-4 font-heading text-2xl transition-colors duration-200 ${
-                          isActive(item.href) ? "text-ink" : "text-stone-400 hover:text-ink"
+                        className={`group flex items-center justify-between py-4 font-heading text-2xl text-ink transition-colors duration-200 ${
+                          isActive(item.href) ? "font-medium" : "hover:opacity-70"
                         }`}
                       >
                         <span>{item.label}</span>
