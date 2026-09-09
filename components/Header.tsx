@@ -146,7 +146,7 @@ export default function Header({
               height={265}
               priority
               unoptimized
-              className="h-10 w-auto lg:h-14 dark:hidden"
+              className="h-8 w-auto lg:h-11 dark:hidden"
             />
             <Image
               src="/images/logo-text-white.png"
@@ -155,7 +155,7 @@ export default function Header({
               height={265}
               priority
               unoptimized
-              className="hidden h-10 w-auto lg:h-14 dark:block"
+              className="hidden h-8 w-auto lg:h-11 dark:block"
             />
           </Link>
 
