@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import type { ProjectRecord, ProjectTranslation, AdminLocale } from "@/lib/data-manager";
+import { uploadToCloudinary } from "@/lib/client-upload";
 import { SERVICE_LAYOUT_LIST, resolveServiceLayout, type ServiceLayoutId } from "@/lib/service-layouts";
 import LayoutWireframe from "@/components/service-layouts/Wireframe";
 import RichTextEditor from "./RichTextEditor";
@@ -97,13 +98,7 @@ export default function ProjectForm({
   }
 
   async function uploadFile(file: File, folder: string): Promise<string> {
-    const fd = new FormData();
-    fd.append("file", file);
-    fd.append("folder", folder);
-    const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-    if (!res.ok) throw new Error("Upload failed");
-    const { url } = await res.json();
-    return url as string;
+    return uploadToCloudinary(file, folder);
   }
 
   async function uploadBodyImage(file: File): Promise<string> {

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useAdminLang } from "../_components/AdminLangContext";
 import { getAdminT } from "../_components/adminI18n";
 import type { LandingData } from "@/lib/data-manager";
+import { uploadToCloudinary } from "@/lib/client-upload";
 
 export default function LandingAdminPage() {
   const { lang } = useAdminLang();
@@ -56,18 +57,15 @@ export default function LandingAdminPage() {
 
   async function uploadVideo(videoId: string, file: File) {
     setUploading(videoId);
-    const form = new FormData();
-    form.append("file", file);
-    const res  = await fetch("/api/admin/landing/upload", { method: "POST", body: form });
-    const json = await res.json() as { url?: string; error?: string };
-    if (json.url) {
+    try {
+      const url = await uploadToCloudinary(file, "grey-arch/landing-videos");
       const updated: LandingData = {
         ...data,
-        videos: data.videos.map((v) => v.id === videoId ? { ...v, url: json.url! } : v),
+        videos: data.videos.map((v) => v.id === videoId ? { ...v, url } : v),
       };
       await save(updated);
-    } else {
-      alert(json.error ?? T.uploadFailed);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : T.uploadFailed);
     }
     setUploading(null);
   }

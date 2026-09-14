@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import type { TeamRecord, AdminLocale } from "@/lib/data-manager";
+import { uploadToCloudinary } from "@/lib/client-upload";
 
 const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
@@ -63,12 +64,7 @@ export default function TeamPage() {
     setUploading(true);
     setError("");
     try {
-      const fd = new FormData();
-      fd.append("file", file);
-      fd.append("folder", "images/grey-arch/team");
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-      if (!res.ok) throw new Error("Upload failed");
-      const { url } = await res.json() as { url: string };
+      const url = await uploadToCloudinary(file, "images/grey-arch/team");
       setEditing((e) => e && { ...e, image: url });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");

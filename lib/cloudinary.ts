@@ -52,6 +52,24 @@ export async function uploadLocalFile(
 }
 
 /**
+ * Sign parameters for a direct browser → Cloudinary upload (unsigned uploads are
+ * avoided so no API secret / open upload preset is ever exposed). The signature covers
+ * every param that will be sent with the upload EXCEPT file, api_key, cloud_name and
+ * resource_type, per Cloudinary's signing rules.
+ */
+export function signUploadParams(params: Record<string, string | number | boolean>): {
+  signature: string;
+  timestamp: number;
+} {
+  const timestamp = Math.round(Date.now() / 1000);
+  const signature = cloudinary.utils.api_sign_request(
+    { ...params, timestamp },
+    process.env.CLOUDINARY_API_SECRET!
+  );
+  return { signature, timestamp };
+}
+
+/**
  * Derive the Cloudinary folder + publicId from a local web path like
  * /images/grey-arch/portfolio/portfolio-stone-house-restoration.jpg
  */

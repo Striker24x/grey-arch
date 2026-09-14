@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import type { AdminLocale } from "@/lib/data-manager";
 import { SERVICE_LAYOUT_LIST, resolveServiceLayout, type ServiceLayoutId } from "@/lib/service-layouts";
+import { uploadToCloudinary } from "@/lib/client-upload";
 import LayoutWireframe from "@/components/service-layouts/Wireframe";
 import RichTextEditor from "./RichTextEditor";
 
@@ -52,12 +53,7 @@ export default function PageEditorForm({
   }
 
   async function uploadFile(file: File, folder: string): Promise<string> {
-    const fd = new FormData();
-    fd.append("file", file);
-    fd.append("folder", folder);
-    const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
-    if (!res.ok) throw new Error("Upload failed");
-    const { url } = await res.json();
+    const url = await uploadToCloudinary(file, folder);
     return url as string;
   }
 

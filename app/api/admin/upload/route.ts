@@ -1,8 +1,8 @@
 import { uploadBuffer } from "@/lib/cloudinary";
 import { readJsonSync, writeJsonSync } from "@/lib/data-manager";
 
-const ALLOWED_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
-const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
+const ALLOWED_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".tif", ".tiff", ".heic", ".heif"]);
+const MAX_SIZE = 200 * 1024 * 1024; // 200 MB (matches Cloudinary plan limit)
 
 function extOf(filename: string) {
   return filename.slice(filename.lastIndexOf(".")).toLowerCase();
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "File type not allowed" }, { status: 415 });
   }
   if (file.size > MAX_SIZE) {
-    return Response.json({ error: "File too large (max 10 MB)" }, { status: 413 });
+    return Response.json({ error: "File too large (max 200 MB)" }, { status: 413 });
   }
 
   const folderHint = (formData.get("folder") as string) || "grey-arch/uploads";
