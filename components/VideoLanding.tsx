@@ -1,9 +1,15 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import type { LandingData } from "@/lib/data-manager";
 import type { Locale } from "@/lib/i18n";
+
+const IMAGE_SLIDE_DURATION_MS = 6000;
+
+type Slide =
+  | { kind: "video"; id: string; url: string }
+  | { kind: "image"; id: string; url: string };
 
 export default function VideoLanding({
   landing,
@@ -12,7 +18,11 @@ export default function VideoLanding({
   landing: LandingData;
   lang: Locale;
 }) {
-  const activeVideos = landing.videos.filter((v) => v.url);
+  const slides: Slide[] = [
+    ...landing.videos.filter((v) => v.url).map((v) => ({ kind: "video" as const, id: `v-${v.id}`, url: v.url })),
+    ...(landing.images ?? []).filter((img) => img.url).map((img) => ({ kind: "image" as const, id: `i-${img.id}`, url: img.url })),
+  ];
+  const activeVideos = slides;
   const [currentIdx, setCurrentIdx] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const dragStartX = useRef<number | null>(null);
@@ -49,6 +59,13 @@ export default function VideoLanding({
 
   const currentVideo = activeVideos[currentIdx];
 
+  // Auto-advance image slides after a fixed duration (videos advance via onEnded instead).
+  useEffect(() => {
+    if (!currentVideo || currentVideo.kind !== "image") return;
+    const timer = setTimeout(() => goToNext(), IMAGE_SLIDE_DURATION_MS);
+    return () => clearTimeout(timer);
+  }, [currentVideo, goToNext]);
+
   return (
     <div
       className="relative flex h-screen w-screen cursor-grab select-none flex-col items-center justify-center overflow-hidden bg-graphite-900 active:cursor-grabbing"
@@ -57,7 +74,7 @@ export default function VideoLanding({
       onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
       onTouchEnd={(e) => handleDragEnd(e.changedTouches[0].clientX)}
     >
-      {/* Video background */}
+      {/* Video / image background */}
       <AnimatePresence mode="sync">
         {currentVideo ? (
           <motion.div
@@ -68,15 +85,25 @@ export default function VideoLanding({
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            <video
-              src={currentVideo.url}
-              autoPlay
-              muted
-              playsInline
-              onEnded={goToNext}
-              className="h-full w-full object-cover"
-              draggable={false}
-            />
+            {currentVideo.kind === "video" ? (
+              <video
+                src={currentVideo.url}
+                autoPlay
+                muted
+                playsInline
+                onEnded={goToNext}
+                className="h-full w-full object-cover"
+                draggable={false}
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={currentVideo.url}
+                alt=""
+                className="h-full w-full object-cover"
+                draggable={false}
+              />
+            )}
           </motion.div>
         ) : (
           <motion.div

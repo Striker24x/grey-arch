@@ -1,4 +1,4 @@
-import { cloudinary } from "@/lib/cloudinary";
+import { fetchPrivateStorageFile } from "@/lib/bunny";
 import { getInquiries } from "@/lib/data-manager";
 
 const CONTENT_TYPES: Record<string, string> = {
@@ -10,11 +10,9 @@ const CONTENT_TYPES: Record<string, string> = {
   png: "image/png",
 };
 
-/** Parses a Cloudinary delivery URL into its resource type + public id. */
-function parseCloudinaryUrl(url: string): { resourceType: string; publicId: string; format: string } | null {
-  const m = url.match(/\/(image|video|raw)\/upload\/(?:v\d+\/)?(.+)\.([a-zA-Z0-9]+)$/);
-  if (!m) return null;
-  return { resourceType: m[1], publicId: m[2], format: m[3] };
+function extOf(url: string): string {
+  const m = url.match(/\.([a-zA-Z0-9]+)$/);
+  return m ? m[1].toLowerCase() : "";
 }
 
 export async function GET(
@@ -28,30 +26,21 @@ export async function GET(
     return new Response("Not found", { status: 404 });
   }
 
-  const parsed = parseCloudinaryUrl(inquiry.attachmentUrl);
-  if (!parsed) {
-    return new Response("Invalid attachment URL", { status: 500 });
-  }
-
   try {
-    // Our Cloudinary account restricts unsigned delivery of PDF/raw files, so we
-    // generate a signed, authenticated download URL and stream the bytes back
-    // through our own origin instead of hotlinking Cloudinary directly.
-    const signedUrl = cloudinary.utils.private_download_url(parsed.publicId, parsed.format, {
-      resource_type: parsed.resourceType,
-      type: "upload",
-    });
-
-    const upstream = await fetch(signedUrl);
+    // Bunny Storage files at storage.bunnycdn.com require the AccessKey header
+    // to read, so they're private by default — we fetch server-side and stream
+    // the bytes back through our own (admin-authenticated) origin.
+    const upstream = await fetchPrivateStorageFile(inquiry.attachmentUrl);
     if (!upstream.ok || !upstream.body) {
       return new Response("Failed to fetch attachment", { status: 502 });
     }
 
-    const contentType = CONTENT_TYPES[parsed.format.toLowerCase()] ?? "application/octet-stream";
+    const format = extOf(inquiry.attachmentUrl);
+    const contentType = CONTENT_TYPES[format] ?? "application/octet-stream";
     return new Response(upstream.body, {
       headers: {
         "Content-Type": contentType,
-        "Content-Disposition": `inline; filename="${inquiry.name.replace(/[^\w.-]/g, "_")}-attachment.${parsed.format}"`,
+        "Content-Disposition": `inline; filename="${inquiry.name.replace(/[^\w.-]/g, "_")}-attachment.${format}"`,
         "Cache-Control": "private, no-store",
       },
     });

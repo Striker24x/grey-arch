@@ -1,4 +1,4 @@
-import { uploadBuffer } from "@/lib/cloudinary";
+import { uploadBufferToPrivateStorage } from "@/lib/bunny";
 import { getInquiries, saveInquiries } from "@/lib/data-manager";
 import type { ContactInquiry } from "@/lib/data-manager";
 
@@ -37,7 +37,11 @@ export async function POST(request: Request) {
       return Response.json({ error: "File too large (max 10 MB)" }, { status: 413 });
     }
     const bytes = await attachment.arrayBuffer();
-    attachmentUrl = await uploadBuffer(Buffer.from(bytes), "grey-arch/inquiries");
+    attachmentUrl = await uploadBufferToPrivateStorage(
+      `grey-arch/inquiries/${Date.now()}-${attachment.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`,
+      Buffer.from(bytes),
+      attachment.type
+    );
   }
 
   const inquiry: ContactInquiry = {

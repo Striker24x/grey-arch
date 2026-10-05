@@ -122,40 +122,22 @@ export default function Header({
             onClick={() => setOpen(false)}
           >
             <Image
-              src="/images/logo-icon.png"
-              alt=""
-              width={727}
-              height={604}
-              priority
-              unoptimized
-              className="h-12 w-auto lg:h-16 dark:hidden"
-            />
-            <Image
-              src="/images/logo-icon-white.png"
-              alt=""
-              width={727}
-              height={604}
-              priority
-              unoptimized
-              className="hidden h-12 w-auto lg:h-16 dark:block"
-            />
-            <Image
-              src="/images/logo-text.png"
+              src="/images/logo-full.svg"
               alt={dict.meta.siteName}
-              width={1438}
-              height={265}
+              width={457.9636}
+              height={80.0672}
               priority
               unoptimized
-              className="h-8 w-auto lg:h-11 dark:hidden"
+              className="h-10 w-auto lg:h-14 dark:hidden"
             />
             <Image
-              src="/images/logo-text-white.png"
+              src="/images/logo-full-white.svg"
               alt={dict.meta.siteName}
-              width={1438}
-              height={265}
+              width={457.9636}
+              height={80.0672}
               priority
               unoptimized
-              className="hidden h-8 w-auto lg:h-11 dark:block"
+              className="hidden h-10 w-auto lg:h-14 dark:block"
             />
           </Link>
 

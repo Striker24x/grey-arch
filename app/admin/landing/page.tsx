@@ -20,6 +20,11 @@ export default function LandingAdminPage() {
       { id: "2", url: "", title: "Video 2" },
       { id: "3", url: "", title: "Video 3" },
     ],
+    images: [
+      { id: "1", url: "", title: "Image 1" },
+      { id: "2", url: "", title: "Image 2" },
+      { id: "3", url: "", title: "Image 3" },
+    ],
   };
   const [data, setData]           = useState<LandingData>(initial);
   const [savedData, setSavedData] = useState<LandingData>(initial);
@@ -72,6 +77,26 @@ export default function LandingAdminPage() {
 
   function removeVideo(videoId: string) {
     save({ ...data, videos: data.videos.map((v) => v.id === videoId ? { ...v, url: "" } : v) });
+  }
+
+  async function uploadImage(imageId: string, file: File) {
+    const key = `img-${imageId}`;
+    setUploading(key);
+    try {
+      const url = await uploadToCloudinary(file, "grey-arch/landing-images");
+      const updated: LandingData = {
+        ...data,
+        images: data.images.map((img) => img.id === imageId ? { ...img, url } : img),
+      };
+      await save(updated);
+    } catch (err) {
+      alert(err instanceof Error ? err.message : T.uploadFailed);
+    }
+    setUploading(null);
+  }
+
+  function removeImage(imageId: string) {
+    save({ ...data, images: data.images.map((img) => img.id === imageId ? { ...img, url: "" } : img) });
   }
 
   if (loading) return <div className="p-8 text-sm text-stone-500">Loading…</div>;
@@ -205,6 +230,78 @@ export default function LandingAdminPage() {
               )}
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Images */}
+      <div className="mt-8 rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
+        <h2 className="mb-4 text-sm font-semibold text-graphite-900">{T.imagesSection}</h2>
+        <div className="space-y-4">
+          {data.images.map((image, index) => {
+            const key = `img-${image.id}`;
+            return (
+              <div key={image.id} className="rounded-sm border border-stone-100 p-4 dark:border-line-200">
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-xs font-medium text-stone-500">Image {index + 1}</span>
+                  {image.url && (
+                    <button
+                      onClick={() => removeImage(image.id)}
+                      className="text-xs text-red-400 hover:text-red-600 hover:underline"
+                    >
+                      {T.remove}
+                    </button>
+                  )}
+                </div>
+
+                {image.url ? (
+                  <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={image.url} alt="" className="mb-3 h-40 w-full rounded-sm object-cover" />
+                    <p className="truncate text-xs text-stone-400" dir="ltr">{image.url}</p>
+                  </div>
+                ) : (
+                  <div
+                    onClick={() => fileRefs.current[key]?.click()}
+                    className="flex h-32 cursor-pointer flex-col items-center justify-center gap-2 rounded-sm border-2 border-dashed border-stone-200 text-stone-400 transition-colors hover:border-graphite-900 hover:text-graphite-900 dark:border-line-300 dark:text-stone-500 dark:hover:border-graphite-900 dark:hover:text-graphite-900"
+                  >
+                    {uploading === key ? (
+                      <span className="text-sm">{T.uploading}</span>
+                    ) : (
+                      <>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                        </svg>
+                        <span className="text-sm">{T.uploadImage}</span>
+                        <span className="text-xs">{T.uploadImageHint}</span>
+                      </>
+                    )}
+                  </div>
+                )}
+
+                <input
+                  ref={(el) => { fileRefs.current[key] = el; }}
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/avif"
+                  className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) uploadImage(image.id, file);
+                    e.target.value = "";
+                  }}
+                />
+
+                {image.url && (
+                  <button
+                    onClick={() => fileRefs.current[key]?.click()}
+                    disabled={uploading === key}
+                    className="mt-2 text-xs text-stone-500 hover:underline"
+                  >
+                    {uploading === key ? T.uploading : T.replace}
+                  </button>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

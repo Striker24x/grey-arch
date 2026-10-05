@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getProjects } from "@/lib/data-manager";
+import ProjectsListActions from "../_components/ProjectsListActions";
 
 export const dynamic = "force-dynamic";
 
@@ -13,12 +14,7 @@ export default async function ProjectsPage() {
           <h1 className="text-2xl font-semibold text-graphite-900">Projects</h1>
           <p className="mt-1 text-sm text-stone-500">{projects.length} projects</p>
         </div>
-        <Link
-          href="/admin/projects/new"
-          className="border border-graphite-900 bg-graphite-900 px-4 py-2 text-sm text-white transition-opacity hover:opacity-90"
-        >
-          + Add project
-        </Link>
+        <ProjectsListActions />
       </div>
 
       <div className="rounded-sm border border-stone-200 bg-white">

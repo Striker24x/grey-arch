@@ -340,11 +340,18 @@ export interface LandingVideo {
   title: string;
 }
 
+export interface LandingImage {
+  id: string;
+  url: string;
+  title: string;
+}
+
 export interface LandingData {
   headline: string;
   subline: string;
   loop: boolean;
   videos: LandingVideo[];
+  images: LandingImage[];
 }
 
 const DEFAULT_LANDING: LandingData = {
@@ -356,10 +363,18 @@ const DEFAULT_LANDING: LandingData = {
     { id: "2", url: "", title: "Video 2" },
     { id: "3", url: "", title: "Video 3" },
   ],
+  images: [
+    { id: "1", url: "", title: "Image 1" },
+    { id: "2", url: "", title: "Image 2" },
+    { id: "3", url: "", title: "Image 3" },
+  ],
 };
 
 export async function getLanding(): Promise<LandingData> {
-  return (await readJsonSync<LandingData>("landing.json")) ?? DEFAULT_LANDING;
+  const stored = await readJsonSync<LandingData>("landing.json");
+  if (!stored) return DEFAULT_LANDING;
+  // Backfill `images` for documents saved before this field existed.
+  return { ...stored, images: stored.images ?? DEFAULT_LANDING.images };
 }
 
 export async function saveLanding(data: LandingData): Promise<void> {

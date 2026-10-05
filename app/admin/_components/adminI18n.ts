@@ -60,6 +60,20 @@ const t = {
       show: "Einblenden",
     },
 
+    projectsList: {
+      reorderButton: "Verschiebung",
+    },
+
+    projectsReorder: {
+      title: "Projekte verschieben",
+      desc: "Ziehe die Projekte per Drag & Drop in die gewünschte Reihenfolge — genau wie sie auf der Website erscheinen. Die Reihenfolge gilt für alle Sprachen.",
+      back: "Zurück",
+      saving: "Speichern…",
+      save: "Speichern",
+      saved: "Gespeichert",
+      dragHint: "Ziehe ein Projekt auf ein anderes, um die beiden Positionen zu tauschen.",
+    },
+
     landing: {
       title: "Landing Page",
       desc: "Texte, Videos und Loop-Einstellungen für die Startseite.",
@@ -67,10 +81,13 @@ const t = {
       loopTitle: "Loop-Modus",
       loopDesc: "Wenn aktiv, werden die Videos nach dem letzten wieder von vorne abgespielt.",
       videosSection: "Videos",
+      imagesSection: "Bilder",
       remove: "Entfernen",
       uploading: "Wird hochgeladen…",
       upload: "Video hochladen",
-      uploadHint: "MP4, WebM, MOV · max 200 MB",
+      uploadHint: "MP4, WebM, MOV · beliebig groß",
+      uploadImage: "Bild hochladen",
+      uploadImageHint: "JPG, PNG, WebP, AVIF · beliebig groß",
       replace: "Ersetzen",
       uploadFailed: "Upload fehlgeschlagen",
     },
@@ -171,6 +188,20 @@ const t = {
       show: "Show",
     },
 
+    projectsList: {
+      reorderButton: "Reorder",
+    },
+
+    projectsReorder: {
+      title: "Reorder Projects",
+      desc: "Drag and drop the projects into the order you want — exactly as they appear on the website. The order applies to all languages.",
+      back: "Back",
+      saving: "Saving…",
+      save: "Save",
+      saved: "Saved",
+      dragHint: "Drag a project onto another one to swap their positions.",
+    },
+
     landing: {
       title: "Landing Page",
       desc: "Texts, videos, and loop settings for the homepage.",
@@ -178,10 +209,13 @@ const t = {
       loopTitle: "Loop Mode",
       loopDesc: "When active, videos replay from the beginning after the last one.",
       videosSection: "Videos",
+      imagesSection: "Images",
       remove: "Remove",
       uploading: "Uploading…",
       upload: "Upload video",
-      uploadHint: "MP4, WebM, MOV · max 200 MB",
+      uploadHint: "MP4, WebM, MOV · any size",
+      uploadImage: "Upload image",
+      uploadImageHint: "JPG, PNG, WebP, AVIF · any size",
       replace: "Replace",
       uploadFailed: "Upload failed",
     },
@@ -282,6 +316,20 @@ const t = {
       show: "إظهار",
     },
 
+    projectsList: {
+      reorderButton: "ترتيب",
+    },
+
+    projectsReorder: {
+      title: "ترتيب المشاريع",
+      desc: "اسحب وأفلت المشاريع لترتيبها كما تظهر بالضبط على الموقع. يسري هذا الترتيب على جميع اللغات.",
+      back: "رجوع",
+      saving: "جارٍ الحفظ…",
+      save: "حفظ",
+      saved: "تم الحفظ",
+      dragHint: "اسحب مشروعًا فوق مشروع آخر لتبديل مواقعهما.",
+    },
+
     landing: {
       title: "الصفحة الرئيسية",
       desc: "النصوص والفيديوهات وإعدادات التكرار للصفحة الرئيسية.",
@@ -289,10 +337,13 @@ const t = {
       loopTitle: "وضع التكرار",
       loopDesc: "عند التفعيل، تُعاد مشاهدة الفيديوهات من البداية بعد الانتهاء.",
       videosSection: "فيديوهات",
+      imagesSection: "صور",
       remove: "إزالة",
       uploading: "جارٍ الرفع…",
       upload: "رفع فيديو",
-      uploadHint: "MP4, WebM, MOV · الحجم الأقصى 200 MB",
+      uploadHint: "MP4, WebM, MOV · بأي حجم",
+      uploadImage: "رفع صورة",
+      uploadImageHint: "JPG, PNG, WebP, AVIF · بأي حجم",
       replace: "استبدال",
       uploadFailed: "فشل الرفع",
     },

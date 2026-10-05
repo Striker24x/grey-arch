@@ -4,14 +4,16 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   allowedDevOrigins: ["192.168.178.101"],
   images: {
-    loader: "custom",
-    loaderFile: "./lib/cloudinary-loader.ts",
-    // Keep remotePatterns as a safeguard for any direct Cloudinary URL usage
+    // Default Next.js image optimizer (Bunny's Optimizer add-on isn't enabled
+    // on the pull zones, so there's no custom loader needed).
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
-        pathname: "/ptlxw33l/**",
+        hostname: "grey-arch-media.b-cdn.net",
+      },
+      {
+        protocol: "https",
+        hostname: "vz-bed925c5-d3e.b-cdn.net",
       },
     ],
   },
