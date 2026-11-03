@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
   // at runtime for app/api/admin/upload/compress. Marking it external keeps
   // the whole sharp package folder intact so Node can require() it normally.
   serverExternalPackages: ["sharp"],
+  // The Turbopack/serverless file tracer doesn't follow sharp's dlopen-style
+  // native binary loading, so the linux binaries never made it into the
+  // deployed bundle even with serverExternalPackages. Force-include them.
+  outputFileTracingIncludes: {
+    "/api/admin/upload/compress": [
+      "./node_modules/@img/sharp-linux-x64/**/*",
+      "./node_modules/@img/sharp-libvips-linux-x64/**/*",
+    ],
+  },
   images: {
     // Default Next.js image optimizer.
     remotePatterns: [
