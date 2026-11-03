@@ -1,7 +1,7 @@
 {
   "functions": {
     "app/api/admin/upload/compress/route.ts": {
-      "memory": 3009,
+      "memory": 2048,
       "maxDuration": 60
     }
   }
