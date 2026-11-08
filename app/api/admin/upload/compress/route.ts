@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { put, del } from "@vercel/blob";
+import { PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import sharp from "sharp";
+import { getR2Client, R2_BUCKET, r2PublicUrl, r2KeyFromUrl } from "@/lib/r2";
 import { SESSION_COOKIE, verifySessionToken } from "@/lib/admin-auth";
 
 // Give this route real headroom: it fetches a potentially 100-600 MB source
@@ -15,16 +16,17 @@ const JPEG_QUALITY = 82;
 const WEBP_QUALITY = 82;
 
 /**
- * Compresses an image that was just uploaded directly to Vercel Blob (see
+ * Compresses an image that was just uploaded directly to Cloudflare R2 (see
  * lib/client-upload.ts) and replaces it with a web-sized version.
  *
  * Why this runs AFTER the raw upload rather than before: Vercel serverless
  * functions cap request bodies at ~4.5 MB, so a 100-600 MB original can only
- * ever reach our server by going straight to Blob first (unlimited size).
- * This route then does the real backend-side compression work — resize to a
- * sane web dimension, re-encode at a sensible quality, swap the raw original
- * out for the compressed result — before the URL is ever registered or shown
- * on the site. The oversized original is deleted once this succeeds.
+ * ever reach our server by going straight to R2 first (unlimited size via
+ * presigned PUT). This route then does the real backend-side compression
+ * work — resize to a sane web dimension, re-encode at a sensible quality,
+ * swap the raw original out for the compressed result — before the URL is
+ * ever registered or shown on the site. The oversized original is deleted
+ * once this succeeds.
  */
 export async function POST(request: Request) {
   const cookieStore = await cookies();
@@ -36,6 +38,11 @@ export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as { url?: string } | null;
   if (!body?.url) {
     return NextResponse.json({ error: "url is required" }, { status: 400 });
+  }
+
+  const originalKey = r2KeyFromUrl(body.url);
+  if (!originalKey) {
+    return NextResponse.json({ error: "url is not an R2-hosted object" }, { status: 400 });
   }
 
   try {
@@ -70,22 +77,25 @@ export async function POST(request: Request) {
           contentType: "image/jpeg",
         };
 
-    const basePath = new URL(body.url).pathname
-      .replace(/^\/+/, "")
-      .replace(/\.[a-zA-Z0-9]+$/, "");
-    const newPath = `${basePath}-c.${ext}`;
+    const newKey = `${originalKey.replace(/\.[a-zA-Z0-9]+$/, "")}-c.${ext}`;
 
-    const blob = await put(newPath, outputBuffer, {
-      access: "public",
-      contentType,
-      addRandomSuffix: false,
-    });
+    const client = getR2Client();
+    await client.send(
+      new PutObjectCommand({
+        Bucket: R2_BUCKET,
+        Key: newKey,
+        Body: outputBuffer,
+        ContentType: contentType,
+      })
+    );
 
     // Best-effort: remove the now-redundant raw original. Non-fatal if it fails.
-    del(body.url).catch(() => {});
+    client
+      .send(new DeleteObjectCommand({ Bucket: R2_BUCKET, Key: originalKey }))
+      .catch(() => {});
 
     return NextResponse.json({
-      url: blob.url,
+      url: r2PublicUrl(newKey),
       originalSize,
       compressedSize: outputBuffer.length,
     });
