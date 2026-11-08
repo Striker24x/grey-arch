@@ -22,7 +22,14 @@ const nextConfig: NextConfig = {
     // Default Next.js image optimizer.
     remotePatterns: [
       {
-        // Current upload target: Vercel Blob (public store "grey-arch-media").
+        // Current upload target: Cloudflare R2 (public store "grey-arch-media",
+        // served via its managed r2.dev domain).
+        protocol: "https",
+        hostname: "pub-564792c364284f1480aa91cf5b945431.r2.dev",
+      },
+      {
+        // Previous upload target: Vercel Blob — kept so images uploaded
+        // during that period (and not yet re-uploaded) don't break.
         protocol: "https",
         hostname: "*.public.blob.vercel-storage.com",
       },
