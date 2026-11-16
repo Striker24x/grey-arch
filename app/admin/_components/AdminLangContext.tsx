@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useLayoutEffect, type ReactNode } from "react";
 
-export type AdminLang  = "de" | "en" | "ar";
+export type AdminLang  = "de" | "en";
 export type AdminTheme = "light" | "dark";
 
 interface AdminLangCtx {
@@ -23,7 +23,7 @@ export function AdminLangProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const storedLang = localStorage.getItem("admin-lang") as AdminLang | null;
-    if (storedLang === "de" || storedLang === "en" || storedLang === "ar") setLangState(storedLang);
+    if (storedLang === "de" || storedLang === "en") setLangState(storedLang);
 
     const storedTheme = localStorage.getItem("admin-theme") as AdminTheme | null;
     if (storedTheme === "dark" || storedTheme === "light") setThemeState(storedTheme);

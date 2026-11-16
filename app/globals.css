@@ -129,14 +129,6 @@ footer {
   transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
 }
 
-[dir="rtl"] body {
-  font-family: var(--font-noto-sans-ar), var(--font-sans);
-}
-
-[dir="rtl"] .font-heading {
-  font-family: var(--font-naskh), var(--font-heading);
-}
-
 .text-balance {
   text-wrap: balance;
 }
@@ -374,4 +366,181 @@ nav a {
   max-width: 100%;
   height: auto;
   margin-top: 1em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   New design ("ga-" = GrayArc redesign) — used ONLY by the landing page and the
+   Studio page. Everything is scoped under .ga so existing pages are unaffected.
+   Light mode matches architektinmb.de (cream #F5F5F0 / ink #1A1A1A, DM Serif
+   Display headings, square uppercase buttons); dark mode remaps the tokens.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.ga {
+  --ga-bg: #f5f5f0;
+  --ga-subtle-bg: #ecebe4;
+  --ga-ink: #1a1a1a;
+  --ga-muted: rgba(26, 26, 26, 0.7);
+  --ga-soft: rgba(26, 26, 26, 0.5);
+  --ga-faint: rgba(26, 26, 26, 0.3);
+  --ga-line: rgba(26, 26, 26, 0.12);
+  --ga-tile: rgba(26, 26, 26, 0.05);
+  --ga-inv-bg: #1a1a1a;
+  --ga-inv-fg: #f5f5f0;
+  --ga-inv-muted: rgba(245, 245, 240, 0.75);
+  --ga-inv-soft: rgba(245, 245, 240, 0.55);
+  --ga-inv-faint: rgba(245, 245, 240, 0.35);
+  --ga-inv-line: rgba(245, 245, 240, 0.15);
+  background: var(--ga-bg);
+  color: var(--ga-ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+.dark .ga {
+  --ga-bg: #1b1916;
+  --ga-subtle-bg: #221f1b;
+  --ga-ink: #ede8e0;
+  --ga-muted: rgba(237, 232, 224, 0.74);
+  --ga-soft: rgba(237, 232, 224, 0.55);
+  --ga-faint: rgba(237, 232, 224, 0.32);
+  --ga-line: rgba(237, 232, 224, 0.14);
+  --ga-tile: rgba(237, 232, 224, 0.06);
+  --ga-inv-bg: #0f0e0c;
+  --ga-inv-fg: #ede8e0;
+  --ga-inv-muted: rgba(237, 232, 224, 0.75);
+  --ga-inv-soft: rgba(237, 232, 224, 0.55);
+  --ga-inv-faint: rgba(237, 232, 224, 0.35);
+  --ga-inv-line: rgba(237, 232, 224, 0.15);
+}
+.ga-subtle { background: var(--ga-subtle-bg); }
+.ga-invert {
+  background: var(--ga-inv-bg);
+  color: var(--ga-inv-fg);
+  --ga-bg: var(--ga-inv-bg);
+  --ga-ink: var(--ga-inv-fg);
+  --ga-muted: var(--ga-inv-muted);
+  --ga-soft: var(--ga-inv-soft);
+  --ga-faint: var(--ga-inv-faint);
+  --ga-line: var(--ga-inv-line);
+  --ga-tile: rgba(255, 255, 255, 0.05);
+}
+.ga-serif {
+  font-family: var(--font-dm-serif), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+.ga-muted { color: var(--ga-muted); }
+.ga-soft { color: var(--ga-soft); }
+.ga-faint { color: var(--ga-faint); }
+.ga-tile { background: var(--ga-tile); }
+.ga-line { border-color: var(--ga-line); }
+.ga-label {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--ga-soft);
+}
+.ga-rule { height: 1px; width: 4rem; background: var(--ga-faint); }
+
+.ga-btn,
+.ga-btn-outline {
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.ga-btn {
+  background: var(--ga-ink);
+  color: var(--ga-bg);
+  border: 1px solid var(--ga-ink);
+}
+.ga-btn:hover { opacity: 0.85; }
+.ga-btn-outline {
+  background: transparent;
+  color: var(--ga-ink);
+  border: 1px solid currentColor;
+}
+.ga-btn-outline:hover { background: var(--ga-ink); color: var(--ga-bg); }
+.ga-invert .ga-btn-outline:hover { background: var(--ga-inv-fg); color: var(--ga-inv-bg); }
+
+/* Admin-edited rich text (Studio page) rendered in the new style */
+.ga-rich { color: var(--ga-muted); line-height: 1.75; }
+.ga-rich > * + * { margin-top: 1.1em; }
+.ga-rich strong { color: var(--ga-ink); font-weight: 600; }
+.ga-rich em { font-style: italic; }
+.ga-rich h3 {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  color: var(--ga-ink);
+  margin-top: 1.6em;
+}
+.ga-rich ul, .ga-rich ol { padding-inline-start: 1.25em; display: flex; flex-direction: column; gap: 0.6em; }
+.ga-rich ul { list-style: disc; }
+.ga-rich ol { list-style: decimal; }
+.ga-rich li > p + p { margin-top: 0.5em; }
+.ga-rich blockquote {
+  padding-inline-start: 1em;
+  border-inline-start: 2px solid var(--ga-faint);
+  font-style: italic;
+}
+.ga-anchor { scroll-margin-top: 7rem; }
+
+/* Numbered steps (an ordered list inside a dark band) */
+.ga-steps > p { max-width: 42rem; }
+.ga-steps ol {
+  list-style: none;
+  padding: 0;
+  counter-reset: ga-step;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+@media (min-width: 640px) {
+  .ga-steps ol { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
+}
+.ga-steps ol > li {
+  counter-increment: ga-step;
+  border-top: 1px solid var(--ga-line);
+  padding-top: 1.5rem;
+  font-size: 0.9rem;
+}
+.ga-steps ol > li::before {
+  content: counter(ga-step, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-size: 1.875rem;
+  line-height: 1;
+  color: var(--ga-faint);
+  margin-bottom: 0.75rem;
+}
+.ga-steps ol > li strong,
+.ga-cards ul > li strong {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+/* Bordered value cards (an unordered list whose items start with a bold title) */
+.ga-cards ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 640px) { .ga-cards ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ga-cards ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ga-cards ul > li {
+  border: 1px solid var(--ga-line);
+  padding: 1.5rem;
+  font-size: 0.9rem;
 }

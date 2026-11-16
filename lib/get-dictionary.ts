@@ -30,7 +30,6 @@ function applyImageMap<T>(obj: T, map: Record<string, string>): T {
 const dictionaries: Record<Locale, () => Promise<SourceDictionary>> = {
   en: () => import("./dictionaries/en").then((m) => m.default),
   de: () => import("./dictionaries/de").then((m) => m.default),
-  ar: () => import("./dictionaries/ar").then((m) => m.default),
 };
 
 export const getDictionary = async (locale: Locale): Promise<Dictionary> => {

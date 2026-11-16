@@ -31,7 +31,7 @@ export async function writeJsonSync(key: string, data: unknown): Promise<void> {
 // Shared types
 // ---------------------------------------------------------------------------
 
-export type AdminLocale = "en" | "de" | "ar";
+export type AdminLocale = "en" | "de";
 
 // ---------------------------------------------------------------------------
 // Categories
@@ -98,17 +98,14 @@ export interface ProjectRecord {
 }
 
 async function initProjects(): Promise<ProjectRecord[]> {
-  const [enMod, deMod, arMod] = await Promise.all([
+  const [enMod, deMod] = await Promise.all([
     import("./dictionaries/en").then((m) => m.default),
     import("./dictionaries/de").then((m) => m.default),
-    import("./dictionaries/ar").then((m) => m.default),
   ]);
   return enMod.portfolio.projects.map((p) => {
     const de = deMod.portfolio.projects.find((d) => d.slug === p.slug) ?? p;
-    const ar = arMod.portfolio.projects.find((a) => a.slug === p.slug) ?? p;
     const { slug, year, categories, image, galleryImages, ...enT } = p;
     const { slug: _d1, year: _d2, categories: _d3, image: _d4, galleryImages: _d5, ...deT } = de;
-    const { slug: _a1, year: _a2, categories: _a3, image: _a4, galleryImages: _a5, ...arT } = ar;
     return {
       slug,
       year,
@@ -118,7 +115,6 @@ async function initProjects(): Promise<ProjectRecord[]> {
       translations: {
         en: enT as ProjectTranslation,
         de: deT as ProjectTranslation,
-        ar: arT as ProjectTranslation,
       },
     };
   });
@@ -147,21 +143,18 @@ export interface GalleryRecord {
 }
 
 async function initGallery(): Promise<GalleryRecord[]> {
-  const [enMod, deMod, arMod] = await Promise.all([
+  const [enMod, deMod] = await Promise.all([
     import("./dictionaries/en").then((m) => m.default),
     import("./dictionaries/de").then((m) => m.default),
-    import("./dictionaries/ar").then((m) => m.default),
   ]);
   return enMod.galleryPage.items.map((item, i) => {
     const de = deMod.galleryPage.items[i] ?? item;
-    const ar = arMod.galleryPage.items[i] ?? item;
     return {
       id: item.image.split("/").pop()?.replace(".jpg", "") ?? String(i),
       image: item.image,
       translations: {
         en: { title: item.title, category: item.category },
         de: { title: de.title, category: de.category },
-        ar: { title: ar.title, category: ar.category },
       },
     };
   });
@@ -191,21 +184,18 @@ export interface TeamRecord {
 }
 
 async function initTeam(): Promise<TeamRecord[]> {
-  const [enMod, deMod, arMod] = await Promise.all([
+  const [enMod, deMod] = await Promise.all([
     import("./dictionaries/en").then((m) => m.default),
     import("./dictionaries/de").then((m) => m.default),
-    import("./dictionaries/ar").then((m) => m.default),
   ]);
   return enMod.team.members.map((member, i) => {
     const de = deMod.team.members[i] ?? member;
-    const ar = arMod.team.members[i] ?? member;
     return {
       id: `${member.initials.toLowerCase().replace(/\s+/g, "-")}-${i}`,
       initials: member.initials,
       translations: {
         en: { name: member.name, role: member.role, bio: member.bio, tags: member.tags },
         de: { name: de.name, role: de.role, bio: de.bio, tags: de.tags },
-        ar: { name: ar.name, role: ar.role, bio: ar.bio, tags: ar.tags },
       },
     };
   });
@@ -282,7 +272,6 @@ export async function saveApplications(applications: JobApplication[]): Promise<
 export interface NavLabels {
   en: string;
   de: string;
-  ar: string;
 }
 
 export interface NavItem {
@@ -299,12 +288,12 @@ export interface NavigationData {
 
 const DEFAULT_NAV: NavigationData = {
   items: [
-    { id: "studio",    href: "/studio",    labels: { en: "Studio",    de: "Studio",      ar: "ستوديو"   }, visible: true, custom: false },
-    { id: "services",  href: "/services",  labels: { en: "Services",  de: "Leistungen",  ar: "الخدمات"  }, visible: true, custom: false },
-    { id: "portfolio", href: "/portfolio", labels: { en: "Projects",  de: "Projekte",   ar: "المشاريع" }, visible: true, custom: false },
-    { id: "team",      href: "/team",      labels: { en: "Our Team",  de: "Unser Team",  ar: "فريقنا"   }, visible: true, custom: false },
-    { id: "careers",   href: "/karriere",  labels: { en: "Careers",   de: "Karriere",    ar: "وظائف"    }, visible: true, custom: false },
-    { id: "connect",   href: "/connect",   labels: { en: "Connect",   de: "Kontakt",     ar: "تواصل"    }, visible: true, custom: false },
+    { id: "studio",    href: "/studio",    labels: { en: "Studio",    de: "Studio" }, visible: true, custom: false },
+    { id: "services",  href: "/services",  labels: { en: "Services",  de: "Leistungen" }, visible: true, custom: false },
+    { id: "portfolio", href: "/portfolio", labels: { en: "Projects",  de: "Projekte" }, visible: true, custom: false },
+    { id: "team",      href: "/team",      labels: { en: "Our Team",  de: "Unser Team" }, visible: true, custom: false },
+    { id: "careers",   href: "/karriere",  labels: { en: "Careers",   de: "Karriere" }, visible: true, custom: false },
+    { id: "connect",   href: "/connect",   labels: { en: "Connect",   de: "Kontakt" }, visible: true, custom: false },
   ],
 };
 
@@ -314,7 +303,7 @@ function migrateNavItem(raw: Record<string, unknown>): NavItem {
   return {
     id: raw.id as string,
     href: raw.href as string,
-    labels: { en: label, de: label, ar: label },
+    labels: { en: label, de: label },
     visible: (raw.visible as boolean) ?? true,
     custom: (raw.custom as boolean) ?? true,
   };
@@ -476,10 +465,9 @@ function migrateLegacyStudio(old: LegacyStudioData): StudioData {
 }
 
 async function initStudio(): Promise<StudioData> {
-  const [enMod, deMod, arMod] = await Promise.all([
+  const [enMod, deMod] = await Promise.all([
     import("./dictionaries/en").then((m) => m.default),
     import("./dictionaries/de").then((m) => m.default),
-    import("./dictionaries/ar").then((m) => m.default),
   ]);
   function mapLocale(dict: typeof enMod): LegacyStudioTranslation {
     const s = dict.studio;
@@ -500,7 +488,7 @@ async function initStudio(): Promise<StudioData> {
     };
   }
   return migrateLegacyStudio({
-    translations: { en: mapLocale(enMod), de: mapLocale(deMod), ar: mapLocale(arMod) },
+    translations: { en: mapLocale(enMod), de: mapLocale(deMod) },
   });
 }
 
@@ -613,10 +601,9 @@ function migrateLegacyServices(old: LegacyServicesData): ServicesData {
 }
 
 async function initServices(): Promise<ServicesData> {
-  const [enMod, deMod, arMod] = await Promise.all([
+  const [enMod, deMod] = await Promise.all([
     import("./dictionaries/en").then((m) => m.default),
     import("./dictionaries/de").then((m) => m.default),
-    import("./dictionaries/ar").then((m) => m.default),
   ]);
   function mapLocale(dict: typeof enMod): LegacyServicesTranslation {
     const sp = dict.servicesPage;
@@ -640,7 +627,7 @@ async function initServices(): Promise<ServicesData> {
     };
   }
   return migrateLegacyServices({
-    translations: { en: mapLocale(enMod), de: mapLocale(deMod), ar: mapLocale(arMod) },
+    translations: { en: mapLocale(enMod), de: mapLocale(deMod) },
   });
 }
 
@@ -697,10 +684,9 @@ export interface ConnectData {
 }
 
 async function initConnect(): Promise<ConnectData> {
-  const [enMod, deMod, arMod] = await Promise.all([
+  const [enMod, deMod] = await Promise.all([
     import("./dictionaries/en").then((m) => m.default),
     import("./dictionaries/de").then((m) => m.default),
-    import("./dictionaries/ar").then((m) => m.default),
   ]);
   function mapLocale(dict: typeof enMod): ConnectTranslation {
     const c = dict.connect;
@@ -733,7 +719,6 @@ async function initConnect(): Promise<ConnectData> {
     translations: {
       en: mapLocale(enMod),
       de: mapLocale(deMod),
-      ar: mapLocale(arMod),
     },
   };
 }

@@ -8,7 +8,6 @@ import { getAdminT } from "../_components/adminI18n";
 export default function ApplicationsPage() {
   const { lang } = useAdminLang();
   const T = getAdminT(lang).applications;
-  const dir = lang === "ar" ? "rtl" : "ltr";
 
   const [applications, setApplications] = useState<JobApplication[]>([]);
   const [loading, setLoading] = useState(true);
@@ -44,7 +43,7 @@ export default function ApplicationsPage() {
   const newCount = applications.filter((a) => a.status === "new").length;
 
   return (
-    <div className="p-8" dir={dir}>
+    <div className="p-8">
       <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-6">
         <div>
           <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>

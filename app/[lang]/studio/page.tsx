@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import Image from "next/image";
-import { hasLocale, alternateLinks, localeDir } from "@/lib/i18n";
+import { notFound } from "next/navigation";
+import { hasLocale, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
-import { getImageUrl } from "@/lib/image-url";
-import { getStudio } from "@/lib/data-manager";
-import { resolveServiceLayout } from "@/lib/service-layouts";
-import { parseContentBlocks, pairContentBlocks } from "@/lib/parse-content-blocks";
-import { PROJECT_LAYOUT_COMPONENTS } from "@/components/project-layouts/registry";
+import { parseContentBlocks, pairContentBlocks, type ContentUnit } from "@/lib/parse-content-blocks";
 import AnimatedReveal from "@/components/AnimatedReveal";
-import ImageReveal from "@/components/ImageReveal";
+import GaImage, { canOptimize } from "@/components/ga/GaImage";
+
+const FOUNDER_PHOTO = "/images/michel-alkhouri.jpg";
 
 export async function generateMetadata({
   params,
@@ -26,6 +24,77 @@ export async function generateMetadata({
   };
 }
 
+type StudioSection = {
+  key: string;
+  /** Anchor id injected by getDictionary() (same ids the Header submenu links to). */
+  id?: string;
+  headingHtml?: string;
+  html: string;
+  image?: ContentUnit["image"];
+  kind: "steps" | "cards" | "text";
+};
+
+const LEADING_H3_RE = /^\s*<h3\b([^>]*)>([\s\S]*?)<\/h3>/i;
+
+/** Turns one admin-edited content unit into a renderable section: pulls its leading H3 out
+ * (so it can be laid out separately while keeping its anchor id) and picks a presentation
+ * from the content's structure — an ordered list becomes numbered steps on a dark band, an
+ * unordered list whose items all start with a bold title becomes bordered cards. */
+function toSection(unit: ContentUnit): StudioSection {
+  let html = unit.textHtml.replace(/<p>\s*<\/p>/gi, "");
+  let id: string | undefined;
+  let headingHtml: string | undefined;
+  const m = html.match(LEADING_H3_RE);
+  if (m) {
+    id = m[1].match(/\sid="([^"]+)"/i)?.[1];
+    headingHtml = m[2];
+    html = html.slice(m[0].length);
+  }
+  // "<strong>Title</strong> — text" → title on its own line, without the dangling dash.
+  const tidy = (s: string) => s.replace(/(<\/strong>)\s*[—–-]\s*/g, "$1 ");
+
+  let kind: StudioSection["kind"] = "text";
+  if (/<ol\b/i.test(html)) {
+    kind = "steps";
+    html = tidy(html);
+  } else {
+    const ul = html.match(/<ul\b[^>]*>([\s\S]*?)<\/ul>/i)?.[1];
+    const items = ul ? [...ul.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)].map((x) => x[1]) : [];
+    if (items.length >= 2 && items.every((li) => /^\s*(<p>\s*)?<strong>/i.test(li))) {
+      kind = "cards";
+      html = tidy(html);
+    }
+  }
+  return { key: unit.id, id, headingHtml, html, image: unit.image, kind };
+}
+
+function SectionHeading({ id, html, className = "" }: { id?: string; html: string; className?: string }) {
+  return (
+    <h2
+      id={id}
+      className={`ga-anchor ga-serif text-3xl leading-tight sm:text-4xl ${className}`}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
+
+function BodyImage({ image }: { image: NonNullable<ContentUnit["image"]> }) {
+  if (canOptimize(image.src) && image.width && image.height) {
+    return (
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        sizes="(min-width: 1024px) 640px, 100vw"
+        className="h-auto max-h-[640px] w-auto max-w-full"
+      />
+    );
+  }
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={image.src} alt={image.alt} loading="lazy" className="h-auto max-h-[640px] w-auto max-w-full" />;
+}
+
 export default async function StudioPage({
   params,
 }: {
@@ -34,53 +103,121 @@ export default async function StudioPage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
-  const dir = localeDir(lang);
   const { studio } = dict;
-  const studioData = await getStudio();
-  const workspaceImageSrc = studioData.workspaceImage
-    ?? await getImageUrl("/images/grey-arch/services/studio-workspace.jpg");
-  const units = pairContentBlocks(parseContentBlocks(studio.body));
-  const resolvedLayout = resolveServiceLayout(studioData.layout);
-  const Layout = PROJECT_LAYOUT_COMPONENTS[resolvedLayout];
-  const wrapperMaxWidth = resolvedLayout === "centered-stack" ? "" : "mx-auto max-w-4xl";
+  const founder = dict.landing.founder;
+  const sections = pairContentBlocks(parseContentBlocks(studio.body)).map(toSection);
 
   return (
-    <>
-      <section className="mx-auto max-w-7xl px-6 pt-36 pb-28 lg:px-10 lg:pt-44 lg:pb-36">
-        {/* dir="ltr" pins text always to the physical left / image always to the physical right,
-         * regardless of page language — CSS grid otherwise auto-mirrors column order under
-         * dir="rtl" (Arabic), which put the image on the left instead. */}
-        <div className="grid items-center gap-12 lg:grid-cols-2" dir="ltr">
-          <AnimatedReveal>
-            <div dir={dir}>
-              <h1 className="font-heading text-4xl leading-tight text-ink sm:text-5xl">
-                {dict.nav.studio}
-              </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-stone-600">
-                {studio.intro}
-              </p>
+    <div className="ga">
+      {/* Page title with a short thin rule (architektinmb.de "Über mich") */}
+      <section className="mx-auto max-w-5xl px-6 pb-14 pt-36 lg:px-10 lg:pb-16 lg:pt-44">
+        <AnimatedReveal>
+          <h1 className="ga-serif text-5xl sm:text-6xl">{dict.nav.studio}</h1>
+          <div className="ga-rule mt-5" />
+        </AnimatedReveal>
+      </section>
+
+      {/* Founder — compact portrait left, text right */}
+      <section className="mx-auto max-w-5xl px-6 pb-20 lg:px-10 lg:pb-24">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-[260px_1fr] sm:gap-12">
+          <AnimatedReveal variant="card">
+            <div className="ga-tile relative aspect-[3/4] w-full max-w-xs overflow-hidden">
+              <GaImage
+                src={FOUNDER_PHOTO}
+                alt={founder.photoAlt}
+                sizes="(min-width: 640px) 260px, 320px"
+                priority
+                className="object-cover object-top"
+              />
             </div>
           </AnimatedReveal>
-          <ImageReveal className="aspect-[4/3]">
-            <Image
-              src={workspaceImageSrc}
-              alt={studio.title}
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </ImageReveal>
+          <AnimatedReveal delay={80}>
+            <h2 className="ga-serif text-3xl sm:text-4xl">{founder.name}</h2>
+            <p className="ga-label mt-3">
+              {founder.credentials.map((line, i) => (
+                <span key={line}>
+                  {i > 0 && <br />}
+                  {line}
+                </span>
+              ))}
+            </p>
+            <div className="mt-6 flex flex-col gap-5">
+              {founder.bio.map((p) => (
+                <p key={p.slice(0, 24)} className="ga-muted leading-relaxed">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </AnimatedReveal>
         </div>
       </section>
 
-      {units.length > 0 && (
-        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className={wrapperMaxWidth}>
-            <Layout units={units} projectName={studio.title} />
-          </div>
+      {/* Admin-editable intro + body (Admin → Studio) in the new style */}
+      {studio.intro && (
+        <section className="mx-auto max-w-5xl px-6 pb-20 lg:px-10 lg:pb-24">
+          <AnimatedReveal>
+            <div className="ga-line border-t pt-12">
+              <p className="ga-serif max-w-3xl text-2xl leading-snug sm:text-3xl">{studio.intro}</p>
+            </div>
+          </AnimatedReveal>
         </section>
       )}
-    </>
+
+      {sections.map((s) => {
+        if (s.kind === "steps") {
+          return (
+            <section key={s.key} className="ga-invert">
+              <div className="mx-auto max-w-5xl px-6 py-20 lg:px-10 lg:py-28">
+                <AnimatedReveal>
+                  {s.headingHtml && <SectionHeading id={s.id} html={s.headingHtml} className="sm:text-5xl" />}
+                  <div className="ga-rich ga-steps mt-6" dangerouslySetInnerHTML={{ __html: s.html }} />
+                </AnimatedReveal>
+                {s.image && (
+                  <div className="mt-12">
+                    <BodyImage image={s.image} />
+                  </div>
+                )}
+              </div>
+            </section>
+          );
+        }
+
+        if (s.kind === "cards") {
+          return (
+            <section key={s.key} className="mx-auto max-w-5xl px-6 py-20 lg:px-10 lg:py-28">
+              <AnimatedReveal>
+                {s.headingHtml && <SectionHeading id={s.id} html={s.headingHtml} className="sm:text-5xl" />}
+                <div className="ga-rich ga-cards mt-4" dangerouslySetInnerHTML={{ __html: s.html }} />
+              </AnimatedReveal>
+              {s.image && (
+                <div className="mt-12">
+                  <BodyImage image={s.image} />
+                </div>
+              )}
+            </section>
+          );
+        }
+
+        return (
+          <section key={s.key} className="mx-auto max-w-5xl px-6 pb-16 lg:px-10 lg:pb-20">
+            <AnimatedReveal>
+              <div className="ga-line grid grid-cols-1 gap-6 border-t pt-12 lg:grid-cols-12 lg:gap-12">
+                <div className="lg:col-span-4">
+                  {s.headingHtml && <SectionHeading id={s.id} html={s.headingHtml} />}
+                </div>
+                <div className="lg:col-span-8">
+                  {s.html.trim() && <div className="ga-rich" dangerouslySetInnerHTML={{ __html: s.html }} />}
+                  {s.image && (
+                    <figure className={s.html.trim() ? "mt-8" : ""}>
+                      <BodyImage image={s.image} />
+                    </figure>
+                  )}
+                </div>
+              </div>
+            </AnimatedReveal>
+          </section>
+        );
+      })}
+    </div>
   );
 }

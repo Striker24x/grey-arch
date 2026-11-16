@@ -4,32 +4,28 @@
       "id": "type",
       "translations": {
         "en": "Project Type",
-        "de": "Projekttyp",
-        "ar": "نوع المشروع"
+        "de": "Projekttyp"
       },
       "categories": [
         {
           "id": "projects",
           "translations": {
             "en": "Projects",
-            "de": "Projekte",
-            "ar": "مشاريع"
+            "de": "Projekte"
           }
         },
         {
           "id": "heritage",
           "translations": {
             "en": "Heritage",
-            "de": "Denkmal",
-            "ar": "تراث"
+            "de": "Denkmal"
           }
         },
         {
           "id": "conservation",
           "translations": {
             "en": "Conservation",
-            "de": "Denkmalpflege",
-            "ar": "حفاظ"
+            "de": "Denkmalpflege"
           }
         }
       ]
@@ -38,40 +34,35 @@
       "id": "space",
       "translations": {
         "en": "Space",
-        "de": "Raum",
-        "ar": "المساحة"
+        "de": "Raum"
       },
       "categories": [
         {
           "id": "residential",
           "translations": {
             "en": "Residential",
-            "de": "Wohnen",
-            "ar": "سكني"
+            "de": "Wohnen"
           }
         },
         {
           "id": "interior",
           "translations": {
             "en": "Interior",
-            "de": "Interieur",
-            "ar": "داخلي"
+            "de": "Interieur"
           }
         },
         {
           "id": "landscape",
           "translations": {
             "en": "Landscape",
-            "de": "Landschaft",
-            "ar": "مساحات خارجية"
+            "de": "Landschaft"
           }
         },
         {
           "id": "test",
           "translations": {
             "en": "test",
-            "de": "durchauf",
-            "ar": "تيست"
+            "de": "durchauf"
           }
         }
       ]
@@ -80,32 +71,28 @@
       "id": "scope",
       "translations": {
         "en": "Scope",
-        "de": "Leistungsumfang",
-        "ar": "النطاق"
+        "de": "Leistungsumfang"
       },
       "categories": [
         {
           "id": "planning",
           "translations": {
             "en": "Planning",
-            "de": "Planung",
-            "ar": "تخطيط"
+            "de": "Planung"
           }
         },
         {
           "id": "modeling",
           "translations": {
             "en": "3D Modeling",
-            "de": "3D-Modellierung",
-            "ar": "نمذجة ثلاثية الأبعاد"
+            "de": "3D-Modellierung"
           }
         },
         {
           "id": "digitalArch",
           "translations": {
             "en": "Digital Arch",
-            "de": "Digital Arch",
-            "ar": "Digital Arch"
+            "de": "Digital Arch"
           }
         }
       ]

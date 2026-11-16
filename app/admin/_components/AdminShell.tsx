@@ -87,7 +87,6 @@ const NAV_KEYS = [
 const LANGS: { key: AdminLang; label: string }[] = [
   { key: "de", label: "DE" },
   { key: "en", label: "EN" },
-  { key: "ar", label: "AR" },
 ];
 
 function SunIcon() {
@@ -120,7 +119,6 @@ function Shell({ children }: { children: ReactNode }) {
   const [loggingOut, setLoggingOut] = useState(false);
   const { lang, setLang, theme, setTheme } = useAdminLang();
   const T   = getAdminT(lang);
-  const dir = lang === "ar" ? "rtl" : "ltr";
   const isDark = theme === "dark";
   const newApplicationsCount = useNewItemCount("/api/admin/applications");
   const newInquiriesCount = useNewItemCount("/api/admin/inquiries");
@@ -134,12 +132,10 @@ function Shell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-screen bg-stone-50 dark:bg-paper-50" dir={dir}>
+    <div className="flex min-h-screen bg-stone-50 dark:bg-paper-50">
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 z-30 flex w-56 flex-col border-stone-200 bg-white dark:border-line-200 dark:bg-paper-100 ${
-          dir === "rtl" ? "right-0 border-l" : "left-0 border-r"
-        }`}
+        className={`fixed inset-y-0 z-30 flex w-56 flex-col border-stone-200 bg-white dark:border-line-200 dark:bg-paper-100 left-0 border-r`}
       >
         {/* Header */}
         <div className="flex h-14 items-center gap-2 border-b border-stone-200 px-4 dark:border-line-200">
@@ -223,7 +219,7 @@ function Shell({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main */}
-      <div className={`flex-1 min-h-screen bg-stone-50 dark:bg-paper-50 ${dir === "rtl" ? "mr-56" : "ml-56"}`}>
+      <div className={`flex-1 min-h-screen bg-stone-50 dark:bg-paper-50 ml-56`}>
         {children}
       </div>
     </div>

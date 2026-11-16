@@ -11,7 +11,6 @@ import RichTextEditor from "./RichTextEditor";
 const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
   { key: "de", label: "Deutsch" },
-  { key: "ar", label: "العربية" },
 ];
 
 const TEXT_FIELDS: { key: keyof ProjectTranslation; label: string; multiline?: boolean }[] = [
@@ -47,7 +46,7 @@ function emptyProject(): ProjectRecord {
   return {
     slug: "", year: String(new Date().getFullYear()),
     categories: [], image: "", galleryImages: [],
-    translations: { en: emptyTranslation(), de: emptyTranslation(), ar: emptyTranslation() },
+    translations: { en: emptyTranslation(), de: emptyTranslation() },
   };
 }
 
@@ -329,14 +328,12 @@ export default function ProjectForm({
                     onChange={(e) => setTranslation(key, e.target.value)}
                     rows={3}
                     className="input resize-y"
-                    dir={lang === "ar" ? "rtl" : "ltr"}
                   />
                 ) : (
                   <input
                     value={t[key] as string}
                     onChange={(e) => setTranslation(key, e.target.value)}
                     className="input"
-                    dir={lang === "ar" ? "rtl" : "ltr"}
                   />
                 )}
               </Field>
@@ -348,12 +345,10 @@ export default function ProjectForm({
         <div className="border-t border-stone-200 bg-stone-100 p-6 dark:bg-paper-300 sm:p-10">
           <div
             className="mx-auto max-w-[760px] bg-white px-10 py-14 shadow-soft dark:bg-paper-200 sm:px-16"
-            dir={lang === "ar" ? "rtl" : "ltr"}
           >
             <RichTextEditor
               value={t.body ?? ""}
               onChange={(html) => setTranslation("body", html)}
-              dir={lang === "ar" ? "rtl" : "ltr"}
               variant="page"
               onUploadImage={uploadBodyImage}
             />

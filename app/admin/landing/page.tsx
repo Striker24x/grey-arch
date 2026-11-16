@@ -9,7 +9,6 @@ import { uploadToCloudinary } from "@/lib/client-upload";
 export default function LandingAdminPage() {
   const { lang } = useAdminLang();
   const T   = getAdminT(lang).landing;
-  const dir = lang === "ar" ? "rtl" : "ltr";
 
   const initial: LandingData = {
     headline: "GrayArc",
@@ -102,7 +101,7 @@ export default function LandingAdminPage() {
   if (loading) return <div className="p-8 text-sm text-stone-500">Loading…</div>;
 
   return (
-    <div className="p-8" dir={dir}>
+    <div className="p-8">
       <div className="mb-6 border-b border-stone-200 pb-6 dark:border-line-200">
         <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>
         <p className="mt-1 text-sm text-stone-500">{T.desc}</p>

@@ -45,15 +45,11 @@ export default function ContactForm({
           <p className="font-heading text-2xl text-ink">
             {lang === "de"
               ? "Vielen Dank für Ihre Anfrage."
-              : lang === "ar"
-                ? "شكراً لك على تواصلك معنا."
                 : "Thank you for your inquiry."}
           </p>
           <p className="mt-3 text-sm text-stone-600">
             {lang === "de"
               ? "Wir melden uns in Kürze persönlich bei Ihnen."
-              : lang === "ar"
-                ? "سنتواصل معك شخصياً في أقرب وقت ممكن."
                 : "We will respond to you personally as soon as possible."}
           </p>
         </motion.div>
@@ -69,8 +65,6 @@ export default function ContactForm({
             <p className="text-sm text-red-500">
               {lang === "de"
                 ? "Beim Senden ist etwas schiefgelaufen. Bitte versuche es erneut."
-                : lang === "ar"
-                  ? "حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى."
                   : "Something went wrong while sending. Please try again."}
             </p>
           )}

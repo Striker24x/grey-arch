@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Naskh_Arabic, Noto_Sans_Arabic } from "next/font/google";
+import { Inter, DM_Serif_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import Header from "@/components/Header";
@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import ConditionalFooter from "@/components/ConditionalFooter";
 import FontProvider from "@/components/FontProvider";
 import ThemeSync from "@/components/ThemeSync";
-import { locales, hasLocale, localeDir, alternateLinks } from "@/lib/i18n";
+import { locales, hasLocale, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getNavigation } from "@/lib/data-manager";
 
@@ -17,16 +17,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const notoNaskh = Noto_Naskh_Arabic({
-  variable: "--font-naskh",
-  subsets: ["arabic"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const notoSansArabic = Noto_Sans_Arabic({
-  variable: "--font-noto-sans-ar",
-  subsets: ["arabic"],
+// Serif display face for the new landing/studio design (ga-* classes only).
+const dmSerifDisplay = DM_Serif_Display({
+  variable: "--font-dm-serif",
+  weight: "400",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -94,16 +89,15 @@ export default async function RootLayout({
   if (!hasLocale(lang)) notFound();
 
   const dict = await getDictionary(lang);
-  const dir = localeDir(lang);
   const navConfig = (await getNavigation()).items;
 
   return (
     <html
       lang={lang}
-      dir={dir}
+      dir="ltr"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${inter.variable} ${notoNaskh.variable} ${notoSansArabic.variable} antialiased`}
+      className={`${inter.variable} ${dmSerifDisplay.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-paper-100 text-ink">
           <ThemeSync />

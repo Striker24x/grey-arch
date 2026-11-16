@@ -8,7 +8,6 @@ import { getAdminT } from "../_components/adminI18n";
 export default function InquiriesPage() {
   const { lang } = useAdminLang();
   const T = getAdminT(lang).inquiries;
-  const dir = lang === "ar" ? "rtl" : "ltr";
 
   const [inquiries, setInquiries] = useState<ContactInquiry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -44,7 +43,7 @@ export default function InquiriesPage() {
   const newCount = inquiries.filter((i) => i.status === "new").length;
 
   return (
-    <div className="p-8" dir={dir}>
+    <div className="p-8">
       <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-6">
         <div>
           <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>

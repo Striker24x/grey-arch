@@ -8,7 +8,6 @@ const EMPTY: ServicesData = {
   translations: {
     en: { title: "", intro: "", body: "" },
     de: { title: "", intro: "", body: "" },
-    ar: { title: "", intro: "", body: "" },
   },
 };
 

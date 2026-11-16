@@ -9,7 +9,6 @@ import { uploadToCloudinary } from "@/lib/client-upload";
 const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
   { key: "de", label: "Deutsch" },
-  { key: "ar", label: "العربية" },
 ];
 
 const empty = (): JobRecord => ({
@@ -19,7 +18,6 @@ const empty = (): JobRecord => ({
   translations: {
     en: { title: "", location: "", employmentType: "", intro: "", description: "" },
     de: { title: "", location: "", employmentType: "", intro: "", description: "" },
-    ar: { title: "", location: "", employmentType: "", intro: "", description: "" },
   },
 });
 
@@ -267,7 +265,6 @@ export default function JobsPage() {
                   value={editing.translations[lang].title}
                   onChange={(e) => setTransField("title", e.target.value)}
                   className="input"
-                  dir={lang === "ar" ? "rtl" : "ltr"}
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -277,7 +274,6 @@ export default function JobsPage() {
                     value={editing.translations[lang].location}
                     onChange={(e) => setTransField("location", e.target.value)}
                     className="input"
-                    dir={lang === "ar" ? "rtl" : "ltr"}
                     placeholder="Berlin"
                   />
                 </div>
@@ -287,7 +283,6 @@ export default function JobsPage() {
                     value={editing.translations[lang].employmentType}
                     onChange={(e) => setTransField("employmentType", e.target.value)}
                     className="input"
-                    dir={lang === "ar" ? "rtl" : "ltr"}
                     placeholder="Full-time"
                   />
                 </div>
@@ -299,7 +294,6 @@ export default function JobsPage() {
                   onChange={(e) => setTransField("intro", e.target.value)}
                   rows={2}
                   className="input resize-y"
-                  dir={lang === "ar" ? "rtl" : "ltr"}
                 />
               </div>
               <div>
@@ -308,7 +302,6 @@ export default function JobsPage() {
                   <RichTextEditor
                     value={editing.translations[lang].description}
                     onChange={(html) => setTransField("description", html)}
-                    dir={lang === "ar" ? "rtl" : "ltr"}
                     variant="page"
                   />
                 </div>

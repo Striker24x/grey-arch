@@ -8,7 +8,6 @@ import { uploadToCloudinary } from "@/lib/client-upload";
 const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
   { key: "de", label: "Deutsch" },
-  { key: "ar", label: "العربية" },
 ];
 
 const empty = (): TeamRecord => ({
@@ -17,7 +16,6 @@ const empty = (): TeamRecord => ({
   translations: {
     en: { name: "", role: "", bio: "", tags: [] },
     de: { name: "", role: "", bio: "", tags: [] },
-    ar: { name: "", role: "", bio: "", tags: [] },
   },
 });
 
@@ -263,7 +261,6 @@ export default function TeamPage() {
                   value={editing.translations[lang].name}
                   onChange={(e) => setTransField("name", e.target.value)}
                   className="input"
-                  dir={lang === "ar" ? "rtl" : "ltr"}
                 />
               </div>
               <div>
@@ -272,7 +269,6 @@ export default function TeamPage() {
                   value={editing.translations[lang].role}
                   onChange={(e) => setTransField("role", e.target.value)}
                   className="input"
-                  dir={lang === "ar" ? "rtl" : "ltr"}
                 />
               </div>
               <div>
@@ -282,7 +278,6 @@ export default function TeamPage() {
                   onChange={(e) => setTransField("bio", e.target.value)}
                   rows={3}
                   className="input resize-y"
-                  dir={lang === "ar" ? "rtl" : "ltr"}
                 />
               </div>
               <div>
@@ -292,7 +287,6 @@ export default function TeamPage() {
                   onChange={(e) => setTags(e.target.value)}
                   className="input"
                   placeholder="Tag 1, Tag 2"
-                  dir={lang === "ar" ? "rtl" : "ltr"}
                 />
               </div>
             </div>

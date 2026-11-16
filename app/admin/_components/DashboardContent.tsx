@@ -18,7 +18,6 @@ interface Props {
 export default function DashboardContent({ projects, teamCount }: Props) {
   const { lang } = useAdminLang();
   const T   = getAdminT(lang).dashboard;
-  const dir = lang === "ar" ? "rtl" : "ltr";
 
   const stats = [
     { label: T.projects, count: projects.length, href: "/admin/projects",   action: "/admin/projects/new", actionLabel: T.addProject   },
@@ -26,7 +25,7 @@ export default function DashboardContent({ projects, teamCount }: Props) {
   ];
 
   return (
-    <div className="p-8" dir={dir}>
+    <div className="p-8">
       <div className="mb-8 border-b border-stone-200 pb-6 dark:border-line-200">
         <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>
         <p className="mt-1 text-sm text-stone-500">{T.subtitle}</p>

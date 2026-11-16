@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { hasLocale, alternateLinks, localeDir } from "@/lib/i18n";
+import { hasLocale, alternateLinks } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getServices } from "@/lib/data-manager";
 import { resolveServiceLayout } from "@/lib/service-layouts";
@@ -33,7 +33,6 @@ export default async function ServicesPage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
-  const dir = localeDir(lang);
   const { servicesPage } = dict;
   const servicesData = await getServices();
   const units = pairContentBlocks(parseContentBlocks(servicesPage.body));
@@ -48,12 +47,9 @@ export default async function ServicesPage({
     <>
       <section className="mx-auto max-w-7xl px-6 pt-32 pb-0 sm:pt-40 sm:pb-1 lg:px-10 lg:pt-44 lg:pb-2">
         {servicesData.heroImage ? (
-          // dir="ltr" on the grid pins text always to the physical left / image always to the
-          // physical right column, regardless of page language — CSS grid otherwise auto-mirrors
-          // column order under dir="rtl" (Arabic), which put the image on the left instead.
-          <div className="grid items-center gap-12 lg:grid-cols-2" dir="ltr">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
             <AnimatedReveal>
-              <div dir={dir}>
+              <div>
                 <h1 className="font-heading text-4xl leading-tight text-ink sm:text-5xl">
                   {dict.nav.services}
                 </h1>

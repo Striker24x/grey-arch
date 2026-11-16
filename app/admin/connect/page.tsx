@@ -6,7 +6,6 @@ import type { ConnectData, ConnectTranslation, AdminLocale } from "@/lib/data-ma
 const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
   { key: "de", label: "Deutsch" },
-  { key: "ar", label: "العربية" },
 ];
 
 export default function ConnectAdminPage() {
@@ -23,7 +22,6 @@ export default function ConnectAdminPage() {
       .then((d) => { setData(d as ConnectData); setLoading(false); });
   }, []);
 
-  const dir = lang === "ar" ? "rtl" : "ltr";
   const t: ConnectTranslation | null = data?.translations[lang] ?? null;
 
   function setField<K extends keyof ConnectTranslation>(field: K, value: ConnectTranslation[K]) {
@@ -64,7 +62,7 @@ export default function ConnectAdminPage() {
   if (loading || !data || !t) return <div className="p-8 text-sm text-stone-500">Loading…</div>;
 
   return (
-    <div className="p-8" dir={dir}>
+    <div className="p-8">
       <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-6 dark:border-line-200">
         <div>
           <h1 className="text-2xl font-semibold text-graphite-900">Connect / Contact</h1>
@@ -101,11 +99,11 @@ export default function ConnectAdminPage() {
           <div className="grid gap-4 lg:grid-cols-2">
             <div>
               <label className="label">Title</label>
-              <input value={t.title} onChange={(e) => setField("title", e.target.value)} className="input" dir={dir} />
+              <input value={t.title} onChange={(e) => setField("title", e.target.value)} className="input" />
             </div>
             <div>
               <label className="label">Intro text</label>
-              <textarea value={t.intro} onChange={(e) => setField("intro", e.target.value)} rows={3} className="input resize-y" dir={dir} />
+              <textarea value={t.intro} onChange={(e) => setField("intro", e.target.value)} rows={3} className="input resize-y" />
             </div>
           </div>
         </div>
@@ -116,15 +114,15 @@ export default function ConnectAdminPage() {
           <div className="grid gap-4 sm:grid-cols-3">
             <div>
               <label className="label">Start Project</label>
-              <input value={t.ctaStartProject} onChange={(e) => setField("ctaStartProject", e.target.value)} className="input" dir={dir} />
+              <input value={t.ctaStartProject} onChange={(e) => setField("ctaStartProject", e.target.value)} className="input" />
             </div>
             <div>
               <label className="label">Request Consultation</label>
-              <input value={t.ctaRequestConsultation} onChange={(e) => setField("ctaRequestConsultation", e.target.value)} className="input" dir={dir} />
+              <input value={t.ctaRequestConsultation} onChange={(e) => setField("ctaRequestConsultation", e.target.value)} className="input" />
             </div>
             <div>
               <label className="label">Send Plans</label>
-              <input value={t.ctaSendPlans} onChange={(e) => setField("ctaSendPlans", e.target.value)} className="input" dir={dir} />
+              <input value={t.ctaSendPlans} onChange={(e) => setField("ctaSendPlans", e.target.value)} className="input" />
             </div>
           </div>
         </div>
@@ -157,14 +155,13 @@ export default function ConnectAdminPage() {
                   value={t[field] as string}
                   onChange={(e) => setField(field, e.target.value)}
                   className="input"
-                  dir={dir}
                 />
               </div>
             ))}
           </div>
           <div className="mt-4">
             <label className="label">Consent text</label>
-            <textarea value={t.formConsent} onChange={(e) => setField("formConsent", e.target.value)} rows={2} className="input resize-y" dir={dir} />
+            <textarea value={t.formConsent} onChange={(e) => setField("formConsent", e.target.value)} rows={2} className="input resize-y" />
           </div>
         </div>
 
@@ -179,7 +176,6 @@ export default function ConnectAdminPage() {
                 onChange={(e) => setOptions("formProjectTypeOptions", e.target.value)}
                 rows={10}
                 className="input resize-y font-mono text-xs"
-                dir={dir}
               />
             </div>
             <div>
@@ -189,7 +185,6 @@ export default function ConnectAdminPage() {
                 onChange={(e) => setOptions("formBuildingStatusOptions", e.target.value)}
                 rows={4}
                 className="input resize-y font-mono text-xs"
-                dir={dir}
               />
             </div>
           </div>

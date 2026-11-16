@@ -154,6 +154,70 @@ const de: SourceDictionary = {
       cta: "Projekt starten",
     },
   },
+  landing: {
+    heroHeadline: "Architektur mit Präzision und Kontinuum",
+    heroCta: "Kontakt aufnehmen",
+    bannerAlt: "GrayArc — Architektur",
+    learnMore: "Mehr erfahren",
+    sections: {
+      studio: { cta: "Mehr erfahren" },
+      services: {
+        description:
+          "Von der Architektur- und Tragwerksplanung über die Baugenehmigung bis zum Projektmanagement – wir begleiten Ihr Vorhaben von der ersten Idee bis zur Fertigstellung.",
+        cta: "Alle Leistungen",
+      },
+      portfolio: {
+        description: "Eine Auswahl unserer Projekte – Neubau, Bestand und Denkmal.",
+        cta: "Alle Projekte",
+      },
+      team: {
+        description:
+          "Ein interdisziplinäres Team aus Architektur, Tragwerksplanung und digitaler Planung – vernetzt zwischen Berlin und internationalen Partnern.",
+        cta: "Team kennenlernen",
+      },
+      careers: {
+        description:
+          "Sie möchten an anspruchsvollen Projekten mitwirken? Wir freuen uns über Ihre Bewerbung – gerne auch initiativ.",
+        cta: "Zur Karriereseite",
+      },
+      connect: { cta: "Kontakt aufnehmen" },
+      gallery: {
+        description: "Eindrücke aus Projekten, Studien und Details.",
+        cta: "Mehr erfahren",
+      },
+    },
+    serviceCards: [
+      {
+        title: "Planung nach HOAI",
+        text: "Wir begleiten Bauprojekte von der Grundlagenermittlung bis zur Mitwirkung bei der Vergabe – entlang der Leistungsphasen 1 bis 7 der HOAI, ergänzt um BIM-basierte Planung.",
+        image: "/images/landing/leistung-1.jpg",
+        anchorMatch: "leistungsphase|work-stage|phase",
+      },
+      {
+        title: "Innenarchitektur & Raumgestaltung",
+        text: "Wir entwickeln individuelle Innenräume für private und gewerbliche Projekte, die Funktionalität, Atmosphäre und gestalterische Qualität miteinander verbinden.",
+        image: "/images/landing/leistung-5.jpg",
+        anchorMatch: "innen|interior",
+      },
+      {
+        title: "Projektmanagement",
+        text: "Wir übernehmen das Projektmanagement über alle Phasen der Planung und Umsetzung – mit klaren Strukturen, transparenten Abläufen und zuverlässiger Koordination.",
+        image: "/images/landing/leistung-4.jpg",
+        anchorMatch: "koordination|projektmanagement|coordination|project-management",
+      },
+    ],
+    founder: {
+      name: "Michel Alkhouri",
+      photoAlt: "Porträt von Michel Alkhouri",
+      credentials: ["Bauingenieur · Tragwerksplaner", "Mitgründer von GrayArc"],
+      bio: [
+        "Michel Alkhouri ist Bauingenieur und Tragwerksplaner und gründete GrayArc 2026 gemeinsam mit der Architektin Heba Abboud in Berlin. Damit schreibt er eine Geschichte fort, die 1985 mit dem Ingenieurbüro Bassam Alkhouri in Qatana, Syrien, begann und über vier Jahrzehnte durch Projekte in Syrien, im Libanon, in Deutschland und darüber hinaus geprägt wurde.",
+        "Seine Expertise reicht von der Tragwerksplanung für Neubauten bis zur statischen Sanierung von Bestandsgebäuden – geschärft durch umfangreiche Arbeit an beschädigten und stark beeinträchtigten Bauwerken. Mit BIM-basierten Methoden verbindet er Entwurf und Ingenieurskunst zu einem integrierten Planungsprozess.",
+      ],
+    },
+    ctaHeading: "Lassen Sie uns gemeinsam Ihr Projekt realisieren",
+    ctaText: "Wir freuen uns auf Ihre Anfrage – kontaktieren Sie uns für ein unverbindliches Erstgespräch.",
+  },
   studio: {
     title: "Studio",
     intro:

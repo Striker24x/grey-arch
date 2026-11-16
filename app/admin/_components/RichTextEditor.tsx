@@ -26,13 +26,11 @@ function readImageDimensions(file: File): Promise<{ width: number; height: numbe
 export default function RichTextEditor({
   value,
   onChange,
-  dir = "ltr",
   variant = "boxed",
   onUploadImage,
 }: {
   value: string;
   onChange: (html: string) => void;
-  dir?: "ltr" | "rtl";
   /** "boxed" = bordered form field (default). "page" = borderless, flows into a document page. */
   variant?: "boxed" | "page";
   /** When provided, shows an "Insert image" toolbar button that uploads the file and inserts it as a block. */
@@ -75,7 +73,7 @@ export default function RichTextEditor({
     content: value,
     immediatelyRender: false,
     editorProps: {
-      attributes: { dir, class: contentClass },
+      attributes: { class: contentClass },
     },
     onUpdate: ({ editor }) => onChangeRef.current(editor.getHTML()),
   });
@@ -90,9 +88,9 @@ export default function RichTextEditor({
   }, [value, editor]);
 
   useEffect(() => {
-    editor?.setOptions({ editorProps: { attributes: { dir, class: contentClass } } });
+    editor?.setOptions({ editorProps: { attributes: { class: contentClass } } });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dir, editor, variant]);
+  }, [editor, variant]);
 
   async function handleImageFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];

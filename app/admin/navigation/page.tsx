@@ -5,21 +5,19 @@ import { useAdminLang, type AdminLang } from "../_components/AdminLangContext";
 import { getAdminT } from "../_components/adminI18n";
 import type { NavItem, NavigationData, NavLabels } from "@/lib/data-manager";
 
-const LANG_META: { key: AdminLang; label: string; dir: "ltr" | "rtl" }[] = [
-  { key: "de", label: "DE — Deutsch", dir: "ltr" },
-  { key: "en", label: "EN — English", dir: "ltr" },
-  { key: "ar", label: "AR — عربي",    dir: "rtl" },
+const LANG_META: { key: AdminLang; label: string }[] = [
+  { key: "de", label: "DE — Deutsch" },
+  { key: "en", label: "EN — English" },
 ];
 
 function emptyLabels(fallback = ""): NavLabels {
-  return { en: fallback, de: fallback, ar: fallback };
+  return { en: fallback, de: fallback };
 }
 
 export default function NavigationPage() {
   const { lang: adminLang } = useAdminLang();
   const T   = getAdminT(adminLang);
   const P   = T.nav_page;
-  const dir = adminLang === "ar" ? "rtl" : "ltr";
 
   const [data, setData]           = useState<NavigationData>({ items: [] });
   const [loading, setLoading]     = useState(true);
@@ -93,7 +91,7 @@ export default function NavigationPage() {
   if (loading) return <div className="p-8 text-sm text-stone-500">Loading…</div>;
 
   return (
-    <div className="p-8" dir={dir}>
+    <div className="p-8">
       <div className="mb-6 border-b border-stone-200 pb-6 dark:border-line-200">
         <h1 className="text-2xl font-semibold text-graphite-900">{P.title}</h1>
         <p className="mt-1 text-sm text-stone-500">{P.desc}</p>
@@ -108,14 +106,13 @@ export default function NavigationPage() {
             <div key={item.id} className="rounded-sm border border-graphite-900 bg-white px-5 py-4 dark:bg-paper-200">
               <p className="mb-3 text-xs font-medium text-stone-500">{P.editSection}</p>
 
-              <div className="mb-3 grid gap-3 sm:grid-cols-3">
+              <div className="mb-3 grid gap-3 sm:grid-cols-2">
                 {LANG_META.map((l) => (
                   <div key={l.key}>
                     <label className="mb-1 block text-xs text-stone-400">{l.label}</label>
                     <input
                       value={editLabels[l.key]}
                       onChange={(e) => setEditLabels((prev) => ({ ...prev, [l.key]: e.target.value }))}
-                      dir={l.dir}
                       className="input"
                     />
                   </div>
@@ -203,14 +200,13 @@ export default function NavigationPage() {
       <div className="rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
         <h2 className="mb-4 text-sm font-semibold text-graphite-900">{P.addTitle}</h2>
 
-        <div className="mb-4 grid gap-3 sm:grid-cols-3">
+        <div className="mb-4 grid gap-3 sm:grid-cols-2">
           {LANG_META.map((l) => (
             <div key={l.key}>
               <label className="mb-1 block text-xs text-stone-500">{l.label}</label>
               <input
                 value={newLabels[l.key]}
                 onChange={(e) => setNewLabels((prev) => ({ ...prev, [l.key]: e.target.value }))}
-                dir={l.dir}
                 placeholder={l.key === "en" ? P.labelRequired : P.translation}
                 className="input"
               />

@@ -213,7 +213,7 @@ export default function AppearancePage() {
       </div>
 
       <p className="mt-8 text-xs text-stone-400">
-        {FONTS.length} Schriftarten · Alle von Google Fonts · Arabisch bleibt unberührt
+        {FONTS.length} Schriftarten · Alle von Google Fonts
       </p>
     </div>
   );

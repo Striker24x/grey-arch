@@ -10,7 +10,6 @@ import type { ProjectRecord } from "@/lib/data-manager";
 export default function ReorderProjectsPage() {
   const { lang } = useAdminLang();
   const T = getAdminT(lang).projectsReorder;
-  const dir = lang === "ar" ? "rtl" : "ltr";
 
   const [projects, setProjects] = useState<ProjectRecord[] | null>(null);
 
@@ -21,7 +20,7 @@ export default function ReorderProjectsPage() {
   }, []);
 
   return (
-    <div className="p-8" dir={dir}>
+    <div className="p-8">
       <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-6 dark:border-line-200">
         <div>
           <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>

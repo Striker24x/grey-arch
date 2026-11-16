@@ -1,16 +1,13 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-
+/** Renders the site footer on every public page (including the landing page, which
+ * used to hide it while it was a full-screen video slider). Kept as a wrapper so the
+ * layout API stays unchanged. */
 export default function ConditionalFooter({
-  lang,
   children,
 }: {
   lang: string;
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-  const isLanding = pathname === `/${lang}` || pathname === `/${lang}/`;
-  if (isLanding) return null;
   return <>{children}</>;
 }

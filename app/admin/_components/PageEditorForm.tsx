@@ -10,7 +10,6 @@ import RichTextEditor from "./RichTextEditor";
 const LOCALES: { key: AdminLocale; label: string }[] = [
   { key: "en", label: "English" },
   { key: "de", label: "Deutsch" },
-  { key: "ar", label: "العربية" },
 ];
 
 export type EditablePageTranslation = { title: string; intro: string; body?: string };
@@ -43,7 +42,6 @@ export default function PageEditorForm({
   const coverInputRef = useRef<HTMLInputElement>(null);
 
   const t = data.translations[lang];
-  const dir = lang === "ar" ? "rtl" : "ltr";
 
   function setTranslation(key: keyof EditablePageTranslation, value: string) {
     onChange({
@@ -172,7 +170,6 @@ export default function PageEditorForm({
                 value={t.title}
                 onChange={(e) => setTranslation("title", e.target.value)}
                 className="input"
-                dir={dir}
               />
             </Field>
             <Field label="Intro text">
@@ -181,7 +178,6 @@ export default function PageEditorForm({
                 onChange={(e) => setTranslation("intro", e.target.value)}
                 rows={3}
                 className="input resize-y"
-                dir={dir}
               />
             </Field>
           </div>
@@ -191,12 +187,10 @@ export default function PageEditorForm({
         <div className="border-t border-stone-200 bg-stone-100 p-6 dark:border-line-200 dark:bg-paper-300 sm:p-10">
           <div
             className="mx-auto max-w-[760px] bg-white px-10 py-14 shadow-soft dark:bg-paper-200 sm:px-16"
-            dir={dir}
           >
             <RichTextEditor
               value={t.body ?? ""}
               onChange={(html) => setTranslation("body", html)}
-              dir={dir}
               variant="page"
               onUploadImage={(file) => uploadFile(file, bodyImageFolder)}
             />

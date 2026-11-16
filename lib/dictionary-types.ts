@@ -197,6 +197,26 @@ export interface Dictionary {
       cta: string;
     };
   };
+  /** Strings for the redesigned landing page (sections are rendered from the burger-menu
+   * navigation config — `sections` is keyed by NavItem.id). */
+  landing: {
+    heroHeadline: string;
+    heroCta: string;
+    bannerAlt: string;
+    learnMore: string;
+    sections: Record<string, { description?: string; cta: string }>;
+    /** Teaser cards for the services section. `anchorMatch` is a case-insensitive regex
+     * matched against the admin-edited Services H3 section ids to deep-link each card. */
+    serviceCards: { title: string; text: string; image: string; anchorMatch: string }[];
+    founder: {
+      name: string;
+      photoAlt: string;
+      credentials: string[];
+      bio: string[];
+    };
+    ctaHeading: string;
+    ctaText: string;
+  };
   studio: {
     title: string;
     intro: string;
@@ -323,7 +343,7 @@ export interface Dictionary {
 }
 
 /**
- * Shape of the static `lib/dictionaries/{en,de,ar}.ts` seed files. Studio/Services keep
+ * Shape of the static `lib/dictionaries/{en,de}.ts` seed files. Studio/Services keep
  * their original structured fields here — `getDictionary()` converts them into the rich-text
  * `body` + `sections` shape of `Dictionary` (via data-manager.ts's Studio/Services migration),
  * so the seed files never need to be rewritten as HTML by hand.

@@ -166,6 +166,70 @@ const en: SourceDictionary = {
       cta: "Start a Project",
     },
   },
+  landing: {
+    heroHeadline: "Architecture with precision and continuity",
+    heroCta: "Get in touch",
+    bannerAlt: "GrayArc — architecture",
+    learnMore: "Learn more",
+    sections: {
+      studio: { cta: "Learn more" },
+      services: {
+        description:
+          "From architectural and structural planning to building permits and project management — we guide your project from the first idea to completion.",
+        cta: "All services",
+      },
+      portfolio: {
+        description: "A selection of our projects — new construction, existing buildings and heritage.",
+        cta: "All projects",
+      },
+      team: {
+        description:
+          "An interdisciplinary team of architecture, structural engineering and digital planning — connected between Berlin and international partners.",
+        cta: "Meet the team",
+      },
+      careers: {
+        description:
+          "Want to work on demanding projects? We look forward to your application — unsolicited applications are welcome.",
+        cta: "View careers",
+      },
+      connect: { cta: "Get in touch" },
+      gallery: {
+        description: "Impressions from projects, studies and details.",
+        cta: "Learn more",
+      },
+    },
+    serviceCards: [
+      {
+        title: "Planning according to HOAI",
+        text: "We guide building projects from establishing the fundamentals to the award of contracts — along HOAI work stages 1 to 7, complemented by BIM-based planning.",
+        image: "/images/landing/leistung-1.jpg",
+        anchorMatch: "leistungsphase|work-stage|phase",
+      },
+      {
+        title: "Interior design",
+        text: "We develop individual interiors for private and commercial projects that combine functionality, atmosphere and design quality.",
+        image: "/images/landing/leistung-5.jpg",
+        anchorMatch: "innen|interior",
+      },
+      {
+        title: "Project management",
+        text: "We take on project management across all phases of planning and execution — with clear structures, transparent processes and reliable coordination.",
+        image: "/images/landing/leistung-4.jpg",
+        anchorMatch: "koordination|projektmanagement|coordination|project-management",
+      },
+    ],
+    founder: {
+      name: "Michel Alkhouri",
+      photoAlt: "Portrait of Michel Alkhouri",
+      credentials: ["Structural Engineer", "Co-founder of GrayArc"],
+      bio: [
+        "Michel Alkhouri is a structural engineer and co-founded GrayArc in Berlin in 2026 together with architect Heba Abboud. He continues a journey that began in 1985 with the Bassam Alkhouri Engineering Office in Qatana, Syria, shaped over four decades by projects across Syria, Lebanon, Germany and beyond.",
+        "His expertise ranges from structural design for new buildings to the structural restoration of existing ones — sharpened by extensive work on damaged and severely affected buildings. Using BIM-based methods, he unites design and engineering in one integrated planning process.",
+      ],
+    },
+    ctaHeading: "Let's realize your project together",
+    ctaText: "We look forward to hearing from you — get in touch for a no-obligation initial consultation.",
+  },
   studio: {
     title: "Studio",
     intro:

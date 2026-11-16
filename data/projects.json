@@ -57,28 +57,6 @@
         "drawings": "Für die Restaurierungsarbeiten wurden Bestandsaufmaße, denkmalpflegerische Detailzeichnungen und vollständige Bauunterlagen erstellt.",
         "materials": "Originaler Kalkstein, Kalkputz und wiederverwendetes Holz wurden erhalten und instandgesetzt; neue Interieurelemente nutzen warmes Eichenholz und matten Putz in neutraler Palette.",
         "visualization": "Frühe 3D-Studien halfen Auftraggeber und Denkmalbehörde, die vorgeschlagenen Interieurveränderungen vor Baubeginn zu bewerten."
-      },
-      "ar": {
-        "name": "ترميم منزل حجري",
-        "location": "وادي الراين، ألمانيا",
-        "status": "مكتمل",
-        "servicesProvided": [
-          "الحفاظ على التراث",
-          "توثيق المباني القائمة",
-          "التصميم الداخلي"
-        ],
-        "description": "ترميم دقيق لمنزل حجري تاريخي، يوازن بين الحفاظ على التراث وتصميم داخلي هادئ وقابل للسكن.",
-        "client": "عميل خاص",
-        "buildingType": "منزل تاريخي لعائلة واحدة",
-        "area": "210 م²",
-        "scope": "الحفاظ على التراث، التقييم الإنشائي، التصميم الداخلي",
-        "summary": "تم ترميم منزل حجري تاريخي، تعرّض لتعديلات جزئية عبر عقود، لتكريم مادته الأصلية مع إدخال تصميم داخلي هادئ ومعاصر.",
-        "challenge": "تأثرت واجهة المنزل الحجرية وبنيته الخشبية بتدخلات سابقة غير ملائمة، بينما كان على التصميم الداخلي تلبية معايير السكن الحالية دون طمس طابع المنزل.",
-        "approach": "قمنا بمسح البنية القائمة بالتفصيل، وحددنا المواد الأصلية التي تستحق الحفاظ عليها، وطوّرنا استراتيجية ترميم تفصل أعمال الحفاظ عن الإضافات الداخلية الجديدة.",
-        "process": "تلا المسح وتقييم الحالة مفهومُ حفاظ مُتفق عليه مع جهة حماية التراث، ثم تخطيط التنفيذ والإشراف الميداني حتى الإنجاز.",
-        "drawings": "أُعدّت مخططات الحالة الراهنة، ومخططات تفاصيل الحفاظ، ووثائق التنفيذ الكاملة لأعمال الترميم.",
-        "materials": "تم الحفاظ على الحجر الجيري الأصلي وطلاء الجير والخشب المعاد استخدامه وترميمها؛ بينما تستخدم العناصر الداخلية الجديدة خشب البلوط الدافئ والجبس المطفي بدرجات حيادية.",
-        "visualization": "ساعدت دراسات ثلاثية الأبعاد في مرحلة مبكرة العميل وجهة حماية التراث على تقييم التغييرات الداخلية المقترحة قبل التنفيذ."
       }
     }
   },
@@ -139,28 +117,6 @@
         "drawings": "Für die Erweiterung wurden ein Genehmigungsplansatz, statische Koordinationspläne und Ausführungszeichnungen erstellt.",
         "materials": "Graue Steinverkleidung und stahlgerahmte Verglasung wurden als ruhiger, zeitgemäßer Gegenpol zur bestehenden Ziegelfassade gewählt.",
         "visualization": "3D-Volumenstudien verdeutlichten Auftraggeber und Genehmigungsbehörde die Beziehung zwischen neuem Volumen und Bestandsgebäude."
-      },
-      "ar": {
-        "name": "توسعة سكنية حضرية",
-        "location": "برلين، ألمانيا",
-        "status": "مكتمل",
-        "servicesProvided": [
-          "رخصة البناء",
-          "تخطيط التنفيذ",
-          "التخطيط المعماري"
-        ],
-        "description": "توسعة معاصرة لمسكن حضري قائم، مخططة بالكامل عبر مراحل الترخيص والتنفيذ.",
-        "client": "عميل خاص",
-        "buildingType": "توسعة سكنية حضرية",
-        "area": "توسعة بمساحة 85 م²",
-        "scope": "التخطيط المعماري، رخصة البناء، تخطيط التنفيذ",
-        "summary": "أُضيف حجم سكني جديد إلى قطعة أرض حضرية محدودة، وخُطط لتلبية متطلبات الترخيص مع تحسين الإضاءة الطبيعية والتدفق المكاني.",
-        "challenge": "حدّت قطعة أرض حضرية ضيقة وأنظمة تراجع صارمة من الحيز المتاح للبناء، مما تطلّب نهج تخطيط دقيق منذ أولى مراحل المفهوم.",
-        "approach": "طوّرنا مفهوماً حجمياً مكثفاً يعظّم المساحة القابلة للاستخدام ضمن الحيز التنظيمي، مع إعطاء الأولوية للإضاءة الطبيعية واتصال واضح بالمنزل القائم.",
-        "process": "تلا التصميم المفاهيمي التقديمُ الكامل لطلب رخصة البناء، ثم تخطيط التنفيذ وتوثيق البناء وصولاً إلى التسليم.",
-        "drawings": "أُعدّت مجموعة مخططات الترخيص، ومخططات التنسيق الإنشائي، ومخططات التنفيذ للتوسعة.",
-        "materials": "اختير تكسية حجرية رمادية وزجاج بإطارات فولاذية لتقدّم نظيراً معاصراً وهادئاً للواجهة الطوبية القائمة.",
-        "visualization": "وضّحت دراسات الكتلة ثلاثية الأبعاد العلاقة بين الحجم الجديد والمبنى القائم لكل من العميل وجهة الترخيص."
       }
     }
   },
@@ -221,28 +177,6 @@
         "drawings": "Für die Erhaltungsstudie wurden detaillierte Bestandspläne und Zustandskartierungen erstellt.",
         "materials": "Die Materialanalyse konzentrierte sich auf das originale Steinmauerwerk und die historische Mörtelzusammensetzung.",
         "visualization": "Kommentierte Foto- und Plandokumentation veranschaulichte Bereiche mit Erhaltungsbedarf."
-      },
-      "ar": {
-        "name": "دراسة الحفاظ على معلم تراثي",
-        "location": "ماينتس، ألمانيا",
-        "status": "مرحلة البحث",
-        "servicesProvided": [
-          "الحفاظ على التراث",
-          "التوثيق المعماري",
-          "دراسة المعلم"
-        ],
-        "description": "دراسة توثيق وحفاظ لمعلم تراثي محمي، أُعدّت بالتنسيق مع جهة حماية التراث.",
-        "client": "جهة حماية التراث البلدية",
-        "buildingType": "معلم تراثي محمي",
-        "area": "دراسة موقع، 1400 م²",
-        "scope": "المسح، تقييم الحالة، دراسة الحفاظ",
-        "summary": "تطلّب معلم تراثي محمي دراسة حفاظ كاملة قبل النظر في أي تدخل مستقبلي، جمعت بين المسح والبحث والتوثيق.",
-        "challenge": "جعلت محدودية التوثيق التاريخي وتقادم عقود من التعرية من الصعب وضع أساس موثوق لقرارات الحفاظ.",
-        "approach": "جمعنا بين المسح الفعلي وتحليل المواد والبحث الأرشيفي لبناء سجل دقيق للحالة الراهنة للمعلم وتاريخه.",
-        "process": "تلا المسح والتوثيق تقرير دراسة حفاظ منظم، عُرض على جهة حماية التراث للمراجعة.",
-        "drawings": "أُنتجت مخططات حالة راهنة تفصيلية ورسومات تخطيطية لرسم خرائط الحالة لدعم دراسة الحفاظ.",
-        "materials": "ركّز تحليل المواد على البناء الحجري الأصلي وتركيبة المونة التاريخية.",
-        "visualization": "أوضح التوثيق التصويري والرسومي المُعلّق عليه المناطق التي تحتاج إلى عناية في الحفاظ."
       }
     }
   },
@@ -300,27 +234,6 @@
         "drawings": "Für die Auftraggeberprüfung wurden Landschaftskonzeptpläne und Detailzeichnungen für Außenmaterialien erstellt.",
         "materials": "Geschliffener Sandstein, niedrige Steinsitzmauern und trockenheitsresistente Bepflanzung wurden für ein ruhiges, dauerhaftes Ergebnis gewählt.",
         "visualization": "Konzeptrenderings halfen dem Auftraggeber, das saisonale Pflanzenwachstum und die abendliche Beleuchtung zu visualisieren."
-      },
-      "ar": {
-        "name": "مفهوم مساحات فناء داخلي",
-        "location": "عمّان، الأردن",
-        "status": "مفهوم",
-        "servicesProvided": [
-          "تصميم المساحات الخارجية",
-          "تصميم المساحات"
-        ],
-        "description": "مفهوم هادئ لمساحات فناء داخلي يربط مسكناً بمحيطه الخارجي.",
-        "client": "عميل خاص",
-        "buildingType": "فناء سكني",
-        "area": "320 م²",
-        "scope": "مفهوم تصميم المساحات الخارجية، مخطط المواد والزراعة",
-        "summary": "أُعيد تصوّر فناء سكني كغرفة خارجية هادئة، تربط مساحات المعيشة الداخلية بمحيط طبيعي مظلل ومزروع.",
-        "challenge": "بدا الفناء القائم منفصلاً عن المنزل ولم يقدّم سوى ظل محدود أو بنية زراعية قابلة للاستخدام.",
-        "approach": "اقترحنا حركة واضحة من الممرات الحجرية، أحواض زراعة مؤطرة، ومنطقة تجمّع مظللة تتماشى مع الفتحات الرئيسية للمنزل.",
-        "process": "طُوّر مفهوم أولي للمساحات الخارجية ونُقّح مع العميل قبل الانتقال إلى مخطط تفصيلي للمواد والزراعة.",
-        "drawings": "أُعدّت مخططات مفهوم المساحات الخارجية ومخططات تفصيلية للمواد الخارجية لمراجعة العميل.",
-        "materials": "اختير حجر رملي مصقول، جدران جلوس حجرية منخفضة، وزراعة متحملة للجفاف لنتيجة هادئة ودائمة.",
-        "visualization": "ساعدت تصورات المفهوم العميل على تخيّل نمو الزراعة الموسمي وحالة الإضاءة المسائية."
       }
     }
   },
@@ -382,28 +295,6 @@
         "drawings": "Für die Umsetzung wurden Innenraumlayoutpläne, Materiallisten und Lichtpläne erstellt.",
         "materials": "Eine Palette aus warmem Eichenholz, geschliffenem Stein und mattem Putz wurde gewählt, um im Budget zu bleiben und dennoch hochwertig zu wirken.",
         "visualization": "3D-Modell-Walkthroughs ermöglichten es dem Auftraggeber, räumlichen Fluss und Materialentscheidungen vor der Bauausführung zu bewerten."
-      },
-      "ar": {
-        "name": "تخطيط داخلي لشقة سكنية",
-        "location": "دبي، الإمارات العربية المتحدة",
-        "status": "قيد التخطيط",
-        "servicesProvided": [
-          "التصميم الداخلي",
-          "حساب التكاليف",
-          "النمذجة ثلاثية الأبعاد"
-        ],
-        "description": "تخطيط داخلي هادئ وراقٍ لشقة سكنية، مدعوم بنمذجة ثلاثية الأبعاد وحساب تكاليف تفصيلي.",
-        "client": "عميل خاص",
-        "buildingType": "شقة سكنية",
-        "area": "165 م²",
-        "scope": "مفهوم التصميم الداخلي، مخطط المواد، حساب التكاليف، النمذجة ثلاثية الأبعاد",
-        "summary": "خُطط التصميم الداخلي لشقة حول لوحة مواد هادئة ومنطق مكاني واضح، بدعم من نماذج ثلاثية الأبعاد لاتخاذ قرارات مبكرة.",
-        "challenge": "احتاج العميل إلى تقييم قرارات المواد والتوزيع في حدود ميزانية محددة قبل الالتزام بالتنفيذ.",
-        "approach": "طوّرنا مفهوم التصميم الداخلي بالتوازي مع حساب تكاليف موازٍ، مما سمح باختبار خيارات المواد مقابل الميزانية في الوقت الحقيقي.",
-        "process": "طُوّر التصميم المفاهيمي والنمذجة ثلاثية الأبعاد وحساب التكاليف بشكل تكراري قبل إنهاء وثائق التصميم الداخلي.",
-        "drawings": "أُعدّت مخططات توزيع داخلي، وجداول مواد، ومخططات إضاءة للتنفيذ.",
-        "materials": "اختيرت لوحة من خشب البلوط الدافئ والحجر المصقول والجبس المطفي للبقاء ضمن الميزانية مع الحفاظ على طابع راقٍ.",
-        "visualization": "سمحت جولات النموذج ثلاثي الأبعاد للعميل بتقييم التدفق المكاني وقرارات المواد قبل التنفيذ."
       }
     }
   },
@@ -464,28 +355,6 @@
         "drawings": "Aus den verifizierten Bestandsdaten wurde ein vollständig rekonstruierter Plansatz mit Grundrissen, Schnitten und Ansichten erstellt.",
         "materials": "Materialangaben wurden dort, wo ursprüngliche Spezifikationen fehlten, durch Vor-Ort-Verifizierung rekonstruiert.",
         "visualization": "Ein 3D-Modell mit Drahtgitter-Überlagerung wurde erstellt, um die rekonstruierte Geometrie klar zu vermitteln."
-      },
-      "ar": {
-        "name": "إعادة بناء معماري رقمي",
-        "location": "بيروت، لبنان",
-        "status": "مكتمل",
-        "servicesProvided": [
-          "Digital Arch",
-          "النمذجة ثلاثية الأبعاد",
-          "إعادة بناء المخططات القائمة"
-        ],
-        "description": "إعادة بناء رقمي لمخططات معمارية لمبنى قائم، أُعدّت كنموذج ثلاثي الأبعاد دقيق.",
-        "client": "عميل خاص",
-        "buildingType": "مبنى سكني قائم",
-        "area": "640 م²",
-        "scope": "إعادة بناء المخططات، النمذجة ثلاثية الأبعاد، التوثيق الرقمي",
-        "summary": "أُعيد بناء مخططات غير مكتملة وقديمة لمبنى قائم في سجل معماري رقمي دقيق وكامل.",
-        "challenge": "لم يتوفر للمبنى سوى مخططات ورقية مجزأة، دون سجل رقمي موثوق لحالته الراهنة.",
-        "approach": "جمعنا بين التحقق الميداني وإعادة البناء الرقمي لإعادة تشكيل مجموعة مخططات كاملة ودقيقة من الصفر.",
-        "process": "تلا التحقق الميداني إعادة بناء رقمي للمخططات، ونمذجة ثلاثية الأبعاد، وأرشفة رقمية منظمة.",
-        "drawings": "أُنتجت مجموعة مخططات معاد بناؤها بالكامل، تشمل المخططات الأفقية والقطاعات والواجهات، من بيانات المسح المُتحقق منها.",
-        "materials": "أُعيد بناء تحديد المواد من خلال التحقق الميداني في الحالات التي غابت فيها المواصفات الأصلية.",
-        "visualization": "أُنتج نموذج ثلاثي الأبعاد مع تراكب شبكي لإيضاح الهندسة المعاد بناؤها بوضوح."
       }
     }
   },
@@ -539,26 +408,6 @@
         "drawings": "",
         "materials": "",
         "visualization": ""
-      },
-      "ar": {
-        "name": "عربي",
-        "location": "عربي",
-        "status": "عربي",
-        "servicesProvided": [
-          "عربي"
-        ],
-        "description": "عربي",
-        "client": "عربي",
-        "buildingType": "عربي",
-        "area": "عربي",
-        "scope": "عربي",
-        "summary": "عربي",
-        "challenge": "عربي",
-        "approach": "عربي",
-        "process": "عربي",
-        "drawings": "عربي",
-        "materials": "عربي",
-        "visualization": "عربي"
       }
     }
   }
