@@ -221,12 +221,18 @@ function withDefaults(stored: Partial<LandingPageData>, defaults: LandingPageDat
   };
 }
 
+let lastMigrationAttempt = 0;
+
 export async function getLandingPage(): Promise<LandingPageData> {
   const defaults = await buildDefaults();
   const stored = await readJsonSync<Partial<LandingPageData>>(DOC_KEY);
   const data = stored ? withDefaults(stored, defaults) : defaults;
 
-  if (!stored || hasLocalImages(data)) {
+  // Retry the R2 migration at most every 10 minutes per server instance, so a
+  // broken R2 key never slows down every homepage request.
+  const now = Date.now();
+  if ((!stored || hasLocalImages(data)) && now - lastMigrationAttempt > 10 * 60 * 1000) {
+    lastMigrationAttempt = now;
     try {
       const migrated = await migrateImagesToR2(data);
       await writeJsonSync(DOC_KEY, migrated);
