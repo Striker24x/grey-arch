@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { locales, localeFlagLabel, type Locale } from "@/lib/i18n";
+import { locales, localeFlagLabel, localeNames, type Locale } from "@/lib/i18n";
 
 function swapLocaleInPath(pathname: string, nextLocale: Locale): string {
   const segments = pathname.split("/");
@@ -39,13 +39,13 @@ export default function LanguageSwitcher({
             type="button"
             onClick={() => handleSwitch(locale)}
             aria-current={locale === lang ? "true" : undefined}
-            className={`cursor-pointer px-2 py-1 text-sm transition-colors duration-200 ${
+            className={`cursor-pointer ${variant === "stacked" ? "p-0" : "px-2 py-1"} text-sm transition-colors duration-200 ${
               locale === lang
                 ? "text-ink font-medium"
                 : "text-stone-500 hover:text-ink"
             }`}
           >
-            {localeFlagLabel[locale]}
+            {variant === "stacked" ? localeNames[locale] : localeFlagLabel[locale]}
           </button>
           {variant === "inline" && index < locales.length - 1 ? (
             <span className="text-line-400" aria-hidden="true">

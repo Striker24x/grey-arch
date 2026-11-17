@@ -85,10 +85,11 @@
 
 /* Dark mode — class applied to <html> by ThemeProvider */
 .dark {
-  --color-paper-50: #131109;
+  /* Eine einzige Hintergrundfarbe im Dark Mode */
+  --color-paper-50: #1b1916;
   --color-paper-100: #1b1916;
-  --color-paper-200: #252119;
-  --color-paper-300: #302b21;
+  --color-paper-200: #1b1916;
+  --color-paper-300: #1b1916;
 
   --color-line-200: #363028;
   --color-line-300: #44403a;
@@ -159,7 +160,7 @@ footer {
   color: #211e1a;
   outline: none;
   background:
-    linear-gradient(#fafaf9, #fafaf9) padding-box,
+    linear-gradient(#ffffff, #ffffff) padding-box,
     conic-gradient(
       from var(--ia),
       #ddd8d0 0deg,
@@ -237,7 +238,7 @@ footer {
 
 .dark .btn-secondary {
   border-color: #44403a;
-  background: #252119;
+  background: #1b1916;
   color: #c8c0b0;
 }
 .dark .btn-secondary:hover { border-color: #eeebe6; color: #eeebe6; }
@@ -246,7 +247,7 @@ footer {
 .dark .input {
   color: #eeebe6;
   background:
-    linear-gradient(#252119, #252119) padding-box,
+    linear-gradient(#1b1916, #1b1916) padding-box,
     conic-gradient(
       from var(--ia),
       #44403a 0deg,
@@ -277,9 +278,9 @@ footer {
 /* bg-white / bg-stone-* / border-stone-* are standard Tailwind values that
    don't use our CSS custom-property theme and don't automatically invert.
    Using html.dark for higher specificity (no !important needed).           */
-html.dark .bg-white          { background-color: #252119; }
-html.dark .bg-stone-50       { background-color: #181511; }
-html.dark .bg-stone-100      { background-color: #1f1d19; }
+html.dark .bg-white          { background-color: #1b1916; }
+html.dark .bg-stone-50       { background-color: #1b1916; }
+html.dark .bg-stone-100      { background-color: #1b1916; }
 html.dark .border-stone-50   { border-color: #252119; }
 html.dark .border-stone-100  { border-color: #2e2a23; }
 html.dark .border-stone-200  { border-color: #3a3530; }
@@ -288,8 +289,12 @@ html.dark .text-stone-600    { color: #c8c0b0; }
 html.dark .hover\:bg-stone-50:hover  { background-color: #1f1d19; }
 html.dark .hover\:bg-stone-100:hover { background-color: #252119; }
 
+/* Light mode: eine einzige Hintergrundfarbe (reines Weiß) */
+html:not(.dark) .bg-stone-50,
+html:not(.dark) .bg-stone-100 { background-color: #ffffff; }
+
 /* Select element (doesn't inherit .input bg) */
-html.dark select.input  { background-color: #252119; color: #eeebe6; }
+html.dark select.input  { background-color: #1b1916; color: #eeebe6; }
 
 /* Red states in dark mode */
 html.dark .bg-red-50    { background-color: #2d1215; }
@@ -375,8 +380,8 @@ nav a {
    Display headings, square uppercase buttons); dark mode remaps the tokens.
    ═══════════════════════════════════════════════════════════════════════════ */
 .ga {
-  --ga-bg: #f5f5f0;
-  --ga-subtle-bg: #ecebe4;
+  --ga-bg: #ffffff;
+  --ga-subtle-bg: #ffffff;
   --ga-ink: #1a1a1a;
   --ga-muted: rgba(26, 26, 26, 0.7);
   --ga-soft: rgba(26, 26, 26, 0.5);
@@ -395,14 +400,14 @@ nav a {
 }
 .dark .ga {
   --ga-bg: #1b1916;
-  --ga-subtle-bg: #221f1b;
+  --ga-subtle-bg: #1b1916;
   --ga-ink: #ede8e0;
   --ga-muted: rgba(237, 232, 224, 0.74);
   --ga-soft: rgba(237, 232, 224, 0.55);
   --ga-faint: rgba(237, 232, 224, 0.32);
   --ga-line: rgba(237, 232, 224, 0.14);
   --ga-tile: rgba(237, 232, 224, 0.06);
-  --ga-inv-bg: #0f0e0c;
+  --ga-inv-bg: #1b1916;
   --ga-inv-fg: #ede8e0;
   --ga-inv-muted: rgba(237, 232, 224, 0.75);
   --ga-inv-soft: rgba(237, 232, 224, 0.55);

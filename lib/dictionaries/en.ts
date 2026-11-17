@@ -661,7 +661,7 @@ const en: SourceDictionary = {
   legal: {
     impressum: {
       title: "Impressum",
-      updated: "Placeholder content — to be confirmed before publication.",
+      updated: "",
       sections: [
         { heading: "Provider", body: "[Company name], [Street and number], [Postal code and city], [Country]." },
         { heading: "Contact", body: "Email: [insert email] · Phone: [insert phone number]." },
@@ -671,7 +671,7 @@ const en: SourceDictionary = {
     },
     datenschutz: {
       title: "Datenschutz",
-      updated: "Placeholder content — to be confirmed before publication.",
+      updated: "",
       sections: [
         { heading: "Overview", body: "This placeholder privacy policy outlines how GrayArc would handle personal data submitted through this website. Final wording must be reviewed by qualified legal counsel." },
         { heading: "Data collected", body: "Contact form submissions may include name, email, phone, project details and any files you choose to send." },
@@ -681,7 +681,7 @@ const en: SourceDictionary = {
     },
     agb: {
       title: "AGB",
-      updated: "Placeholder content — to be confirmed before publication.",
+      updated: "",
       sections: [
         { heading: "Scope", body: "These placeholder terms and conditions apply to architectural services offered by GrayArc. Final terms must be drafted by qualified legal counsel." },
         { heading: "Services", body: "The scope of services for each project is defined individually in a separate written agreement." },

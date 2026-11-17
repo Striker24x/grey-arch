@@ -10,7 +10,7 @@ export default function LegalPageLayout({
   return (
     <div className="mx-auto max-w-3xl px-6 py-20 lg:px-10">
       <h1 className="font-heading text-4xl text-ink">{title}</h1>
-      <p className="mt-3 text-sm text-stone-500">{updated}</p>
+      {updated && <p className="mt-3 text-sm text-stone-500">{updated}</p>}
       <div className="mt-10 flex flex-col gap-8">
         {sections.map((section) => (
           <div key={section.heading} className="border-t border-line-200 pt-6">

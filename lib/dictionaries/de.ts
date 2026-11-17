@@ -649,7 +649,7 @@ const de: SourceDictionary = {
   legal: {
     impressum: {
       title: "Impressum",
-      updated: "Platzhalterinhalt — vor Veröffentlichung zu prüfen.",
+      updated: "",
       sections: [
         { heading: "Anbieter", body: "[Firmenname], [Straße und Hausnummer], [Postleitzahl und Ort], [Land]." },
         { heading: "Kontakt", body: "E-Mail: [E-Mail eintragen] · Telefon: [Telefonnummer eintragen]." },
@@ -659,7 +659,7 @@ const de: SourceDictionary = {
     },
     datenschutz: {
       title: "Datenschutz",
-      updated: "Platzhalterinhalt — vor Veröffentlichung zu prüfen.",
+      updated: "",
       sections: [
         { heading: "Überblick", body: "Diese Platzhalter-Datenschutzerklärung skizziert, wie GrayArc über diese Website übermittelte personenbezogene Daten behandeln würde. Der endgültige Wortlaut muss von qualifizierter rechtlicher Beratung geprüft werden." },
         { heading: "Erhobene Daten", body: "Eingaben über das Kontaktformular können Name, E-Mail, Telefon, Projektdetails und von Ihnen übermittelte Dateien umfassen." },
@@ -669,7 +669,7 @@ const de: SourceDictionary = {
     },
     agb: {
       title: "AGB",
-      updated: "Platzhalterinhalt — vor Veröffentlichung zu prüfen.",
+      updated: "",
       sections: [
         { heading: "Geltungsbereich", body: "Diese Platzhalter-AGB gelten für die von GrayArc angebotenen Architekturleistungen. Die endgültigen Bedingungen müssen von qualifizierter rechtlicher Beratung erstellt werden." },
         { heading: "Leistungen", body: "Der Leistungsumfang für jedes Projekt wird individuell in einer separaten schriftlichen Vereinbarung festgelegt." },

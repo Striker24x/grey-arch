@@ -20,13 +20,6 @@ function sectionHref(lang: Locale, item: NavItem): string {
   return `/${lang}${path === "/" ? "" : path}`;
 }
 
-function truncate(text: string, max = 160): string {
-  if (text.length <= max) return text;
-  const cut = text.slice(0, max);
-  const lastSpace = cut.lastIndexOf(" ");
-  return `${cut.slice(0, lastSpace > 0 ? lastSpace : max).replace(/[\s,.;:–—-]+$/, "")}…`;
-}
-
 function firstBodyImage(html: string | undefined): string | undefined {
   return html?.match(/<img\b[^>]*\ssrc="([^"]+)"/i)?.[1];
 }
@@ -158,7 +151,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                           </div>
                           <span className="ga-serif ga-faint text-3xl">{String(i + 1).padStart(2, "0")}</span>
                           <h3 className="ga-serif mt-2 text-2xl leading-snug">{card.title}</h3>
-                          <p className="ga-muted mt-2 text-sm leading-relaxed">{truncate(card.text)}</p>
+                          <p className="ga-muted mt-2 text-sm leading-relaxed">{card.text}</p>
                         </Link>
                       </AnimatedReveal>
                     );
@@ -227,9 +220,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         return (
           <section key={item.id} id={`section-${item.id}`} className={bg}>
             <Container className="py-20 lg:py-28">
-              <AnimatedReveal className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+              <AnimatedReveal className="grid grid-cols-1 gap-8 border-t border-current/15 pt-12 lg:grid-cols-2 lg:items-end lg:gap-16">
                 <h2 className="ga-serif text-4xl leading-tight sm:text-5xl">{label}</h2>
-                <div className="flex flex-col items-start justify-center gap-6">
+                <div className="flex flex-col items-start gap-6">
                   {copy?.description && (
                     <p className="ga-muted text-base leading-relaxed sm:text-lg">{copy.description}</p>
                   )}

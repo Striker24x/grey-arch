@@ -16,6 +16,7 @@ export default function Footer({
     { href: `/${lang}/services`, label: dict.nav.services },
     { href: `/${lang}/portfolio`, label: dict.nav.portfolio },
     { href: `/${lang}/team`, label: dict.nav.team },
+    { href: `/${lang}/karriere`, label: dict.nav.careers },
     { href: `/${lang}/connect`, label: dict.nav.connect },
   ];
 
@@ -84,16 +85,6 @@ export default function Footer({
             </div>
           </div>
         </div>
-        </AnimatedReveal>
-
-        <AnimatedReveal delay={80}>
-        <div className="mt-14">
-          <p className="text-xs leading-relaxed text-stone-500">
-            <span className="font-medium text-stone-600">{dict.footer.noteTitle}: </span>
-            {dict.footer.note}
-          </p>
-        </div>
-
         </AnimatedReveal>
 
         <div className="mt-8 flex flex-col gap-2 border-t border-line-200 pt-8 text-xs text-stone-500 sm:flex-row sm:items-center sm:justify-between">
