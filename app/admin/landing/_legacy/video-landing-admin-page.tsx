@@ -1,0 +1,318 @@
+// ============================================================================
+// STILLGELEGT (deaktiviert) — alte Video-Slider-Landing-Page: Admin-Seite
+// Ursprünglich: app/admin/landing/page.tsx
+// Der Code ist absichtlich auskommentiert und NICHT gelöscht, damit er später
+// wieder aktiviert werden kann (Kommentarzeichen entfernen + Datei zurückverschieben).
+// Ersetzt durch: neue Landing-Page-Verwaltung (lib/landing-page.ts, /admin/landing).
+// ============================================================================
+
+// "use client";
+//
+// import { useState, useEffect, useRef } from "react";
+// import { useAdminLang } from "../_components/AdminLangContext";
+// import { getAdminT } from "../_components/adminI18n";
+// import type { LandingData } from "@/lib/data-manager";
+// import { uploadToCloudinary } from "@/lib/client-upload";
+//
+// export default function LandingAdminPage() {
+//   const { lang } = useAdminLang();
+//   const T   = getAdminT(lang).landing;
+//
+//   const initial: LandingData = {
+//     headline: "GrayArc",
+//     subline: "Architecture. Heritage. Vision.",
+//     loop: true,
+//     videos: [
+//       { id: "1", url: "", title: "Video 1" },
+//       { id: "2", url: "", title: "Video 2" },
+//       { id: "3", url: "", title: "Video 3" },
+//     ],
+//     images: [
+//       { id: "1", url: "", title: "Image 1" },
+//       { id: "2", url: "", title: "Image 2" },
+//       { id: "3", url: "", title: "Image 3" },
+//     ],
+//   };
+//   const [data, setData]           = useState<LandingData>(initial);
+//   const [savedData, setSavedData] = useState<LandingData>(initial);
+//   const [loading, setLoading]     = useState(true);
+//   const [saving, setSaving]       = useState(false);
+//   const [uploading, setUploading] = useState<string | null>(null);
+//   const [error, setError]         = useState("");
+//   const fileRefs = useRef<Record<string, HTMLInputElement | null>>({});
+//
+//   useEffect(() => {
+//     fetch("/api/admin/landing")
+//       .then((r) => r.json())
+//       .then((d) => { setData(d as LandingData); setSavedData(d as LandingData); setLoading(false); });
+//   }, []);
+//
+//   const textsDirty = data.headline !== savedData.headline || data.subline !== savedData.subline;
+//
+//   async function save(updated: LandingData) {
+//     setSaving(true);
+//     setError("");
+//     try {
+//       const res = await fetch("/api/admin/landing", {
+//         method: "PUT",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(updated),
+//       });
+//       if (!res.ok) throw new Error("Save failed");
+//       setData(updated);
+//       setSavedData(updated);
+//     } catch (err) {
+//       setError(err instanceof Error ? err.message : "Save failed");
+//     }
+//     setSaving(false);
+//   }
+//
+//   async function uploadVideo(videoId: string, file: File) {
+//     setUploading(videoId);
+//     try {
+//       const url = await uploadToCloudinary(file, "grey-arch/landing-videos");
+//       const updated: LandingData = {
+//         ...data,
+//         videos: data.videos.map((v) => v.id === videoId ? { ...v, url } : v),
+//       };
+//       await save(updated);
+//     } catch (err) {
+//       alert(err instanceof Error ? err.message : T.uploadFailed);
+//     }
+//     setUploading(null);
+//   }
+//
+//   function removeVideo(videoId: string) {
+//     save({ ...data, videos: data.videos.map((v) => v.id === videoId ? { ...v, url: "" } : v) });
+//   }
+//
+//   async function uploadImage(imageId: string, file: File) {
+//     const key = `img-${imageId}`;
+//     setUploading(key);
+//     try {
+//       const url = await uploadToCloudinary(file, "grey-arch/landing-images");
+//       const updated: LandingData = {
+//         ...data,
+//         images: data.images.map((img) => img.id === imageId ? { ...img, url } : img),
+//       };
+//       await save(updated);
+//     } catch (err) {
+//       alert(err instanceof Error ? err.message : T.uploadFailed);
+//     }
+//     setUploading(null);
+//   }
+//
+//   function removeImage(imageId: string) {
+//     save({ ...data, images: data.images.map((img) => img.id === imageId ? { ...img, url: "" } : img) });
+//   }
+//
+//   if (loading) return <div className="p-8 text-sm text-stone-500">Loading…</div>;
+//
+//   return (
+//     <div className="p-8">
+//       <div className="mb-6 border-b border-stone-200 pb-6 dark:border-line-200">
+//         <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>
+//         <p className="mt-1 text-sm text-stone-500">{T.desc}</p>
+//       </div>
+//
+//       {error && <div className="mb-4 rounded-sm bg-red-50 px-4 py-3 text-sm text-red-600">{error}</div>}
+//
+//       {/* Texts */}
+//       <div className="mb-8 rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
+//         <h2 className="mb-4 text-sm font-semibold text-graphite-900">{T.textsSection}</h2>
+//         <div className="space-y-4">
+//           <div>
+//             <label className="mb-1 block text-xs text-stone-500">Headline</label>
+//             <input
+//               value={data.headline}
+//               onChange={(e) => setData({ ...data, headline: e.target.value })}
+//               dir="ltr"
+//               className="input"
+//             />
+//           </div>
+//           <div>
+//             <label className="mb-1 block text-xs text-stone-500">Subline</label>
+//             <input
+//               value={data.subline}
+//               onChange={(e) => setData({ ...data, subline: e.target.value })}
+//               dir="ltr"
+//               className="input"
+//             />
+//           </div>
+//           <button
+//             onClick={() => save(data)}
+//             disabled={!textsDirty || saving}
+//             className="btn-primary disabled:opacity-40"
+//           >
+//             {saving ? "Saving…" : textsDirty ? "Save" : "Saved"}
+//           </button>
+//         </div>
+//       </div>
+//
+//       {/* Loop toggle */}
+//       <div className="mb-8 rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
+//         <div className="flex items-center justify-between">
+//           <div>
+//             <h2 className="text-sm font-semibold text-graphite-900">{T.loopTitle}</h2>
+//             <p className="mt-0.5 text-xs text-stone-500">{T.loopDesc}</p>
+//           </div>
+//           <button
+//             onClick={() => save({ ...data, loop: !data.loop })}
+//             disabled={saving}
+//             className={`relative h-7 w-12 rounded-full transition-colors duration-200 focus:outline-none ${
+//               data.loop ? "bg-graphite-900" : "bg-stone-300 dark:bg-stone-500"
+//             }`}
+//           >
+//             <span
+//               className={`absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow transition-transform duration-200 ${
+//                 data.loop ? "translate-x-5" : "translate-x-0"
+//               }`}
+//             />
+//           </button>
+//         </div>
+//       </div>
+//
+//       {/* Videos */}
+//       <div className="rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
+//         <h2 className="mb-4 text-sm font-semibold text-graphite-900">{T.videosSection}</h2>
+//         <div className="space-y-4">
+//           {data.videos.map((video, index) => (
+//             <div key={video.id} className="rounded-sm border border-stone-100 p-4 dark:border-line-200">
+//               <div className="mb-3 flex items-center justify-between">
+//                 <span className="text-xs font-medium text-stone-500">Video {index + 1}</span>
+//                 {video.url && (
+//                   <button
+//                     onClick={() => removeVideo(video.id)}
+//                     className="text-xs text-red-400 hover:text-red-600 hover:underline"
+//                   >
+//                     {T.remove}
+//                   </button>
+//                 )}
+//               </div>
+//
+//               {video.url ? (
+//                 <div>
+//                   <video src={video.url} className="mb-3 h-40 w-full rounded-sm object-cover" controls muted />
+//                   <p className="truncate text-xs text-stone-400" dir="ltr">{video.url}</p>
+//                 </div>
+//               ) : (
+//                 <div
+//                   onClick={() => fileRefs.current[video.id]?.click()}
+//                   className="flex h-32 cursor-pointer flex-col items-center justify-center gap-2 rounded-sm border-2 border-dashed border-stone-200 text-stone-400 transition-colors hover:border-graphite-900 hover:text-graphite-900 dark:border-line-300 dark:text-stone-500 dark:hover:border-graphite-900 dark:hover:text-graphite-900"
+//                 >
+//                   {uploading === video.id ? (
+//                     <span className="text-sm">{T.uploading}</span>
+//                   ) : (
+//                     <>
+//                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+//                         <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+//                       </svg>
+//                       <span className="text-sm">{T.upload}</span>
+//                       <span className="text-xs">{T.uploadHint}</span>
+//                     </>
+//                   )}
+//                 </div>
+//               )}
+//
+//               <input
+//                 ref={(el) => { fileRefs.current[video.id] = el; }}
+//                 type="file"
+//                 accept="video/mp4,video/webm,video/quicktime,video/ogg"
+//                 className="hidden"
+//                 onChange={(e) => {
+//                   const file = e.target.files?.[0];
+//                   if (file) uploadVideo(video.id, file);
+//                   e.target.value = "";
+//                 }}
+//               />
+//
+//               {video.url && (
+//                 <button
+//                   onClick={() => fileRefs.current[video.id]?.click()}
+//                   disabled={uploading === video.id}
+//                   className="mt-2 text-xs text-stone-500 hover:underline"
+//                 >
+//                   {uploading === video.id ? T.uploading : T.replace}
+//                 </button>
+//               )}
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//
+//       {/* Images */}
+//       <div className="mt-8 rounded-sm border border-stone-200 bg-white p-6 dark:border-line-200 dark:bg-paper-200">
+//         <h2 className="mb-4 text-sm font-semibold text-graphite-900">{T.imagesSection}</h2>
+//         <div className="space-y-4">
+//           {data.images.map((image, index) => {
+//             const key = `img-${image.id}`;
+//             return (
+//               <div key={image.id} className="rounded-sm border border-stone-100 p-4 dark:border-line-200">
+//                 <div className="mb-3 flex items-center justify-between">
+//                   <span className="text-xs font-medium text-stone-500">Image {index + 1}</span>
+//                   {image.url && (
+//                     <button
+//                       onClick={() => removeImage(image.id)}
+//                       className="text-xs text-red-400 hover:text-red-600 hover:underline"
+//                     >
+//                       {T.remove}
+//                     </button>
+//                   )}
+//                 </div>
+//
+//                 {image.url ? (
+//                   <div>
+//                     {/* eslint-disable-next-line @next/next/no-img-element */}
+//                     <img src={image.url} alt="" className="mb-3 h-40 w-full rounded-sm object-cover" />
+//                     <p className="truncate text-xs text-stone-400" dir="ltr">{image.url}</p>
+//                   </div>
+//                 ) : (
+//                   <div
+//                     onClick={() => fileRefs.current[key]?.click()}
+//                     className="flex h-32 cursor-pointer flex-col items-center justify-center gap-2 rounded-sm border-2 border-dashed border-stone-200 text-stone-400 transition-colors hover:border-graphite-900 hover:text-graphite-900 dark:border-line-300 dark:text-stone-500 dark:hover:border-graphite-900 dark:hover:text-graphite-900"
+//                   >
+//                     {uploading === key ? (
+//                       <span className="text-sm">{T.uploading}</span>
+//                     ) : (
+//                       <>
+//                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+//                           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+//                         </svg>
+//                         <span className="text-sm">{T.uploadImage}</span>
+//                         <span className="text-xs">{T.uploadImageHint}</span>
+//                       </>
+//                     )}
+//                   </div>
+//                 )}
+//
+//                 <input
+//                   ref={(el) => { fileRefs.current[key] = el; }}
+//                   type="file"
+//                   accept="image/png,image/jpeg,image/webp,image/avif"
+//                   className="hidden"
+//                   onChange={(e) => {
+//                     const file = e.target.files?.[0];
+//                     if (file) uploadImage(image.id, file);
+//                     e.target.value = "";
+//                   }}
+//                 />
+//
+//                 {image.url && (
+//                   <button
+//                     onClick={() => fileRefs.current[key]?.click()}
+//                     disabled={uploading === key}
+//                     className="mt-2 text-xs text-stone-500 hover:underline"
+//                   >
+//                     {uploading === key ? T.uploading : T.replace}
+//                   </button>
+//                 )}
+//               </div>
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+export {};

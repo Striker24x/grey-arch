@@ -320,55 +320,57 @@ export async function saveNavigation(data: NavigationData): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// Landing
+// Landing (ALT: Video-Slider) — STILLGELEGT, nur auskommentiert, nicht gelöscht.
+// Die neue Landing Page nutzt lib/landing-page.ts (DB-Key "landing_page").
+// Das alte DB-Dokument "landing" bleibt unverändert in der Datenbank.
 // ---------------------------------------------------------------------------
-
-export interface LandingVideo {
-  id: string;
-  url: string;
-  title: string;
-}
-
-export interface LandingImage {
-  id: string;
-  url: string;
-  title: string;
-}
-
-export interface LandingData {
-  headline: string;
-  subline: string;
-  loop: boolean;
-  videos: LandingVideo[];
-  images: LandingImage[];
-}
-
-const DEFAULT_LANDING: LandingData = {
-  headline: "GrayArc",
-  subline: "Architecture. Heritage. Vision.",
-  loop: true,
-  videos: [
-    { id: "1", url: "", title: "Video 1" },
-    { id: "2", url: "", title: "Video 2" },
-    { id: "3", url: "", title: "Video 3" },
-  ],
-  images: [
-    { id: "1", url: "", title: "Image 1" },
-    { id: "2", url: "", title: "Image 2" },
-    { id: "3", url: "", title: "Image 3" },
-  ],
-};
-
-export async function getLanding(): Promise<LandingData> {
-  const stored = await readJsonSync<LandingData>("landing.json");
-  if (!stored) return DEFAULT_LANDING;
-  // Backfill `images` for documents saved before this field existed.
-  return { ...stored, images: stored.images ?? DEFAULT_LANDING.images };
-}
-
-export async function saveLanding(data: LandingData): Promise<void> {
-  await writeJsonSync("landing.json", data);
-}
+//
+// export interface LandingVideo {
+//   id: string;
+//   url: string;
+//   title: string;
+// }
+//
+// export interface LandingImage {
+//   id: string;
+//   url: string;
+//   title: string;
+// }
+//
+// export interface LandingData {
+//   headline: string;
+//   subline: string;
+//   loop: boolean;
+//   videos: LandingVideo[];
+//   images: LandingImage[];
+// }
+//
+// const DEFAULT_LANDING: LandingData = {
+//   headline: "GrayArc",
+//   subline: "Architecture. Heritage. Vision.",
+//   loop: true,
+//   videos: [
+//     { id: "1", url: "", title: "Video 1" },
+//     { id: "2", url: "", title: "Video 2" },
+//     { id: "3", url: "", title: "Video 3" },
+//   ],
+//   images: [
+//     { id: "1", url: "", title: "Image 1" },
+//     { id: "2", url: "", title: "Image 2" },
+//     { id: "3", url: "", title: "Image 3" },
+//   ],
+// };
+//
+// export async function getLanding(): Promise<LandingData> {
+//   const stored = await readJsonSync<LandingData>("landing.json");
+//   if (!stored) return DEFAULT_LANDING;
+//   // Backfill `images` for documents saved before this field existed.
+//   return { ...stored, images: stored.images ?? DEFAULT_LANDING.images };
+// }
+//
+// export async function saveLanding(data: LandingData): Promise<void> {
+//   await writeJsonSync("landing.json", data);
+// }
 
 // ---------------------------------------------------------------------------
 // Studio

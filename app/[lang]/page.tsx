@@ -2,14 +2,10 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { hasLocale, type Locale } from "@/lib/i18n";
-import { getDictionary } from "@/lib/get-dictionary";
-import { getLanding, getNavigation, getProjects, type NavItem, type ProjectRecord } from "@/lib/data-manager";
-import type { Dictionary } from "@/lib/dictionary-types";
+import { getNavigation, getProjects, type NavItem, type ProjectRecord } from "@/lib/data-manager";
+import { getLandingPage, type LandingTexts } from "@/lib/landing-page";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import GaImage from "@/components/ga/GaImage";
-
-const FALLBACK_BANNER = "/images/landing-hero-banner.jpg";
-const FOUNDER_PHOTO = "/images/michel-alkhouri.jpg";
 
 /** Nav ids that changed over time map onto one dictionary entry. */
 const SECTION_KEY_ALIASES: Record<string, string> = { karriere: "careers" };
@@ -18,6 +14,28 @@ function sectionHref(lang: Locale, item: NavItem): string {
   if (/^https?:\/\//.test(item.href)) return item.href;
   const path = item.href.startsWith("/") ? item.href : `/${item.href}`;
   return `/${lang}${path === "/" ? "" : path}`;
+}
+
+/** Per-section texts from the landing admin (title override, description, button). */
+function sectionCopy(t: LandingTexts, key: string): { title: string; description: string; cta: string } {
+  switch (key) {
+    case "studio":
+      return { title: t.studioLabel, description: "", cta: t.studioCta };
+    case "services":
+      return { title: t.servicesTitle, description: t.servicesDescription, cta: t.servicesCta };
+    case "portfolio":
+      return { title: t.portfolioTitle, description: t.portfolioDescription, cta: t.portfolioCta };
+    case "team":
+      return { title: t.teamTitle, description: t.teamDescription, cta: t.teamCta };
+    case "careers":
+      return { title: t.careersTitle, description: t.careersDescription, cta: t.careersCta };
+    case "gallery":
+      return { title: t.galleryTitle, description: t.galleryDescription, cta: t.galleryCta };
+    case "connect":
+      return { title: t.connectLabel, description: "", cta: t.connectCta };
+    default:
+      return { title: "", description: "", cta: "" };
+  }
 }
 
 function firstBodyImage(html: string | undefined): string | undefined {
@@ -74,15 +92,12 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
 
-  const [dict, navigation, landing, projects] = await Promise.all([
-    getDictionary(lang),
-    getNavigation(),
-    getLanding(),
-    getProjects(),
-  ]);
-  const L = dict.landing;
-  const bannerSrc = landing.images?.find((img) => img.url?.trim())?.url ?? FALLBACK_BANNER;
-  const connectHref = `/${lang}/connect`;
+  // Everything on this page (texts, buttons, images) comes from /admin/landing.
+  const [navigation, landing, projects] = await Promise.all([getNavigation(), getLandingPage(), getProjects()]);
+  const T: LandingTexts = landing.translations[lang] ?? landing.translations.en;
+  const heroHref = /^https?:\/\//.test(landing.heroCtaHref)
+    ? landing.heroCtaHref
+    : `/${lang}${landing.heroCtaHref.startsWith("/") ? landing.heroCtaHref : `/${landing.heroCtaHref}`}`;
   const navItems = navigation.items.filter((item) => item.visible);
 
   // Alternate plain / subtle backgrounds for light sections; the studio teaser is always dark.
@@ -95,14 +110,14 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
           <AnimatedReveal>
             <h1 className="ga-serif text-[2.6rem] uppercase leading-[1.05] tracking-tight sm:text-6xl lg:text-[64px]">
-              {L.heroHeadline}
+              {T.heroHeadline}
             </h1>
           </AnimatedReveal>
           <AnimatedReveal delay={80} className="flex flex-col justify-center gap-6">
-            <p className="ga-muted text-base leading-relaxed sm:text-lg">{L.heroText}</p>
+            <p className="ga-muted text-base leading-relaxed sm:text-lg">{T.heroText}</p>
             <div>
-              <Link href={connectHref} className="ga-btn">
-                {L.heroCta}
+              <Link href={heroHref} className="ga-btn">
+                {T.heroCta}
               </Link>
             </div>
           </AnimatedReveal>
@@ -110,20 +125,33 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       </section>
 
       {/* 2 — Banner image */}
-      <section className="ga-tile relative h-[55vh] min-h-[360px] w-full overflow-hidden">
-        <GaImage src={bannerSrc} alt={L.bannerAlt} sizes="100vw" priority className="object-cover" />
-      </section>
+      {landing.bannerImage && (
+        <section className="ga-tile relative h-[55vh] min-h-[360px] w-full overflow-hidden">
+          <GaImage src={landing.bannerImage} alt={T.bannerAlt} sizes="100vw" priority className="object-cover" />
+        </section>
+      )}
 
       {/* 3 — One section per visible burger-menu item, in the configured order */}
       {navItems.map((item) => {
         const key = SECTION_KEY_ALIASES[item.id] ?? item.id;
-        const label = item.labels[lang] || item.labels.en || item.id;
+        const navLabel = item.labels[lang] || item.labels.en || item.id;
         const href = sectionHref(lang, item);
-        const copy = L.sections[key];
-        const cta = copy?.cta ?? L.learnMore;
+        const copy = sectionCopy(T, key);
+        const label = copy.title || navLabel;
+        const cta = copy.cta || T.learnMore;
 
         if (key === "studio") {
-          return <StudioTeaser key={item.id} id={item.id} label={label} href={href} cta={cta} dict={dict} />;
+          return (
+            <StudioTeaser
+              key={item.id}
+              id={item.id}
+              label={label}
+              href={href}
+              cta={cta}
+              texts={T}
+              photo={landing.founderPhoto}
+            />
+          );
         }
 
         const bg = lightIndex++ % 2 === 1 ? "ga-subtle" : "";
@@ -132,17 +160,21 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           return (
             <section key={item.id} id={`section-${item.id}`} className={bg}>
               <Container className="py-20 lg:py-28">
-                <SectionHeader label={label} description={copy?.description} cta={cta} href={href} />
+                <SectionHeader label={label} description={copy.description} cta={cta} href={href} />
                 <div className="grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-                  {L.serviceCards.map((card, i) => (
-                    <AnimatedReveal key={card.title} variant="card" delay={(i % 3) * 80}>
+                  {landing.serviceCards.map((c, i) => {
+                    const card = c.translations[lang] ?? c.translations.en;
+                    return (
+                    <AnimatedReveal key={c.id} variant="card" delay={(i % 3) * 80}>
                       <div className="ga-tile relative aspect-[4/3] w-full overflow-hidden">
+                        {c.image && (
                         <GaImage
-                          src={card.image}
+                          src={c.image}
                           alt={card.title}
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                           className="object-cover"
                         />
+                        )}
                       </div>
                       <div className="mt-5 flex items-center gap-3">
                         <span className="ga-serif ga-faint text-2xl">{String(i + 1).padStart(2, "0")}</span>
@@ -153,7 +185,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                       <h3 className="ga-serif mt-2 text-2xl">{card.title}</h3>
                       <p className="ga-muted mt-3 leading-relaxed">{card.text}</p>
                     </AnimatedReveal>
-                  ))}
+                    );
+                  })}
                 </div>
               </Container>
             </section>
@@ -161,11 +194,11 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         }
 
         if (key === "portfolio") {
-          const teasers = pickProjects(projects, lang);
+          const teasers = pickProjects(projects, lang, landing.portfolioCount || 3);
           return (
             <section key={item.id} id={`section-${item.id}`} className={bg}>
               <Container className="py-20 lg:py-28">
-                <SectionHeader label={label} description={copy?.description} cta={cta} href={href} />
+                <SectionHeader label={label} description={copy.description} cta={cta} href={href} />
                 {teasers.length > 0 && (
                   <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
                     {teasers.map((p, i) => (
@@ -202,8 +235,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             <section key={item.id} id={`section-${item.id}`} className={bg}>
               <AnimatedReveal className="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
                 <p className="ga-label">{label}</p>
-                <h2 className="ga-serif mt-4 text-4xl leading-tight sm:text-5xl">{L.ctaHeading}</h2>
-                <p className="ga-muted mx-auto mt-6 max-w-xl text-base leading-relaxed">{L.ctaText}</p>
+                <h2 className="ga-serif mt-4 text-4xl leading-tight sm:text-5xl">{T.connectHeading}</h2>
+                <p className="ga-muted mx-auto mt-6 max-w-xl text-base leading-relaxed">{T.connectText}</p>
                 <div className="mt-8">
                   <Link href={href} className="ga-btn">
                     {cta}
@@ -221,7 +254,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <AnimatedReveal className="grid grid-cols-1 gap-8 border-t border-current/15 pt-12 lg:grid-cols-2 lg:items-end lg:gap-16">
                 <h2 className="ga-serif text-4xl leading-tight sm:text-5xl">{label}</h2>
                 <div className="flex flex-col items-start gap-6">
-                  {copy?.description && (
+                  {copy.description && (
                     <p className="ga-muted text-base leading-relaxed sm:text-lg">{copy.description}</p>
                   )}
                   <Link href={href} className="ga-btn-outline">
@@ -243,26 +276,35 @@ function StudioTeaser({
   label,
   href,
   cta,
-  dict,
+  texts: t,
+  photo,
 }: {
   id: string;
   label: string;
   href: string;
   cta: string;
-  dict: Dictionary;
+  texts: LandingTexts;
+  photo: string;
 }) {
-  const f = dict.landing.founder;
+  const f = {
+    name: t.founderName,
+    photoAlt: t.founderPhotoAlt,
+    credentials: t.founderCredentials.filter(Boolean),
+    bio: t.founderBio.filter(Boolean),
+  };
   return (
     <section id={`section-${id}`} className="ga-invert">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 lg:grid-cols-[minmax(0,460px)_1fr] lg:gap-20 lg:px-10 lg:py-28">
         <AnimatedReveal variant="card">
           <div className="ga-tile relative aspect-[4/5] w-full max-w-[460px] overflow-hidden">
-            <GaImage
-              src={FOUNDER_PHOTO}
-              alt={f.photoAlt}
-              sizes="(min-width: 1024px) 460px, 100vw"
-              className="object-cover object-top"
-            />
+            {photo && (
+              <GaImage
+                src={photo}
+                alt={f.photoAlt}
+                sizes="(min-width: 1024px) 460px, 100vw"
+                className="object-cover object-top"
+              />
+            )}
           </div>
         </AnimatedReveal>
         <AnimatedReveal delay={80}>
@@ -270,15 +312,15 @@ function StudioTeaser({
           <h2 className="ga-serif mt-4 text-4xl sm:text-5xl">{f.name}</h2>
           <p className="ga-label mt-3">
             {f.credentials.map((line, i) => (
-              <span key={line}>
+              <span key={i}>
                 {i > 0 && <br />}
                 {line}
               </span>
             ))}
           </p>
           <div className="mt-8 flex flex-col gap-4">
-            {f.bio.map((p) => (
-              <p key={p.slice(0, 24)} className="ga-muted text-base leading-relaxed">
+            {f.bio.map((p, i) => (
+              <p key={i} className="ga-muted text-base leading-relaxed">
                 {p}
               </p>
             ))}

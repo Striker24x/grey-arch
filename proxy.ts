@@ -29,6 +29,20 @@ function getPreferredLocale(request: NextRequest): string {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // ── Admin API guard ───────────────────────────────────────
+  // Every /api/admin/* endpoint requires a valid admin session (except the
+  // login/logout endpoint itself). Other /api routes (contact form, job
+  // applications) stay public.
+  if (pathname.startsWith("/api/")) {
+    if (pathname.startsWith("/api/admin") && !pathname.startsWith("/api/admin/auth")) {
+      const token = request.cookies.get(SESSION_COOKIE)?.value;
+      if (!token || !(await verifySessionToken(token))) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+    }
+    return NextResponse.next();
+  }
+
   // ── Admin auth guard ──────────────────────────────────────
   if (pathname.startsWith("/admin")) {
     if (pathname.startsWith("/admin/login")) return NextResponse.next();
@@ -68,6 +82,6 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|images|favicon.ico).*)"],
+  matcher: ["/((?!_next|images|favicon.ico).*)"],
 };
 
