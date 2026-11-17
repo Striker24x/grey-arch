@@ -8,7 +8,7 @@ const en: SourceDictionary = {
       "GrayArc is an architecture office for architectural planning, building permits, heritage conservation, construction drawings, interior and landscape design, and digital architecture.",
   },
   nav: {
-    studio: "Studio",
+    studio: "GrayArc",
     services: "Services",
     portfolio: "Projects",
     team: "Our Team",
@@ -177,7 +177,7 @@ const en: SourceDictionary = {
       studio: { cta: "Learn more" },
       services: {
         description:
-          "We offer a comprehensive range of services, from concept design and cost estimation to construction supervision and project management. For the refurbishment, renovation and conversion of existing buildings, we draw on extensive experience in working with existing building fabric.",
+          "Holistic planning – from the first idea to completion. We support construction projects competently and reliably from the initial concept through tendering to realisation, combining sound engineering design with modern digital project workflows and a holistic view of buildings and interiors.",
         cta: "All services",
       },
       portfolio: {
@@ -202,40 +202,39 @@ const en: SourceDictionary = {
     },
     serviceCards: [
       {
-        title: "Architectural Planning",
-        text: "From realising your vision in new construction to the professional refurbishment and energy upgrading of existing buildings – we develop tailored, sustainable designs for every project.",
+        title: "Fundamentals & Design",
+        text: "We clarify the brief, constraints and goals of your project, develop planning concepts and options, and work the chosen approach up into a design with cost calculation – HOAI work stages 1 to 3.",
         image: "/images/landing/leistung-1.jpg",
       },
       {
         title: "Structural Design",
-        text: "We deliver safe, efficient structural solutions for new buildings and support the structural refurbishment and strengthening of existing buildings with detailed analysis and planning.",
+        text: "Safe and economical structures for new builds, conversions and refurbishments – from the structural concept and detailed design to coordination with all specialist planners.",
         image: "/images/landing/leistung-2.jpg",
       },
       {
-        title: "Building Permits",
-        text: "We prepare and coordinate all documents required for the building application – ensuring full compliance with local regulations and smooth coordination with the authorities.",
+        title: "Permit Planning",
+        text: "We prepare and coordinate all documents for the building application, liaise with specialist planners and authorities, and accompany the approval process through to submission – HOAI work stage 4.",
         image: "/images/landing/leistung-3.jpg",
       },
       {
         title: "Project Management",
-        text: "Comprehensive project management across all phases of planning and construction – using BIM-based methods for transparency, cost control and on-schedule delivery.",
+        text: "Holistic coordination of quality, cost and schedule – with cost frameworks, scheduling and BIM-based project coordination across all phases of planning and construction.",
         image: "/images/landing/leistung-4.jpg",
       },
       {
         title: "Interior Design",
-        text: "We design interiors for private and commercial use, combining technical expertise with a refined sense of design – from concept to detailed planning.",
+        text: "Individual interiors for private and commercial use – from space and usage concepts to material, colour and furnishing concepts through to detailed and execution planning.",
         image: "/images/landing/leistung-5.jpg",
       },
       {
-        title: "Sub-Contracting / Outsourcing",
-        text: "As a globally distributed, interdisciplinary team, we support architecture and engineering firms with 3D modelling, BIM integration and high-quality visualisations – flexibly and transparently.",
+        title: "Execution Planning & Tendering",
+        text: "Detailed execution and construction drawings, bills of quantities and quantity take-offs, as well as bid evaluation, price comparison and support in awarding contracts – HOAI work stages 5 to 7.",
         image: "/images/landing/leistung-6.jpg",
       },
       {
-        title: "Digital Arc",
-        text: "Our offering in digital architecture workflows is currently being developed.",
+        title: "BIM – Building Information Modeling",
+        text: "Digital building models for transparent collaboration: 3D modelling, clash detection, digital quantity take-off and model-based coordination of everyone involved.",
         image: "/images/landing/leistung-7.jpg",
-        badge: "In preparation",
       },
     ],
     founder: {
@@ -251,7 +250,7 @@ const en: SourceDictionary = {
     ctaText: "We look forward to hearing from you — get in touch for a no-obligation initial consultation.",
   },
   studio: {
-    title: "Studio",
+    title: "GrayArc",
     intro:
       "GrayArc is an architecture office working at the intersection of precision planning, heritage context and digital workflows.",
     history: {

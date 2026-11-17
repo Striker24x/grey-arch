@@ -95,20 +95,20 @@
   --color-line-300: #44403a;
   --color-line-400: #54504a;
 
-  --color-stone-300: #857d72;
-  --color-stone-400: #9a9285;
-  --color-stone-500: #b0a89a;
-  --color-stone-600: #c8c0b0;
+  --color-stone-300: #ffffff;
+  --color-stone-400: #ffffff;
+  --color-stone-500: #ffffff;
+  --color-stone-600: #ffffff;
 
-  --color-graphite-600: #bfb9b0;
-  --color-graphite-700: #cfc9c0;
-  --color-graphite-800: #dfd9d0;
-  --color-graphite-900: #eeebe6;
+  --color-graphite-600: #ffffff;
+  --color-graphite-700: #ffffff;
+  --color-graphite-800: #ffffff;
+  --color-graphite-900: #ffffff;
 
-  --color-ink: #ede8e0;
+  --color-ink: #ffffff;
 
   --background: #1b1916;
-  --foreground: #ede8e0;
+  --foreground: #ffffff;
 }
 
 html {
@@ -204,7 +204,7 @@ footer {
   color: #57534e;
 }
 
-.dark .label { color: #b0a89a; }
+.dark .label { color: #ffffff; }
 
 .btn-primary {
   border: 1px solid #211e1a;
@@ -239,13 +239,13 @@ footer {
 .dark .btn-secondary {
   border-color: #44403a;
   background: #1b1916;
-  color: #c8c0b0;
+  color: #ffffff;
 }
-.dark .btn-secondary:hover { border-color: #eeebe6; color: #eeebe6; }
+.dark .btn-secondary:hover { border-color: #ffffff; color: #ffffff; }
 
 /* Admin input — dark mode override */
 .dark .input {
-  color: #eeebe6;
+  color: #ffffff;
   background:
     linear-gradient(#1b1916, #1b1916) padding-box,
     conic-gradient(
@@ -285,7 +285,8 @@ html.dark .border-stone-50   { border-color: #252119; }
 html.dark .border-stone-100  { border-color: #2e2a23; }
 html.dark .border-stone-200  { border-color: #3a3530; }
 html.dark .border-stone-300  { border-color: #4a4540; }
-html.dark .text-stone-600    { color: #c8c0b0; }
+html.dark .text-stone-600    { color: #ffffff; }
+html.dark .text-graphite-400 { color: #ffffff; }
 html.dark .hover\:bg-stone-50:hover  { background-color: #1f1d19; }
 html.dark .hover\:bg-stone-100:hover { background-color: #252119; }
 
@@ -294,7 +295,7 @@ html:not(.dark) .bg-stone-50,
 html:not(.dark) .bg-stone-100 { background-color: #ffffff; }
 
 /* Select element (doesn't inherit .input bg) */
-html.dark select.input  { background-color: #1b1916; color: #eeebe6; }
+html.dark select.input  { background-color: #1b1916; color: #ffffff; }
 
 /* Red states in dark mode */
 html.dark .bg-red-50    { background-color: #2d1215; }
@@ -400,19 +401,20 @@ nav a {
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 .dark .ga {
+  /* Dark Mode: jeder Text reines Weiß (Überschriften, Fließtext, Labels, Nummern) */
   --ga-bg: #1b1916;
   --ga-subtle-bg: #1b1916;
-  --ga-ink: #ede8e0;
-  --ga-muted: rgba(237, 232, 224, 0.74);
-  --ga-soft: rgba(237, 232, 224, 0.55);
-  --ga-faint: rgba(237, 232, 224, 0.32);
+  --ga-ink: #ffffff;
+  --ga-muted: #ffffff;
+  --ga-soft: #ffffff;
+  --ga-faint: #ffffff;
   --ga-line: rgba(237, 232, 224, 0.14);
   --ga-tile: rgba(237, 232, 224, 0.06);
   --ga-inv-bg: #1b1916;
-  --ga-inv-fg: #ede8e0;
-  --ga-inv-muted: rgba(237, 232, 224, 0.75);
-  --ga-inv-soft: rgba(237, 232, 224, 0.55);
-  --ga-inv-faint: rgba(237, 232, 224, 0.35);
+  --ga-inv-fg: #ffffff;
+  --ga-inv-muted: #ffffff;
+  --ga-inv-soft: #ffffff;
+  --ga-inv-faint: #ffffff;
   --ga-inv-line: rgba(237, 232, 224, 0.15);
 }
 .ga-subtle { background: var(--ga-subtle-bg); }

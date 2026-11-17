@@ -8,7 +8,7 @@ const de: SourceDictionary = {
       "GrayArc ist ein Architekturbüro für architektonische Planung, Baugenehmigungen, Denkmalpflege, Bauzeichnungen, Innen- und Landschaftsgestaltung sowie digitale Architektur.",
   },
   nav: {
-    studio: "Studio",
+    studio: "GrayArc",
     services: "Leistungen",
     portfolio: "Projekte",
     team: "Unser Team",
@@ -165,7 +165,7 @@ const de: SourceDictionary = {
       studio: { cta: "Mehr erfahren" },
       services: {
         description:
-          "Wir bieten ein umfassendes Leistungsspektrum von der Konzeptplanung über die Kostenschätzung bis zur Bauüberwachung und zum Projektmanagement. Für die Sanierung, Renovierung und Umnutzung von Bestandsgebäuden greifen wir auf umfangreiche Erfahrung im Umgang mit vorhandener Bausubstanz zurück.",
+          "Ganzheitliche Planung – von der ersten Idee bis zur Umsetzung. Wir begleiten Bauprojekte kompetent und zuverlässig von der ersten Projektidee bis zur Vergabe und Realisierung und verbinden fundierte ingenieurtechnische Planung mit moderner digitaler Projektbearbeitung und einem ganzheitlichen Blick auf Gebäude und Innenräume.",
         cta: "Alle Leistungen",
       },
       portfolio: {
@@ -190,40 +190,39 @@ const de: SourceDictionary = {
     },
     serviceCards: [
       {
-        title: "Architekturplanung",
-        text: "Von der Umsetzung Ihrer Vision im Neubau bis zur fachgerechten Sanierung und energetischen Ertüchtigung im Bestand – wir entwickeln massgeschneiderte, nachhaltige Entwürfe für jedes Projekt.",
+        title: "Grundlagen & Entwurf",
+        text: "Wir klären Aufgabenstellung, Rahmenbedingungen und Ziele Ihres Bauvorhabens, entwickeln Planungskonzepte und Varianten und arbeiten den gewählten Lösungsansatz zur Entwurfsplanung mit Kostenberechnung aus – Leistungsphasen 1 bis 3 der HOAI.",
         image: "/images/landing/leistung-1.jpg",
       },
       {
         title: "Tragwerksplanung",
-        text: "Wir liefern sichere, effiziente Tragwerkslösungen für Neubauten und begleiten die statische Sanierung und Ertüchtigung von Bestandsgebäuden mit detaillierter Analyse und Planung.",
+        text: "Sichere und wirtschaftliche Tragwerke für Neubau, Umbau und Sanierung – von der statischen Konzeption über die konstruktive Ausarbeitung bis zur Abstimmung mit allen Fachplanungen.",
         image: "/images/landing/leistung-2.jpg",
       },
       {
-        title: "Baugenehmigung",
-        text: "Wir bereiten alle erforderlichen Unterlagen für den Bauantrag vor und koordinieren diese – für volle Einhaltung lokaler Vorschriften und reibungslose Abstimmung mit den Behörden.",
+        title: "Genehmigungsplanung",
+        text: "Wir erstellen und koordinieren alle Unterlagen für den Bauantrag, stimmen uns mit Fachplanern und Behörden ab und begleiten das Genehmigungsverfahren bis zur Einreichung – Leistungsphase 4 der HOAI.",
         image: "/images/landing/leistung-3.jpg",
       },
       {
         title: "Projektmanagement",
-        text: "Umfassendes Projektmanagement über alle Phasen von Planung und Bauausführung – mit BIM-basierten Methoden für Transparenz, Kostenkontrolle und termingerechte Umsetzung.",
+        text: "Ganzheitliche Koordination für Qualität, Kosten und Termine – mit Kostenrahmen, Terminplanung und BIM-basierter Projektkoordination über alle Phasen von Planung und Bauausführung.",
         image: "/images/landing/leistung-4.jpg",
       },
       {
-        title: "Innenarchitektur",
-        text: "Wir entwickeln Innenräume für privaten und gewerblichen Gebrauch und verbinden technische Expertise mit gestalterischem Feingefühl – von der Konzeption bis zur Detailplanung.",
+        title: "Innenarchitektur & Raumgestaltung",
+        text: "Individuelle Innenräume für private und gewerbliche Nutzung – von Raum- und Nutzungskonzepten über Material-, Farb- und Möblierungskonzepte bis zur Detail- und Ausführungsplanung.",
         image: "/images/landing/leistung-5.jpg",
       },
       {
-        title: "Sub-Contracting / Outsourcing",
-        text: "Als global verteiltes, interdisziplinäres Team unterstützen wir Architektur- und Ingenieurbüros bei 3D-Modellierung, BIM-Integration und hochwertigen Visualisierungen – flexibel und transparent.",
+        title: "Ausführungsplanung & Vergabe",
+        text: "Detaillierte Ausführungs- und Konstruktionsplanung, Leistungsverzeichnisse und Mengenermittlung sowie Angebotsprüfung, Preisspiegel und Mitwirkung bei der Vergabe – Leistungsphasen 5 bis 7 der HOAI.",
         image: "/images/landing/leistung-6.jpg",
       },
       {
-        title: "Digital Arc",
-        text: "Unser Angebot im Bereich digitaler Architektur-Workflows befindet sich derzeit im Aufbau.",
+        title: "BIM – Building Information Modeling",
+        text: "Digitale Gebäudemodelle für eine transparente Zusammenarbeit: 3D-Modellierung, Kollisionsprüfung, digitale Mengenermittlung und modellbasierte Koordination aller Projektbeteiligten.",
         image: "/images/landing/leistung-7.jpg",
-        badge: "In Vorbereitung",
       },
     ],
     founder: {
@@ -239,7 +238,7 @@ const de: SourceDictionary = {
     ctaText: "Wir freuen uns auf Ihre Anfrage – kontaktieren Sie uns für ein unverbindliches Erstgespräch.",
   },
   studio: {
-    title: "Studio",
+    title: "GrayArc",
     intro:
       "GrayArc ist ein Architekturbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
     history: {

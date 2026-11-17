@@ -94,11 +94,14 @@ export default function Header({
   const submenuSections = hoveredNavId ? getNavSections(hoveredNavId, lang, dict) : [];
 
   // Top bar — same structure as the architektinmb-style site: logo, inline nav, Kontakt button
+  // Same labels as the burger menu (managed under /admin/navigation).
+  const navLabel = (ids: string[], fallback: string) =>
+    navItems.find((n) => ids.includes(n.id))?.label || fallback;
   const topNav = [
     { href: `/${lang}`, label: "Home", exact: true },
-    { href: `/${lang}/studio`, label: lang === "de" ? "Über uns" : "About us", exact: false },
-    { href: `/${lang}/services`, label: dict.nav.services, exact: false },
-    { href: `/${lang}/karriere`, label: dict.nav.careers, exact: false },
+    { href: `/${lang}/studio`, label: navLabel(["studio"], dict.nav.studio), exact: false },
+    { href: `/${lang}/services`, label: navLabel(["services"], dict.nav.services), exact: false },
+    { href: `/${lang}/karriere`, label: navLabel(["careers", "karriere"], dict.nav.careers), exact: false },
   ];
 
   return (

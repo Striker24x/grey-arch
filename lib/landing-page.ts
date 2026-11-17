@@ -72,6 +72,8 @@ export interface LandingTexts {
 }
 
 export interface LandingPageData {
+  /** Bumped when the default texts change and should replace stored ones once. */
+  contentVersion?: number;
   /** Target of the hero button, e.g. "/connect" (language prefix is added automatically). */
   heroCtaHref: string;
   bannerImage: string;
@@ -83,6 +85,25 @@ export interface LandingPageData {
 }
 
 const DOC_KEY = "landing_page";
+
+/**
+ * v2: service cards + services description rewritten based on the
+ * /services page (HOAI work stages, structural design, BIM …) — replaces the
+ * texts copied from the other design project. Images stay as they are.
+ */
+const CONTENT_VERSION = 2;
+
+function applyContentUpdates(data: LandingPageData, defaults: LandingPageData): LandingPageData {
+  const translations = { ...data.translations };
+  for (const l of LANDING_LOCALES) {
+    translations[l] = { ...translations[l], servicesDescription: defaults.translations[l].servicesDescription };
+  }
+  const serviceCards = defaults.serviceCards.map((card, i) => ({
+    ...card,
+    image: data.serviceCards[i]?.image || card.image,
+  }));
+  return { ...data, contentVersion: CONTENT_VERSION, translations, serviceCards };
+}
 
 /** Bundled images that get migrated to R2 on first seed. */
 const LOCAL_IMAGES = {
@@ -147,6 +168,7 @@ async function buildDefaults(): Promise<LandingPageData> {
   });
 
   return {
+    contentVersion: CONTENT_VERSION,
     heroCtaHref: "/connect",
     bannerImage: LOCAL_IMAGES.banner,
     founderPhoto: LOCAL_IMAGES.founder,
@@ -226,7 +248,12 @@ let lastMigrationAttempt = 0;
 export async function getLandingPage(): Promise<LandingPageData> {
   const defaults = await buildDefaults();
   const stored = await readJsonSync<Partial<LandingPageData>>(DOC_KEY);
-  const data = stored ? withDefaults(stored, defaults) : defaults;
+  let data = stored ? withDefaults(stored, defaults) : defaults;
+
+  if (stored && (stored.contentVersion ?? 1) < CONTENT_VERSION) {
+    data = applyContentUpdates(data, defaults);
+    await writeJsonSync(DOC_KEY, data);
+  }
 
   // Retry the R2 migration at most every 10 minutes per server instance, so a
   // broken R2 key never slows down every homepage request.

@@ -288,7 +288,7 @@ export interface NavigationData {
 
 const DEFAULT_NAV: NavigationData = {
   items: [
-    { id: "studio",    href: "/studio",    labels: { en: "Studio",    de: "Studio" }, visible: true, custom: false },
+    { id: "studio",    href: "/studio",    labels: { en: "GrayArc",   de: "GrayArc" }, visible: true, custom: false },
     { id: "services",  href: "/services",  labels: { en: "Services",  de: "Leistungen" }, visible: true, custom: false },
     { id: "portfolio", href: "/portfolio", labels: { en: "Projects",  de: "Projekte" }, visible: true, custom: false },
     { id: "team",      href: "/team",      labels: { en: "Our Team",  de: "Unser Team" }, visible: true, custom: false },
@@ -309,10 +309,30 @@ function migrateNavItem(raw: Record<string, unknown>): NavItem {
   };
 }
 
+const RENAME_TO_GRAYARC = ["studio", "über uns", "ueber uns", "about us", "about"];
+
 export async function getNavigation(): Promise<NavigationData> {
   const stored = await readJsonSync<{ items: Record<string, unknown>[] }>("navigation.json");
   if (!stored) return DEFAULT_NAV;
-  return { items: stored.items.map(migrateNavItem) };
+  const data = { items: stored.items.map(migrateNavItem) };
+
+  // One-time rename: the "Studio" / "Über uns" menu item is now called "GrayArc"
+  // (header + burger menu use the same word). Later admin edits are kept.
+  const { runOnce } = await import("./content-migrations");
+  await runOnce("2026-11-rename-studio-to-grayarc-nav", async () => {
+    let changed = false;
+    for (const item of data.items) {
+      if (item.id !== "studio") continue;
+      for (const l of ["en", "de"] as const) {
+        if (RENAME_TO_GRAYARC.includes((item.labels[l] ?? "").trim().toLowerCase())) {
+          item.labels[l] = "GrayArc";
+          changed = true;
+        }
+      }
+    }
+    if (changed) await writeJsonSync("navigation.json", data);
+  });
+  return data;
 }
 
 export async function saveNavigation(data: NavigationData): Promise<void> {
@@ -502,7 +522,21 @@ export async function getStudio(): Promise<StudioData> {
       await writeJsonSync("studio.json", migrated); // persist once so migration doesn't re-run
       return migrated;
     }
-    return cached as StudioData;
+    const studio = cached as StudioData;
+    // One-time rename of the Studio page title to "GrayArc" (later admin edits are kept).
+    const { runOnce } = await import("./content-migrations");
+    await runOnce("2026-11-rename-studio-to-grayarc-title", async () => {
+      let changed = false;
+      for (const l of ["en", "de"] as const) {
+        const t = studio.translations?.[l];
+        if (t && RENAME_TO_GRAYARC.includes((t.title ?? "").trim().toLowerCase())) {
+          t.title = "GrayArc";
+          changed = true;
+        }
+      }
+      if (changed) await writeJsonSync("studio.json", studio);
+    });
+    return studio;
   }
   const initial = await initStudio();
   await writeJsonSync("studio.json", initial);
