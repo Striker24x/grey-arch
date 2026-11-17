@@ -133,29 +133,27 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             <section key={item.id} id={`section-${item.id}`} className={bg}>
               <Container className="py-20 lg:py-28">
                 <SectionHeader label={label} description={copy?.description} cta={cta} href={href} />
-                <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-                  {L.serviceCards.map((card, i) => {
-                    const re = new RegExp(card.anchorMatch, "i");
-                    const anchor = dict.servicesPage.sections.find((s) => re.test(s.id));
-                    const cardHref = anchor ? `${href}#${anchor.id}` : href;
-                    return (
-                      <AnimatedReveal key={card.title} variant="card" delay={i * 80}>
-                        <Link href={cardHref} className="group block">
-                          <div className="ga-tile relative mb-6 aspect-[4/3] w-full overflow-hidden">
-                            <GaImage
-                              src={card.image}
-                              alt={card.title}
-                              sizes="(min-width: 768px) 33vw, 100vw"
-                              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                            />
-                          </div>
-                          <span className="ga-serif ga-faint text-3xl">{String(i + 1).padStart(2, "0")}</span>
-                          <h3 className="ga-serif mt-2 text-2xl leading-snug">{card.title}</h3>
-                          <p className="ga-muted mt-2 text-sm leading-relaxed">{card.text}</p>
-                        </Link>
-                      </AnimatedReveal>
-                    );
-                  })}
+                <div className="grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+                  {L.serviceCards.map((card, i) => (
+                    <AnimatedReveal key={card.title} variant="card" delay={(i % 3) * 80}>
+                      <div className="ga-tile relative aspect-[4/3] w-full overflow-hidden">
+                        <GaImage
+                          src={card.image}
+                          alt={card.title}
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="mt-5 flex items-center gap-3">
+                        <span className="ga-serif ga-faint text-2xl">{String(i + 1).padStart(2, "0")}</span>
+                        {card.badge && (
+                          <span className="ga-label border border-current/20 px-2 py-1 text-[10px]">{card.badge}</span>
+                        )}
+                      </div>
+                      <h3 className="ga-serif mt-2 text-2xl">{card.title}</h3>
+                      <p className="ga-muted mt-3 leading-relaxed">{card.text}</p>
+                    </AnimatedReveal>
+                  ))}
                 </div>
               </Container>
             </section>

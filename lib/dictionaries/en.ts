@@ -175,7 +175,7 @@ const en: SourceDictionary = {
       studio: { cta: "Learn more" },
       services: {
         description:
-          "From architectural and structural planning to building permits and project management — we guide your project from the first idea to completion.",
+          "We offer a comprehensive range of services, from concept design and cost estimation to construction supervision and project management. For the refurbishment, renovation and conversion of existing buildings, we draw on extensive experience in working with existing building fabric.",
         cta: "All services",
       },
       portfolio: {
@@ -200,22 +200,40 @@ const en: SourceDictionary = {
     },
     serviceCards: [
       {
-        title: "Planning according to HOAI",
-        text: "We guide building projects from establishing the fundamentals to the award of contracts — along HOAI work stages 1 to 7, complemented by BIM-based planning.",
+        title: "Architectural Planning",
+        text: "From realising your vision in new construction to the professional refurbishment and energy upgrading of existing buildings – we develop tailored, sustainable designs for every project.",
         image: "/images/landing/leistung-1.jpg",
-        anchorMatch: "leistungsphase|work-stage|phase",
       },
       {
-        title: "Interior design",
-        text: "We develop individual interiors for private and commercial projects that combine functionality, atmosphere and design quality.",
-        image: "/images/landing/leistung-5.jpg",
-        anchorMatch: "innen|interior",
+        title: "Structural Design",
+        text: "We deliver safe, efficient structural solutions for new buildings and support the structural refurbishment and strengthening of existing buildings with detailed analysis and planning.",
+        image: "/images/landing/leistung-2.jpg",
       },
       {
-        title: "Project management",
-        text: "We take on project management across all phases of planning and execution — with clear structures, transparent processes and reliable coordination.",
+        title: "Building Permits",
+        text: "We prepare and coordinate all documents required for the building application – ensuring full compliance with local regulations and smooth coordination with the authorities.",
+        image: "/images/landing/leistung-3.jpg",
+      },
+      {
+        title: "Project Management",
+        text: "Comprehensive project management across all phases of planning and construction – using BIM-based methods for transparency, cost control and on-schedule delivery.",
         image: "/images/landing/leistung-4.jpg",
-        anchorMatch: "koordination|projektmanagement|coordination|project-management",
+      },
+      {
+        title: "Interior Design",
+        text: "We design interiors for private and commercial use, combining technical expertise with a refined sense of design – from concept to detailed planning.",
+        image: "/images/landing/leistung-5.jpg",
+      },
+      {
+        title: "Sub-Contracting / Outsourcing",
+        text: "As a globally distributed, interdisciplinary team, we support architecture and engineering firms with 3D modelling, BIM integration and high-quality visualisations – flexibly and transparently.",
+        image: "/images/landing/leistung-6.jpg",
+      },
+      {
+        title: "Digital Arc",
+        text: "Our offering in digital architecture workflows is currently being developed.",
+        image: "/images/landing/leistung-7.jpg",
+        badge: "In preparation",
       },
     ],
     founder: {

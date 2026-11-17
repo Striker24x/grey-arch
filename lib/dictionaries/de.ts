@@ -163,7 +163,7 @@ const de: SourceDictionary = {
       studio: { cta: "Mehr erfahren" },
       services: {
         description:
-          "Von der Architektur- und Tragwerksplanung über die Baugenehmigung bis zum Projektmanagement – wir begleiten Ihr Vorhaben von der ersten Idee bis zur Fertigstellung.",
+          "Wir bieten ein umfassendes Leistungsspektrum von der Konzeptplanung über die Kostenschätzung bis zur Bauüberwachung und zum Projektmanagement. Für die Sanierung, Renovierung und Umnutzung von Bestandsgebäuden greifen wir auf umfangreiche Erfahrung im Umgang mit vorhandener Bausubstanz zurück.",
         cta: "Alle Leistungen",
       },
       portfolio: {
@@ -188,22 +188,40 @@ const de: SourceDictionary = {
     },
     serviceCards: [
       {
-        title: "Planung nach HOAI",
-        text: "Wir begleiten Bauprojekte von der Grundlagenermittlung bis zur Mitwirkung bei der Vergabe – entlang der Leistungsphasen 1 bis 7 der HOAI, ergänzt um BIM-basierte Planung.",
+        title: "Architekturplanung",
+        text: "Von der Umsetzung Ihrer Vision im Neubau bis zur fachgerechten Sanierung und energetischen Ertüchtigung im Bestand – wir entwickeln massgeschneiderte, nachhaltige Entwürfe für jedes Projekt.",
         image: "/images/landing/leistung-1.jpg",
-        anchorMatch: "leistungsphase|work-stage|phase",
       },
       {
-        title: "Innenarchitektur & Raumgestaltung",
-        text: "Wir entwickeln individuelle Innenräume für private und gewerbliche Projekte, die Funktionalität, Atmosphäre und gestalterische Qualität miteinander verbinden.",
-        image: "/images/landing/leistung-5.jpg",
-        anchorMatch: "innen|interior",
+        title: "Tragwerksplanung",
+        text: "Wir liefern sichere, effiziente Tragwerkslösungen für Neubauten und begleiten die statische Sanierung und Ertüchtigung von Bestandsgebäuden mit detaillierter Analyse und Planung.",
+        image: "/images/landing/leistung-2.jpg",
+      },
+      {
+        title: "Baugenehmigung",
+        text: "Wir bereiten alle erforderlichen Unterlagen für den Bauantrag vor und koordinieren diese – für volle Einhaltung lokaler Vorschriften und reibungslose Abstimmung mit den Behörden.",
+        image: "/images/landing/leistung-3.jpg",
       },
       {
         title: "Projektmanagement",
-        text: "Wir übernehmen das Projektmanagement über alle Phasen der Planung und Umsetzung – mit klaren Strukturen, transparenten Abläufen und zuverlässiger Koordination.",
+        text: "Umfassendes Projektmanagement über alle Phasen von Planung und Bauausführung – mit BIM-basierten Methoden für Transparenz, Kostenkontrolle und termingerechte Umsetzung.",
         image: "/images/landing/leistung-4.jpg",
-        anchorMatch: "koordination|projektmanagement|coordination|project-management",
+      },
+      {
+        title: "Innenarchitektur",
+        text: "Wir entwickeln Innenräume für privaten und gewerblichen Gebrauch und verbinden technische Expertise mit gestalterischem Feingefühl – von der Konzeption bis zur Detailplanung.",
+        image: "/images/landing/leistung-5.jpg",
+      },
+      {
+        title: "Sub-Contracting / Outsourcing",
+        text: "Als global verteiltes, interdisziplinäres Team unterstützen wir Architektur- und Ingenieurbüros bei 3D-Modellierung, BIM-Integration und hochwertigen Visualisierungen – flexibel und transparent.",
+        image: "/images/landing/leistung-6.jpg",
+      },
+      {
+        title: "Digital Arc",
+        text: "Unser Angebot im Bereich digitaler Architektur-Workflows befindet sich derzeit im Aufbau.",
+        image: "/images/landing/leistung-7.jpg",
+        badge: "In Vorbereitung",
       },
     ],
     founder: {

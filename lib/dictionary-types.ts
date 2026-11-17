@@ -207,7 +207,7 @@ export interface Dictionary {
     sections: Record<string, { description?: string; cta: string }>;
     /** Teaser cards for the services section. `anchorMatch` is a case-insensitive regex
      * matched against the admin-edited Services H3 section ids to deep-link each card. */
-    serviceCards: { title: string; text: string; image: string; anchorMatch: string }[];
+    serviceCards: { title: string; text: string; image: string; badge?: string }[];
     founder: {
       name: string;
       photoAlt: string;
