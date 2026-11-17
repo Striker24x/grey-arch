@@ -155,9 +155,11 @@ const de: SourceDictionary = {
     },
   },
   landing: {
-    heroHeadline: "Architektur mit Präzision und Kontinuum",
+    heroHeadline: "Ingenieurbau mit Präzision und Kontinuum",
+    heroText:
+      "GrayArc ist ein 2026 in Berlin gegründetes Ingenieurbüro für Planung, Tragwerksplanung und Bauwesen. Es führt eine über vierzig Jahre gewachsene Tradition fort – geprägt von Präzision, technischem Anspruch und einem integrierten Planungsprozess.",
     heroCta: "Kontakt aufnehmen",
-    bannerAlt: "GrayArc — Architektur",
+    bannerAlt: "GrayArc — Ingenieurbüro",
     learnMore: "Mehr erfahren",
     sections: {
       studio: { cta: "Mehr erfahren" },

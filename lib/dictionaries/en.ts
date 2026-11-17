@@ -167,9 +167,11 @@ const en: SourceDictionary = {
     },
   },
   landing: {
-    heroHeadline: "Architecture with precision and continuity",
+    heroHeadline: "Engineering with precision and continuity",
+    heroText:
+      "GrayArc is an engineering office for planning, structural design and construction, founded in Berlin in 2026. It continues a tradition built over more than forty years – defined by precision, technical rigour and an integrated planning process.",
     heroCta: "Get in touch",
-    bannerAlt: "GrayArc — architecture",
+    bannerAlt: "GrayArc — engineering office",
     learnMore: "Learn more",
     sections: {
       studio: { cta: "Learn more" },

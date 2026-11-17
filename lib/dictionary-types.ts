@@ -201,6 +201,7 @@ export interface Dictionary {
    * navigation config — `sections` is keyed by NavItem.id). */
   landing: {
     heroHeadline: string;
+    heroText: string;
     heroCta: string;
     bannerAlt: string;
     learnMore: string;

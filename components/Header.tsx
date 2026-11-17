@@ -46,7 +46,6 @@ export default function Header({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [hoveredNavId, setHoveredNavId] = useState<string | null>(null);
   const [submenuY, setSubmenuY] = useState(0);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -92,68 +91,84 @@ export default function Header({
     setHoveredNavId(null);
   }, [pathname]);
 
-  // Only show header when scrolled to the very top
-  useEffect(() => {
-    const onScroll = () => {
-      setHidden(window.scrollY > 10);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const submenuSections = hoveredNavId ? getNavSections(hoveredNavId, lang, dict) : [];
+
+  // Top bar — same structure as the architektinmb-style site: logo, inline nav, Kontakt button
+  const topNav = [
+    { href: `/${lang}`, label: "Home", exact: true },
+    { href: `/${lang}/studio`, label: lang === "de" ? "Über uns" : "About us", exact: false },
+    { href: `/${lang}/services`, label: dict.nav.services, exact: false },
+    { href: `/${lang}/karriere`, label: dict.nav.careers, exact: false },
+  ];
 
   return (
     <>
-      <motion.header
-        initial={false}
-        animate={{
-          y: hidden && !open ? "-100%" : "0%",
-          opacity: hidden && !open ? 0 : 1,
-        }}
-        transition={{ type: "tween", duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="fixed top-0 left-0 right-0 z-50 w-full"
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10 lg:py-8">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-line-200 bg-paper-100">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
           <Link
             href={`/${lang}`}
-            className="flex items-center gap-3 cursor-pointer text-graphite-900"
+            className="block cursor-pointer"
+            aria-label={`${dict.meta.siteName} — Startseite`}
             onClick={() => setOpen(false)}
           >
             <Image
               src="/images/logo-full.svg"
               alt={dict.meta.siteName}
-              width={457.9636}
-              height={80.0672}
+              width={229}
+              height={40}
               priority
               unoptimized
-              className="h-10 w-auto lg:h-14 dark:hidden"
+              className="h-9 w-auto dark:hidden"
             />
             <Image
               src="/images/logo-full-white.svg"
               alt={dict.meta.siteName}
-              width={457.9636}
-              height={80.0672}
+              width={229}
+              height={40}
               priority
               unoptimized
-              className="hidden h-10 w-auto lg:h-14 dark:block"
+              className="hidden h-9 w-auto dark:block"
             />
           </Link>
 
-          <button
-            type="button"
-            aria-label={open ? "Menü schließen" : "Menü öffnen"}
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            style={{ touchAction: "manipulation" }}
-            className="relative z-[60] flex cursor-pointer flex-col items-start justify-center gap-[6px] p-3"
-          >
-            <span className={`block h-[3px] w-7 rounded-full bg-ink transition-all duration-200 ease-in-out ${open ? "translate-y-[4.5px] rotate-45 !w-7" : ""}`} />
-            <span className={`block h-[3px] w-5 rounded-full bg-ink transition-all duration-200 ease-in-out ${open ? "-translate-y-[4.5px] -rotate-45 !w-7" : ""}`} />
-          </button>
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Top">
+            {topNav.map((item) => {
+              const active = item.exact ? pathname === item.href : isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-xs font-medium uppercase tracking-[0.08em] text-ink transition-opacity hover:opacity-60 ${
+                    active ? "opacity-100" : ""
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Link
+              href={`/${lang}/connect`}
+              className="hidden bg-ink px-8 py-4 text-[0.8rem] font-medium uppercase leading-[1.2] tracking-[0.08em] text-paper-100 transition-opacity hover:opacity-85 md:inline-block"
+            >
+              {dict.nav.connect}
+            </Link>
+            <button
+              type="button"
+              aria-label={open ? "Menü schließen" : "Menü öffnen"}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+              style={{ touchAction: "manipulation" }}
+              className="relative z-[60] flex cursor-pointer flex-col items-start justify-center gap-[6px] p-3"
+            >
+              <span className={`block h-[3px] w-7 rounded-full bg-ink transition-all duration-200 ease-in-out ${open ? "translate-y-[4.5px] rotate-45 !w-7" : ""}`} />
+              <span className={`block h-[3px] w-5 rounded-full bg-ink transition-all duration-200 ease-in-out ${open ? "-translate-y-[4.5px] -rotate-45 !w-7" : ""}`} />
+            </button>
+          </div>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {open && (

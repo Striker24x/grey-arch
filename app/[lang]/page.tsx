@@ -99,7 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </h1>
           </AnimatedReveal>
           <AnimatedReveal delay={80} className="flex flex-col justify-center gap-6">
-            <p className="ga-muted text-base leading-relaxed sm:text-lg">{dict.studio.intro}</p>
+            <p className="ga-muted text-base leading-relaxed sm:text-lg">{L.heroText}</p>
             <div>
               <Link href={connectHref} className="ga-btn">
                 {L.heroCta}
