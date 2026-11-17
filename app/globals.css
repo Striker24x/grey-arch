@@ -388,12 +388,13 @@ nav a {
   --ga-faint: rgba(26, 26, 26, 0.3);
   --ga-line: rgba(26, 26, 26, 0.12);
   --ga-tile: rgba(26, 26, 26, 0.05);
-  --ga-inv-bg: #1a1a1a;
-  --ga-inv-fg: #f5f5f0;
-  --ga-inv-muted: rgba(245, 245, 240, 0.75);
-  --ga-inv-soft: rgba(245, 245, 240, 0.55);
-  --ga-inv-faint: rgba(245, 245, 240, 0.35);
-  --ga-inv-line: rgba(245, 245, 240, 0.15);
+  /* Keine dunklen Bänder im Light Mode: überall reines Weiß */
+  --ga-inv-bg: #ffffff;
+  --ga-inv-fg: #1a1a1a;
+  --ga-inv-muted: rgba(26, 26, 26, 0.7);
+  --ga-inv-soft: rgba(26, 26, 26, 0.5);
+  --ga-inv-faint: rgba(26, 26, 26, 0.3);
+  --ga-inv-line: rgba(26, 26, 26, 0.12);
   background: var(--ga-bg);
   color: var(--ga-ink);
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -424,7 +425,6 @@ nav a {
   --ga-soft: var(--ga-inv-soft);
   --ga-faint: var(--ga-inv-faint);
   --ga-line: var(--ga-inv-line);
-  --ga-tile: rgba(255, 255, 255, 0.05);
 }
 .ga-serif {
   font-family: var(--font-dm-serif), Georgia, "Times New Roman", serif;
