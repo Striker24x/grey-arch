@@ -23,8 +23,8 @@ export type Salutation = "mr" | "ms" | "";
 
 const CAT_GIF_URL =
   process.env.MAIL_CAT_GIF_URL ??
-  "https://pub-564792c364284f1480aa91cf5b945431.r2.dev/images/grey-arch/email/cat-slide.gif";
-const CAT_CID = "grayarc-cat-slide";
+  "https://pub-564792c364284f1480aa91cf5b945431.r2.dev/images/grey-arch/email/cat-slide-orange.gif";
+const CAT_CID = "grayarc-cat-slide-orange";
 const SITE_URL = "https://grayarc.de";
 
 function cfg() {
@@ -119,8 +119,8 @@ function layout(opts: { locale: MailLocale; preheader: string; bodyHtml: string;
       : `This e-mail was sent automatically – please do not reply to it.<br>If you have any questions, contact us at <a href="mailto:michael@grayarc.de" style="color:#1a1a1a;">michael@grayarc.de</a>.`;
   const cat = opts.withCat
     ? `<tr><td style="padding:8px 40px 0 40px;" align="center">
-         <img src="cid:${CAT_CID}" width="256" height="192" alt="${
-           opts.locale === "de" ? "Katze rutscht das Treppengeländer hinunter" : "Cat sliding down a banister"
+         <img src="cid:${CAT_CID}" width="186" height="320" alt="${
+           opts.locale === "de" ? "Orangefarbene Katze rutscht auf dem Rücken eine Rutsche hinunter" : "Orange cat sliding down a slide on its back"
          }" style="display:block;border:0;max-width:100%;height:auto;">
        </td></tr>`
     : "";
@@ -200,12 +200,12 @@ export function contactConfirmation(d: ContactData): Mail {
     return {
       withCat: true,
       subject: "Your inquiry just slid into our inbox 🐾",
-      text: `Hello ${who},\n\nyour inquiry just slid into our inbox – about as elegantly as the cat in this e-mail slides down the banister. Unlike the cat, your message didn't end up in the laundry basket, it landed safely on our desk.\n\nWe will personally get back to you within two business days.\n\nYour message:\n${summaryText(rows)}\n\nBest regards\nThe GrayArc team\n\nThis e-mail was sent automatically – please do not reply.`,
+      text: `Hello ${who},\n\nyour inquiry just slid into our inbox – as relaxed as the orange cat in this e-mail, sliding down its slide on its back. Unlike the cat, your message didn't end up on the floor at the bottom, it landed safely on our desk.\n\nWe will personally get back to you within two business days.\n\nYour message:\n${summaryText(rows)}\n\nBest regards\nThe GrayArc team\n\nThis e-mail was sent automatically – please do not reply.`,
       html: layout({
         locale: "en", withCat: true, preheader: "We received your inquiry – and it landed safely.",
         bodyHtml: `<p style="margin:0 0 16px 0;">Hello ${esc(who)},</p>
-          <p style="margin:0 0 16px 0;">your inquiry just <strong>slid into our inbox</strong> – about as elegantly as the cat above slides down the banister. 🐾</p>
-          <p style="margin:0 0 16px 0;">Good news: unlike the cat, your message didn't end up in the laundry basket. It landed safely on our desk, and we will personally get back to you within <strong>two business days</strong>.</p>
+          <p style="margin:0 0 16px 0;">your inquiry just <strong>slid into our inbox</strong> – as relaxed as the orange cat above, sliding down its slide on its back. 🐾</p>
+          <p style="margin:0 0 16px 0;">Good news: unlike the cat, your message didn't end up on the floor at the bottom. It landed safely on our desk, and we will personally get back to you within <strong>two business days</strong>.</p>
           <p style="margin:0 0 4px 0;font-size:13px;color:#6f6657;">Your message at a glance:</p>
           ${summaryTable(rows)}
           <p style="margin:0 0 16px 0;">Best regards<br>The GrayArc team</p>`,
@@ -218,12 +218,12 @@ export function contactConfirmation(d: ContactData): Mail {
   return {
     withCat: true,
     subject: "Ihre Anfrage ist bei uns reingeslidet 🐾",
-    text: `Hallo ${who},\n\nIhre Anfrage ist soeben in unser Postfach geslidet – ungefähr so elegant wie die Katze in dieser E-Mail das Treppengeländer hinunter. Anders als die Katze ist Ihre Nachricht aber nicht im Wäschekorb gelandet, sondern sicher auf unserem Schreibtisch.\n\nWir melden uns innerhalb von zwei Werktagen persönlich bei Ihnen.\n\nIhre Angaben:\n${summaryText(rows)}\n\nViele Grüße\nIhr GrayArc-Team\n\nDiese E-Mail wurde automatisch versendet – bitte nicht darauf antworten.`,
+    text: `Hallo ${who},\n\nIhre Anfrage ist soeben in unser Postfach geslidet – so entspannt wie die orangefarbene Katze in dieser E-Mail, die auf dem Rücken ihre Rutsche hinuntersaust. Anders als die Katze ist Ihre Nachricht aber nicht unten auf dem Boden gelandet, sondern sicher auf unserem Schreibtisch.\n\nWir melden uns innerhalb von zwei Werktagen persönlich bei Ihnen.\n\nIhre Angaben:\n${summaryText(rows)}\n\nViele Grüße\nIhr GrayArc-Team\n\nDiese E-Mail wurde automatisch versendet – bitte nicht darauf antworten.`,
     html: layout({
       locale: "de", withCat: true, preheader: "Ihre Anfrage ist sicher bei uns gelandet.",
       bodyHtml: `<p style="margin:0 0 16px 0;">Hallo ${esc(who)},</p>
-        <p style="margin:0 0 16px 0;">Ihre Anfrage ist soeben <strong>in unser Postfach geslidet</strong> – ungefähr so elegant wie die Katze oben das Treppengeländer hinunter. 🐾</p>
-        <p style="margin:0 0 16px 0;">Die gute Nachricht: Anders als die Katze ist Ihre Nachricht nicht im Wäschekorb gelandet, sondern sicher auf unserem Schreibtisch. Wir melden uns innerhalb von <strong>zwei Werktagen</strong> persönlich bei Ihnen.</p>
+        <p style="margin:0 0 16px 0;">Ihre Anfrage ist soeben <strong>in unser Postfach geslidet</strong> – so entspannt wie die orangefarbene Katze oben, die auf dem Rücken ihre Rutsche hinuntersaust. 🐾</p>
+        <p style="margin:0 0 16px 0;">Die gute Nachricht: Anders als die Katze ist Ihre Nachricht nicht unten auf dem Boden gelandet, sondern sicher auf unserem Schreibtisch. Wir melden uns innerhalb von <strong>zwei Werktagen</strong> persönlich bei Ihnen.</p>
         <p style="margin:0 0 4px 0;font-size:13px;color:#6f6657;">Ihre Angaben im Überblick:</p>
         ${summaryTable(rows)}
         <p style="margin:0 0 16px 0;">Viele Grüße<br>Ihr GrayArc-Team</p>`,
@@ -241,12 +241,12 @@ export function applicationConfirmation(d: ApplicationData): Mail {
     return {
       withCat: true,
       subject: `Your application slid in – ${d.jobTitle} 🐾`,
-      text: `Hello ${who},\n\nyour application for "${d.jobTitle}" just slid into our inbox – with even more style than the cat in this e-mail on the banister. And just like the cat in the basket, it landed safely.\n\nWe will review your documents carefully and get back to you personally as soon as possible.\n\nYour application:\n${summaryText(rows)}\n\nBest regards\nThe GrayArc team\n\nThis e-mail was sent automatically – please do not reply.`,
+      text: `Hello ${who},\n\nyour application for "${d.jobTitle}" just slid into our inbox – with even more style than the orange cat in this e-mail on its slide. And unlike the cat, it didn't end up on the floor – it landed safely with us.\n\nWe will review your documents carefully and get back to you personally as soon as possible.\n\nYour application:\n${summaryText(rows)}\n\nBest regards\nThe GrayArc team\n\nThis e-mail was sent automatically – please do not reply.`,
       html: layout({
         locale: "en", withCat: true, preheader: `We received your application for ${d.jobTitle}.`,
         bodyHtml: `<p style="margin:0 0 16px 0;">Hello ${esc(who)},</p>
-          <p style="margin:0 0 16px 0;">your application for <strong>${esc(d.jobTitle)}</strong> just <strong>slid into our inbox</strong> – with even more style than the cat above on the banister. 🐾</p>
-          <p style="margin:0 0 16px 0;">And just like the cat in the basket, it landed safely. We will review your documents carefully and get back to you personally as soon as possible.</p>
+          <p style="margin:0 0 16px 0;">your application for <strong>${esc(d.jobTitle)}</strong> just <strong>slid into our inbox</strong> – with even more style than the orange cat above on its slide. 🐾</p>
+          <p style="margin:0 0 16px 0;">And unlike the cat, it didn't end up on the floor – it landed safely with us. We will review your documents carefully and get back to you personally as soon as possible.</p>
           <p style="margin:0 0 4px 0;font-size:13px;color:#6f6657;">Your application at a glance:</p>
           ${summaryTable(rows)}
           <p style="margin:0 0 16px 0;">Thank you for your interest in GrayArc – we look forward to getting to know you.</p>
@@ -260,12 +260,12 @@ export function applicationConfirmation(d: ApplicationData): Mail {
   return {
     withCat: true,
     subject: `Ihre Bewerbung ist reingeslidet – ${d.jobTitle} 🐾`,
-    text: `Hallo ${who},\n\nIhre Bewerbung als „${d.jobTitle}“ ist soeben in unser Postfach gerutscht – mit noch mehr Stil als die Katze in dieser E-Mail auf dem Geländer. Und genau wie die Katze im Korb ist sie sicher gelandet.\n\nWir sehen uns Ihre Unterlagen sorgfältig an und melden uns so schnell wie möglich persönlich bei Ihnen.\n\nIhre Bewerbung:\n${summaryText(rows)}\n\nViele Grüße\nIhr GrayArc-Team\n\nDiese E-Mail wurde automatisch versendet – bitte nicht darauf antworten.`,
+    text: `Hallo ${who},\n\nIhre Bewerbung als „${d.jobTitle}“ ist soeben in unser Postfach geslidet – mit noch mehr Stil als die orangefarbene Katze in dieser E-Mail auf ihrer Rutsche. Und anders als die Katze ist sie nicht auf dem Boden, sondern sicher bei uns gelandet.\n\nWir sehen uns Ihre Unterlagen sorgfältig an und melden uns so schnell wie möglich persönlich bei Ihnen.\n\nIhre Bewerbung:\n${summaryText(rows)}\n\nViele Grüße\nIhr GrayArc-Team\n\nDiese E-Mail wurde automatisch versendet – bitte nicht darauf antworten.`,
     html: layout({
       locale: "de", withCat: true, preheader: `Ihre Bewerbung als ${d.jobTitle} ist bei uns angekommen.`,
       bodyHtml: `<p style="margin:0 0 16px 0;">Hallo ${esc(who)},</p>
-        <p style="margin:0 0 16px 0;">Ihre Bewerbung als <strong>${esc(d.jobTitle)}</strong> ist soeben <strong>in unser Postfach geslidet</strong> – mit noch mehr Stil als die Katze oben auf dem Geländer. 🐾</p>
-        <p style="margin:0 0 16px 0;">Und genau wie die Katze im Korb ist sie sicher gelandet. Wir sehen uns Ihre Unterlagen sorgfältig an und melden uns so schnell wie möglich persönlich bei Ihnen.</p>
+        <p style="margin:0 0 16px 0;">Ihre Bewerbung als <strong>${esc(d.jobTitle)}</strong> ist soeben <strong>in unser Postfach geslidet</strong> – mit noch mehr Stil als die orangefarbene Katze oben auf ihrer Rutsche. 🐾</p>
+        <p style="margin:0 0 16px 0;">Und anders als die Katze ist sie nicht auf dem Boden, sondern sicher bei uns gelandet. Wir sehen uns Ihre Unterlagen sorgfältig an und melden uns so schnell wie möglich persönlich bei Ihnen.</p>
         <p style="margin:0 0 4px 0;font-size:13px;color:#6f6657;">Ihre Bewerbung im Überblick:</p>
         ${summaryTable(rows)}
         <p style="margin:0 0 16px 0;">Danke für Ihr Interesse an GrayArc – wir freuen uns darauf, Sie kennenzulernen.</p>
@@ -359,7 +359,7 @@ async function send(to: string, mail: Mail, extra: { replyTo?: string; attachmen
   const attachments: nodemailer.SendMailOptions["attachments"] = [...(extra.attachments ?? [])];
   if (mail.withCat) {
     const gif = await getCatGif();
-    if (gif) attachments.push({ filename: "cat-slide.gif", content: gif, contentType: "image/gif", cid: CAT_CID });
+    if (gif) attachments.push({ filename: "cat-slide-orange.gif", content: gif, contentType: "image/gif", cid: CAT_CID });
   }
   await getTransport().sendMail({
     from: c.from,
