@@ -1,6 +1,13 @@
-import { fetchPrivateStorageFile } from "@/lib/bunny";
 import { getApplications } from "@/lib/data-manager";
+import { isPrivateRef, privateRefExt, readPrivateFile } from "@/lib/private-storage";
 
+const CONTENT_TYPES: Record<string, string> = {
+  pdf: "application/pdf",
+  doc: "application/msword",
+  docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+};
+
+// Access is restricted to logged-in admins by proxy.ts (/api/admin/*).
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -11,24 +18,27 @@ export async function GET(
   if (!application?.resumeUrl) {
     return new Response("Not found", { status: 404 });
   }
+  if (!isPrivateRef(application.resumeUrl)) {
+    // Files from the former Bunny.net storage are no longer reachable.
+    return new Response(
+      "Diese Datei lag beim alten Speicher (Bunny.net) und ist nicht mehr abrufbar.",
+      { status: 410, headers: { "Content-Type": "text/plain; charset=utf-8" } }
+    );
+  }
 
   try {
-    // Bunny Storage files at storage.bunnycdn.com require the AccessKey header
-    // to read, so they're private by default — we fetch server-side and stream
-    // the bytes back through our own (admin-authenticated) origin.
-    const upstream = await fetchPrivateStorageFile(application.resumeUrl);
-    if (!upstream.ok || !upstream.body) {
-      return new Response("Failed to fetch resume", { status: 502 });
-    }
-
-    return new Response(upstream.body, {
+    const file = await readPrivateFile(application.resumeUrl);
+    if (!file) return new Response("Not found", { status: 404 });
+    const ext = privateRefExt(application.resumeUrl);
+    return new Response(file.body, {
       headers: {
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `inline; filename="${application.name.replace(/[^\w.-]/g, "_")}-cv.pdf"`,
+        "Content-Type": CONTENT_TYPES[ext] ?? file.contentType ?? "application/octet-stream",
+        "Content-Disposition": `inline; filename="${application.name.replace(/[^\w.-]/g, "_")}-cv.${ext || "pdf"}"`,
         "Cache-Control": "private, no-store",
       },
     });
-  } catch {
+  } catch (err) {
+    console.error("[resume] read failed:", err);
     return new Response("Failed to fetch resume", { status: 500 });
   }
 }

@@ -1,4 +1,4 @@
-import { uploadBufferToPrivateStorage } from "@/lib/bunny";
+import { uploadPrivateFile } from "@/lib/private-storage";
 import { getApplications, saveApplications, getJobs } from "@/lib/data-manager";
 import type { JobApplication } from "@/lib/data-manager";
 
@@ -41,12 +41,13 @@ export async function POST(request: Request) {
     if (resume.size > MAX_SIZE) {
       return Response.json({ error: "File too large (max 10 MB)" }, { status: 413 });
     }
-    const bytes = await resume.arrayBuffer();
-    resumeUrl = await uploadBufferToPrivateStorage(
-      `grey-arch/applications/${Date.now()}-${resume.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`,
-      Buffer.from(bytes),
-      resume.type
-    );
+    try {
+      const bytes = await resume.arrayBuffer();
+      resumeUrl = await uploadPrivateFile("applications", resume.name, Buffer.from(bytes), resume.type);
+    } catch (err) {
+      console.error("[apply] resume upload failed:", err);
+      return Response.json({ error: "Upload failed" }, { status: 502 });
+    }
   }
 
   const application: JobApplication = {

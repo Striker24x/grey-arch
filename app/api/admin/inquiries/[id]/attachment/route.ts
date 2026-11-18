@@ -1,5 +1,5 @@
-import { fetchPrivateStorageFile } from "@/lib/bunny";
 import { getInquiries } from "@/lib/data-manager";
+import { isPrivateRef, privateRefExt, readPrivateFile } from "@/lib/private-storage";
 
 const CONTENT_TYPES: Record<string, string> = {
   pdf: "application/pdf",
@@ -10,11 +10,7 @@ const CONTENT_TYPES: Record<string, string> = {
   png: "image/png",
 };
 
-function extOf(url: string): string {
-  const m = url.match(/\.([a-zA-Z0-9]+)$/);
-  return m ? m[1].toLowerCase() : "";
-}
-
+// Access is restricted to logged-in admins by proxy.ts (/api/admin/*).
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -25,26 +21,27 @@ export async function GET(
   if (!inquiry?.attachmentUrl) {
     return new Response("Not found", { status: 404 });
   }
+  if (!isPrivateRef(inquiry.attachmentUrl)) {
+    // Files from the former Bunny.net storage are no longer reachable.
+    return new Response(
+      "Diese Datei lag beim alten Speicher (Bunny.net) und ist nicht mehr abrufbar.",
+      { status: 410, headers: { "Content-Type": "text/plain; charset=utf-8" } }
+    );
+  }
 
   try {
-    // Bunny Storage files at storage.bunnycdn.com require the AccessKey header
-    // to read, so they're private by default — we fetch server-side and stream
-    // the bytes back through our own (admin-authenticated) origin.
-    const upstream = await fetchPrivateStorageFile(inquiry.attachmentUrl);
-    if (!upstream.ok || !upstream.body) {
-      return new Response("Failed to fetch attachment", { status: 502 });
-    }
-
-    const format = extOf(inquiry.attachmentUrl);
-    const contentType = CONTENT_TYPES[format] ?? "application/octet-stream";
-    return new Response(upstream.body, {
+    const file = await readPrivateFile(inquiry.attachmentUrl);
+    if (!file) return new Response("Not found", { status: 404 });
+    const ext = privateRefExt(inquiry.attachmentUrl);
+    return new Response(file.body, {
       headers: {
-        "Content-Type": contentType,
-        "Content-Disposition": `inline; filename="${inquiry.name.replace(/[^\w.-]/g, "_")}-attachment.${format}"`,
+        "Content-Type": CONTENT_TYPES[ext] ?? file.contentType ?? "application/octet-stream",
+        "Content-Disposition": `inline; filename="${inquiry.name.replace(/[^\w.-]/g, "_")}-attachment.${ext || "bin"}"`,
         "Cache-Control": "private, no-store",
       },
     });
-  } catch {
+  } catch (err) {
+    console.error("[attachment] read failed:", err);
     return new Response("Failed to fetch attachment", { status: 500 });
   }
 }

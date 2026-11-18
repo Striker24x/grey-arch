@@ -1,4 +1,4 @@
-import { uploadBufferToPrivateStorage } from "@/lib/bunny";
+import { uploadPrivateFile } from "@/lib/private-storage";
 import { getInquiries, saveInquiries } from "@/lib/data-manager";
 import type { ContactInquiry } from "@/lib/data-manager";
 
@@ -36,12 +36,13 @@ export async function POST(request: Request) {
     if (attachment.size > MAX_SIZE) {
       return Response.json({ error: "File too large (max 10 MB)" }, { status: 413 });
     }
-    const bytes = await attachment.arrayBuffer();
-    attachmentUrl = await uploadBufferToPrivateStorage(
-      `grey-arch/inquiries/${Date.now()}-${attachment.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`,
-      Buffer.from(bytes),
-      attachment.type
-    );
+    try {
+      const bytes = await attachment.arrayBuffer();
+      attachmentUrl = await uploadPrivateFile("inquiries", attachment.name, Buffer.from(bytes), attachment.type);
+    } catch (err) {
+      console.error("[contact] attachment upload failed:", err);
+      return Response.json({ error: "Upload failed" }, { status: 502 });
+    }
   }
 
   const inquiry: ContactInquiry = {
