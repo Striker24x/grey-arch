@@ -23,6 +23,7 @@ export default function ContactForm({
     setError(false);
     try {
       const fd = new FormData(event.currentTarget);
+      fd.set("locale", lang);
       const res = await fetch("/api/contact", { method: "POST", body: fd });
       if (!res.ok) throw new Error("Failed");
       setSubmitted(true);
@@ -68,6 +69,14 @@ export default function ContactForm({
                   : "Something went wrong while sending. Please try again."}
             </p>
           )}
+
+          <Field label={SAL[lang].label} htmlFor="salutation">
+            <select id="salutation" name="salutation" defaultValue="" className={inputClass}>
+              <option value="">{SAL[lang].none}</option>
+              <option value="mr">{SAL[lang].mr}</option>
+              <option value="ms">{SAL[lang].ms}</option>
+            </select>
+          </Field>
 
           <div className="grid gap-6 sm:grid-cols-2">
             <Field label={form.name} htmlFor="name">
@@ -120,6 +129,11 @@ export default function ContactForm({
     </AnimatePresence>
   );
 }
+
+const SAL = {
+  de: { label: "Anrede", none: "Keine Angabe", mr: "Herr", ms: "Frau" },
+  en: { label: "Salutation", none: "Prefer not to say", mr: "Mr", ms: "Ms" },
+} as const;
 
 const inputClass =
   "w-full border border-line-300 bg-paper-50 px-4 py-2.5 text-sm text-ink outline-none transition-[border-color,box-shadow] duration-200 focus:border-graphite-800 focus:shadow-[0_0_0_3px_rgba(42,38,32,0.08)]";

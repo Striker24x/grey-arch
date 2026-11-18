@@ -1,4 +1,6 @@
+import { after } from "next/server";
 import { uploadPrivateFile } from "@/lib/private-storage";
+import { normalizeLocale, normalizeSalutation, sendContactMails, type FileAttachment } from "@/lib/mail";
 import { getInquiries, saveInquiries } from "@/lib/data-manager";
 import type { ContactInquiry } from "@/lib/data-manager";
 
@@ -19,6 +21,8 @@ export async function POST(request: Request) {
   const phone = (formData.get("phone") as string) || "";
   const message = (formData.get("message") as string) || "";
   const attachment = formData.get("attachment") as File | null;
+  const locale = normalizeLocale(formData.get("locale"));
+  const salutation = normalizeSalutation(formData.get("salutation"));
 
   if (!name.trim() || !email.trim()) {
     return Response.json({ error: "Missing required fields" }, { status: 400 });
@@ -28,6 +32,7 @@ export async function POST(request: Request) {
   }
 
   let attachmentUrl: string | undefined;
+  let mailFile: FileAttachment | undefined;
   if (attachment && attachment.size > 0) {
     const ext = extOf(attachment.name);
     if (!ALLOWED_EXT.has(ext)) {
@@ -37,8 +42,9 @@ export async function POST(request: Request) {
       return Response.json({ error: "File too large (max 10 MB)" }, { status: 413 });
     }
     try {
-      const bytes = await attachment.arrayBuffer();
-      attachmentUrl = await uploadPrivateFile("inquiries", attachment.name, Buffer.from(bytes), attachment.type);
+      const buffer = Buffer.from(await attachment.arrayBuffer());
+      attachmentUrl = await uploadPrivateFile("inquiries", attachment.name, buffer, attachment.type);
+      mailFile = { filename: attachment.name, content: buffer, contentType: attachment.type || undefined };
     } catch (err) {
       console.error("[contact] attachment upload failed:", err);
       return Response.json({ error: "Upload failed" }, { status: 502 });
@@ -59,6 +65,22 @@ export async function POST(request: Request) {
   const inquiries = await getInquiries();
   inquiries.push(inquiry);
   await saveInquiries(inquiries);
+
+  // Confirmation to the visitor + notification to the office, after the response.
+  after(() =>
+    sendContactMails(
+      {
+        locale,
+        salutation,
+        name: inquiry.name,
+        email: inquiry.email,
+        phone: inquiry.phone,
+        message: inquiry.message,
+        attachmentName: mailFile?.filename,
+      },
+      mailFile
+    )
+  );
 
   return Response.json({ ok: true }, { status: 201 });
 }

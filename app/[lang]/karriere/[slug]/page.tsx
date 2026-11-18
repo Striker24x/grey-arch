@@ -93,7 +93,7 @@ export default async function JobDetailPage({
         <h2 className="font-heading text-2xl text-ink">{careers.detail.applyTitle}</h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-stone-600">{careers.detail.applyIntro}</p>
         <div className="mt-8">
-          <ApplicationForm jobId={job.id} form={careers.form} />
+          <ApplicationForm jobId={job.id} form={careers.form} lang={lang === "en" ? "en" : "de"} />
         </div>
       </AnimatedReveal>
     </section>

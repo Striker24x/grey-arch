@@ -1,4 +1,6 @@
+import { after } from "next/server";
 import { uploadPrivateFile } from "@/lib/private-storage";
+import { normalizeLocale, normalizeSalutation, sendApplicationMails, type FileAttachment } from "@/lib/mail";
 import { getApplications, saveApplications, getJobs } from "@/lib/data-manager";
 import type { JobApplication } from "@/lib/data-manager";
 
@@ -20,6 +22,8 @@ export async function POST(request: Request) {
   const phone = (formData.get("phone") as string) || "";
   const message = (formData.get("message") as string) || "";
   const resume = formData.get("resume") as File | null;
+  const locale = normalizeLocale(formData.get("locale"));
+  const salutation = normalizeSalutation(formData.get("salutation"));
 
   if (!jobId || !name.trim() || !email.trim()) {
     return Response.json({ error: "Missing required fields" }, { status: 400 });
@@ -33,6 +37,7 @@ export async function POST(request: Request) {
   if (!job) return Response.json({ error: "Job not found" }, { status: 404 });
 
   let resumeUrl: string | undefined;
+  let mailFile: FileAttachment | undefined;
   if (resume && resume.size > 0) {
     const ext = extOf(resume.name);
     if (!ALLOWED_EXT.has(ext)) {
@@ -42,8 +47,9 @@ export async function POST(request: Request) {
       return Response.json({ error: "File too large (max 10 MB)" }, { status: 413 });
     }
     try {
-      const bytes = await resume.arrayBuffer();
-      resumeUrl = await uploadPrivateFile("applications", resume.name, Buffer.from(bytes), resume.type);
+      const buffer = Buffer.from(await resume.arrayBuffer());
+      resumeUrl = await uploadPrivateFile("applications", resume.name, buffer, resume.type);
+      mailFile = { filename: resume.name, content: buffer, contentType: resume.type || undefined };
     } catch (err) {
       console.error("[apply] resume upload failed:", err);
       return Response.json({ error: "Upload failed" }, { status: 502 });
@@ -66,6 +72,24 @@ export async function POST(request: Request) {
   const applications = await getApplications();
   applications.push(application);
   await saveApplications(applications);
+
+  // Confirmation to the applicant + notification to the office, after the response.
+  const jobTitle = job.translations[locale]?.title || job.translations.en.title;
+  after(() =>
+    sendApplicationMails(
+      {
+        locale,
+        salutation,
+        jobTitle,
+        name: application.name,
+        email: application.email,
+        phone: application.phone,
+        message: application.message,
+        attachmentName: mailFile?.filename,
+      },
+      mailFile
+    )
+  );
 
   return Response.json({ ok: true }, { status: 201 });
 }
