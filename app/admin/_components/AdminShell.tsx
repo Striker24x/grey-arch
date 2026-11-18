@@ -219,7 +219,7 @@ function Shell({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main */}
-      <div className={`flex-1 min-h-screen bg-stone-50 dark:bg-paper-50 ml-56`}>
+      <div className={`flex-1 min-w-0 min-h-screen bg-stone-50 dark:bg-paper-50 ml-56`}>
         {children}
       </div>
     </div>

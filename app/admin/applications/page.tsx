@@ -43,7 +43,7 @@ export default function ApplicationsPage() {
   const newCount = applications.filter((a) => a.status === "new").length;
 
   return (
-    <div className="p-8">
+    <div className="min-w-0 p-8">
       <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-6">
         <div>
           <h1 className="text-2xl font-semibold text-graphite-900">{T.title}</h1>
@@ -64,12 +64,12 @@ export default function ApplicationsPage() {
                   onClick={() => setExpanded(expanded === a.id ? null : a.id)}
                   className="flex w-full items-center justify-between px-5 py-4 text-left hover:bg-stone-50"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex min-w-0 items-center gap-3">
                     {a.status === "new" && (
                       <span className="h-2 w-2 shrink-0 rounded-full bg-bronze-500" title={T.new} />
                     )}
-                    <div>
-                      <p className="text-sm font-medium text-graphite-900">{a.name}</p>
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-graphite-900 [overflow-wrap:anywhere]">{a.name}</p>
                       <p className="text-xs text-stone-500">
                         {a.jobTitle} · {new Date(a.submittedAt).toLocaleDateString()}
                       </p>
@@ -93,7 +93,7 @@ export default function ApplicationsPage() {
                     {a.message && (
                       <div className="mt-3">
                         <p className="text-xs font-medium text-stone-500">{T.message}</p>
-                        <p className="mt-1 whitespace-pre-wrap text-graphite-900">{a.message}</p>
+                        <p className="mt-1 whitespace-pre-wrap break-words [overflow-wrap:anywhere] text-graphite-900">{a.message}</p>
                       </div>
                     )}
                     <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -119,10 +119,15 @@ export default function ApplicationsPage() {
 
                     {viewingCv === a.id && a.resumeUrl && (
                       <iframe
-                        src={`/api/admin/applications/${a.id}/resume`}
+                        src={`/api/admin/applications/${a.id}/resume#view=FitH`}
                         className="mt-4 h-[70vh] w-full rounded-sm border border-stone-200 bg-white"
                         title={`${a.name} — CV`}
                       />
+                    )}
+                    {viewingCv === a.id && a.resumeUrl && (
+                      <a href={`/api/admin/applications/${a.id}/resume`} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs text-stone-500 underline hover:text-graphite-900">
+                        In neuem Tab öffnen / Open in new tab
+                      </a>
                     )}
                   </div>
                 )}
