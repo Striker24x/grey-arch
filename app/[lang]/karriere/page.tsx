@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import JobCard from "@/components/JobCard";
@@ -16,7 +16,7 @@ export async function generateMetadata({
   return {
     title: dict.careers.title,
     description: dict.careers.intro,
-    alternates: { languages: alternateLinks("/karriere") },
+    alternates: pageAlternates(lang, "/karriere"),
   };
 }
 

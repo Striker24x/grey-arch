@@ -3,9 +3,9 @@ import type { SourceDictionary } from "../dictionary-types";
 const en: SourceDictionary = {
   meta: {
     siteName: "GrayArc",
-    tagline: "Architecture, Heritage Planning & Spatial Design.",
+    tagline: "Planning, Structural Design & Construction.",
     description:
-      "GrayArc is an architecture office for architectural planning, building permits, heritage conservation, construction drawings, interior and landscape design, and digital architecture.",
+      "GrayArc is an engineering office in Berlin for planning, structural design, building permits, construction documentation, heritage conservation and BIM-based digital planning.",
   },
   nav: {
     studio: "GrayArc",
@@ -17,7 +17,7 @@ const en: SourceDictionary = {
   },
   footer: {
     description:
-      "GrayArc is an architectural practice working across planning, heritage, construction documentation and digital architecture.",
+      "GrayArc is an engineering office working across planning, structural design, heritage conservation and digital planning (BIM).",
     navTitle: "Navigation",
     legalTitle: "Legal",
     impressum: "Impressum",
@@ -46,8 +46,8 @@ const en: SourceDictionary = {
   },
   home: {
     hero: {
-      eyebrow: "GrayArc — Architecture Office",
-      headline: "Architecture, Heritage Planning & Spatial Design.",
+      eyebrow: "GrayArc — Engineering Office",
+      headline: "Planning, Structural Design & Construction.",
       subheadline:
         "GrayArc develops clear, buildable and meaningful architectural solutions for existing buildings, new construction, heritage contexts and spatial design.",
       ctaExplore: "Explore Services",
@@ -252,7 +252,7 @@ const en: SourceDictionary = {
   studio: {
     title: "GrayArc",
     intro:
-      "GrayArc is an architecture office working at the intersection of precision planning, heritage context and digital workflows.",
+      "GrayArc is an engineering office working at the intersection of precision planning, heritage context and digital workflows.",
     history: {
       title: "History",
       body: "Founded in 2026, GrayArc represents the next chapter in a journey that began in 1985 with the establishment of Bassam Alkhouri Engineering Office in Qatana, Syria. Over more than four decades, this legacy has been shaped by a wide range of successful projects and strengthened through long-standing collaborations with architects, structural engineers, and mechanical engineers across Syria, Lebanon, Germany, and beyond. In 2026, GrayArc in Berlin was established by the structural engineer Michel Alkhouri and the architect Heba Abboud, continuing and expanding upon this established foundation.\n\nThe name GrayArc is inspired by Tell Al-Ramad — meaning “Hill of (Gray) Ashes” — an archaeological site in Qatana, Syria, where some of the earliest known traces of human settlement and civilization date back to around 6800 BCE. This heritage reflects the continuity of human creativity, knowledge, and collective progress across millennia. At GrayArc, it is this sense of being part of a greater continuum of human achievement and the responsibility that comes with it that informs our identity and approach.",
@@ -263,7 +263,7 @@ const en: SourceDictionary = {
     },
     vision: {
       title: "Vision",
-      body: "To become a trusted multilingual architecture office for existing buildings, new construction, conservation, heritage, monuments and digital architectural workflows.",
+      body: "To become a trusted multilingual engineering office for existing buildings, new construction, conservation, heritage, monuments and digital architectural workflows.",
     },
     approach: {
       title: "Approach",

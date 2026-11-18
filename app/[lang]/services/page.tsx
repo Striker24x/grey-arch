@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getServices } from "@/lib/data-manager";
 import { resolveServiceLayout } from "@/lib/service-layouts";
@@ -21,7 +21,7 @@ export async function generateMetadata({
   return {
     title: dict.servicesPage.title,
     description: dict.servicesPage.intro,
-    alternates: { languages: alternateLinks("/services") },
+    alternates: pageAlternates(lang, "/services"),
   };
 }
 

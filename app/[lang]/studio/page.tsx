@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { parseContentBlocks, pairContentBlocks, type ContentUnit } from "@/lib/parse-content-blocks";
 import AnimatedReveal from "@/components/AnimatedReveal";
@@ -20,7 +20,7 @@ export async function generateMetadata({
   return {
     title: dict.studio.title,
     description: dict.studio.intro,
-    alternates: { languages: alternateLinks("/studio") },
+    alternates: pageAlternates(lang, "/studio"),
   };
 }
 

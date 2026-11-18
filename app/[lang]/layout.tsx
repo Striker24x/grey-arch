@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import ConditionalFooter from "@/components/ConditionalFooter";
 import FontProvider from "@/components/FontProvider";
 import ThemeSync from "@/components/ThemeSync";
-import { locales, hasLocale, alternateLinks } from "@/lib/i18n";
+import { locales, hasLocale, pageAlternates, SITE_URL } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getNavigation } from "@/lib/data-manager";
 
@@ -46,28 +46,27 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: `${dict.meta.siteName} — ${dict.meta.tagline}`,
       template: `%s — ${dict.meta.siteName}`,
     },
     description: dict.meta.description,
     keywords: [
-      "architect",
-      "architecture office",
-      "architectural planning",
+      "Ingenieurbüro Berlin",
+      "engineering office Berlin",
+      "Tragwerksplanung",
+      "structural design",
+      "HOAI",
+      "BIM",
+      "Bauantrag",
       "building permit",
-      "implementation planning",
+      "Ausführungsplanung",
       "construction drawings",
+      "Denkmalpflege",
       "heritage conservation",
-      "monument conservation",
-      "existing building planning",
-      "new construction planning",
-      "interior design",
-      "landscape design",
-      "3D architectural modeling",
-      "digital architecture",
     ],
-    alternates: { languages: alternateLinks("") },
+    alternates: pageAlternates(lang, ""),
     openGraph: {
       siteName: dict.meta.siteName,
       title: `${dict.meta.siteName} — ${dict.meta.tagline}`,

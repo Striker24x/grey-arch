@@ -2,13 +2,13 @@
   "translations": {
     "en": {
       "title": "Studio",
-      "intro": "GrayArc is an architecture office working at the intersection of precision planning, heritage context and digital workflows.",
+      "intro": "GrayArc is an engineering office working at the intersection of precision planning, heritage context and digital workflows.",
       "historyTitle": "History",
       "historyBody": "GrayArc was created to connect architectural precision with cultural context, existing buildings, modern planning methods and digital workflows.",
       "missionTitle": "Mission",
       "missionBody": "To plan, document and design spaces that are clear, buildable, responsible and meaningful.",
       "visionTitle": "Vision",
-      "visionBody": "To become a trusted multilingual architecture office for existing buildings, new construction, conservation, heritage, monuments and digital architectural workflows.",
+      "visionBody": "To become a trusted multilingual engineering office for existing buildings, new construction, conservation, heritage, monuments and digital architectural workflows.",
       "approachTitle": "Approach",
       "approachBody": "Every project moves through the same disciplined sequence — discovery, survey, concept, permit, detail planning and delivery — adapted to the scale and context of the building.",
       "approachSteps": [
@@ -59,13 +59,13 @@
     },
     "de": {
       "title": "Studio",
-      "intro": "GrayArc ist ein Architekturbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
+      "intro": "GrayArc ist ein Ingenieurbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
       "historyTitle": "Geschichte",
       "historyBody": "GrayArc wurde gegründet, um architektonische Präzision mit kulturellem Kontext, Bestandsgebäuden, modernen Planungsmethoden und digitalen Arbeitsabläufen zu verbinden.",
       "missionTitle": "Mission",
       "missionBody": "Räume zu planen, zu dokumentieren und zu gestalten, die klar, baubar, verantwortungsvoll und sinnstiftend sind.",
       "visionTitle": "Vision",
-      "visionBody": "Ein vertrauenswürdiges, mehrsprachiges Architekturbüro für Bestand, Neubau, Denkmalpflege, Monumente und digitale architektonische Arbeitsabläufe zu werden.",
+      "visionBody": "Ein vertrauenswürdiges, mehrsprachiges Ingenieurbüro für Bestand, Neubau, Denkmalpflege, Monumente und digitale architektonische Arbeitsabläufe zu werden.",
       "approachTitle": "Vorgehen",
       "approachBody": "Jedes Projekt durchläuft dieselbe disziplinierte Abfolge — Entdecken, Bestandsaufnahme, Konzept, Genehmigung, Ausführungsplanung und Übergabe — angepasst an Maßstab und Kontext des Gebäudes.",
       "approachSteps": [

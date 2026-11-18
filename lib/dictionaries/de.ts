@@ -3,9 +3,9 @@ import type { SourceDictionary } from "../dictionary-types";
 const de: SourceDictionary = {
   meta: {
     siteName: "GrayArc",
-    tagline: "Architektur, Denkmalplanung & Raumgestaltung.",
+    tagline: "Planung, Tragwerksplanung & Bauwesen.",
     description:
-      "GrayArc ist ein Architekturbüro für architektonische Planung, Baugenehmigungen, Denkmalpflege, Bauzeichnungen, Innen- und Landschaftsgestaltung sowie digitale Architektur.",
+      "GrayArc ist ein Ingenieurbüro in Berlin für Planung, Tragwerksplanung, Baugenehmigungen, Ausführungsplanung, Denkmalpflege und BIM-basierte digitale Planung.",
   },
   nav: {
     studio: "GrayArc",
@@ -17,7 +17,7 @@ const de: SourceDictionary = {
   },
   footer: {
     description:
-      "GrayArc ist ein Architekturbüro mit Schwerpunkten in Planung, Denkmalpflege, Baudokumentation und digitaler Architektur.",
+      "GrayArc ist ein Ingenieurbüro mit Schwerpunkten in Planung, Tragwerksplanung, Denkmalpflege und digitaler Planung (BIM).",
     navTitle: "Navigation",
     legalTitle: "Rechtliches",
     impressum: "Impressum",
@@ -46,8 +46,8 @@ const de: SourceDictionary = {
   },
   home: {
     hero: {
-      eyebrow: "GrayArc — Architekturbüro",
-      headline: "Architektur, Denkmalplanung & Raumgestaltung.",
+      eyebrow: "GrayArc — Ingenieurbüro",
+      headline: "Planung, Tragwerksplanung & Bauwesen.",
       subheadline:
         "GrayArc entwickelt klare, baubare und sinnvolle architektonische Lösungen für Bestandsgebäude, Neubauten, denkmalgeschützte Kontexte und Raumgestaltung.",
       ctaExplore: "Leistungen ansehen",
@@ -240,7 +240,7 @@ const de: SourceDictionary = {
   studio: {
     title: "GrayArc",
     intro:
-      "GrayArc ist ein Architekturbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
+      "GrayArc ist ein Ingenieurbüro an der Schnittstelle von präziser Planung, denkmalpflegerischem Kontext und digitalen Arbeitsabläufen.",
     history: {
       title: "Geschichte",
       body: "GrayArc wurde 2026 gegründet und bildet das nächste Kapitel einer Reise, die 1985 mit der Gründung des Ingenieurbüros Bassam Alkhouri in Qatana, Syrien, begann. Über mehr als vier Jahrzehnte wurde dieses Erbe durch eine Vielzahl erfolgreicher Projekte geprägt und durch langjährige Zusammenarbeit mit Architekten, Tragwerksplanern und Maschinenbauingenieuren in Syrien, im Libanon, in Deutschland und darüber hinaus gefestigt. 2026 wurde GrayArc in Berlin vom Tragwerksplaner Michel Alkhouri und der Architektin Heba Abboud gegründet, um dieses etablierte Fundament fortzuführen und zu erweitern. Der Name GrayArc ist von Tell Al-Ramad inspiriert — „Hügel der (grauen) Asche“ — einer archäologischen Stätte in Qatana, Syrien, an der einige der frühesten bekannten Spuren menschlicher Besiedlung und Zivilisation bis etwa 6800 v. Chr. zurückreichen. Dieses Erbe spiegelt die Kontinuität menschlicher Kreativität, menschlichen Wissens und gemeinschaftlichen Fortschritts über Jahrtausende wider. Bei GrayArc ist es dieses Bewusstsein, Teil eines größeren Kontinuums menschlicher Errungenschaften zu sein — und die damit verbundene Verantwortung —, das unsere Identität und unser Vorgehen prägt.",
@@ -251,7 +251,7 @@ const de: SourceDictionary = {
     },
     vision: {
       title: "Vision",
-      body: "Ein vertrauenswürdiges, mehrsprachiges Architekturbüro für Bestand, Neubau, Denkmalpflege, Monumente und digitale architektonische Arbeitsabläufe zu werden.",
+      body: "Ein vertrauenswürdiges, mehrsprachiges Ingenieurbüro für Bestand, Neubau, Denkmalpflege, Monumente und digitale architektonische Arbeitsabläufe zu werden.",
     },
     approach: {
       title: "Vorgehen",

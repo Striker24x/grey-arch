@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import ContactForm from "@/components/ContactForm";
@@ -17,7 +17,7 @@ export async function generateMetadata({
   return {
     title: dict.connect.title,
     description: dict.connect.intro,
-    alternates: { languages: alternateLinks("/connect") },
+    alternates: pageAlternates(lang, "/connect"),
   };
 }
 

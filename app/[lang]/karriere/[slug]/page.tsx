@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { hasLocale, locales, alternateLinks } from "@/lib/i18n";
+import { hasLocale, locales, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getJobs } from "@/lib/data-manager";
 import { sanitizeBodyHtml } from "@/lib/parse-content-blocks";
@@ -36,7 +36,7 @@ export async function generateMetadata({
   return {
     title: data.job.title,
     description: data.job.intro,
-    alternates: { languages: alternateLinks(`/karriere/${slug}`) },
+    alternates: pageAlternates(lang, `/karriere/${slug}`),
   };
 }
 

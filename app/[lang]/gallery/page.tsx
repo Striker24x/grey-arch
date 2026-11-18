@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import GalleryGrid from "@/components/GalleryGrid";
@@ -17,7 +17,7 @@ export async function generateMetadata({
   return {
     title: dict.galleryPage.title,
     description: dict.galleryPage.intro,
-    alternates: { languages: alternateLinks("/gallery") },
+    alternates: pageAlternates(lang, "/gallery"),
   };
 }
 

@@ -25,3 +25,18 @@ export const alternateLinks = (pathSuffix: string = ""): Record<Locale, string> 
     },
     {} as Record<Locale, string>
   );
+
+/** Canonical production origin (apex domain; www serves the same app). */
+export const SITE_URL = "https://grayarc.de";
+
+/**
+ * Per-page alternates for generateMetadata: absolute canonical for the
+ * current locale plus absolute hreflang links for every locale and an
+ * x-default pointing at the default locale.
+ */
+export const pageAlternates = (lang: string, pathSuffix: string = "") => {
+  const languages: Record<string, string> = {};
+  for (const locale of locales) languages[locale] = `${SITE_URL}/${locale}${pathSuffix}`;
+  languages["x-default"] = `${SITE_URL}/${defaultLocale}${pathSuffix}`;
+  return { canonical: `${SITE_URL}/${lang}${pathSuffix}`, languages };
+};

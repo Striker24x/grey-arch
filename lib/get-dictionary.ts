@@ -27,6 +27,28 @@ function applyImageMap<T>(obj: T, map: Record<string, string>): T {
   return obj;
 }
 
+
+/**
+ * Field-level locale fallback: start from the English translation and
+ * overlay every non-empty field of the requested locale. A German record
+ * that exists but has blank fields (e.g. an empty title) therefore shows the
+ * English text instead of rendering an empty heading/card.
+ */
+function pickTranslation<T extends object>(translations: Partial<Record<string, T>>, locale: string): T {
+  const base = (translations.en ?? {}) as T;
+  const loc = translations[locale];
+  if (!loc || locale === "en") return (loc ?? base) as T;
+  const out: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+  for (const [k, v] of Object.entries(loc as Record<string, unknown>)) {
+    const empty =
+      v === undefined || v === null ||
+      (typeof v === "string" && v.replace(/<[^>]*>/g, "").trim() === "") ||
+      (Array.isArray(v) && v.length === 0);
+    if (!empty || !(k in out)) out[k] = v;
+  }
+  return out as T;
+}
+
 const dictionaries: Record<Locale, () => Promise<SourceDictionary>> = {
   en: () => import("./dictionaries/en").then((m) => m.default),
   de: () => import("./dictionaries/de").then((m) => m.default),
@@ -72,14 +94,14 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
       galleryImages: p.galleryImages,
       ...(p.font ? { font: p.font } : {}),
       layout: resolveServiceLayout(p.layout),
-      ...(p.translations[locale] ?? p.translations.en),
+      ...pickTranslation(p.translations, locale),
     }));
   }
 
   if (gallery) {
     dict.galleryPage.items = gallery.map((g) => ({
       image: g.image,
-      ...(g.translations[locale] ?? g.translations.en),
+      ...pickTranslation(g.translations, locale),
     }));
   }
 
@@ -87,7 +109,7 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
     dict.team.members = team.map((t) => ({
       initials: t.initials,
       ...(t.image ? { image: t.image } : {}),
-      ...(t.translations[locale] ?? t.translations.en),
+      ...pickTranslation(t.translations, locale),
     }));
   }
 
@@ -98,7 +120,7 @@ export const getDictionary = async (locale: Locale): Promise<Dictionary> => {
         id: j.id,
         slug: j.slug,
         ...(j.image ? { image: j.image } : {}),
-        ...(j.translations[locale] ?? j.translations.en),
+        ...pickTranslation(j.translations, locale),
       }));
   }
 

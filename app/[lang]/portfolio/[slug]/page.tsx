@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale, locales, alternateLinks } from "@/lib/i18n";
+import { hasLocale, locales, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import { getProjects } from "@/lib/data-manager";
 import { resolveServiceLayout } from "@/lib/service-layouts";
@@ -36,7 +36,7 @@ export async function generateMetadata({
   return {
     title: data.project.name,
     description: data.project.description,
-    alternates: { languages: alternateLinks(`/portfolio/${slug}`) },
+    alternates: pageAlternates(lang, `/portfolio/${slug}`),
   };
 }
 
@@ -82,7 +82,7 @@ export default async function ProjectDetailPage({
       {/* Cover image intentionally not shown here — it only appears in the portfolio grid.
        * The detail page keeps a plain text header (title only) without the image. */}
       <section className="mx-auto max-w-7xl px-6 pt-32 pb-0 sm:pt-40 lg:px-10 lg:pt-44">
-        <h1 className="font-heading text-4xl leading-tight text-ink sm:text-5xl">
+        <h1 className="font-heading text-4xl leading-tight text-ink break-words hyphens-auto sm:text-5xl">
           {project.name}
         </h1>
       </section>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale, alternateLinks } from "@/lib/i18n";
+import { hasLocale, pageAlternates } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
 import LegalPageLayout from "@/components/LegalPageLayout";
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
   return {
     title: dict.legal.impressum.title,
-    alternates: { languages: alternateLinks("/impressum") },
+    alternates: pageAlternates(lang, "/impressum"),
   };
 }
 

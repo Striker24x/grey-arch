@@ -497,6 +497,8 @@ nav a {
   font-style: italic;
 }
 .ga-anchor { scroll-margin-top: 7rem; }
+/* Every in-page anchor target (e.g. /services#…) clears the fixed header. */
+main [id] { scroll-margin-top: 7rem; }
 
 /* Numbered steps (an ordered list inside a dark band) */
 .ga-steps > p { max-width: 42rem; }
