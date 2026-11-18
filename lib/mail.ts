@@ -5,7 +5,7 @@ import nodemailer from "nodemailer";
  *
  * Sent via SMTP (no IMAP) from no-reply@grayarc.de. Each submission produces:
  *   1. a confirmation to the visitor, in the language they used on the site
- *   2. a notification to the office inbox (michael@grayarc.de) with
+ *   2. a notification to the office inbox (michel@grayarc.de) with
  *      Reply-To = visitor, so "reply" goes straight to them, and the uploaded
  *      file attached.
  *
@@ -35,7 +35,7 @@ function cfg() {
     user: clean(process.env.SMTP_USER) || "no-reply@grayarc.de",
     pass: clean(process.env.SMTP_PASSWORD),
     from: clean(process.env.MAIL_FROM) || "GrayArc <no-reply@grayarc.de>",
-    notifyTo: clean(process.env.MAIL_NOTIFY_TO) || "michael@grayarc.de",
+    notifyTo: clean(process.env.MAIL_NOTIFY_TO) || "michel@grayarc.de",
   };
 }
 
@@ -115,8 +115,8 @@ function layout(opts: { locale: MailLocale; preheader: string; bodyHtml: string;
       ? "Automatische Benachrichtigung von grayarc.de."
       : "Automatic notification from grayarc.de."
     : opts.locale === "de"
-      ? `Diese E-Mail wurde automatisch versendet – bitte antworten Sie nicht darauf.<br>Bei Fragen erreichen Sie uns unter <a href="mailto:michael@grayarc.de" style="color:#1a1a1a;">michael@grayarc.de</a>.`
-      : `This e-mail was sent automatically – please do not reply to it.<br>If you have any questions, contact us at <a href="mailto:michael@grayarc.de" style="color:#1a1a1a;">michael@grayarc.de</a>.`;
+      ? `Diese E-Mail wurde automatisch versendet – bitte antworten Sie nicht darauf.<br>Bei Fragen erreichen Sie uns unter <a href="mailto:michel@grayarc.de" style="color:#1a1a1a;">michel@grayarc.de</a>.`
+      : `This e-mail was sent automatically – please do not reply to it.<br>If you have any questions, contact us at <a href="mailto:michel@grayarc.de" style="color:#1a1a1a;">michel@grayarc.de</a>.`;
   const cat = opts.withCat
     ? `<tr><td style="padding:8px 40px 0 40px;" align="center">
          <img src="cid:${CAT_CID}" width="186" height="320" alt="${
