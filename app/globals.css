@@ -398,7 +398,7 @@ nav a {
   --ga-inv-line: rgba(26, 26, 26, 0.12);
   background: var(--ga-bg);
   color: var(--ga-ink);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body, var(--font-inter)), ui-sans-serif, system-ui, sans-serif;
 }
 .dark .ga {
   /* Dark Mode: jeder Text reines Weiß (Überschriften, Fließtext, Labels, Nummern) */
@@ -429,7 +429,7 @@ nav a {
   --ga-line: var(--ga-inv-line);
 }
 .ga-serif {
-  font-family: var(--font-dm-serif), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display, var(--font-dm-serif)), Georgia, "Times New Roman", serif;
   font-weight: 400;
 }
 .ga-muted { color: var(--ga-muted); }
@@ -480,7 +480,7 @@ nav a {
 .ga-rich strong { color: var(--ga-ink); font-weight: 600; }
 .ga-rich em { font-style: italic; }
 .ga-rich h3 {
-  font-family: var(--font-dm-serif), Georgia, serif;
+  font-family: var(--font-display, var(--font-dm-serif)), Georgia, serif;
   font-weight: 400;
   font-size: 1.75rem;
   line-height: 1.2;
@@ -523,7 +523,7 @@ main [id] { scroll-margin-top: 7rem; }
 .ga-steps ol > li::before {
   content: counter(ga-step, decimal-leading-zero);
   display: block;
-  font-family: var(--font-dm-serif), Georgia, serif;
+  font-family: var(--font-display, var(--font-dm-serif)), Georgia, serif;
   font-size: 1.875rem;
   line-height: 1;
   color: var(--ga-faint);

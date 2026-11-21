@@ -6,8 +6,7 @@ import { getDictionary } from "@/lib/get-dictionary";
 import { parseContentBlocks, pairContentBlocks, type ContentUnit } from "@/lib/parse-content-blocks";
 import AnimatedReveal from "@/components/AnimatedReveal";
 import GaImage, { canOptimize } from "@/components/ga/GaImage";
-
-const FOUNDER_PHOTO = "/images/michel-alkhouri.jpg";
+import { getStudio, type StudioFounderTranslation } from "@/lib/data-manager";
 
 export async function generateMetadata({
   params,
@@ -104,7 +103,24 @@ export default async function StudioPage({
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
   const { studio } = dict;
-  const founder = dict.landing.founder;
+  // Founder block — editable in Admin → Studio. Empty fields of a language fall back to English.
+  const founderData = (await getStudio()).founder;
+  const fEn = founderData?.translations.en;
+  const fLoc = founderData?.translations[lang as "en" | "de"] ?? fEn;
+  const pick = <K extends keyof StudioFounderTranslation>(k: K): StudioFounderTranslation[K] | undefined => {
+    const v = fLoc?.[k];
+    const empty = v === undefined || (Array.isArray(v) ? v.length === 0 : !String(v).trim());
+    return empty ? fEn?.[k] : v;
+  };
+  const founder = {
+    name: pick("name") ?? "",
+    photoAlt: pick("photoAlt") ?? "",
+    credentials: pick("credentials") ?? [],
+    bio: pick("bio") ?? [],
+    photo: founderData?.photo ?? "",
+  };
+  const showFounder = founderData?.visible !== false && !!(founder.name || founder.bio.length || founder.photo);
+  const pageTitle = studio.title?.trim() || dict.nav.studio;
   const sections = pairContentBlocks(parseContentBlocks(studio.body)).map(toSection);
 
   return (
@@ -112,38 +128,41 @@ export default async function StudioPage({
       {/* Page title with a short thin rule (architektinmb.de "Über mich") */}
       <section className="mx-auto max-w-5xl px-6 pb-14 pt-36 lg:px-10 lg:pb-16 lg:pt-44">
         <AnimatedReveal>
-          <h1 className="ga-serif text-5xl sm:text-6xl">{dict.nav.studio}</h1>
+          <h1 className="ga-serif text-5xl sm:text-6xl">{pageTitle}</h1>
           <div className="ga-rule mt-5" />
         </AnimatedReveal>
       </section>
 
-      {/* Founder — compact portrait left, text right */}
+      {/* Founder — compact portrait left, text right (Admin → Studio → Gründer) */}
+      {showFounder && (
       <section className="mx-auto max-w-5xl px-6 pb-20 lg:px-10 lg:pb-24">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-[260px_1fr] sm:gap-12">
-          <AnimatedReveal variant="card">
-            <div className="ga-tile relative aspect-[3/4] w-full max-w-xs overflow-hidden">
-              <GaImage
-                src={FOUNDER_PHOTO}
-                alt={founder.photoAlt}
-                sizes="(min-width: 640px) 260px, 320px"
-                priority
-                className="object-cover object-top"
-              />
-            </div>
-          </AnimatedReveal>
+        <div className={`grid grid-cols-1 gap-10 sm:gap-12 ${founder.photo ? "sm:grid-cols-[260px_1fr]" : ""}`}>
+          {founder.photo && (
+            <AnimatedReveal variant="card">
+              <div className="ga-tile relative aspect-[3/4] w-full max-w-xs overflow-hidden">
+                <GaImage
+                  src={founder.photo}
+                  alt={founder.photoAlt}
+                  sizes="(min-width: 640px) 260px, 320px"
+                  priority
+                  className="object-cover object-top"
+                />
+              </div>
+            </AnimatedReveal>
+          )}
           <AnimatedReveal delay={80}>
-            <h2 className="ga-serif text-3xl sm:text-4xl">{founder.name}</h2>
-            <p className="ga-label mt-3">
+            {founder.name && <h2 className="ga-serif text-3xl sm:text-4xl">{founder.name}</h2>}
+            <p className={`ga-label ${founder.name ? "mt-3" : ""}`}>
               {founder.credentials.map((line, i) => (
-                <span key={line}>
+                <span key={i}>
                   {i > 0 && <br />}
                   {line}
                 </span>
               ))}
             </p>
             <div className="mt-6 flex flex-col gap-5">
-              {founder.bio.map((p) => (
-                <p key={p.slice(0, 24)} className="ga-muted leading-relaxed">
+              {founder.bio.map((p, i) => (
+                <p key={i} className="ga-muted leading-relaxed">
                   {p}
                 </p>
               ))}
@@ -151,6 +170,7 @@ export default async function StudioPage({
           </AnimatedReveal>
         </div>
       </section>
+      )}
 
       {/* Admin-editable intro + body (Admin → Studio) in the new style */}
       {studio.intro && (

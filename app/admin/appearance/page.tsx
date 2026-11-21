@@ -1,98 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { applyFont } from "@/components/FontProvider";
+import { FONTS, FONT_CATEGORIES, type FontEntry } from "@/lib/fonts";
 
-type FontEntry = { name: string; category: string };
+// Global site font. Saved in the database via /api/admin/typography and rendered
+// server-side by app/[lang]/layout.tsx — applies to every page and every visitor.
 
-const FONTS: FontEntry[] = [
-  // Geometric Sans-Serif
-  { name: "Inter", category: "Geometric" },
-  { name: "Outfit", category: "Geometric" },
-  { name: "DM Sans", category: "Geometric" },
-  { name: "Plus Jakarta Sans", category: "Geometric" },
-  { name: "Space Grotesk", category: "Geometric" },
-  { name: "Jost", category: "Geometric" },
-  { name: "Syne", category: "Geometric" },
-  { name: "Urbanist", category: "Geometric" },
-  { name: "Figtree", category: "Geometric" },
-  { name: "Manrope", category: "Geometric" },
-  { name: "Epilogue", category: "Geometric" },
-  { name: "Albert Sans", category: "Geometric" },
-  { name: "Hanken Grotesk", category: "Geometric" },
-  { name: "Instrument Sans", category: "Geometric" },
-  { name: "Bricolage Grotesque", category: "Geometric" },
-  { name: "Archivo", category: "Geometric" },
-  { name: "Poppins", category: "Geometric" },
-  { name: "Rubik", category: "Geometric" },
-  { name: "Encode Sans", category: "Geometric" },
-  { name: "Overpass", category: "Geometric" },
-
-  // Humanist Sans-Serif
-  { name: "Raleway", category: "Humanist" },
-  { name: "Lato", category: "Humanist" },
-  { name: "Montserrat", category: "Humanist" },
-  { name: "Josefin Sans", category: "Humanist" },
-  { name: "Nunito Sans", category: "Humanist" },
-  { name: "Work Sans", category: "Humanist" },
-  { name: "Barlow", category: "Humanist" },
-  { name: "IBM Plex Sans", category: "Humanist" },
-  { name: "Source Sans 3", category: "Humanist" },
-  { name: "Cabin", category: "Humanist" },
-  { name: "Karla", category: "Humanist" },
-  { name: "Mulish", category: "Humanist" },
-  { name: "Questrial", category: "Humanist" },
-  { name: "Lexend", category: "Humanist" },
-  { name: "Nunito", category: "Humanist" },
-  { name: "Quicksand", category: "Humanist" },
-  { name: "Fira Sans", category: "Humanist" },
-  { name: "Titillium Web", category: "Humanist" },
-  { name: "Exo 2", category: "Humanist" },
-
-  // Condensed / Display
-  { name: "Oswald", category: "Condensed" },
-  { name: "Bebas Neue", category: "Condensed" },
-  { name: "Big Shoulders Display", category: "Condensed" },
-  { name: "Antonio", category: "Condensed" },
-  { name: "Barlow Condensed", category: "Condensed" },
-  { name: "Barlow Semi Condensed", category: "Condensed" },
-  { name: "Pathway Gothic One", category: "Condensed" },
-  { name: "Squada One", category: "Condensed" },
-
-  // Serif — Editorial
-  { name: "Playfair Display", category: "Serif" },
-  { name: "Lora", category: "Serif" },
-  { name: "Cormorant Garamond", category: "Serif" },
-  { name: "Cormorant", category: "Serif" },
-  { name: "EB Garamond", category: "Serif" },
-  { name: "Libre Baskerville", category: "Serif" },
-  { name: "Merriweather", category: "Serif" },
-  { name: "PT Serif", category: "Serif" },
-  { name: "Crimson Pro", category: "Serif" },
-  { name: "Spectral", category: "Serif" },
-  { name: "Gloock", category: "Serif" },
-  { name: "Fraunces", category: "Serif" },
-  { name: "DM Serif Display", category: "Serif" },
-  { name: "Libre Caslon Text", category: "Serif" },
-  { name: "Cardo", category: "Serif" },
-  { name: "Alegreya", category: "Serif" },
-  { name: "Bitter", category: "Serif" },
-  { name: "Domine", category: "Serif" },
-  { name: "Zilla Slab", category: "Serif" },
-  { name: "Neuton", category: "Serif" },
-
-  // Monospace — Blueprint / Tech
-  { name: "IBM Plex Mono", category: "Mono" },
-  { name: "Space Mono", category: "Mono" },
-  { name: "Roboto Mono", category: "Mono" },
-  { name: "JetBrains Mono", category: "Mono" },
-  { name: "DM Mono", category: "Mono" },
-  { name: "Courier Prime", category: "Mono" },
-  { name: "Fira Mono", category: "Mono" },
-  { name: "Source Code Pro", category: "Mono" },
-];
-
-const CATEGORIES = ["All", "Geometric", "Humanist", "Condensed", "Serif", "Mono"];
+const DEFAULT_LABEL = "Standard (Original-Design)";
 
 const CATEGORY_COLORS: Record<string, string> = {
   Geometric: "bg-blue-100 text-blue-700",
@@ -102,63 +16,126 @@ const CATEGORY_COLORS: Record<string, string> = {
   Mono: "bg-stone-100 text-stone-700",
 };
 
+type Status = { kind: "idle" } | { kind: "saving"; font: string | null } | { kind: "saved" } | { kind: "error"; msg: string };
+
 export default function AppearancePage() {
-  const [selected, setSelected] = useState<string>("Inter");
+  /** null = original design (Inter + DM Serif Display). undefined = still loading. */
+  const [selected, setSelected] = useState<string | null | undefined>(undefined);
   const [activeCategory, setActiveCategory] = useState("All");
-  const [fontsLoaded, setFontsLoaded] = useState(false);
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
 
   useEffect(() => {
-    const stored = localStorage.getItem("site-font");
-    if (stored) setSelected(stored);
+    // Leftover from the old browser-only implementation — no longer used.
+    localStorage.removeItem("site-font");
+
+    fetch("/api/admin/typography")
+      .then(async (r) => {
+        if (!r.ok) throw new Error((await r.json().catch(() => null))?.error ?? `HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d: { font: string | null }) => setSelected(d.font ?? null))
+      .catch((e) => {
+        setSelected(null);
+        setStatus({ kind: "error", msg: e instanceof Error ? e.message : "Laden fehlgeschlagen" });
+      });
 
     // Load all preview fonts in batches to avoid URL length issues
-    const batches: FontEntry[][] = [];
+    const links: HTMLLinkElement[] = [];
     for (let i = 0; i < FONTS.length; i += 20) {
-      batches.push(FONTS.slice(i, i + 20));
-    }
-    batches.forEach((batch) => {
-      const families = batch
-        .map((f) => `family=${f.name.replace(/ /g, "+")}:wght@400;600`)
+      const families = FONTS.slice(i, i + 20)
+        .map((f: FontEntry) => `family=${f.name.replace(/ /g, "+")}`)
         .join("&");
       const link = document.createElement("link");
       link.rel = "stylesheet";
       link.href = `https://fonts.googleapis.com/css2?${families}&display=swap`;
       document.head.appendChild(link);
-    });
-    setFontsLoaded(true);
+      links.push(link);
+    }
+    return () => links.forEach((l) => l.remove());
   }, []);
 
-  function handleSelect(fontName: string) {
-    setSelected(fontName);
-    applyFont(fontName);
+  async function handleSelect(font: string | null) {
+    if (status.kind === "saving" || font === selected) return;
+    const previous = selected;
+    setSelected(font);
+    setStatus({ kind: "saving", font });
+    try {
+      const res = await fetch("/api/admin/typography", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ font }),
+      });
+      const body = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(body?.error ?? `HTTP ${res.status}`);
+      setSelected(body.font ?? null);
+      setStatus({ kind: "saved" });
+      setTimeout(() => setStatus((s) => (s.kind === "saved" ? { kind: "idle" } : s)), 2500);
+    } catch (e) {
+      setSelected(previous);
+      setStatus({ kind: "error", msg: e instanceof Error ? e.message : "Speichern fehlgeschlagen" });
+    }
   }
 
-  const visible = activeCategory === "All"
-    ? FONTS
-    : FONTS.filter((f) => f.category === activeCategory);
+  const visible = activeCategory === "All" ? FONTS : FONTS.filter((f) => f.category === activeCategory);
+  const loading = selected === undefined;
 
   return (
     <div className="p-8">
-      <div className="mb-8 border-b border-stone-200 pb-6">
-        <h1 className="text-2xl font-semibold text-graphite-900">Typography</h1>
-        <p className="mt-1 text-sm text-stone-500">
-          Schriftart für die gesamte Website auswählen. Die Änderung wird sofort live.
-        </p>
-        <p className="mt-2 text-xs text-stone-400">
-          Aktiv: <span className="font-semibold text-amber-700">{selected}</span>
-        </p>
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-stone-200 pb-6 dark:border-line-200">
+        <div>
+          <h1 className="text-2xl font-semibold text-graphite-900">Typography</h1>
+          <p className="mt-1 text-sm text-stone-500">
+            Schriftart für die gesamte Website (alle Seiten inkl. Header, Footer und Startseite). Die Änderung ist sofort für alle Besucher live.
+          </p>
+          <p className="mt-2 text-xs text-stone-400">
+            Aktiv:{" "}
+            <span className="font-semibold text-amber-700" data-testid="active-font">
+              {loading ? "…" : selected ?? DEFAULT_LABEL}
+            </span>
+          </p>
+        </div>
+        <div className="flex items-center gap-4 text-xs">
+          {status.kind === "saving" && <span className="text-stone-500">Speichert…</span>}
+          {status.kind === "saved" && <span className="text-green-700">Gespeichert – live auf der Website</span>}
+          {status.kind === "error" && <span className="text-red-600">{status.msg}</span>}
+          <a href="/" target="_blank" rel="noreferrer" className="text-stone-500 hover:underline">
+            Website ansehen ↗
+          </a>
+        </div>
       </div>
+
+      {/* Original design */}
+      <button
+        onClick={() => handleSelect(null)}
+        disabled={loading}
+        className={`mb-6 w-full rounded-sm border p-4 text-left transition-all sm:max-w-md ${
+          selected === null
+            ? "border-amber-500 bg-amber-50 ring-1 ring-amber-400 dark:bg-paper-200"
+            : "border-stone-200 bg-white hover:border-stone-400 hover:shadow-sm dark:border-line-200 dark:bg-paper-200"
+        }`}
+      >
+        <div className="flex items-start justify-between gap-2">
+          <span className="text-xl leading-tight text-graphite-900" style={{ fontFamily: '"DM Serif Display", serif' }}>
+            Grey Arc
+          </span>
+          {selected === null && (
+            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-500 text-[10px] text-white">✓</span>
+          )}
+        </div>
+        <p className="mt-1 text-xs text-stone-500" style={{ fontFamily: "Inter, sans-serif" }}>
+          Überschriften DM Serif Display · Fließtext Inter
+        </p>
+        <span className="mt-3 block text-[11px] font-medium text-stone-700">{DEFAULT_LABEL}</span>
+      </button>
 
       {/* Category filter */}
       <div className="mb-6 flex flex-wrap gap-2">
-        {CATEGORIES.map((cat) => (
+        {FONT_CATEGORIES.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
             className={`rounded px-3 py-1 text-xs font-medium transition-colors ${
-              activeCategory === cat
-                ? "bg-graphite-900 text-white"
-                : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+              activeCategory === cat ? "bg-graphite-900 text-white" : "bg-stone-100 text-stone-600 hover:bg-stone-200"
             }`}
           >
             {cat}
@@ -170,14 +147,17 @@ export default function AppearancePage() {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {visible.map((font) => {
           const isSelected = selected === font.name;
+          const isSaving = status.kind === "saving" && status.font === font.name;
           return (
             <button
               key={font.name}
               onClick={() => handleSelect(font.name)}
+              disabled={loading}
+              data-font={font.name}
               className={`rounded-sm border p-4 text-left transition-all ${
                 isSelected
-                  ? "border-amber-500 bg-amber-50 ring-1 ring-amber-400"
-                  : "border-stone-200 bg-white hover:border-stone-400 hover:shadow-sm"
+                  ? "border-amber-500 bg-amber-50 ring-1 ring-amber-400 dark:bg-paper-200"
+                  : "border-stone-200 bg-white hover:border-stone-400 hover:shadow-sm dark:border-line-200 dark:bg-paper-200"
               }`}
             >
               <div className="flex items-start justify-between gap-2">
@@ -189,21 +169,16 @@ export default function AppearancePage() {
                 </span>
                 {isSelected && (
                   <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-amber-500 text-[10px] text-white">
-                    ✓
+                    {isSaving ? "…" : "✓"}
                   </span>
                 )}
               </div>
-              <p
-                className="mt-1 text-xs text-stone-500"
-                style={{ fontFamily: `"${font.name}", sans-serif` }}
-              >
+              <p className="mt-1 text-xs text-stone-500" style={{ fontFamily: `"${font.name}", sans-serif` }}>
                 Architecture & Design Studio
               </p>
               <div className="mt-3 flex items-center justify-between">
                 <span className="text-[11px] font-medium text-stone-700">{font.name}</span>
-                <span
-                  className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${CATEGORY_COLORS[font.category]}`}
-                >
+                <span className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${CATEGORY_COLORS[font.category]}`}>
                   {font.category}
                 </span>
               </div>
@@ -212,9 +187,7 @@ export default function AppearancePage() {
         })}
       </div>
 
-      <p className="mt-8 text-xs text-stone-400">
-        {FONTS.length} Schriftarten · Alle von Google Fonts
-      </p>
+      <p className="mt-8 text-xs text-stone-400">{FONTS.length} Schriftarten · Alle von Google Fonts</p>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ConditionalFooter from "@/components/ConditionalFooter";
-import FontProvider from "@/components/FontProvider";
+import { getTypography, typographyStyle } from "@/lib/typography";
 import ThemeSync from "@/components/ThemeSync";
 import { locales, hasLocale, pageAlternates, SITE_URL } from "@/lib/i18n";
 import { getDictionary } from "@/lib/get-dictionary";
@@ -88,7 +88,7 @@ export default async function RootLayout({
   if (!hasLocale(lang)) notFound();
 
   const dict = await getDictionary(lang);
-  const navConfig = (await getNavigation()).items;
+  const [navConfig, typography] = await Promise.all([getNavigation().then((n) => n.items), getTypography()]);
 
   return (
     <html
@@ -97,10 +97,19 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${inter.variable} ${dmSerifDisplay.variable} antialiased`}
+      // Global site font from Admin → Typografie (stored in the DB, applies to every page,
+      // header and footer included). Unset = original design (Inter + DM Serif Display).
+      style={typographyStyle(typography) as React.CSSProperties | undefined}
     >
+      {typography.cssUrl && (
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link rel="stylesheet" href={typography.cssUrl} />
+        </head>
+      )}
       <body className="flex min-h-screen flex-col bg-paper-100 text-ink">
           <ThemeSync />
-          <FontProvider />
           <Header lang={lang} dict={dict} navConfig={navConfig} />
           <main className="flex-1">{children}</main>
           <ConditionalFooter lang={lang}>

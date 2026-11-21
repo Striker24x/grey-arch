@@ -404,10 +404,59 @@ export interface StudioTranslation {
   body?: string;
 }
 
+export interface StudioFounderTranslation {
+  name: string;
+  photoAlt: string;
+  /** Small caps lines under the name, one entry per line. */
+  credentials: string[];
+  /** Biography paragraphs. */
+  bio: string[];
+}
+
+/** Founder block at the top of the Studio (GrayArc) page — editable in Admin → Studio. */
+export interface StudioFounder {
+  /** Show the block on the page. */
+  visible: boolean;
+  photo: string;
+  translations: Record<AdminLocale, StudioFounderTranslation>;
+}
+
 export interface StudioData {
+  /** Legacy, not shown on the page anymore (kept so old documents stay intact). */
   workspaceImage?: string;
+  /** Legacy, not used by the Studio page layout. */
   layout?: ServiceLayoutId;
+  founder?: StudioFounder;
   translations: Record<AdminLocale, StudioTranslation>;
+}
+
+const STUDIO_FOUNDER_PHOTO = "/images/michel-alkhouri.jpg";
+
+/** Fills the founder block from the bundled dictionaries for documents saved before the
+ * block became editable — the page looks exactly like before until the admin edits it. */
+async function withStudioFounder(studio: StudioData): Promise<StudioData> {
+  const f = studio.founder;
+  if (f?.translations?.en && f?.translations?.de) {
+    return { ...studio, founder: { visible: f.visible !== false, photo: f.photo ?? "", translations: f.translations } };
+  }
+  const [en, de] = await Promise.all([
+    import("./dictionaries/en").then((m) => m.default),
+    import("./dictionaries/de").then((m) => m.default),
+  ]);
+  const map = (d: typeof en): StudioFounderTranslation => ({
+    name: d.landing.founder.name,
+    photoAlt: d.landing.founder.photoAlt,
+    credentials: [...d.landing.founder.credentials],
+    bio: [...d.landing.founder.bio],
+  });
+  return {
+    ...studio,
+    founder: {
+      visible: f?.visible !== false,
+      photo: f?.photo ?? STUDIO_FOUNDER_PHOTO,
+      translations: { en: f?.translations?.en ?? map(en), de: f?.translations?.de ?? map(de) },
+    },
+  };
 }
 
 // Pre-rich-text shape, still present in Mongo documents saved before this migration.
@@ -520,7 +569,7 @@ export async function getStudio(): Promise<StudioData> {
     if (isLegacyStudio(cached)) {
       const migrated = migrateLegacyStudio(cached);
       await writeJsonSync("studio.json", migrated); // persist once so migration doesn't re-run
-      return migrated;
+      return withStudioFounder(migrated);
     }
     const studio = cached as StudioData;
     // One-time rename of the Studio page title to "GrayArc" (later admin edits are kept).
@@ -536,11 +585,11 @@ export async function getStudio(): Promise<StudioData> {
       }
       if (changed) await writeJsonSync("studio.json", studio);
     });
-    return studio;
+    return withStudioFounder(studio);
   }
   const initial = await initStudio();
   await writeJsonSync("studio.json", initial);
-  return initial;
+  return withStudioFounder(initial);
 }
 
 export async function saveStudio(data: StudioData): Promise<void> {
